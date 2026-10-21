@@ -1,0 +1,1715 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ISC Admin Prep</title>
+<meta name="description" content="Practice exams and performance analytics for the SailPoint Identity Security Administrator certification.">
+<meta name="theme-color" content="#0A0B0B">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2309090A'/%3E%3Ctext x='16' y='21' text-anchor='middle' font-family='Arial,sans-serif' font-weight='700' font-size='12' fill='%23EDEFEE'%3EISC%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ---------- Tokens (Asper palette) ---------- */
+:root{
+  --brand:#002A1C; --neon:#29EC72; --lav:#E6E4E8;
+  --bg:#021B12; --bg-2:#03211A; --surface:#062A1E; --surface-2:#0A3326; --surface-3:#0F3D2E;
+  --line:rgba(230,228,232,.09); --line-2:rgba(230,228,232,.16);
+  --ink:#F3F2F5; --muted:#A7B9B0; --faint:#6F877C;
+  --accent:#29EC72; --accent-text:#29EC72; --accent-ink:#002A1C; --accent-soft:rgba(41,236,114,.12); --accent-glow:rgba(41,236,114,.35);
+  --bad:#FF7A7A; --bad-soft:rgba(255,122,122,.12); --warn:#F5C451; --warn-soft:rgba(245,196,81,.12);
+  --d1:#29EC72; --d2:#7BD3FF; --d3:#C9A7FF; --d4:#FFB86B; --d5:#FF7A90; --d6:#5EF2D6; --d7:#F5E663; --d8:#CFCBD6;
+  --heat0:rgba(230,228,232,.06); --heat1:rgba(41,236,114,.22); --heat2:rgba(41,236,114,.45); --heat3:rgba(41,236,114,.7); --heat4:#29EC72;
+  --shadow:0 1px 0 rgba(255,255,255,.03) inset,0 20px 40px -24px rgba(0,0,0,.6);
+  --radius:14px; --radius-sm:10px;
+  --serif:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+  --sans:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  color-scheme:dark;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+:root[data-theme="light"]{
+  --bg:#F4F3F6; --bg-2:#ECEAF0; --surface:#FFFFFF; --surface-2:#F6F5F8; --surface-3:#ECEAF0;
+  --line:#E3E0E7; --line-2:#D3CFD9;
+  --ink:#002A1C; --muted:#4E6359; --faint:#87958E;
+  --accent:#29EC72; --accent-text:#0B8A3E; --accent-ink:#002A1C; --accent-soft:rgba(41,236,114,.16); --accent-glow:rgba(41,236,114,.4);
+  --bad:#C8352F; --bad-soft:rgba(200,53,47,.09); --warn:#A86F00; --warn-soft:rgba(168,111,0,.1);
+  --d1:#12A150; --d2:#1E88C8; --d3:#7B4FD0; --d4:#D97A1A; --d5:#D6455E; --d6:#0E9C86; --d7:#A68C00; --d8:#6E6875;
+  --heat0:#ECEAF0; --heat1:rgba(18,161,80,.25); --heat2:rgba(18,161,80,.5); --heat3:rgba(18,161,80,.75); --heat4:#12A150;
+  --shadow:0 1px 2px rgba(0,42,28,.05),0 16px 32px -20px rgba(0,42,28,.18);
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);height:100%}
+body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:14px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:90;background:var(--brand)}
+::selection{background:var(--accent);color:var(--accent-ink)}
+*{scrollbar-width:thin;scrollbar-color:var(--line-2) transparent}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-thumb{background:var(--line-2);border-radius:10px;border:3px solid transparent;background-clip:padding-box}
+::-webkit-scrollbar-track{background:transparent}
+h1,h2,h3,h4,p{margin:0}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+:focus{outline:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:8px}
+.num{font-variant-numeric:tabular-nums}
+.serif{font-family:var(--serif)}
+.hidden{display:none!important}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* ---------- Buttons ---------- */
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:8px;height:40px;padding:0 18px;border-radius:999px;font-weight:500;font-size:14px;border:1px solid var(--line-2);background:var(--surface-2);color:var(--ink);transition:background .15s,border-color .15s,transform .1s,box-shadow .2s;white-space:nowrap}
+.btn:hover{border-color:var(--accent);}
+.btn:active{transform:translateY(1px)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
+.btn.primary:hover{box-shadow:0 0 0 4px var(--accent-soft),0 8px 24px -8px var(--accent-glow)}
+.btn.lg{height:48px;padding:0 26px;font-size:15px}
+.btn.block{width:100%}
+.btn.ghost{background:transparent;border-color:transparent;color:var(--muted)}
+.btn.ghost:hover{color:var(--ink);background:var(--surface-2)}
+.btn.danger{background:var(--bad);border-color:var(--bad);color:#fff}
+.btn[disabled]{opacity:.4;pointer-events:none}
+.btn svg{flex:none}
+.icon-btn{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;color:var(--muted);transition:background .15s,color .15s}
+.icon-btn:hover{background:var(--surface-2);color:var(--ink)}
+kbd{font-family:var(--sans);font-size:11px;font-weight:600;min-width:22px;height:22px;padding:0 6px;display:inline-grid;place-items:center;border-radius:6px;background:var(--surface-3);border:1px solid var(--line-2);border-bottom-width:2px;color:var(--muted)}
+
+/* ---------- Shell ---------- */
+.app{display:grid;grid-template-columns:248px minmax(0,1fr);min-height:100vh}
+.sidebar{position:sticky;top:0;height:100vh;background:var(--brand);color:#F3F2F5;display:flex;flex-direction:column;padding:22px 14px 18px;border-right:1px solid rgba(230,228,232,.08)}
+:root[data-theme="light"] .sidebar{border-right:0}
+.brand{display:flex;align-items:center;gap:12px;padding:2px 10px 26px}
+.brand .mark{width:38px;height:38px;border-radius:11px;background:rgba(41,236,114,.1);border:1px solid rgba(41,236,114,.35);display:grid;place-items:center}
+.brand b{display:block;font-family:var(--serif);font-size:22px;font-weight:700;line-height:1;letter-spacing:.005em}
+.brand small{display:block;font-size:11px;color:rgba(243,242,245,.6);margin-top:4px;letter-spacing:.02em}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav button{position:relative;display:flex;align-items:center;gap:12px;height:42px;padding:0 12px;border-radius:10px;color:rgba(243,242,245,.68);font-weight:500;transition:color .15s,background .15s}
+.nav button:hover{color:#fff;background:rgba(255,255,255,.05)}
+.nav button[aria-current="page"]{color:#fff;background:rgba(41,236,114,.1)}
+.nav button[aria-current="page"]::before{content:"";position:absolute;left:-14px;top:10px;bottom:10px;width:3px;border-radius:0 3px 3px 0;background:var(--neon);box-shadow:0 0 12px var(--neon)}
+.nav button[aria-current="page"] svg{color:var(--neon)}
+.nav .badge{margin-left:auto;font-size:11px;font-weight:600;padding:1px 8px;border-radius:999px;background:rgba(255,255,255,.08);color:rgba(243,242,245,.8)}
+.side-card{margin-top:auto;border:1px solid rgba(230,228,232,.1);border-radius:12px;padding:14px;background:rgba(255,255,255,.03)}
+.side-card .l{font-size:11px;color:rgba(243,242,245,.6)}
+.side-card .v{font-family:var(--serif);font-size:26px;font-weight:700;line-height:1.1;margin:2px 0 8px}
+.side-card .v small{font-family:var(--sans);font-size:12px;font-weight:500;color:rgba(243,242,245,.6)}
+.mini-bar{height:5px;border-radius:5px;background:rgba(255,255,255,.08);overflow:hidden}
+.mini-bar i{display:block;height:100%;border-radius:5px;background:var(--neon);box-shadow:0 0 10px rgba(41,236,114,.6);transition:width .8s cubic-bezier(.2,.8,.2,1)}
+.theme-row{display:flex;align-items:center;justify-content:space-between;margin-top:12px;padding:6px 4px 0;font-size:12px;color:rgba(243,242,245,.65)}
+.switch{position:relative;width:46px;height:26px;border-radius:999px;background:rgba(255,255,255,.12);transition:background .2s}
+.switch::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:transform .25s cubic-bezier(.3,1.4,.5,1)}
+.switch[aria-checked="true"]{background:var(--neon)}
+.switch[aria-checked="true"]::after{transform:translateX(20px);background:var(--brand)}
+
+.main{min-width:0;position:relative}
+.main::before{content:"";position:absolute;inset:0 0 auto 0;height:340px;pointer-events:none;background:radial-gradient(600px 240px at 85% -40px,rgba(41,236,114,.10),transparent 70%)}
+:root[data-theme="light"] .main::before{background:radial-gradient(600px 240px at 85% -40px,rgba(41,236,114,.16),transparent 70%)}
+.view{position:relative;max-width:1240px;margin:0 auto;padding:34px 36px 80px;animation:viewIn .35s cubic-bezier(.2,.8,.2,1)}
+@keyframes viewIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.vhead{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:26px}
+.vhead h1{font-family:var(--serif);font-size:44px;font-weight:600;line-height:1;letter-spacing:-.01em}
+.vhead p{color:var(--muted);margin-top:8px;max-width:62ch}
+.vhead .tools{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+
+/* ---------- Cards ---------- */
+.card{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);min-width:0}
+.card-h{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 22px 0}
+.card-h h2{font-size:15px;font-weight:600}
+.card-h .sub{font-size:12px;color:var(--faint)}
+.card-b{padding:18px 22px 22px}
+.grid{display:grid;gap:18px}
+.grid > *{min-width:0}
+.r-main{grid-template-columns:minmax(0,1.75fr) minmax(300px,1fr);align-items:start}
+.r-half{grid-template-columns:repeat(2,minmax(0,1fr))}
+.stack{display:grid;gap:18px;align-content:start}
+
+/* KPIs */
+.kpis{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;margin-bottom:18px}
+.kpi{padding:18px 20px 16px;overflow:hidden}
+.kpi .l{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted);font-weight:500}
+.kpi .l .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent-glow)}
+.kpi .v{font-family:var(--serif);font-size:42px;font-weight:700;line-height:1.05;margin-top:8px;letter-spacing:-.01em}
+.kpi .v small{font-family:var(--sans);font-size:15px;font-weight:500;color:var(--muted);margin-left:2px}
+.kpi .s{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--faint);margin-top:4px;min-height:20px}
+.chip{display:inline-flex;align-items:center;gap:4px;height:20px;padding:0 8px;border-radius:999px;font-size:11px;font-weight:600;background:var(--surface-3);color:var(--muted)}
+.chip.up{background:var(--accent-soft);color:var(--accent-text)}
+.chip.down{background:var(--bad-soft);color:var(--bad)}
+.chip.warn{background:var(--warn-soft);color:var(--warn)}
+.kpi.hero{background:linear-gradient(160deg,var(--brand),#05402B);border-color:rgba(41,236,114,.25);color:#F3F2F5}
+.kpi.hero .l,.kpi.hero .s{color:rgba(243,242,245,.7)}
+.kpi.hero .v small{color:rgba(243,242,245,.7)}
+.kpi.hero::after{content:"";position:absolute;right:-40px;top:-40px;width:140px;height:140px;border-radius:50%;background:radial-gradient(circle,rgba(41,236,114,.28),transparent 70%)}
+
+/* Toggle chips */
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.tchip{display:inline-flex;align-items:center;gap:7px;height:28px;padding:0 11px;border-radius:999px;font-size:12px;font-weight:500;border:1px solid var(--line-2);color:var(--muted);transition:all .15s}
+.tchip i{width:8px;height:8px;border-radius:50%;background:var(--c,var(--accent));opacity:.35;transition:opacity .15s,box-shadow .15s}
+.tchip:hover{color:var(--ink);border-color:var(--c,var(--accent))}
+.tchip[aria-pressed="true"]{color:var(--ink);border-color:var(--c,var(--accent));background:var(--surface-2)}
+.tchip[aria-pressed="true"] i{opacity:1;box-shadow:0 0 8px var(--c,var(--accent))}
+
+/* Charts */
+.chart{position:relative}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.chart text{fill:var(--faint);font-family:var(--sans);font-size:11px}
+.chart .axis{stroke:var(--line)}
+.chart .tgt{stroke:var(--warn);stroke-dasharray:6 5;stroke-width:1.5}
+.chart .xh{stroke:var(--line-2);stroke-width:1;opacity:0;transition:opacity .1s}
+.chart.hover .xh{opacity:1}
+.empty{display:grid;place-items:center;text-align:center;gap:10px;padding:34px 16px;color:var(--muted)}
+.empty svg{color:var(--faint)}
+.empty b{color:var(--ink);font-weight:600}
+
+/* Tooltip */
+.tip{position:fixed;left:0;top:0;z-index:100;pointer-events:none;min-width:160px;max-width:280px;padding:10px 12px;border-radius:10px;background:var(--surface-3);border:1px solid var(--line-2);box-shadow:0 18px 40px -12px rgba(0,0,0,.45);font-size:12px;opacity:0;transition:opacity .12s}
+.tip.on{opacity:1}
+.tip h4{font-size:12px;font-weight:600;margin-bottom:6px}
+.tip .row{display:flex;justify-content:space-between;gap:14px;color:var(--muted)}
+.tip .row b{color:var(--ink);font-weight:600}
+.tip .sw{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+
+/* Start card */
+.start{overflow:hidden}
+.start::before{content:"";position:absolute;inset:0 0 auto;height:4px;background:linear-gradient(90deg,var(--accent),transparent)}
+.seg{position:relative;display:grid;grid-template-columns:repeat(3,1fr);padding:4px;border-radius:12px;background:var(--surface-2);border:1px solid var(--line)}
+.seg .pill{position:absolute;top:4px;bottom:4px;left:4px;width:calc((100% - 8px)/3);border-radius:9px;background:var(--surface);border:1px solid var(--line-2);box-shadow:0 4px 14px -6px rgba(0,0,0,.35);transition:transform .3s cubic-bezier(.3,1.2,.4,1)}
+.seg button{position:relative;z-index:1;height:38px;border-radius:9px;font-size:13px;font-weight:500;color:var(--muted);transition:color .15s}
+.seg button[aria-pressed="true"]{color:var(--ink);font-weight:600}
+.seg button[disabled]{opacity:.35;cursor:not-allowed}
+.mode-info{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:16px 0}
+.mode-info div{padding:10px 12px;border-radius:10px;background:var(--surface-2);border:1px solid var(--line)}
+.mode-info b{display:block;font-family:var(--serif);font-size:24px;font-weight:700;line-height:1.1}
+.mode-info span{font-size:11px;color:var(--muted)}
+.field{display:grid;gap:6px;margin-bottom:14px}
+.field > span{font-size:12px;color:var(--muted);font-weight:500}
+.opt-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-top:1px solid var(--line);margin-bottom:14px;font-size:13px}
+.opt-row small{display:block;font-size:11px;color:var(--faint)}
+.switch.alt{background:var(--surface-3)}
+.switch.alt::after{background:var(--muted)}
+.switch.alt[aria-checked="true"]{background:var(--accent)}
+.switch.alt[aria-checked="true"]::after{background:var(--accent-ink)}
+
+/* Dropdown */
+.dd{position:relative}
+.dd-btn{width:100%;height:44px;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:0 14px;border-radius:10px;background:var(--surface-2);border:1px solid var(--line-2);text-align:left;font-weight:500;transition:border-color .15s,box-shadow .15s}
+.dd-btn:hover{border-color:var(--accent)}
+.dd.open .dd-btn{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.dd-btn .dd-val{display:flex;align-items:center;gap:10px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.dd-btn svg{flex:none;transition:transform .2s;color:var(--muted)}
+.dd.open .dd-btn svg{transform:rotate(180deg)}
+.dd-list{position:absolute;z-index:40;left:0;right:0;top:calc(100% + 6px);margin:0;padding:6px;list-style:none;border-radius:12px;background:var(--surface-3);border:1px solid var(--line-2);box-shadow:0 24px 48px -16px rgba(0,0,0,.5);max-height:300px;overflow:auto;opacity:0;transform:translateY(-6px) scale(.98);transform-origin:top;pointer-events:none;transition:opacity .15s,transform .15s}
+.dd.open .dd-list{opacity:1;transform:none;pointer-events:auto}
+.dd-list li{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:8px;cursor:pointer;font-size:13px}
+.dd-list li .m{margin-left:auto;font-size:11px;color:var(--faint)}
+.dd-list li[aria-selected="true"]{color:var(--accent-text);font-weight:600}
+.dd-list li.act{background:var(--surface-2)}
+.ddot{width:9px;height:9px;border-radius:50%;flex:none;background:var(--c,var(--accent))}
+
+/* Focus card */
+.focus{display:flex;gap:16px;align-items:center}
+.focus .ring-s{flex:none}
+.focus h3{font-size:15px;font-weight:600}
+.focus p{font-size:12px;color:var(--muted);margin:2px 0 10px}
+
+/* Radar / heatmap */
+.radar text{font-size:11px;fill:var(--muted)}
+.radar .lbl{cursor:default}
+.radar .lbl:hover{fill:var(--ink)}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:11px;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:14px;height:3px;border-radius:2px;background:var(--accent)}
+.legend i.l2{background:var(--lav);opacity:.7}
+.legend i.t{background:none;border-top:2px dashed var(--warn);height:0}
+.heat{display:grid;grid-auto-flow:column;grid-template-rows:repeat(7,1fr);gap:4px}
+.heat i{aspect-ratio:1;border-radius:4px;background:var(--heat0);transition:transform .1s}
+.heat i:hover{transform:scale(1.25);outline:1px solid var(--line-2)}
+.heat i.l1{background:var(--heat1)} .heat i.l2{background:var(--heat2)} .heat i.l3{background:var(--heat3)} .heat i.l4{background:var(--heat4);box-shadow:0 0 8px var(--accent-glow)}
+.heat-wrap{display:grid;grid-template-columns:auto 1fr;gap:8px;align-items:start}
+.heat-days{display:grid;grid-template-rows:repeat(7,1fr);gap:4px;font-size:10px;color:var(--faint);height:100%}
+.heat-days span{display:flex;align-items:center}
+.heat-foot{display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-size:11px;color:var(--faint)}
+.heat-scale{display:flex;align-items:center;gap:4px}
+.heat-scale i{width:11px;height:11px;border-radius:3px}
+.stat-line{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
+.stat-line div{padding:10px 12px;border-radius:10px;background:var(--surface-2)}
+.stat-line b{display:block;font-family:var(--serif);font-size:22px;font-weight:700;line-height:1.1}
+.stat-line span{font-size:11px;color:var(--muted)}
+
+/* Accordion list */
+.acc{list-style:none;margin:0;padding:0}
+.acc > li{border-top:1px solid var(--line)}
+.acc > li:first-child{border-top:0}
+.acc-h{width:100%;display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;gap:14px;padding:14px 22px;text-align:left;transition:background .15s}
+.acc-h:hover{background:var(--surface-2)}
+.acc-h .q{font-size:13px;font-weight:500}
+.acc-h .meta{font-size:11px;color:var(--faint);margin-top:2px;display:block}
+.acc-h svg.chev{color:var(--faint);transition:transform .2s}
+.acc > li.open svg.chev{transform:rotate(180deg)}
+.acc-b{display:grid;grid-template-rows:0fr;transition:grid-template-rows .25s ease}
+.acc > li.open .acc-b{grid-template-rows:1fr}
+.acc-b > div{overflow:hidden}
+.acc-b .in{padding:0 22px 16px 58px;font-size:13px}
+.acc-b .ans{padding:10px 12px;border-radius:10px;background:var(--accent-soft);color:var(--ink);margin-bottom:8px}
+.acc-b .ans b{color:var(--accent-text)}
+.acc-b .wrong{padding:10px 12px;border-radius:10px;background:var(--bad-soft);margin-bottom:8px}
+.acc-b .exp{color:var(--muted)}
+.miss-n{display:grid;place-items:center;width:30px;height:30px;border-radius:9px;font-size:12px;font-weight:600;background:var(--bad-soft);color:var(--bad)}
+.acc-h .acc-tag{font-size:11px;color:var(--muted);white-space:nowrap}
+
+/* Domains view */
+.dgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px}
+.dcard{text-align:left;padding:20px;display:flex;flex-direction:column;gap:14px;transition:transform .2s,border-color .2s,box-shadow .2s;cursor:pointer}
+.dcard:hover{transform:translateY(-3px);border-color:var(--c);box-shadow:0 24px 40px -24px var(--c)}
+.dcard .top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.dcard .no{font-size:12px;font-weight:600;color:var(--c)}
+.dcard h3{font-size:15px;font-weight:600;line-height:1.3;margin-top:2px}
+.dcard .big{font-family:var(--serif);font-size:46px;font-weight:700;line-height:.95}
+.dcard .big small{font-family:var(--sans);font-size:14px;color:var(--muted);font-weight:500}
+.level{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;padding:3px 9px;border-radius:999px;background:var(--surface-3);color:var(--muted);white-space:nowrap}
+.level.good{background:var(--accent-soft);color:var(--accent-text)}
+.level.bad{background:var(--bad-soft);color:var(--bad)}
+.level.top{background:var(--accent);color:var(--accent-ink)}
+.bar{position:relative;height:8px;border-radius:8px;background:var(--surface-3)}
+.bar > i{position:absolute;inset:0 auto 0 0;border-radius:8px;background:var(--c,var(--accent));transition:width .9s cubic-bezier(.2,.8,.2,1)}
+.bar > b{position:absolute;top:-4px;bottom:-4px;width:2px;border-radius:2px;background:var(--warn)}
+.dcard .foot{display:flex;justify-content:space-between;align-items:flex-end;font-size:11px;color:var(--faint);gap:10px}
+.dcard .foot b{display:block;font-size:13px;color:var(--ink);font-weight:600}
+
+/* Table */
+.tbl{width:100%;border-collapse:collapse;font-size:13px}
+.tbl th{text-align:left;font-weight:500;font-size:12px;color:var(--faint);padding:12px 22px;border-bottom:1px solid var(--line);white-space:nowrap;user-select:none}
+.tbl th.sort{cursor:pointer}
+.tbl th.sort:hover{color:var(--ink)}
+.tbl th .ar{display:inline-block;margin-left:4px;opacity:0;transition:opacity .15s,transform .15s}
+.tbl th[aria-sort] .ar{opacity:1;color:var(--accent-text)}
+.tbl th[aria-sort="descending"] .ar{transform:rotate(180deg)}
+.tbl td{padding:14px 22px;border-bottom:1px solid var(--line);vertical-align:middle}
+.tbl tr.row{cursor:pointer;transition:background .12s}
+.tbl tr.row:hover{background:var(--surface-2)}
+.tbl tr.row.open{background:var(--surface-2)}
+.tbl .r{text-align:right}
+.tbl tr.det td{padding:0;background:var(--surface-2)}
+.det-in{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px 22px;padding:16px 22px 20px}
+.det-in .l{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:6px}
+.det-in .l b{color:var(--ink);font-weight:600}
+.scorepill{display:inline-flex;align-items:center;justify-content:center;min-width:52px;height:26px;padding:0 10px;border-radius:999px;font-weight:600;font-size:12px}
+.scorepill.good{background:var(--accent-soft);color:var(--accent-text)}
+.scorepill.bad{background:var(--bad-soft);color:var(--bad)}
+.tbl-wrap{overflow-x:auto}
+
+/* Format view */
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-bottom:18px}
+.step{padding:22px}
+.step .n{font-family:var(--serif);font-size:40px;font-weight:700;color:var(--accent-text);line-height:1}
+.step h3{font-size:15px;font-weight:600;margin:10px 0 6px}
+.step p{font-size:13px;color:var(--muted)}
+.demo{margin-top:16px;padding:12px;border-radius:12px;background:var(--surface-2);border:1px solid var(--line);font-size:12px}
+.demo .o{padding:10px 12px;border-radius:9px;background:var(--surface);border:1px solid var(--line-2);border-left:3px solid var(--accent)}
+.demo .yn{display:flex;gap:6px;margin-top:8px}
+.demo .yn span{flex:1;text-align:center;padding:6px;border-radius:999px;border:1px solid var(--line-2);font-weight:600}
+.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:18px}
+.fact{padding:18px 20px}
+.fact b{display:block;font-family:var(--serif);font-size:36px;font-weight:700;line-height:1}
+.fact span{font-size:12px;color:var(--muted)}
+.bp-row{display:grid;grid-template-columns:28px 1fr 160px 40px;align-items:center;gap:14px;padding:12px 22px;border-top:1px solid var(--line);font-size:13px}
+.bp-row:first-child{border-top:0}
+.bp-row .no{font-weight:600;color:var(--c)}
+.bp-row .num{text-align:right;font-weight:600}
+.rules{margin:0;padding:0;list-style:none;display:grid;gap:12px}
+.rules li{display:grid;grid-template-columns:24px 1fr;gap:10px;font-size:13px;color:var(--muted)}
+.rules li svg{color:var(--accent-text);margin-top:2px}
+.note{font-size:12px;color:var(--faint);margin-top:18px}
+
+/* Results */
+.res-hero{display:grid;grid-template-columns:auto 1fr auto;gap:30px;align-items:center;padding:28px;margin-bottom:18px;overflow:hidden}
+.res-hero::after{content:"";position:absolute;right:-120px;bottom:-160px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,var(--accent-soft),transparent 65%);pointer-events:none}
+.big-ring{position:relative;width:180px;height:180px}
+.big-ring svg{transform:rotate(-90deg)}
+.big-ring .c{transition:stroke-dashoffset 1.4s cubic-bezier(.2,.8,.2,1)}
+.big-ring .lab{position:absolute;inset:0;display:grid;place-items:center;text-align:center}
+.big-ring .lab b{display:block;font-family:var(--serif);font-size:56px;font-weight:700;line-height:.9}
+.big-ring .lab span{font-size:11px;color:var(--muted)}
+.res-hero h2{font-family:var(--serif);font-size:36px;font-weight:600;line-height:1.05}
+.res-hero p{color:var(--muted);margin-top:8px;max-width:52ch}
+.res-hero .chips{margin-top:14px}
+.res-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:18px}
+.cmp-row{display:grid;grid-template-columns:minmax(150px,1.2fr) minmax(160px,2fr) 70px 70px;gap:16px;align-items:center;padding:13px 22px;border-top:1px solid var(--line);font-size:13px}
+.cmp-row.head{border-top:0;font-size:12px;color:var(--faint);padding-top:16px;padding-bottom:6px}
+.cmp-bars{display:grid;gap:5px}
+.cmp-bars .bar{height:7px}
+.cmp-bars .bar.ghost > i{background:var(--lav);opacity:.35}
+:root[data-theme="light"] .cmp-bars .bar.ghost > i{background:var(--ink);opacity:.2}
+.filter-bar{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.filter-bar .dd{width:230px}
+.filter-bar .dd-btn{height:34px;font-size:12px}
+.tabs{position:relative;display:inline-flex;padding:3px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line)}
+.tabs button{position:relative;z-index:1;height:28px;padding:0 14px;border-radius:999px;font-size:12px;font-weight:500;color:var(--muted)}
+.tabs button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:0 2px 8px -2px rgba(0,0,0,.3)}
+.status-ic{display:grid;place-items:center;width:28px;height:28px;border-radius:50%}
+.status-ic.ok{background:var(--accent-soft);color:var(--accent-text)}
+.status-ic.bad{background:var(--bad-soft);color:var(--bad)}
+.status-ic.skip{background:var(--surface-3);color:var(--faint)}
+
+/* Drawer */
+.drawer-root{position:fixed;inset:0;z-index:70;pointer-events:none}
+.drawer-root .back{position:absolute;inset:0;background:rgba(0,12,8,.55);backdrop-filter:blur(3px);opacity:0;transition:opacity .25s}
+.drawer{position:absolute;top:0;right:0;bottom:0;width:min(520px,100%);background:var(--bg-2);border-left:1px solid var(--line-2);transform:translateX(100%);transition:transform .35s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column;padding-top:env(safe-area-inset-top,0px)}
+.drawer-root.open{pointer-events:auto}
+.drawer-root.open .back{opacity:1}
+.drawer-root.open .drawer{transform:none}
+.drawer-h{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:24px 24px 18px;border-bottom:1px solid var(--line)}
+.drawer-h .no{font-size:12px;font-weight:600;color:var(--c)}
+.drawer-h h2{font-family:var(--serif);font-size:30px;font-weight:600;line-height:1.05;margin-top:4px}
+.drawer-b{flex:1;overflow:auto;padding:20px 24px 24px;display:grid;gap:18px;align-content:start}
+.drawer-f{padding:16px 24px calc(16px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line)}
+.dstats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.dstats div{padding:12px 14px;border-radius:12px;background:var(--surface);border:1px solid var(--line)}
+.dstats b{display:block;font-family:var(--serif);font-size:28px;font-weight:700;line-height:1.05}
+.dstats span{font-size:11px;color:var(--muted)}
+.sec-t{font-size:13px;font-weight:600;margin-bottom:10px}
+
+/* Modal */
+.modal-root{position:fixed;inset:0;z-index:80;display:grid;place-items:center;padding:20px;pointer-events:none}
+.modal-root .back{position:absolute;inset:0;background:rgba(0,12,8,.6);backdrop-filter:blur(4px);opacity:0;transition:opacity .2s}
+.modal{position:relative;width:min(440px,100%);background:var(--surface);border:1px solid var(--line-2);border-radius:18px;padding:26px;box-shadow:0 40px 80px -30px rgba(0,0,0,.6);opacity:0;transform:translateY(10px) scale(.97);transition:opacity .2s,transform .25s cubic-bezier(.2,.9,.3,1.2)}
+.modal-root.open{pointer-events:auto}
+.modal-root.open .back{opacity:1}
+.modal-root.open .modal{opacity:1;transform:none}
+.modal .ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--warn-soft);color:var(--warn);margin-bottom:16px}
+.modal .ic.danger{background:var(--bad-soft);color:var(--bad)}
+.modal h3{font-family:var(--serif);font-size:28px;font-weight:600;line-height:1.1}
+.modal p{color:var(--muted);margin-top:8px}
+.modal .act{display:flex;justify-content:flex-end;gap:10px;margin-top:24px}
+
+/* Popover (target) */
+.pop{position:relative}
+.pop-card{position:absolute;right:0;top:calc(100% + 8px);z-index:45;width:280px;padding:18px;border-radius:14px;background:var(--surface-3);border:1px solid var(--line-2);box-shadow:0 24px 48px -16px rgba(0,0,0,.5);opacity:0;transform:translateY(-6px);pointer-events:none;transition:opacity .15s,transform .15s}
+.pop.open .pop-card{opacity:1;transform:none;pointer-events:auto}
+.pop-card h4{font-size:13px;font-weight:600}
+.pop-card p{font-size:12px;color:var(--muted);margin:4px 0 16px}
+.pop-card .val{font-family:var(--serif);font-size:34px;font-weight:700;line-height:1;margin-bottom:12px}
+.target-btn{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 14px;border-radius:999px;border:1px solid var(--line-2);background:var(--surface);font-weight:500;font-size:13px}
+.target-btn:hover{border-color:var(--warn)}
+.target-btn i{width:14px;border-top:2px dashed var(--warn)}
+.slider{position:relative;height:28px;touch-action:none;cursor:pointer}
+.slider .tr{position:absolute;left:0;right:0;top:12px;height:4px;border-radius:4px;background:var(--surface)}
+.slider .fl{position:absolute;left:0;top:12px;height:4px;border-radius:4px;background:var(--warn)}
+.slider .th{position:absolute;top:4px;width:20px;height:20px;margin-left:-10px;border-radius:50%;background:var(--warn);box-shadow:0 0 0 4px var(--warn-soft);transition:box-shadow .15s}
+.slider .th:focus-visible,.slider.drag .th{box-shadow:0 0 0 8px var(--warn-soft);outline:none}
+.slider-scale{display:flex;justify-content:space-between;font-size:10px;color:var(--faint);margin-top:4px}
+
+/* Toasts */
+.toasts{position:fixed;right:20px;bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:95;display:grid;gap:8px;justify-items:end}
+.toast{display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;background:var(--surface-3);border:1px solid var(--line-2);box-shadow:0 18px 40px -16px rgba(0,0,0,.5);font-size:13px;opacity:0;transform:translateY(10px);transition:opacity .25s,transform .25s}
+.toast.in{opacity:1;transform:none}
+.toast i{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent-glow)}
+.toast.warn i{background:var(--warn);box-shadow:0 0 10px var(--warn)}
+
+/* ---------- Exam ---------- */
+.exam{position:fixed;inset:0;z-index:60;background:var(--bg);display:flex;flex-direction:column;overflow:auto;padding-top:env(safe-area-inset-top,0px)}
+.exam::before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(800px 400px at 50% -10%,var(--accent-soft),transparent 70%)}
+.ex-top{position:sticky;top:0;z-index:5;background:var(--brand);color:#F3F2F5;border-bottom:1px solid rgba(41,236,114,.2)}
+.ex-top .in{max-width:1240px;margin:0 auto;height:64px;padding:0 28px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px}
+.ex-top .ttl{display:flex;align-items:center;gap:12px;min-width:0}
+.ex-top .ttl b{font-family:var(--serif);font-size:20px;font-weight:700;white-space:nowrap}
+.ex-top .ttl span{font-size:12px;color:rgba(243,242,245,.6);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ex-count{font-size:13px;color:rgba(243,242,245,.75)}
+.ex-count b{color:#fff;font-size:15px}
+.ex-timer{justify-self:end;display:flex;align-items:center;gap:10px;font-weight:600;font-size:16px}
+.ex-timer svg{transform:rotate(-90deg)}
+.ex-timer .c{transition:stroke-dashoffset 1s linear,stroke .3s}
+.ex-timer.low{color:#FF9C9C}
+.ex-segs{display:flex;gap:2px;height:4px;max-width:1240px;margin:0 auto;padding:0 28px 10px}
+.ex-segs i{flex:1;border-radius:2px;background:rgba(255,255,255,.1);transition:background .2s}
+.ex-segs i.d{background:rgba(41,236,114,.55)}
+.ex-segs i.c{background:var(--neon);box-shadow:0 0 8px var(--neon)}
+.ex-body{position:relative;flex:1;width:100%;max-width:820px;margin:0 auto;padding:48px 28px 40px}
+.ex-meta{display:flex;align-items:center;gap:10px;margin-bottom:16px;font-size:12px;color:var(--muted)}
+.ex-meta .tag{display:inline-flex;align-items:center;gap:7px;height:26px;padding:0 11px;border-radius:999px;background:var(--surface);border:1px solid var(--line-2);font-weight:500;color:var(--ink)}
+.ex-q{font-size:24px;line-height:1.4;font-weight:500;letter-spacing:-.005em;margin-bottom:30px}
+.ex-prev{list-style:none;margin:0 0 12px;padding:0;display:grid;gap:8px}
+.ex-prev li{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 16px;border-radius:12px;border:1px dashed var(--line-2);color:var(--muted);font-size:13px;animation:viewIn .25s}
+.ex-prev li em{font-style:normal;font-size:11px;font-weight:600;padding:2px 9px;border-radius:999px;background:var(--surface-2);white-space:nowrap}
+.ex-opt{position:relative;padding:24px 26px;border-radius:16px;background:var(--surface);border:1px solid var(--line-2);box-shadow:var(--shadow);overflow:hidden;animation:optIn .35s cubic-bezier(.2,.8,.2,1)}
+.ex-opt::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent);box-shadow:0 0 16px var(--accent)}
+.ex-opt .l{font-size:12px;color:var(--muted);margin-bottom:8px;display:flex;justify-content:space-between}
+.ex-opt .t{font-size:19px;line-height:1.45;word-break:break-word}
+@keyframes optIn{from{opacity:0;transform:translateY(14px) scale(.985)}to{opacity:1;transform:none}}
+.ex-yn{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+.ex-yn button{height:60px;border-radius:14px;font-size:16px;font-weight:600;border:1px solid var(--line-2);background:var(--surface);display:flex;align-items:center;justify-content:center;gap:12px;transition:all .15s}
+.ex-yn .y:hover{border-color:var(--accent);background:var(--accent-soft);color:var(--accent-text)}
+.ex-yn .n:hover{border-color:var(--bad);background:var(--bad-soft);color:var(--bad)}
+.ex-yn button.press{transform:scale(.98)}
+.ex-show{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.ex-fb{margin-top:18px;padding:20px 22px;border-radius:16px;border:1px solid var(--line-2);background:var(--surface);animation:optIn .3s}
+.ex-fb.ok{border-color:var(--accent)}
+.ex-fb.bad{border-color:var(--bad)}
+.ex-fb h4{display:flex;align-items:center;gap:10px;font-size:16px;font-weight:600}
+.ex-fb.ok h4{color:var(--accent-text)} .ex-fb.bad h4{color:var(--bad)}
+.ex-fb p{margin-top:10px;font-size:14px}
+.ex-fb .e{color:var(--muted)}
+.ex-fb .act{display:flex;justify-content:flex-end;margin-top:16px}
+.ex-foot{position:relative;border-top:1px solid var(--line);background:var(--surface)}
+.ex-foot .in{max-width:1240px;margin:0 auto;padding:12px 28px calc(12px + env(safe-area-inset-bottom,0px));display:flex;justify-content:space-between;align-items:center;gap:16px;font-size:12px;color:var(--muted)}
+.ex-keys{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.ex-keys span{display:inline-flex;align-items:center;gap:6px}
+
+/* ---------- Responsive ---------- */
+@media (max-width:1180px){
+  .kpis{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .r-main{grid-template-columns:1fr}
+  .res-stats,.facts{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:860px){
+  .app{grid-template-columns:1fr}
+  .sidebar{position:fixed;top:auto;bottom:0;left:0;right:0;height:auto;z-index:50;flex-direction:row;padding:6px 8px calc(6px + env(safe-area-inset-bottom,0px));border-right:0;border-top:1px solid rgba(41,236,114,.2)}
+  .brand,.side-card{display:none}
+  .nav{flex-direction:row;width:100%;justify-content:space-around}
+  .nav button{flex-direction:column;gap:2px;height:52px;font-size:10px;padding:0 10px}
+  .nav button[aria-current="page"]::before{left:20%;right:20%;top:-6px;bottom:auto;width:auto;height:3px;border-radius:0 0 3px 3px}
+  .nav .badge{display:none}
+  .view{padding:22px 16px 110px}
+  .vhead h1{font-size:36px}
+  .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .kpi.hero{grid-column:1 / -1}
+  .r-half,.steps{grid-template-columns:1fr}
+  .res-hero{grid-template-columns:1fr;justify-items:start;gap:18px}
+  .det-in{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cmp-row{grid-template-columns:1fr 70px 70px}
+  .cmp-row .cmp-bars{grid-column:1 / -1;order:3}
+  .bp-row{grid-template-columns:28px 1fr 40px}
+  .bp-row .bar{display:none}
+  .ex-top .in{grid-template-columns:1fr auto;padding:0 16px}
+  .ex-count{display:none}
+  .ex-segs{padding:0 16px 10px}
+  .ex-body{padding:28px 16px}
+  .ex-q{font-size:20px}
+  .ex-keys{display:none}
+  .toasts{left:16px;right:16px;bottom:calc(84px + env(safe-area-inset-bottom,0px));justify-items:stretch}
+  .acc-b .in{padding-left:22px}
+  .acc-h{grid-template-columns:auto 1fr auto}
+  .acc-h .acc-tag{display:none}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* ================= Refined theme: black base, green accents ================= */
+:root{
+  --bg:#09090A; --bg-2:#0D0E0E; --surface:#101211; --surface-2:#151817; --surface-3:#1B1F1D;
+  --line:#1F2321; --line-2:#2B302D;
+  --ink:#EDEFEE; --muted:#9AA19D; --faint:#626965;
+  --accent:#29EC72; --accent-text:#3EEF80; --accent-ink:#04170D; --accent-soft:rgba(41,236,114,.08); --accent-glow:rgba(41,236,114,.18);
+  --bad:#F26D6D; --bad-soft:rgba(242,109,109,.09); --warn:#E5B95A; --warn-soft:rgba(229,185,90,.1);
+  --d1:#29EC72; --d2:#1FB89E; --d3:#9AE6B4; --d4:#5E9C7A; --d5:#D0D8D3; --d6:#2E7D56; --d7:#C2F5D6; --d8:#7C8781;
+  --heat0:#151817; --heat1:#0F3A23; --heat2:#16673A; --heat3:#1FA556; --heat4:#29EC72;
+  --shadow:none; --radius:12px; --radius-sm:8px;
+  --serif:"Geist",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --sans:"Geist",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"Geist Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+:root[data-theme="light"]{
+  --bg:#FAFAFA; --bg-2:#F4F5F4; --surface:#FFFFFF; --surface-2:#F6F7F6; --surface-3:#EEF0EE;
+  --line:#EAECEA; --line-2:#DADDDB;
+  --ink:#0A0B0B; --muted:#5F6662; --faint:#9AA09C;
+  --accent:#16A34A; --accent-text:#13863E; --accent-ink:#FFFFFF; --accent-soft:rgba(22,163,74,.08); --accent-glow:rgba(22,163,74,.15);
+  --bad:#D83A3A; --bad-soft:rgba(216,58,58,.07); --warn:#B07A10; --warn-soft:rgba(176,122,16,.09);
+  --d1:#16A34A; --d2:#0F8F7C; --d3:#57B37E; --d4:#3E6E55; --d5:#7A847F; --d6:#0B5E3A; --d7:#86C99F; --d8:#B4BBB7;
+  --heat0:#EEF0EE; --heat1:#C8EBD3; --heat2:#86D3A2; --heat3:#33B266; --heat4:#16A34A;
+}
+body{font-size:14px;letter-spacing:-.003em;background:var(--bg)}
+body::before{background:var(--bg)}
+.num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
+.main::before,.exam::before,.kpi.hero::after,.res-hero::after,.start::before{display:none}
+
+/* Top bar + tabs (dashboard style) */
+.app{display:block}
+.topbar{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid var(--line)}
+.tb-in{max-width:1240px;margin:0 auto;padding:0 32px;height:60px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;padding:0;min-width:0}
+.brand .mark{width:28px;height:28px;border-radius:8px;background:var(--surface-3);border:1px solid var(--line-2);display:grid;place-items:center;color:var(--accent)}
+.brand b{font-family:var(--sans);font-size:15px;font-weight:600;letter-spacing:-.02em;line-height:1;white-space:nowrap}
+.brand .slash{color:var(--line-2);font-size:20px;font-weight:300}
+.brand .crumb{color:var(--muted);font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tb-right{display:flex;align-items:center;gap:10px}
+.cov{display:flex;align-items:center;gap:10px;height:32px;padding:0 12px;border:1px solid var(--line);border-radius:8px;font-size:12px;color:var(--muted)}
+.cov small{color:var(--faint);font-size:12px}
+.cov .mini-bar{width:64px;height:4px;background:var(--surface-3)}
+.mini-bar i{background:var(--accent);box-shadow:none}
+#themeSw .sun{display:none}
+:root[data-theme="light"] #themeSw .sun{display:block}
+:root[data-theme="light"] #themeSw .moon{display:none}
+.icon-btn{width:32px;height:32px;border-radius:8px;border:1px solid var(--line)}
+.nav{position:relative;max-width:1240px;margin:0 auto;padding:0 24px;display:flex;flex-direction:row;gap:2px;overflow-x:auto;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav button{position:relative;height:44px;padding:0 10px;border-radius:0;font-size:13px;font-weight:500;color:var(--muted);background:none;display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
+.nav button::after{content:"";position:absolute;left:4px;right:4px;top:8px;bottom:8px;border-radius:6px;background:var(--surface-2);opacity:0;transition:opacity .15s;z-index:-1}
+.nav button:hover{color:var(--ink);background:none}
+.nav button:hover::after{opacity:1}
+.nav button[aria-current="page"]{color:var(--ink);background:none}
+.nav button[aria-current="page"]::before{display:none}
+.nav .badge{font-size:11px;padding:0 6px;height:18px;line-height:18px;border-radius:5px;background:var(--surface-3);color:var(--muted);margin:0}
+.nav-ind{position:absolute;bottom:-1px;left:0;height:2px;width:0;background:var(--ink);border-radius:2px;transition:transform .3s cubic-bezier(.2,.8,.2,1),width .3s cubic-bezier(.2,.8,.2,1)}
+
+.view{padding:36px 32px 96px}
+.vhead{margin-bottom:28px}
+.vhead h1{font-family:var(--sans);font-size:30px;font-weight:600;letter-spacing:-.025em;line-height:1.15}
+.vhead p{font-size:14px}
+
+/* Cards */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:none}
+.card-h{align-items:flex-start;padding:18px 20px 0}
+.card-h h2{font-size:14px;font-weight:600;letter-spacing:-.01em}
+.card-h .sub{display:block;font-size:12px;color:var(--faint);margin-top:2px}
+.card-b{padding:16px 20px 20px}
+.ov-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.ov-grid > *{min-width:0}
+.ov-grid .span2{grid-column:span 2}
+.ov-grid .span3{grid-column:1 / -1}
+
+/* KPI strip */
+.kpis{gap:0;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);overflow:hidden;margin-bottom:16px}
+.kpis .card.kpi{border:0;border-radius:0;background:none;border-right:1px solid var(--line)}
+.kpis .card.kpi:last-child{border-right:0}
+.kpi{padding:18px 20px}
+.kpi .l{font-size:12px;color:var(--muted);font-weight:500}
+.kpi .l .dot{width:6px;height:6px;box-shadow:none}
+.kpi .v{font-family:var(--sans);font-size:30px;font-weight:600;letter-spacing:-.03em;margin-top:6px;line-height:1.1}
+.kpi .v small{font-size:16px;font-weight:500;color:var(--faint);margin-left:1px}
+.kpi.hero{background:none;color:inherit;border-color:var(--line)}
+.kpi.hero .l,.kpi.hero .s,.kpi.hero .v small{color:inherit}
+.kpi.hero .l{color:var(--muted)} .kpi.hero .s{color:var(--faint)} .kpi.hero .v small{color:var(--faint)}
+.chip{height:20px;border-radius:6px;font-weight:500;background:var(--surface-3)}
+.res-stats{gap:0;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--surface)}
+.res-stats .card.kpi{border:0;border-radius:0;border-right:1px solid var(--line)}
+.res-stats .card.kpi:last-child{border-right:0}
+.res-stats .kpi .v{font-size:26px!important}
+
+/* Buttons: neutral primary, green reserved for data */
+.btn{height:36px;border-radius:8px;padding:0 14px;font-size:13px;background:var(--surface);border-color:var(--line-2)}
+.btn:hover{border-color:var(--faint);background:var(--surface-2)}
+.btn.lg{height:42px;font-size:14px}
+.btn.primary{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.btn.primary:hover{background:var(--ink);border-color:var(--ink);opacity:.88;box-shadow:none}
+.btn.danger{background:var(--bad);border-color:var(--bad)}
+.target-btn{height:36px;border-radius:8px;border-color:var(--line-2);background:var(--surface);font-size:13px}
+.target-btn i{width:12px}
+.target-btn b{font-weight:600}
+
+/* Chips / segmented */
+.tchip{height:26px;border-radius:6px;font-size:12px;border-color:var(--line)}
+.tchip i{opacity:.5;box-shadow:none!important}
+.tchip[aria-pressed="true"]{background:var(--surface-3);border-color:var(--line-2)}
+.seg{border-radius:9px;padding:3px;background:var(--surface-2);border-color:var(--line)}
+.seg .pill{top:3px;bottom:3px;left:3px;width:calc((100% - 6px)/3);border-radius:7px;background:var(--surface-3);border-color:var(--line-2);box-shadow:none}
+.seg button{height:32px;font-size:12px}
+.mode-info{margin:14px 0;gap:0;border:1px solid var(--line);border-radius:9px;overflow:hidden}
+.mode-info div{border:0;border-radius:0;background:none;border-right:1px solid var(--line);padding:10px 12px}
+.mode-info div:last-child{border-right:0}
+.mode-info b{font-family:var(--sans);font-size:20px;font-weight:600;letter-spacing:-.02em}
+.dd-btn{height:38px;border-radius:8px;background:var(--surface);border-color:var(--line-2);font-size:13px}
+.dd.open .dd-btn{box-shadow:0 0 0 3px var(--accent-soft)}
+.dd-list{background:var(--surface-2);border-radius:10px}
+.switch.alt{width:36px;height:20px}
+.switch.alt::after{width:14px;height:14px;top:3px;left:3px}
+.switch.alt[aria-checked="true"]::after{transform:translateX(16px)}
+
+/* Charts */
+.chart .axis{stroke:var(--line)}
+.tip{background:var(--surface-2);border-radius:8px;border-color:var(--line-2)}
+.legend i{height:2px}
+.heat{gap:3px}
+.heat i{border-radius:3px}
+.heat i.l4{box-shadow:none}
+.stat-line{gap:0;border:1px solid var(--line);border-radius:9px;overflow:hidden}
+.stat-line div{border-radius:0;background:none;border-right:1px solid var(--line)}
+.stat-line div:last-child{border-right:0}
+.stat-line b,.dstats b,.fact b,.step .n,.dcard .big,.big-ring .lab b,.res-hero h2,.drawer-h h2,.modal h3,.pop-card .val{font-family:var(--sans);letter-spacing:-.03em}
+.stat-line b{font-size:18px;font-weight:600}
+.dcard .big{font-size:36px;font-weight:600}
+.dcard:hover{transform:none;border-color:var(--line-2);box-shadow:none;background:var(--surface-2)}
+.level{border-radius:6px;font-weight:500}
+.level.top{background:var(--accent-soft);color:var(--accent-text)}
+.bar{height:6px;border-radius:6px}
+.bar > i{border-radius:6px}
+.miss-n{border-radius:6px;width:28px;height:24px;font-size:11px}
+.fact b{font-size:30px;font-weight:600}
+.step .n{font-size:13px;font-weight:600;width:26px;height:26px;border-radius:7px;display:grid;place-items:center;background:var(--surface-3);color:var(--ink)}
+.res-hero{border-radius:var(--radius)}
+.res-hero h2{font-size:26px;font-weight:600}
+.big-ring .lab b{font-size:44px;font-weight:600}
+.drawer{background:var(--bg-2)}
+.drawer-h h2{font-size:24px;font-weight:600}
+.dstats div{border-radius:9px}
+.dstats b{font-size:22px;font-weight:600}
+.modal{border-radius:14px}
+.modal h3{font-size:20px;font-weight:600}
+.modal .ic{border-radius:10px}
+.pop-card{border-radius:12px;background:var(--surface-2)}
+.pop-card .val{font-size:28px;font-weight:600}
+.toast{border-radius:10px;background:var(--surface-2)}
+.toast i{box-shadow:none}
+.tabs{border-radius:8px}
+.tabs button{border-radius:6px}
+.scorepill{border-radius:6px}
+kbd{font-family:var(--mono);border-radius:5px}
+code,.mono{font-family:var(--mono)}
+
+/* Exam */
+.ex-top{background:var(--bg);color:var(--ink);border-bottom:1px solid var(--line)}
+.ex-top .ttl b{font-family:var(--sans);font-size:14px;font-weight:600}
+.ex-top .ttl span{color:var(--muted)}
+.ex-count{color:var(--muted)} .ex-count b{color:var(--ink)}
+.ex-timer{font-family:var(--mono);font-size:15px}
+.ex-timer svg circle:first-child{stroke:var(--line-2)}
+.ex-segs i{background:var(--surface-3)}
+.ex-segs i.d{background:var(--faint)}
+.ex-segs i.c{background:var(--accent);box-shadow:none}
+.ex-q{font-size:22px;letter-spacing:-.015em}
+.ex-opt{border-radius:12px;box-shadow:none}
+.ex-opt::before{width:3px;box-shadow:none}
+.ex-yn button{height:54px;border-radius:10px;font-size:15px}
+.ex-meta .tag{border-radius:6px;height:26px}
+.ex-prev li{border-radius:10px}
+.ex-fb{border-radius:12px}
+
+.kpi .s{flex-wrap:wrap}
+.chip{white-space:nowrap}
+.fr-list{display:grid;gap:2px}
+.fr{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr) 40px;align-items:center;gap:12px;padding:8px 8px;margin:0 -8px;border-radius:8px;text-align:left;font-size:12px;transition:background .15s}
+.fr:hover{background:var(--surface-2)}
+.fr-n{display:flex;align-items:center;gap:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fr-p{text-align:right;font-weight:600}
+.fr .bar{height:5px}
+#recent{margin-top:18px}
+.rc-t{font-size:12px;color:var(--faint);margin-bottom:6px}
+.rc{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 0;border-top:1px solid var(--line);font-size:13px}
+.rc small{display:block;font-size:11px;color:var(--faint)}
+@media (max-width:1180px){
+  .ov-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ov-grid .span2{grid-column:1 / -1}
+  .kpis{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .kpis .card.kpi:nth-child(3){border-right:0}
+  .kpis .card.kpi:nth-child(-n+3){border-bottom:1px solid var(--line)}
+}
+@media (max-width:860px){
+  .app{display:block}
+  .tb-in{padding:0 16px}
+  .brand .slash,.brand .crumb,.cov{display:none}
+  .nav{padding:0 8px}
+  .nav button{flex-direction:row;height:44px;font-size:13px}
+  .nav .badge{display:inline-block}
+  .view{padding:24px 16px 64px}
+  .ov-grid{grid-template-columns:1fr}
+  .ov-grid .span2,.ov-grid .span3{grid-column:auto}
+  .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .kpis .card.kpi{border-right:0!important;border-bottom:1px solid var(--line)}
+  .kpis .card.kpi:nth-child(odd){border-right:1px solid var(--line)!important}
+  .kpis .card.kpi.hero{grid-column:1 / -1;border-right:0!important}
+  .res-stats .card.kpi{border-bottom:1px solid var(--line)}
+  .toasts{bottom:calc(16px + env(safe-area-inset-bottom,0px))}
+}
+</style>
+</head>
+<body>
+<div class="app" id="app">
+  <header class="topbar">
+    <div class="tb-in">
+      <div class="brand">
+        <b>ISC Admin Prep</b><span class="slash">/</span><span class="crumb">Identity Security Administrator</span>
+      </div>
+      <div class="tb-right">
+        <div class="cov" title="Questions you have already seen"><span class="num" id="sideCov">0<small> / 151</small></span><div class="mini-bar"><i id="sideCovBar" style="width:0"></i></div></div>
+        <button class="icon-btn" id="themeSw" role="switch" aria-checked="false" aria-label="Light mode"><svg class="moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg><svg class="sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg></button>
+      </div>
+    </div>
+    <nav class="nav" aria-label="Main">
+      <button data-view="overview">Overview</button>
+      <button data-view="domains">Domains</button>
+      <button data-view="history">History<span class="badge" id="histBadge">0</span></button>
+      <button data-view="format">Exam format</button>
+      <span class="nav-ind" id="navInd"></span>
+    </nav>
+  </header>
+
+  <main class="main" id="main">
+    <!-- OVERVIEW -->
+    <section class="view" id="v-overview">
+      <div class="vhead">
+        <div><h1>Overview</h1><p id="ovSub"></p></div>
+        <div class="tools">
+          <div class="pop" id="targetPop">
+            <button class="target-btn" id="targetBtn" aria-expanded="false"><i></i>Target <b class="num" id="targetVal">70%</b></button>
+            <div class="pop-card">
+              <h4>Your target score</h4>
+              <p>Used across charts, domain status and results.</p>
+              <div class="val num" id="targetBig">70%</div>
+              <div class="slider" id="targetSlider"></div>
+              <div class="slider-scale"><span>50%</span><span>75%</span><span>100%</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="kpis" id="kpis"></div>
+      <div class="ov-grid">
+        <div class="card span2">
+          <div class="card-h"><div><h2>Score trend</h2><span class="sub">Overall score per attempt. Add domains to compare.</span></div><div class="legend"><span><i></i>Overall</span><span><i class="t"></i>Target</span></div></div>
+          <div class="card-b">
+            <div class="chips" id="trendChips" style="margin-bottom:16px"></div>
+            <div class="chart" id="trend"></div>
+          </div>
+        </div>
+        <div class="card start">
+          <div class="card-h"><div><h2>New attempt</h2><span class="sub" id="startSub"></span></div></div>
+          <div class="card-b">
+            <div class="seg" id="modeSeg">
+              <span class="pill"></span>
+              <button data-mode="full" aria-pressed="true">Full exam</button>
+              <button data-mode="practice" aria-pressed="false">Practice</button>
+              <button data-mode="missed" aria-pressed="false">Missed</button>
+            </div>
+            <div class="mode-info" id="modeInfo"></div>
+            <div class="field" id="domField"><span>Domain</span><div id="domDD"></div></div>
+            <div class="opt-row" id="fbRow"><div>Show answer after each question<small>Explanations as you go, unlike the real exam</small></div><button class="switch alt" id="fbSw" role="switch" aria-checked="false" aria-label="Show answer after each question"></button></div>
+            <button class="btn primary lg block" id="startBtn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12.5-7.5z"/></svg>Start attempt</button>
+            <div id="recent"></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-h"><div><h2>Domain mastery</h2><span class="sub">All-time vs last attempt</span></div></div>
+          <div class="card-b"><div class="chart radar" id="radar"></div>
+            <div class="legend" style="justify-content:center;margin-top:6px"><span><i></i>All-time</span><span><i class="l2"></i>Last attempt</span><span><i class="t"></i>Target</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-h"><div><h2>Study activity</h2><span class="sub">Last 16 weeks</span></div></div>
+          <div class="card-b" id="heat"></div>
+        </div>
+        <div class="card" id="focusCard"></div>
+        <div class="card span3">
+          <div class="card-h"><div><h2>Most missed</h2><span class="sub">Select a question to reveal the answer</span></div></div>
+          <div class="card-b" style="padding:10px 0 6px"><ul class="acc" id="missed"></ul></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOMAINS -->
+    <section class="view hidden" id="v-domains">
+      <div class="vhead"><div><h1>Domains</h1><p>The eight areas of the official blueprint. Open a domain to see its trend, the questions you miss and to practice it on its own.</p></div></div>
+      <div class="dgrid" id="dgrid"></div>
+    </section>
+
+    <!-- HISTORY -->
+    <section class="view hidden" id="v-history">
+      <div class="vhead">
+        <div><h1>History</h1><p id="histSub"></p></div>
+        <div class="tools"><button class="btn" id="exportBtn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Export CSV</button><button class="btn ghost" id="clearBtn">Clear data</button></div>
+      </div>
+      <div class="card"><div class="tbl-wrap" id="histTable"></div></div>
+    </section>
+
+    <!-- FORMAT -->
+    <section class="view hidden" id="v-format">
+      <div class="vhead"><div><h1>Exam format</h1><p>The SailPoint Identity Security Administrator exam uses Discrete Option Multiple Choice. This environment reproduces its rules so the real thing feels familiar.</p></div></div>
+      <div class="facts">
+        <div class="card fact"><b class="num">74</b><span>Questions, at most</span></div>
+        <div class="card fact"><b class="num">120</b><span>Minutes of seat time</span></div>
+        <div class="card fact"><b class="num">8</b><span>Blueprint domains</span></div>
+        <div class="card fact"><b class="num">2</b><span>Attempts included</span></div>
+      </div>
+      <div class="steps">
+        <div class="card step"><div class="n">1</div><h3>Read the prompt</h3><p>Only the question is visible at first. Take your time before asking for an option.</p>
+          <div class="demo">Which transform returns the first non-null value?</div></div>
+        <div class="card step"><div class="n">2</div><h3>Judge one option at a time</h3><p>Each option appears alone. Decide if it is correct with Yes or No. There is no going back.</p>
+          <div class="demo"><div class="o">lookup</div><div class="yn"><span>Yes</span><span>No</span></div></div></div>
+        <div class="card step"><div class="n">3</div><h3>Expect a follow-up</h3><p>After a correct Yes, another option may appear to confirm you are not accepting everything.</p>
+          <div class="demo"><div class="o">firstValid</div><div class="yn"><span style="border-color:var(--accent);color:var(--accent-text)">Yes</span><span>No</span></div></div></div>
+      </div>
+      <div class="grid r-main">
+        <div class="card">
+          <div class="card-h"><h2>Blueprint weighting</h2><span class="sub">Questions per full exam</span></div>
+          <div class="card-b" style="padding:12px 0 8px" id="bpList"></div>
+        </div>
+        <div class="card">
+          <div class="card-h"><h2>Rules on exam day</h2></div>
+          <div class="card-b">
+            <ul class="rules">
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg>Online and proctored, completed in one sitting.</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg>No flagging, no reviewing and no changing answers.</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg>The exam can end early once a pass or fail threshold is reached.</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg>The score report shows your percentage per domain.</li>
+              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg>The certification is valid for two years.</li>
+            </ul>
+            <p class="note">Practice questions are original and written from the public blueprint. They are not SailPoint exam content, and this site is not affiliated with SailPoint.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESULT -->
+    <section class="view hidden" id="v-result">
+      <div class="card res-hero" id="resHero"></div>
+      <div class="res-stats" id="resStats"></div>
+      <div class="card" style="margin-bottom:18px">
+        <div class="card-h"><h2>Score by domain</h2><div class="legend"><span><i></i>This attempt</span><span><i class="l2"></i>All-time</span></div></div>
+        <div class="card-b" style="padding:6px 0 8px" id="resDom"></div>
+      </div>
+      <div class="card">
+        <div class="card-h" style="flex-wrap:wrap"><h2>Question review</h2>
+          <div class="filter-bar"><div class="tabs" id="revTabs"><button data-f="all" aria-pressed="true">All</button><button data-f="bad" aria-pressed="false">Incorrect</button><button data-f="ok" aria-pressed="false">Correct</button></div><div id="revDD"></div></div>
+        </div>
+        <div class="card-b" style="padding:12px 0 6px"><ul class="acc" id="review"></ul></div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- EXAM -->
+<div class="exam hidden" id="exam" aria-live="polite">
+  <div class="ex-top">
+    <div class="in">
+      <div class="ttl"><b>ISC Admin Prep</b><span id="exMode"></span></div>
+      <div class="ex-count num">Question <b id="exN">1</b> of <span id="exT">74</span></div>
+      <div class="ex-timer num" id="exTimer">
+        <svg width="26" height="26" viewBox="0 0 26 26"><circle cx="13" cy="13" r="10.5" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="3"/><circle class="c" cx="13" cy="13" r="10.5" fill="none" stroke="#29EC72" stroke-width="3" stroke-linecap="round" stroke-dasharray="65.97" stroke-dashoffset="0"/></svg>
+        <span>120:00</span>
+      </div>
+    </div>
+    <div class="ex-segs" id="exSegs"></div>
+  </div>
+  <div class="ex-body">
+    <div class="ex-meta"><span class="tag" id="exDom"></span><span id="exOptN"></span></div>
+    <p class="ex-q" id="exQ"></p>
+    <ul class="ex-prev" id="exPrev"></ul>
+    <div id="exOpt"></div>
+    <div class="ex-show" id="exShow"><button class="btn primary lg" id="showBtn">Show me an option</button><span style="font-size:12px;color:var(--faint)">or press <kbd>Enter</kbd></span></div>
+    <div class="ex-yn hidden" id="exYN">
+      <button class="y" id="yesBtn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg>Yes<kbd>Y</kbd></button>
+      <button class="n" id="noBtn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>No<kbd>N</kbd></button>
+    </div>
+    <div id="exFb"></div>
+  </div>
+  <div class="ex-foot"><div class="in">
+    <div class="ex-keys"><span><kbd>Enter</kbd> show option</span><span><kbd>Y</kbd> yes</span><span><kbd>N</kbd> no</span></div>
+    <button class="btn ghost" id="quitBtn">End attempt</button>
+  </div></div>
+</div>
+
+<!-- Overlays -->
+<div class="drawer-root" id="drawer"><div class="back" data-close></div><aside class="drawer" role="dialog" aria-modal="true" aria-labelledby="drTitle" id="drawerPanel"></aside></div>
+<div class="modal-root" id="modal"><div class="back"></div><div class="modal" role="alertdialog" aria-modal="true" aria-labelledby="mTitle" id="modalCard"></div></div>
+<div class="toasts" id="toasts"></div>
+<div class="tip" id="tip"></div>
+
+<script>
+const DOMAINS = {
+  1:"Platform", 2:"Virtual Appliances", 3:"Identity and Lifecycle Management",
+  4:"Provisioning", 5:"Access Management", 6:"Supporting Governance",
+  7:"Sources", 8:"General knowledge for Identity Security Administrators"
+};
+const SHORT = {1:"Platform",2:"Virtual Appliances",3:"Identity & Lifecycle",4:"Provisioning",5:"Access Mgmt",6:"Governance",7:"Sources",8:"IGA Fundamentals"};
+const WEIGHTS = {1:13,2:7,3:11,4:9,5:9,6:11,7:9,8:5};
+const DKEYS = Object.keys(DOMAINS);
+const DC = d => "var(--d" + d + ")";
+const Q = [
+// 1. Platform
+{d:1,q:"You want to find all identities in the Finance department using Search. Which query works?",c:"attributes.department:Finance",w:["SELECT * FROM identities WHERE department = “Finance”","identity(department) == Finance","dept=Finance&&type=identity"],e:"ISC Search uses Elasticsearch-style query string syntax; identity attributes live under attributes.*."},
+{d:1,q:"Which Search object type shows the record of provisioning operations performed on accounts (e.g., create, disable, add entitlement)?",c:"Account activities",w:["Roles","Access profiles","Transforms"],e:"Account activities record each provisioning operation and its status, and they are the starting point for monitoring and investigating provisioning."},
+{d:1,q:"A manager wants to receive the results of a Search query by email every Monday. What do you do?",c:"Save the search and create a scheduled subscription for it",w:["Create a weekly certification campaign","Configure a lifecycle state with a notification","Manually export the CSV and send it every week"],e:"Saved searches can have scheduled subscriptions that email the results, working as recurring reports."},
+{d:1,q:"How does an external application authenticate to the Identity Security Cloud REST API?",c:"With OAuth 2.0, using a client ID and secret (for example, from a Personal Access Token) to obtain an access token",w:["With the portal username and password sent as Basic Auth on every call","With a fixed API key passed in the URL","With the Virtual Appliance certificate"],e:"The ISC API uses OAuth 2.0. A Personal Access Token provides a client ID and secret, which are exchanged for an access token at the token endpoint."},
+{d:1,q:"Which is a valid way to track access provisioning for a specific identity?",c:"Review that identity’s account activities in Search or in the identity’s activity history",w:["Open the Identity Profile and check the mappings","Check the transform configuration file","Run an entitlement aggregation"],e:"Provisioning can be monitored through account activities (Search) and the activity history shown in the identity details."},
+{d:1,q:"Which user level has full administrative access to the tenant?",c:"Admin",w:["User","Helpdesk","Report Admin"],e:"The Admin level has full access. The other levels grant limited sets of administrative capabilities."},
+{d:1,q:"What is a typical use case for Event Triggers?",c:"Notifying an external system when an event occurs, such as identity created or aggregation completed",w:["Defining how the username is generated for a new account","Grouping entitlements from a source","Upgrading the Virtual Appliance version"],e:"Event Triggers send ISC events to external subscribers (e.g., webhooks or workflows), enabling automation and integration."},
+{d:1,q:"In which type of Event Trigger does ISC wait for and use the subscriber’s response?",c:"Request-response",w:["Fire-and-forget","Scheduled batch","Reverse polling"],e:"In request-response triggers ISC waits for the subscriber’s response; in fire-and-forget it only sends the event."},
+{d:1,q:"To let users log in to ISC with the corporate identity provider (e.g., Okta or Entra ID), what do you configure?",c:"Single sign-on via SAML with the corporate IdP",w:["An access profile for the IdP","A login certification campaign","An authentication transform in the Identity Profile"],e:"ISC supports SAML-based SSO, delegating authentication to the company’s IdP."},
+{d:1,q:"Which of these is a supported multi-factor authentication (MFA) option for logging in to ISC?",c:"Duo",w:["Virtual Appliance Kerberos ticket","Anonymous LDAP bind","The user’s Personal Access Token"],e:"ISC integrates with MFA providers such as Duo, Okta Verify and RSA, plus methods like email and SMS."},
+{d:1,q:"Every ISC workflow starts with which component?",c:"A trigger",w:["A send-email action","A loop operator","A transform"],e:"A workflow is made of a trigger (what starts it), actions (what it does) and operators (logic such as comparisons, loops and waits)."},
+{d:1,q:"In a workflow, which component lets you follow different paths depending on a condition?",c:"A comparison operator",w:["The trigger","A provisioning action","The context variable"],e:"Operators control the logical flow. Comparison operators create true/false branches."},
+{d:1,q:"Which feature is used to back up and restore tenant configuration, such as sources, transforms and identity profiles?",c:"Configuration Hub (SP-Config)",w:["Virtual Appliance snapshot","CSV export of identities","Configuration certification campaign"],e:"Configuration Hub, built on SP-Config, lets you back up, export, import and restore configuration objects."},
+// 2. Virtual Appliances
+{d:2,q:"What is a Virtual Appliance (VA) in ISC?",c:"A virtual machine on the customer’s network that connects ISC to on-premises sources",w:["A web interface module for administrators","A type of identity profile for service accounts","A local copy of the entire tenant"],e:"The VA runs the connectors to reach on-premises systems such as AD and databases."},
+{d:2,q:"How does network communication between the VA and ISC work?",c:"The VA initiates outbound HTTPS connections to the SailPoint cloud",w:["ISC opens inbound SSH connections to the VA","A site-to-site VPN is mandatory","It happens only through encrypted email"],e:"The VA communicates through outbound connections (HTTPS/443), with no inbound ports required on the customer firewall."},
+{d:2,q:"What is the minimum recommendation for high availability in a VA cluster?",c:"At least two VAs in the cluster",w:["A single VA with more memory","One VA per connected source","One VA on each workstation"],e:"With two or more VAs in the cluster, if one fails another keeps serving the sources."},
+{d:2,q:"Where do you quickly check the health of the Virtual Appliances?",c:"On the Virtual Appliances page under Connections in the admin UI, which shows cluster and VA status",w:["On the certification campaigns screen","In the Identity Profile settings","In the Request Center"],e:"The VA page shows the status of each cluster and appliance, helping detect problems."},
+{d:2,q:"When investigating connectivity failures with a source through a VA, which log is most relevant?",c:"The ccg.log (Cloud Connector Gateway) on the VA",w:["The administrator’s browser access log","The Request Center audit log","The certification history"],e:"ccg.log records the activity of the connectors run by the VA and is the main source for debugging connection issues."},
+{d:2,q:"An on-premises source aggregation started failing. What is a good first troubleshooting step?",c:"Run “Test Connection” on the source",w:["Delete and recreate the Identity Profile","Revoke all access from the source","Change the lifecycle state of all identities"],e:"Test Connection quickly confirms whether the VA can reach and authenticate to the target system."},
+{d:2,q:"An on-premises source is associated with what?",c:"A VA cluster",w:["A single specific VA, without redundancy","An Identity Profile","A role"],e:"Sources are associated with clusters, so any healthy VA in the cluster can process operations."},
+// 3. Identity and Lifecycle
+{d:3,q:"What is the purpose of an Identity Profile?",c:"To define how identities are created from an authoritative source, including attribute mappings and lifecycle states",w:["To group entitlements from several sources","To define certification reviewers","To configure the VA cluster"],e:"The Identity Profile links an authoritative source to identities and defines their attributes and lifecycle states."},
+{d:3,q:"A person exists in two authoritative sources (employees and contractors). Which Identity Profile defines the identity?",c:"The one with the higher priority",w:["The most recently created one","Both, creating two identical identities","The one with more mapped attributes"],e:"Identity Profiles have a priority; when they overlap, the higher-priority profile wins."},
+{d:3,q:"How many Identity Profiles can an identity belong to at the same time?",c:"Only one",w:["Up to two","Unlimited","One per connected source"],e:"Each identity is governed by a single Identity Profile."},
+{d:3,q:"What does an identity attribute mapping do?",c:"It defines where an identity attribute’s value comes from, such as an account attribute, optionally with a transform",w:["It defines who approves access requests","It automatically creates accounts on sources","It defines the aggregation schedule"],e:"Mappings populate identity attributes from sources and can apply transforms."},
+{d:3,q:"Which mapping option lets you manipulate a value before writing it to the identity (e.g., make it lowercase)?",c:"Applying a transform to the account attribute",w:["Creating an access profile","Changing the connector type","Opening a manual work item"],e:"Transforms manipulate values (lower, concat, firstValid, etc.) in the mapping."},
+{d:3,q:"You changed a mapping in the Identity Profile. How do you validate the result before applying it to everyone?",c:"Use the Identity Profile Preview on a sample identity",w:["Create a certification campaign","Run an entitlement aggregation","Submit an access request in the Request Center"],e:"Preview shows how the attributes would look for an identity, reducing the risk of errors."},
+{d:3,q:"After saving Identity Profile changes, what is needed for identities to reflect them?",c:"Processing (refreshing) the identities",w:["Rebooting the Virtual Appliance","Recreating the authoritative source","Approving an access request"],e:"Changes take effect on identities when they are processed again."},
+{d:3,q:"What are lifecycle states used for?",c:"To represent the identity’s stages in the organization, such as pre-hire, active and terminated",w:["To set connector log levels","To organize campaigns by type","To control VA versions"],e:"Lifecycle states model the joiner-mover-leaver cycle and can trigger provisioning actions."},
+{d:3,q:"Which action can be configured in a lifecycle state?",c:"Disable accounts on selected sources",w:["Create a new source","Edit a transform’s code","Change the Identity Profile priority"],e:"Lifecycle states can enable/disable accounts and grant or remove access profiles."},
+{d:3,q:"What is the purpose of the cloudLifecycleState attribute?",c:"Its value indicates the identity’s lifecycle state and must match the state’s technical name",w:["To indicate whether the VA is online","To store the date of the last certification","To define the connector type"],e:"When the value changes, the identity moves to the lifecycle state with that technical name, triggering the configured actions."},
+{d:3,q:"How is the cloudLifecycleState value usually set automatically?",c:"With a transform applied to authoritative source data, such as status and hire/termination dates",w:["Manually by the end user in the Request Center","By a certification campaign","By the VA cluster configuration"],e:"Transforms (e.g., lookup, conditionals, dates) over HR data are commonly used to calculate the state."},
+// 4. Provisioning
+{d:4,q:"Which of these does NOT trigger provisioning?",c:"Running a query in Search",w:["Approval of an access request","A lifecycle state change","A revocation in a completed certification"],e:"Provisioning is triggered by requests, roles, lifecycle states, attribute sync and revocations. Searches are read-only."},
+{d:4,q:"You want the email in AD updated whenever it changes on the identity. Which feature do you use?",c:"Attribute Sync",w:["Account correlation","Entitlement aggregation","Work reassignment"],e:"Attribute Sync pushes identity attribute changes to account attributes on the configured sources."},
+{d:4,q:"Where are the attributes of a new account created on a source defined (e.g., sAMAccountName, OU)?",c:"In the source’s Create Account provisioning policy",w:["In the access profile","In the SoD policy","In the certification campaign"],e:"The Create Account policy defines each attribute of the new account and how it is generated."},
+{d:4,q:"Which transform helps generate a unique username for a new account?",c:"usernameGenerator",w:["dateFormat","lower","split"],e:"usernameGenerator tries patterns in sequence until it finds a value that is unique on the source."},
+{d:4,q:"How does provisioning happen for a source without a direct connector, such as a delimited file?",c:"Through a manual task (work item) for the owner or a ticket through an ITSM integration",w:["The Virtual Appliance edits the file automatically","Provisioning is not possible","The end user does it in the portal"],e:"Disconnected sources use manual channels: work items or tickets in ITSM tools."},
+{d:4,q:"The company wants changes to disconnected systems to become tickets in ServiceNow. Which channel do you use?",c:"The service desk (ITSM) integration with ServiceNow",w:["Attribute Sync","A mandatory request-response Event Trigger","Delta aggregation"],e:"The ITSM integration creates tickets for manual provisioning and tracks their closure."},
+{d:4,q:"To investigate an error in a specific connector, what is recommended?",c:"Temporarily raise that connector’s log level on the VA cluster, then return it to the default",w:["Leave DEBUG enabled permanently for all connectors","Reinstall the VA","Delete the accounts with errors"],e:"Adjusting logging only for the affected connector, for a limited time, provides the needed detail without overloading the VA."},
+{d:4,q:"Which log level produces the most detail?",c:"TRACE",w:["INFO","WARN","ERROR"],e:"From most to least detailed: TRACE, DEBUG, INFO, WARN, ERROR."},
+{d:4,q:"When troubleshooting provisioning errors, which object do you search in Search?",c:"Account activities, filtered to those that failed",w:["Transforms","Identity Profiles","VA clusters"],e:"Account activities show each operation, its status and the error message."},
+// 5. Access Management
+{d:5,q:"Which user level allows administering only a limited set of sources?",c:"Source Sub-Admin",w:["Helpdesk","Report Admin","User"],e:"The Source Sub-Admin has administrative permissions limited to the sources assigned to them."},
+{d:5,q:"Which user level is intended for creating and managing certification campaigns?",c:"Cert Admin",w:["Helpdesk","Role Admin","User"],e:"The Cert Admin manages certification campaigns without needing full administrative access."},
+{d:5,q:"What is an entitlement?",c:"A specific permission on a source, such as an AD group",w:["A set of roles","A type of Identity Profile","An SoD rule"],e:"Entitlements are the most granular access items represented in ISC."},
+{d:5,q:"How do a source’s entitlements get into the ISC catalog?",c:"Through entitlement aggregation",w:["By manually creating each one in a role","Through a transform","Through an Event Trigger"],e:"Entitlement aggregation brings the list of entitlements and their information from the source system."},
+{d:5,q:"Which statement correctly describes the access types in ISC?",c:"Roles can group access profiles from multiple sources; access profiles group entitlements from a single source",w:["Access profiles group roles from multiple sources","Entitlements group access profiles","Roles can only contain entitlements from a single source"],e:"The typical hierarchy is role → access profile → entitlement."},
+{d:5,q:"How does automated role assignment work?",c:"Through membership criteria based on identity attributes, evaluated when identities are processed",w:["Only through manager approval","Through account aggregation","Through a certification campaign"],e:"Identities that meet the criteria receive the role automatically (birthright)."},
+{d:5,q:"Besides attribute-based criteria, how else can role membership be defined?",c:"With an identity list",w:["With a transform","With a log level","With the Identity Profile priority"],e:"Roles can use criteria or an explicit list of identities."},
+{d:5,q:"An identity meets a role’s criteria but did not receive it. What do you check first?",c:"Whether the attribute value on the identity is correct and whether the identity was processed after the change",w:["Whether the VA has the newest version","Whether there is an active campaign","Whether the role has a description"],e:"Automated assignment depends on current attribute values and on the identity being processed."},
+{d:5,q:"What is required for an access profile to appear in the Request Center?",c:"It must be enabled and marked as requestable",w:["It must have more than one entitlement","It must be in a campaign","It must belong to an automatic role"],e:"Only enabled, requestable items appear for users to request."},
+// 6. Supporting Governance
+{d:6,q:"What is the basic sequence of an access request?",c:"Request → approvals → provisioning → completion",w:["Provisioning → request → approval","Certification → request → aggregation","Approval → request → revocation"],e:"After the request, the configured approvals happen and, if approved, the access is provisioned."},
+{d:6,q:"Which of these is NOT a configurable approver type for access requests?",c:"The requester themselves",w:["The beneficiary’s manager","The access profile owner","A governance group"],e:"Approvals can involve the manager, owners and governance groups, but not the requester themselves."},
+{d:6,q:"In a multi-level approval, what happens if one approver rejects?",c:"The request is denied",w:["It skips to the next approver","It is provisioned anyway","It becomes a certification campaign"],e:"All levels must approve; a rejection ends the request."},
+{d:6,q:"When an approval is assigned to a governance group, who can approve?",c:"Any member of the group",w:["Only all members together","Only the tenant administrator","Only the group’s manager"],e:"Governance groups distribute work items; one member can decide on behalf of the group."},
+{d:6,q:"An approver is going on vacation. Which feature redirects their work items to someone else?",c:"Work reassignment",w:["Attribute Sync","Lifecycle state","Delta aggregation"],e:"Work reassignment forwards approvals and work items to another identity for a period of time."},
+{d:6,q:"What is the lifecycle of a certification campaign?",c:"Created (staged) → active → completed, with remediation of revocations",w:["Active → created → aggregated","Completed → active → approved","Aggregated → provisioned → created"],e:"The campaign is created, activated for review and completed; revocations result in access removal."},
+{d:6,q:"What happens to access that is revoked in a certification?",c:"It is removed (remediated) after the reviewer completes the review",w:["It is removed only in the next campaign","Nothing; revocation is informational only","The identity is deleted"],e:"Revocations generate access removal actions after sign-off."},
+{d:6,q:"Which certification type reviews which access items make up a role?",c:"Role Composition",w:["Manager","Source Owner","Search"],e:"Role Composition certifies the role’s contents, not who holds it."},
+{d:6,q:"Which certification type reviews access for a set defined by a query?",c:"Search",w:["Manager","Role Composition","Source Owner"],e:"Search campaigns use a query to define the scope of the review."},
+{d:6,q:"What is the purpose of a Separation of Duties (SoD) policy?",c:"To identify identities with conflicting access combinations",w:["To define strong passwords","To schedule aggregations","To generate unique usernames"],e:"SoD defines access that should not coexist, such as creating and approving payments."},
+{d:6,q:"Which policy type defines password complexity and expiration rules for sources managed by ISC?",c:"Password policy",w:["SoD policy","Provisioning policy","Correlation policy"],e:"Password policies control password requirements for sources and sync groups."},
+// 7. Sources
+{d:7,q:"What is the difference between account aggregation and entitlement aggregation?",c:"Account aggregation brings in accounts and their attributes; entitlement aggregation brings in the entitlements available on the source",w:["They are the same thing with different names","Entitlement aggregation creates identities","Account aggregation only works for authoritative sources"],e:"Each aggregation type imports a different kind of data from the source."},
+{d:7,q:"What is a delta (incremental) aggregation?",c:"An aggregation that brings in only the changes since the last run, when the connector supports it",w:["An aggregation that deletes all accounts","An identity-only aggregation","A manual aggregation done via CSV"],e:"Delta aggregation is faster but depends on connector support."},
+{d:7,q:"Why is it common to aggregate entitlements before (or together with) accounts?",c:"So that account entitlements appear with their details in the catalog",w:["Because accounts cannot be aggregated without roles","To create identities","To shut down the VA"],e:"With an up-to-date entitlement catalog, account access is described correctly."},
+{d:7,q:"What is an uncorrelated account?",c:"An account that has not been linked to any identity",w:["A disabled account","An account with no entitlements","An authoritative source account"],e:"Correlation did not find a matching identity for that account."},
+{d:7,q:"How do you resolve a large number of uncorrelated accounts on a source?",c:"Adjust the correlation configuration or correlate manually",w:["Delete the source","Change everyone’s lifecycle state","Create a Manager campaign"],e:"Adjusting the correlation attributes usually fixes it at scale; individual cases can be handled manually."},
+{d:7,q:"Which mechanism prevents mass account deletion when an aggregation receives incomplete data (e.g., an empty file)?",c:"The account deletion threshold on aggregation",w:["The SoD policy","The usernameGenerator","Work reassignment"],e:"If the aggregation would remove accounts above the threshold, it stops to prevent data loss."},
+{d:7,q:"Which generic connector is used for systems that only provide CSV exports?",c:"Delimited File",w:["JDBC","LDAP","Web Services"],e:"The Delimited File connector imports accounts and entitlements from delimited files."},
+{d:7,q:"Where do you check a source’s aggregation errors?",c:"In the source’s own aggregation history and in Search events",w:["In the Identity Profile","In the Request Center","In the MFA settings"],e:"The source shows the result of each aggregation, and events help you see the details."},
+{d:7,q:"What is the purpose of a source in ISC?",c:"To represent a connected system that holds accounts and entitlements",w:["To represent a group of approvers","To define certification campaigns","To store transforms"],e:"Sources represent the systems ISC reads from and provisions accounts and access to."},
+// 8. General knowledge
+{d:8,q:"What is IGA (Identity Governance and Administration)?",c:"The discipline of managing identities and their access, with control, review and compliance",w:["An authentication protocol","A type of firewall","A query language"],e:"IGA covers the identity lifecycle, requests, provisioning, certifications and policies."},
+{d:8,q:"How does ISC help with regulatory compliance (e.g., SOX audits)?",c:"Through access certifications and audit trails that prove periodic reviews",w:["By encrypting server disks","By generating usernames","By replacing antivirus software"],e:"Documented reviews and policies such as SoD are common audit evidence."},
+{d:8,q:"What is the difference between authentication and authorization?",c:"Authentication verifies who you are; authorization defines what you can do",w:["They are synonyms","Authorization verifies who you are; authentication defines permissions","Authentication only exists in on-premises systems"],e:"Identity is confirmed first, then permissions are evaluated."},
+{d:8,q:"What is identity federation?",c:"A trust relationship between an identity provider and applications, using standards such as SAML or OIDC",w:["Copying passwords to every system","Aggregating accounts from several sources","A type of certification"],e:"Federation lets an IdP authenticate the user to other systems without sharing passwords."},
+{d:8,q:"Which combination characterizes multi-factor authentication?",c:"Factors from different categories, such as something you know and something you have",w:["Two different passwords","Username and email","Password and security question"],e:"MFA requires distinct categories: knowledge, possession and inherence (biometrics)."},
+// ---- Extra bank questions ----
+// 1. Platform
+{d:1,q:"Which Search query returns identities whose lifecycle state is inactive?",c:"attributes.cloudLifecycleState:inactive",w:["lifecycle = inactive","WHERE cloudLifecycleState IS inactive","identities.inactive()"],e:"The lifecycle state is stored in the cloudLifecycleState identity attribute, which can be queried under attributes.*."},
+{d:1,q:"Which query returns identities in the Sales department that are located in Brazil?",c:"attributes.department:Sales AND attributes.country:Brazil",w:["attributes.department:Sales WITH attributes.country:Brazil","department=Sales; country=Brazil","attributes.department:Sales UNION attributes.country:Brazil"],e:"Search supports Boolean operators such as AND, OR and NOT to combine conditions."},
+{d:1,q:"Which query finds identities whose name starts with “john”?",c:"name:john*",w:["name:%john%","name LIKE john","name:^john"],e:"The asterisk works as a wildcard in Search queries."},
+{d:1,q:"How do you search for a department value that contains a space, such as Human Resources?",c:"attributes.department:\"Human Resources\"",w:["attributes.department:Human-Resources","attributes.department:(Human)(Resources)","attributes.department:Human_Resources"],e:"Wrapping the value in double quotes searches for the exact phrase."},
+{d:1,q:"What does a saved search subscription deliver to recipients?",c:"An email with the search results on the configured schedule",w:["A new certification campaign","A change to the identities’ attributes","A Virtual Appliance restart"],e:"Subscriptions run the saved search on a schedule and email the results."},
+{d:1,q:"A Personal Access Token (PAT) is associated with what?",c:"The user who generated it, acting within that user’s permissions",w:["The Virtual Appliance cluster","A specific source","The tenant only, with unrestricted access"],e:"A PAT belongs to the user who created it, so API calls made with it are limited by that user’s access."},
+{d:1,q:"The client secret of a Personal Access Token was accidentally shared in a public chat. What should you do?",c:"Delete (revoke) the PAT and create a new one",w:["Change the user’s login password only","Restart the Virtual Appliance","Nothing, secrets expire every hour"],e:"Revoking the exposed PAT immediately prevents anyone from using the leaked credentials."},
+{d:1,q:"Which of these can be the destination of an Event Trigger subscription?",c:"An HTTP endpoint (webhook)",w:["A Virtual Appliance log file","A transform","An Identity Profile"],e:"Event Trigger subscriptions deliver events to destinations such as HTTP endpoints or workflows."},
+{d:1,q:"Which Event Trigger lets an external service automatically approve or deny an access request before human approvers act?",c:"Access Request Pre-Approval",w:["Identity Created","Account Aggregation Completed","Saved Search Complete"],e:"Access Request Pre-Approval is a request-response trigger whose response can approve or deny the request."},
+{d:1,q:"You need a workflow that runs every day at 6 AM. Which trigger type do you use?",c:"A scheduled trigger",w:["An event trigger for Identity Created","A comparison operator","A manual work item"],e:"Workflows can start from events, schedules or external/manual invocation."},
+{d:1,q:"A workflow must call a third-party REST API. Which action do you use?",c:"HTTP Request",w:["Send Email","Compare Strings","Wait"],e:"The HTTP Request action lets a workflow call external APIs."},
+{d:1,q:"Where do you check whether a specific workflow run failed and at which step?",c:"In the workflow’s execution history",w:["In the Identity Profile","In the certification campaign report","In the VA ccg.log"],e:"Execution history shows each run, its status and the input/output of every step."},
+{d:1,q:"How do you move transforms and identity profiles from a sandbox tenant to production?",c:"Export from the sandbox and import into production using Configuration Hub (SP-Config)",w:["Copy the VA disk from one tenant to the other","Recreate everything by hand only","Run a certification in both tenants"],e:"SP-Config/Configuration Hub exports and imports configuration objects between tenants."},
+{d:1,q:"Users should log in to ISC with their Active Directory password, without a SAML IdP. What do you configure?",c:"Pass-through authentication to the Active Directory source",w:["An access profile for Active Directory","Attribute Sync for the password","A Search campaign"],e:"Pass-through authentication validates the user’s credentials against a connected source such as AD."},
+// 2. Virtual Appliances
+{d:2,q:"Where can Virtual Appliances be deployed?",c:"On supported hypervisors (such as VMware) or cloud IaaS platforms (such as AWS or Azure)",w:["Only inside the SailPoint cloud","Only on physical Windows servers","On end-user laptops"],e:"The VA is delivered as a virtual machine image for supported on-premises and cloud platforms."},
+{d:2,q:"Which account is used to SSH into a Virtual Appliance for troubleshooting?",c:"sailpoint",w:["root","Administrator","admin@tenant"],e:"Administrators connect to the VA using the sailpoint user."},
+{d:2,q:"How are Virtual Appliance software updates normally applied?",c:"Automatically by SailPoint",w:["Manually by downloading each patch","Only when a support ticket is opened","By reinstalling the VA every month"],e:"VAs receive updates automatically, which is one reason they need reliable outbound connectivity."},
+{d:2,q:"Your network requires all outbound traffic to go through a proxy. What do you do on the VA?",c:"Configure the proxy settings on the VA",w:["Open inbound ports to the VA","Disable HTTPS on the VA","Move the VA to the DMZ without changes"],e:"The VA can be configured to use a proxy for its outbound connections."},
+{d:2,q:"A cluster has two VAs and one shows as unhealthy. What is the impact?",c:"The cluster keeps working through the healthy VA, but redundancy is lost until the issue is fixed",w:["All sources in the cluster stop immediately","Identities are deleted","Certifications are cancelled"],e:"That is why at least two VAs per cluster are recommended."},
+{d:2,q:"Who is responsible for the VA’s virtual machine resources (CPU, memory, storage and network)?",c:"The customer",w:["SailPoint","The source owner","The certification reviewer"],e:"The VA runs in the customer’s environment, so its infrastructure is the customer’s responsibility."},
+{d:2,q:"Before contacting support about a VA connectivity issue, what should you verify?",c:"DNS resolution, firewall rules and outbound access to the required endpoints",w:["Certification deadlines","Role descriptions","Search subscription schedules"],e:"Most VA connectivity problems come from DNS, firewall or proxy configuration."},
+// 3. Identity and Lifecycle
+{d:3,q:"Which system is typically configured as an authoritative source?",c:"The HR system, such as Workday or SuccessFactors",w:["A file share","The email server","A ticketing system"],e:"Authoritative sources hold the source of truth for who the people are, usually HR."},
+{d:3,q:"Which identity attribute is required and must be unique?",c:"Username (uid)",w:["Department","Job title","Location"],e:"Every identity needs a unique username (uid)."},
+{d:3,q:"You want to use a new “costCenter” attribute in role criteria. What do you do?",c:"Create the identity attribute and map it in the Identity Profile",w:["Add it only to the access profile","Create a Search campaign","Add it to the VA configuration"],e:"Custom identity attributes must exist and be mapped before they can be used in criteria."},
+{d:3,q:"Which transform helps decide whether a termination date is in the past?",c:"dateCompare",w:["concat","lower","split"],e:"dateCompare compares two dates and returns a value based on the result."},
+{d:3,q:"HR sends status codes “A” and “T” that must become “active” and “terminated.” Which transform fits best?",c:"lookup",w:["concat","upper","usernameGenerator"],e:"lookup maps input values to output values using a table."},
+{d:3,q:"Which transform combines first name and last name into a full display name?",c:"concat",w:["firstValid","dateFormat","lookup"],e:"concat joins several values into one string."},
+{d:3,q:"An identity changes department and no longer meets a role’s criteria. What happens?",c:"The role is removed and its access is deprovisioned, unless the access is granted another way",w:["Nothing changes until the next certification","The identity is deleted","The role is kept forever"],e:"Automated roles follow the criteria, which supports the mover process."},
+{d:3,q:"New hires need accounts before their start date, but those accounts must stay disabled. What is a common approach?",c:"A pre-hire lifecycle state that grants access and keeps the accounts disabled until the identity becomes active",w:["Creating the accounts manually on the start date","Using a Search campaign","Giving them admin access temporarily"],e:"Lifecycle states can grant access and enable or disable accounts at each stage."},
+{d:3,q:"An employee must be terminated immediately, before the HR feed is updated. What can an administrator do?",c:"Manually change the identity’s lifecycle state",w:["Delete the authoritative source","Disable the VA","Change the Identity Profile priority"],e:"Admins can manually set a lifecycle state, which triggers that state’s actions."},
+{d:3,q:"What happens during identity processing (refresh)?",c:"Attributes are recalculated, role membership is evaluated and lifecycle state actions are applied",w:["Only certifications are generated","Only the VA is updated","Sources are deleted and recreated"],e:"Processing keeps identities in sync with mappings, criteria and lifecycle rules."},
+{d:3,q:"How is the manager relationship between identities usually established?",c:"By configuring manager correlation on the authoritative source, such as matching the manager’s employee ID",w:["By creating a role for each manager","By a Search subscription","By editing the VA"],e:"Manager correlation links each identity to its manager’s identity."},
+// 4. Provisioning
+{d:4,q:"When an AD account is disabled, it must also have a description updated. Where do you configure this?",c:"In the source’s Disable Account provisioning policy",w:["In the Create Account policy","In the SoD policy","In the Identity Profile priority"],e:"Provisioning policies exist for different operations, such as create, update, enable and disable."},
+{d:4,q:"An identity is granted access on a source where it has no account. What happens?",c:"An account is created using the source’s Create Account policy, and then the access is added",w:["The request fails","A certification starts","The access is added to another account"],e:"Create Account policies are used whenever a new account is needed."},
+{d:4,q:"How can you set an initial random password for new accounts?",c:"Use a generator transform, such as randomAlphaNumeric, in the Create Account policy",w:["Use the department attribute as the password","Leave it blank in every case","Use the uid as the password"],e:"Generator transforms produce values such as random passwords when accounts are created."},
+{d:4,q:"By default, who receives a manual provisioning work item for a disconnected source?",c:"The source owner",w:["The requester","The VA","The tenant support team at SailPoint"],e:"Manual work items go to the source owner to complete the change in the target system."},
+{d:4,q:"How is Attribute Sync configured?",c:"Per source, by mapping identity attributes to the account attributes that should be updated",w:["In the certification campaign","In the Request Center","In the VA proxy settings"],e:"Attribute Sync defines which identity attributes are pushed to which account attributes."},
+{d:4,q:"An approved request shows a failed account activity with “insufficient access rights” from AD. What do you check?",c:"The permissions of the service account used by the AD source",w:["The requester’s job title","The certification deadline","The Search subscription"],e:"The connector acts with the source’s service account, which needs rights to make the change."},
+{d:4,q:"How is provisioning to an on-premises source executed?",c:"ISC sends the request to the source’s VA cluster, which runs it through the connector",w:["ISC connects directly to the server without the VA","The end user’s browser makes the change","It is always done manually"],e:"The VA is the bridge for on-premises operations."},
+{d:4,q:"An access profile is removed from an identity. What happens to its entitlements?",c:"They are removed from the account, unless the same access is granted another way",w:["They stay forever","The account is deleted immediately in every case","They are moved to the manager"],e:"ISC deprovisions access that is no longer granted by any assignment."},
+{d:4,q:"Why should you return a connector’s log level to default after troubleshooting?",c:"Verbose logging can affect performance and fill disk space",w:["Because certifications stop working","Because identities are deleted","Because Search stops returning results"],e:"High log levels should be temporary."},
+// 5. Access Management
+{d:5,q:"The support team must view identities and help with password issues without full admin rights. Which user level fits?",c:"Helpdesk",w:["Admin","Cert Admin","User"],e:"Helpdesk is designed for support tasks with limited administrative access."},
+{d:5,q:"A team should manage only roles and access profiles. Which user level fits?",c:"Role Admin",w:["Admin","Helpdesk","Report Admin"],e:"Role Admin gives access to manage roles and access profiles without full admin rights."},
+{d:5,q:"Which user level is focused on Search and reports?",c:"Report Admin",w:["Cert Admin","Role Admin","Source Sub-Admin"],e:"Report Admin can view data for reporting without managing configuration."},
+{d:5,q:"You want to highlight AD’s Domain Admins group as high-risk access. What do you do?",c:"Mark the entitlement as privileged",w:["Delete the entitlement","Add it to a transform","Move it to another VA"],e:"Privileged flags help reviewers and approvers spot high-risk access."},
+{d:5,q:"Why edit an entitlement’s display name and description?",c:"To make it understandable for requesters, approvers and reviewers",w:["To change the group name in the target system","To trigger an aggregation","To change the VA cluster"],e:"Friendly metadata makes access requests and certifications easier to decide."},
+{d:5,q:"Can roles be made available in the Request Center?",c:"Yes, if they are enabled and marked as requestable",w:["No, roles are only assigned automatically","Only roles with one entitlement","Only roles created by the API"],e:"Roles can be requestable, just like access profiles and entitlements."},
+{d:5,q:"Users need AD and Salesforce access bundled together for a job function. What do you create?",c:"A role containing an AD access profile and a Salesforce access profile",w:["One access profile with both sources","A transform","A lifecycle state per user"],e:"Access profiles are single-source; roles combine access across sources."},
+{d:5,q:"What is required when creating an access profile?",c:"An owner and a source",w:["A certification campaign","A workflow","A VA per entitlement"],e:"Every access profile belongs to a source and has an owner."},
+{d:5,q:"A user wants to give up access they no longer need. How can they do this?",c:"Submit a revoke (removal) request in the Request Center",w:["Delete their identity","Change their lifecycle state","Edit the access profile"],e:"ISC supports requests to remove access as well as to add it."},
+// 6. Supporting Governance
+{d:6,q:"A manager needs to request access for a member of their team. What allows this?",c:"Requesting on behalf of others, when enabled in access request settings",w:["Changing the team member’s password","Creating a new source","Running an aggregation"],e:"Access request settings control who can request for others."},
+{d:6,q:"You want requesters to always explain why they need access. What do you configure?",c:"Require comments (justification) in the access request settings",w:["A transform","A lifecycle state","A VA proxy"],e:"Requiring comments improves the information available to approvers and auditors."},
+{d:6,q:"Approvals are sitting untouched for weeks. Which settings help?",c:"Approval reminders and escalation",w:["Delta aggregation","Attribute Sync","Username generator"],e:"Reminders and escalations keep the approval process moving."},
+{d:6,q:"Where does a user check the status of an access request they submitted?",c:"In the Request Center, under their requests",w:["In the VA logs","In the Identity Profile","In the transform list"],e:"Requesters can follow each request’s status in the Request Center."},
+{d:6,q:"A reviewer cannot judge an access item in a certification. What can they do?",c:"Reassign the item to someone who knows the access",w:["Close the browser to skip it","Delete the entitlement","Change the campaign type"],e:"Reassignment sends decisions to the most knowledgeable reviewer."},
+{d:6,q:"What is the purpose of staging a certification campaign?",c:"To review the campaign content before activating it for reviewers",w:["To provision access","To aggregate sources","To create identities"],e:"Staging lets admins check scope and reviewers before the campaign goes live."},
+{d:6,q:"In a Source Owner campaign, who reviews the access?",c:"The owners of the sources involved",w:["Each identity’s manager","The requester","The VA administrator"],e:"Source Owner campaigns send access on each source to its owner."},
+{d:6,q:"In a Manager campaign, who reviews the access?",c:"Each identity’s manager reviews their direct reports’ access",w:["The source owners","The access profile owners only","A random reviewer"],e:"Manager campaigns are the most common type for periodic access reviews."},
+{d:6,q:"How do you keep certain access items out of a campaign’s scope?",c:"Use campaign filters",w:["Delete the items","Disable the source","Change the lifecycle states"],e:"Campaign filters include or exclude identities and access from a review."},
+{d:6,q:"How does ISC help with SoD conflicts?",c:"It can flag violations at request time and detect existing violations across identities",w:["Only by deleting identities","Only through VA logs","Only during aggregations"],e:"SoD works both preventively (requests) and detectively (existing access)."},
+{d:6,q:"A request would create an SoD violation. What can the approver do?",c:"Approve it as a documented exception or deny it",w:["Nothing, the request is always auto-approved","Change the VA cluster","Run a transform"],e:"Approvers see the violation and decide, keeping a record for audit."},
+{d:6,q:"After making decisions on all items in a certification, what must the reviewer do?",c:"Sign off on the certification",w:["Run an aggregation","Create a workflow","Restart the VA"],e:"Sign-off completes the review and starts the remediation of revocations."},
+// 7. Sources
+{d:7,q:"What is true about a non-authoritative source?",c:"Its accounts are correlated to existing identities but do not create new identities",w:["It creates identities for every account","It cannot be aggregated","It replaces the HR system"],e:"Only authoritative sources create identities."},
+{d:7,q:"How does correlation usually match accounts to identities?",c:"By comparing an account attribute (such as employeeID) with an identity attribute",w:["By the account creation date","By the VA name","At random"],e:"Correlation configuration defines which attributes are compared."},
+{d:7,q:"How do you keep a source’s data up to date automatically?",c:"Schedule aggregations on the source",w:["Create a Search campaign","Use work reassignment","Change the lifecycle state"],e:"Scheduled aggregations keep ISC in sync with the target system."},
+{d:7,q:"A new attribute in the target system does not appear on accounts. What do you do?",c:"Add it to the source’s account schema and aggregate again",w:["Create a role","Change the Identity Profile priority","Restart the browser"],e:"Only attributes in the account schema are read during aggregation."},
+{d:7,q:"How do you update the data of a Delimited File source?",c:"Upload the new file and run the aggregation",w:["Wait for the VA to find the file on the network","Create a certification","Edit the identities manually"],e:"File-based sources depend on a new file being provided for each aggregation."},
+{d:7,q:"Which generic connector is used to connect to relational databases?",c:"JDBC",w:["Delimited File","LDAP","SCIM only"],e:"The JDBC connector reads and provisions through SQL databases."},
+{d:7,q:"Which generic connector is used for applications with a REST or SOAP API but no dedicated connector?",c:"Web Services",w:["Delimited File","JDBC","Active Directory"],e:"The Web Services connector is configured with the target API’s endpoints."},
+{d:7,q:"An account was deleted directly in the target system. When does ISC reflect that?",c:"On the next full account aggregation",w:["Never","Only after a certification","Only after the VA is restarted"],e:"Full aggregations detect accounts that no longer exist in the source."},
+{d:7,q:"What is the role of the source owner?",c:"To be accountable for the source, for example receiving manual work items and reviewing it in Source Owner campaigns",w:["To run the VA","To approve every request in the tenant","To write transforms"],e:"Each source has an owner responsible for it."},
+// 8. General knowledge
+{d:8,q:"What does the principle of least privilege mean?",c:"Users should have only the access they need to do their job",w:["Users should have as much access as possible","Admins should never have access","Access should never be reviewed"],e:"Least privilege reduces risk from excessive access."},
+{d:8,q:"What does Joiner-Mover-Leaver (JML) describe?",c:"The identity lifecycle events of joining, changing roles and leaving the organization",w:["Three types of connectors","Three certification types","Three VA states"],e:"IGA automates access for each JML event."},
+{d:8,q:"What is single sign-on (SSO)?",c:"Logging in once to access several applications",w:["Having one password per application","Using only one factor","Sharing one account between users"],e:"SSO relies on a trusted identity provider."},
+{d:8,q:"What is the difference between OAuth 2.0 and OpenID Connect (OIDC)?",c:"OAuth 2.0 is for authorization; OIDC adds an authentication layer on top of it",w:["They are the same","OIDC is for authorization only","OAuth 2.0 is only for passwords"],e:"OIDC provides identity information (ID token) on top of OAuth 2.0."},
+{d:8,q:"What is an orphan account?",c:"An account with no valid owner identity, which is a security risk",w:["An account with many entitlements","A new account","An account in an authoritative source"],e:"Orphan accounts often belong to former employees or are unmanaged."},
+{d:8,q:"What is role-based access control (RBAC)?",c:"Granting access based on job roles instead of to each individual",w:["Granting access randomly","Granting access only by request","Granting access by password strength"],e:"RBAC simplifies access management and audits."}
+];
+Q.forEach((q, i) => q.id = i);
+
+/* ---------- Utilities ---------- */
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));
+const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const pct = (a, b) => b ? Math.round(a / b * 100) : 0;
+const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const fmtDur = s => { s = Math.round(s); const h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), ss = s % 60; return h ? h + "h " + m + "m" : m ? m + "m " + String(ss).padStart(2, "0") + "s" : ss + "s"; };
+const fmtDate = t => new Date(t).toLocaleDateString("en-US", {month:"short", day:"numeric", year:"numeric"});
+const fmtTime = t => new Date(t).toLocaleTimeString("en-US", {hour:"numeric", minute:"2-digit"});
+function rel(t){ const s = (Date.now() - t) / 1000; if (s < 60) return "just now"; if (s < 3600) return Math.floor(s / 60) + " min ago"; if (s < 86400) return Math.floor(s / 3600) + " h ago"; const d = Math.floor(s / 86400); return d === 1 ? "yesterday" : d + " days ago"; }
+const dayKey = t => { const d = new Date(t); return d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate(); };
+const ICON = {
+  chev:'<svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>',
+  check:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg>',
+  x:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>',
+  dash:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 12h12"/></svg>',
+  close:'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>',
+  play:'<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12.5-7.5z"/></svg>',
+  chart:'<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 19h16"/><path d="M6 15l4-4 3 3 5-6"/></svg>',
+  alert:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9.5 17h-19z"/><path d="M12 10v4M12 17.5h.01"/></svg>',
+  target:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r=".8" fill="currentColor"/></svg>'
+};
+function countUp(el, to, suffix){
+  suffix = suffix || "";
+  if (REDUCED || !isFinite(to)) { el.innerHTML = to + suffix; return; }
+  const t0 = performance.now(), dur = 900;
+  (function f(t){ const p = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - p, 3); el.innerHTML = Math.round(to * e) + suffix; if (p < 1) requestAnimationFrame(f); })(t0);
+}
+
+/* ---------- Storage ---------- */
+const KEY = "asper-isc-prep-v3";
+let DB = {attempts:[], qstats:{}, target:70, theme:"dark"};
+function load(){
+  try {
+    const d = JSON.parse(localStorage.getItem(KEY) || "null");
+    if (d) { DB = Object.assign(DB, d); return; }
+    const old = JSON.parse(localStorage.getItem("isc-admin-prep-v2") || "null");
+    if (old) { DB.attempts = (old.attempts || []).map(a => Object.assign({qs:[]}, a)); DB.qstats = old.qstats || {}; DB.target = old.target || 70; }
+  } catch(e){}
+}
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(DB)); } catch(e){} }
+load();
+
+/* ---------- Theme ---------- */
+function applyTheme(){ document.documentElement.dataset.theme = DB.theme; $("#themeSw").setAttribute("aria-checked", DB.theme === "light"); }
+$("#themeSw").onclick = () => { DB.theme = DB.theme === "light" ? "dark" : "light"; save(); applyTheme(); render(); };
+applyTheme();
+
+/* ---------- Tooltip ---------- */
+const tip = $("#tip");
+function showTip(html, x, y){
+  tip.innerHTML = html; tip.classList.add("on");
+  const r = tip.getBoundingClientRect();
+  let l = x + 16, t = y + 16;
+  if (l + r.width > innerWidth - 8) l = x - r.width - 16;
+  if (t + r.height > innerHeight - 8) t = y - r.height - 16;
+  tip.style.transform = "translate(" + Math.max(8, l) + "px," + Math.max(8, t) + "px)";
+}
+function hideTip(){ tip.classList.remove("on"); }
+
+/* ---------- Toast ---------- */
+function toast(msg, kind){
+  const el = document.createElement("div"); el.className = "toast " + (kind || "");
+  el.innerHTML = "<i></i><span></span>"; el.querySelector("span").textContent = msg;
+  $("#toasts").appendChild(el);
+  requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add("in")));
+  setTimeout(() => { el.classList.remove("in"); setTimeout(() => el.remove(), 300); }, 3400);
+}
+
+/* ---------- Modal ---------- */
+function confirmBox(o){
+  return new Promise(res => {
+    const root = $("#modal"), card = $("#modalCard");
+    card.innerHTML = '<div class="ic ' + (o.danger ? "danger" : "") + '">' + ICON.alert + '</div><h3 id="mTitle"></h3><p></p><div class="act"><button class="btn ghost" data-a="0"></button><button class="btn ' + (o.danger ? "danger" : "primary") + '" data-a="1"></button></div>';
+    card.querySelector("h3").textContent = o.title; card.querySelector("p").textContent = o.text;
+    card.querySelector('[data-a="0"]').textContent = o.cancel || "Cancel";
+    card.querySelector('[data-a="1"]').textContent = o.ok;
+    const prev = document.activeElement;
+    root.classList.add("open");
+    setTimeout(() => card.querySelector('[data-a="1"]').focus(), 50);
+    function done(v){ root.classList.remove("open"); document.removeEventListener("keydown", key, true); if (prev && prev.focus) prev.focus(); res(v); }
+    function key(e){ if (e.key === "Escape") { e.stopPropagation(); done(false); } if (e.key === "Tab") { const b = card.querySelectorAll("button"); if (e.shiftKey && document.activeElement === b[0]) { e.preventDefault(); b[1].focus(); } else if (!e.shiftKey && document.activeElement === b[1]) { e.preventDefault(); b[0].focus(); } } }
+    document.addEventListener("keydown", key, true);
+    card.querySelectorAll("button").forEach(b => b.onclick = () => done(b.dataset.a === "1"));
+    root.querySelector(".back").onclick = () => done(false);
+  });
+}
+
+/* ---------- Dropdown ---------- */
+function Dropdown(root, opts){
+  let items = opts.items, value = opts.value, act = 0;
+  root.className = "dd";
+  root.innerHTML = '<button type="button" class="dd-btn" aria-haspopup="listbox" aria-expanded="false"><span class="dd-val"></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></button><ul class="dd-list" role="listbox" tabindex="-1"></ul>';
+  const btn = root.querySelector(".dd-btn"), list = root.querySelector(".dd-list");
+  function paint(){
+    const cur = items.find(i => i.value === value) || items[0];
+    btn.querySelector(".dd-val").innerHTML = (cur.color ? '<span class="ddot" style="--c:' + cur.color + '"></span>' : "") + esc(cur.label);
+    list.innerHTML = items.map((i, k) => '<li role="option" data-k="' + k + '" aria-selected="' + (i.value === value) + '" class="' + (k === act ? "act" : "") + '">' + (i.color ? '<span class="ddot" style="--c:' + i.color + '"></span>' : "") + '<span>' + esc(i.label) + '</span>' + (i.meta ? '<span class="m">' + esc(i.meta) + '</span>' : "") + '</li>').join("");
+  }
+  function open(){ act = Math.max(0, items.findIndex(i => i.value === value)); paint(); root.classList.add("open"); btn.setAttribute("aria-expanded", "true"); }
+  function close(){ root.classList.remove("open"); btn.setAttribute("aria-expanded", "false"); }
+  function choose(k){ value = items[k].value; close(); paint(); btn.focus(); opts.onChange && opts.onChange(value); }
+  btn.onclick = () => root.classList.contains("open") ? close() : open();
+  list.onclick = e => { const li = e.target.closest("li"); if (li) choose(+li.dataset.k); };
+  list.onmousemove = e => { const li = e.target.closest("li"); if (li && +li.dataset.k !== act) { act = +li.dataset.k; list.querySelectorAll("li").forEach((x, k) => x.classList.toggle("act", k === act)); } };
+  root.addEventListener("keydown", e => {
+    const isOpen = root.classList.contains("open");
+    if (["ArrowDown","ArrowUp"].includes(e.key)) { e.preventDefault(); if (!isOpen) return open(); act = (act + (e.key === "ArrowDown" ? 1 : -1) + items.length) % items.length; paint(); list.children[act].scrollIntoView({block:"nearest"}); }
+    else if ((e.key === "Enter" || e.key === " ") && isOpen) { e.preventDefault(); choose(act); }
+    else if (e.key === "Escape" && isOpen) { e.stopPropagation(); close(); btn.focus(); }
+  });
+  document.addEventListener("pointerdown", e => { if (!root.contains(e.target)) close(); });
+  paint();
+  return { get value(){ return value; }, set(v){ value = v; paint(); }, setItems(it){ items = it; if (!items.some(i => i.value === value)) value = items[0].value; paint(); } };
+}
+
+/* ---------- Slider ---------- */
+function Slider(root, o){
+  let v = o.value;
+  root.innerHTML = '<div class="tr"></div><div class="fl"></div><div class="th" role="slider" tabindex="0" aria-label="' + o.label + '" aria-valuemin="' + o.min + '" aria-valuemax="' + o.max + '"></div>';
+  const th = root.querySelector(".th"), fl = root.querySelector(".fl");
+  function paint(){ const p = (v - o.min) / (o.max - o.min) * 100; th.style.left = p + "%"; fl.style.width = p + "%"; th.setAttribute("aria-valuenow", v); th.setAttribute("aria-valuetext", v + "%"); }
+  function set(n, commit){ n = Math.max(o.min, Math.min(o.max, Math.round(n))); if (n !== v) { v = n; paint(); o.onInput && o.onInput(v); } if (commit) o.onChange && o.onChange(v); }
+  function fromX(x){ const r = root.getBoundingClientRect(); return o.min + (x - r.left) / r.width * (o.max - o.min); }
+  root.addEventListener("pointerdown", e => { root.setPointerCapture(e.pointerId); root.classList.add("drag"); set(fromX(e.clientX)); th.focus(); });
+  root.addEventListener("pointermove", e => { if (root.classList.contains("drag")) set(fromX(e.clientX)); });
+  const end = () => { if (root.classList.contains("drag")) { root.classList.remove("drag"); set(v, true); } };
+  root.addEventListener("pointerup", end); root.addEventListener("pointercancel", end);
+  th.addEventListener("keydown", e => {
+    const step = {ArrowRight:1, ArrowUp:1, ArrowLeft:-1, ArrowDown:-1, PageUp:5, PageDown:-5}[e.key];
+    if (step) { e.preventDefault(); set(v + step, true); }
+    if (e.key === "Home") { e.preventDefault(); set(o.min, true); }
+    if (e.key === "End") { e.preventDefault(); set(o.max, true); }
+  });
+  paint();
+  return { set(n){ v = n; paint(); } };
+}
+
+/* ---------- Aggregates ---------- */
+function domAgg(list){ const a = {}; DKEYS.forEach(d => a[d] = {n:0, ok:0}); list.forEach(x => Object.keys(x.dom).forEach(d => { a[d].n += x.dom[d].n; a[d].ok += x.dom[d].ok; })); return a; }
+function projected(){
+  const a = domAgg(DB.attempts); let w = 0, s = 0, have = 0;
+  DKEYS.forEach(d => { if (a[d].n) { w += WEIGHTS[d]; s += WEIGHTS[d] * a[d].ok / a[d].n; have++; } });
+  return w ? {v:Math.round(s / w * 100), full:have === 8} : null;
+}
+function seenIds(){ return Object.keys(DB.qstats); }
+function missedIds(){ return Object.keys(DB.qstats).filter(id => DB.qstats[id].ok < DB.qstats[id].n && Q[id]); }
+function levelOf(p, n){ const T = DB.target; if (!n) return ["Not started", ""]; if (p >= 90) return ["Mastered", "top"]; if (p >= T) return ["On target", "good"]; return ["Below target", "bad"]; }
+
+/* ---------- Router ---------- */
+let view = "overview";
+function go(v){
+  view = v;
+  ["overview","domains","history","format","result"].forEach(x => $("#v-" + x).classList.toggle("hidden", x !== v));
+  $$(".nav button").forEach(b => b.dataset.view === v ? b.setAttribute("aria-current", "page") : b.removeAttribute("aria-current"));
+  moveInd();
+  const sec = $("#v-" + v); sec.style.animation = "none"; sec.offsetHeight; sec.style.animation = "";
+  render(); window.scrollTo(0, 0);
+}
+$$(".nav button").forEach(b => b.onclick = () => go(b.dataset.view));
+function moveInd(){ const b = $('.nav button[aria-current="page"]'), ind = $("#navInd"); if (!b) { ind.style.width = 0; return; } ind.style.width = (b.offsetWidth - 20) + "px"; ind.style.transform = "translateX(" + (b.offsetLeft + 10) + "px)"; }
+addEventListener("resize", moveInd); document.fonts && document.fonts.ready.then(moveInd);
+function render(){
+  renderSide();
+  if (view === "overview") renderOverview();
+  if (view === "domains") renderDomains();
+  if (view === "history") renderHistory();
+  if (view === "format") renderFormat();
+}
+function renderSide(){
+  const s = seenIds().length;
+  $("#sideCov").innerHTML = s + "<small> / " + Q.length + "</small>";
+  $("#sideCovBar").style.width = pct(s, Q.length) + "%";
+  $("#histBadge").textContent = DB.attempts.length;
+}
+
+/* ---------- Overview ---------- */
+const trendSel = new Set();
+function renderOverview(){
+  const A = DB.attempts, T = DB.target;
+  const last = A[A.length - 1], prev = A[A.length - 2];
+  $("#ovSub").textContent = A.length
+    ? "Last attempt " + rel(last.t) + " scored " + last.score + "%. " + A.length + (A.length === 1 ? " attempt" : " attempts") + " and " + A.reduce((s, a) => s + a.answered, 0) + " questions answered so far."
+    : Q.length + " questions across the eight blueprint domains. Take a full exam first to set your baseline.";
+  $("#targetVal").textContent = T + "%"; $("#targetBig").textContent = T + "%";
+
+  // KPIs
+  const pj = projected();
+  const best = A.length ? Math.max(...A.map(a => a.score)) : null;
+  const fulls = A.filter(a => a.mode === "full");
+  const time = A.reduce((s, a) => s + a.dur, 0);
+  const d = last && prev ? last.score - prev.score : null;
+  const tiles = [
+    {cls:"hero", l:"Projected exam score", v:pj ? pj.v : null, suf:"%", s: pj ? (pj.full ? (pj.v >= T ? '<span class="chip up">On target</span>' : '<span class="chip down">' + (T - pj.v) + ' pts to target</span>') + "Blueprint-weighted" : '<span class="chip warn">Partial</span>Not every domain answered yet') : "Weighted by the blueprint after your first attempt"},
+    {l:"Last score", v:last ? last.score : null, suf:"%", s: d === null ? (last ? "First attempt" : "No attempts yet") : '<span class="chip ' + (d > 0 ? "up" : d < 0 ? "down" : "") + '">' + (d > 0 ? "+" : "") + d + ' pts</span>vs previous'},
+    {l:"Best score", v:best, suf:"%", s: best === null ? "No attempts yet" : best >= T ? '<span class="chip up">Target reached</span>' : (T - best) + " pts below target"},
+    {l:"Full exams", v:fulls.length, suf:"", s: fulls.length ? "Avg " + Math.round(fulls.reduce((s, a) => s + a.score, 0) / fulls.length) + "% · " + (A.length - fulls.length) + " practice" : A.length + " practice sessions"},
+    {l:"Study time", v:null, txt: A.length ? fmtDur(time) : "0m", s: A.reduce((s, a) => s + a.answered, 0) + " questions answered"}
+  ];
+  $("#kpis").innerHTML = tiles.map((t, i) => '<div class="card kpi ' + (t.cls || "") + '"><div class="l">' + (t.cls ? '<span class="dot"></span>' : "") + t.l + '</div><div class="v num" data-k="' + i + '">' + (t.txt ? t.txt : t.v === null ? "–" : "0") + '</div><div class="s">' + t.s + '</div></div>').join("");
+  tiles.forEach((t, i) => { if (!t.txt && t.v !== null) countUp($('.kpi .v[data-k="' + i + '"]'), t.v, t.suf ? "<small>" + t.suf + "</small>" : ""); });
+
+  // trend chips
+  $("#trendChips").innerHTML = DKEYS.map(d => '<button class="tchip" style="--c:' + DC(d) + '" data-d="' + d + '" aria-pressed="' + trendSel.has(d) + '"><i></i>' + SHORT[d] + '</button>').join("");
+  $$("#trendChips .tchip").forEach(b => b.onclick = () => { const d = b.dataset.d; trendSel.has(d) ? trendSel.delete(d) : trendSel.add(d); b.setAttribute("aria-pressed", trendSel.has(d)); drawTrend(); });
+  drawTrend(); drawRadar(); drawHeat(); renderStart(); renderFocus(); renderRecent(); renderMissed();
+}
+
+function drawTrend(){
+  const box = $("#trend"), A = DB.attempts.slice(-24), T = DB.target;
+  if (!A.length){ box.innerHTML = '<div class="empty">' + ICON.chart + '<b>No attempts yet</b><span>Your score per attempt and per domain will be plotted here.</span></div>'; return; }
+  const W = 760, H = 270, L = 42, R = 14, Tp = 14, B = 30, iw = W - L - R, ih = H - Tp - B, n = A.length, off = DB.attempts.length - n;
+  const x = i => L + (n === 1 ? iw / 2 : i * iw / (n - 1)), y = v => Tp + ih - v / 100 * ih;
+  let g = '<defs><linearGradient id="ga" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--accent)" stop-opacity=".16"/><stop offset="1" stop-color="var(--accent)" stop-opacity="0"/></linearGradient></defs>';
+  [0, 25, 50, 75, 100].forEach(v => g += '<line class="axis" x1="' + L + '" x2="' + (W - R) + '" y1="' + y(v) + '" y2="' + y(v) + '"/><text x="' + (L - 10) + '" y="' + (y(v) + 4) + '" text-anchor="end">' + v + '%</text>');
+  g += '<line class="tgt" x1="' + L + '" x2="' + (W - R) + '" y1="' + y(T) + '" y2="' + y(T) + '"/><text x="' + (W - R) + '" y="' + (y(T) - 6) + '" text-anchor="end" style="fill:var(--warn)">Target ' + T + '%</text>';
+  const step = Math.ceil(n / 12);
+  A.forEach((a, i) => { if (i % step === 0 || i === n - 1) g += '<text x="' + x(i) + '" y="' + (H - 6) + '" text-anchor="middle">#' + (off + i + 1) + '</text>'; });
+  // domain lines
+  trendSel.forEach(d => {
+    let path = "", pen = false;
+    A.forEach((a, i) => { const s = a.dom[d]; if (s && s.n) { path += (pen ? "L" : "M") + x(i) + " " + y(pct(s.ok, s.n)); pen = true; } else pen = false; });
+    g += '<path d="' + path + '" fill="none" stroke="' + DC(d) + '" stroke-width="1.8" stroke-linejoin="round" opacity=".9"/>';
+    A.forEach((a, i) => { const s = a.dom[d]; if (s && s.n) g += '<circle cx="' + x(i) + '" cy="' + y(pct(s.ok, s.n)) + '" r="2.6" fill="' + DC(d) + '"/>'; });
+  });
+  if (n > 1) {
+    const line = A.map((a, i) => (i ? "L" : "M") + x(i) + " " + y(a.score)).join("");
+    g += '<path d="' + line + "L" + x(n - 1) + " " + y(0) + "L" + x(0) + " " + y(0) + 'Z" fill="url(#ga)"/>';
+    g += '<path class="draw" d="' + line + '" fill="none" stroke="var(--accent)" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>';
+  }
+  g += '<line class="xh" id="xh" x1="0" x2="0" y1="' + Tp + '" y2="' + (Tp + ih) + '"/>';
+  A.forEach((a, i) => g += '<circle class="pt" data-i="' + i + '" cx="' + x(i) + '" cy="' + y(a.score) + '" r="4.5" fill="var(--surface)" stroke="' + (a.score >= T ? "var(--accent)" : "var(--bad)") + '" stroke-width="2.2"/>');
+  g += '<rect x="' + L + '" y="' + Tp + '" width="' + iw + '" height="' + ih + '" fill="transparent" id="hov"/>';
+  box.innerHTML = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Score by attempt">' + g + '</svg>';
+  const path = box.querySelector(".draw");
+  if (path && !REDUCED) { const len = path.getTotalLength(); path.style.strokeDasharray = len; path.style.strokeDashoffset = len; path.getBoundingClientRect(); path.style.transition = "stroke-dashoffset 1.1s cubic-bezier(.2,.8,.2,1)"; path.style.strokeDashoffset = 0; }
+  const svg = box.querySelector("svg"), hov = box.querySelector("#hov"), xh = box.querySelector("#xh");
+  hov.addEventListener("pointermove", e => {
+    const r = svg.getBoundingClientRect(), sx = (e.clientX - r.left) / r.width * W;
+    const i = n === 1 ? 0 : Math.max(0, Math.min(n - 1, Math.round((sx - L) / iw * (n - 1))));
+    const a = A[i];
+    xh.setAttribute("x1", x(i)); xh.setAttribute("x2", x(i)); box.classList.add("hover");
+    box.querySelectorAll(".pt").forEach(p => p.setAttribute("r", +p.dataset.i === i ? 7 : 4.5));
+    let h = '<h4>Attempt #' + (off + i + 1) + ' · ' + (a.mode === "full" ? "Full exam" : a.mode === "missed" ? "Missed review" : "Practice") + '</h4><div class="row"><span>' + fmtDate(a.t) + ', ' + fmtTime(a.t) + '</span></div><div class="row" style="margin-top:6px"><span><span class="sw" style="background:var(--accent)"></span>Overall</span><b>' + a.score + '%</b></div>';
+    trendSel.forEach(d => { const s = a.dom[d]; h += '<div class="row"><span><span class="sw" style="background:' + DC(d) + '"></span>' + SHORT[d] + '</span><b>' + (s && s.n ? pct(s.ok, s.n) + "%" : "–") + '</b></div>'; });
+    h += '<div class="row" style="margin-top:6px"><span>Correct</span><b>' + a.correct + '/' + a.total + '</b></div><div class="row"><span>Duration</span><b>' + fmtDur(a.dur) + '</b></div>';
+    showTip(h, e.clientX, e.clientY);
+  });
+  hov.addEventListener("pointerleave", () => { box.classList.remove("hover"); hideTip(); box.querySelectorAll(".pt").forEach(p => p.setAttribute("r", 4.5)); });
+}
+
+function drawRadar(){
+  const box = $("#radar"), A = DB.attempts, T = DB.target;
+  const agg = domAgg(A), last = A[A.length - 1];
+  const W = 460, H = 320, cx = W / 2, cy = 160, R = 100;
+  const ang = i => (-90 + i * 45) * Math.PI / 180;
+  const pt = (i, v) => [cx + Math.cos(ang(i)) * R * v / 100, cy + Math.sin(ang(i)) * R * v / 100];
+  let g = "";
+  [25, 50, 75, 100].forEach(v => g += '<polygon points="' + DKEYS.map((d, i) => pt(i, v).join(",")).join(" ") + '" fill="none" stroke="var(--line)"/>');
+  DKEYS.forEach((d, i) => { const [x2, y2] = pt(i, 100); g += '<line x1="' + cx + '" y1="' + cy + '" x2="' + x2 + '" y2="' + y2 + '" stroke="var(--line)"/>'; });
+  g += '<polygon points="' + DKEYS.map((d, i) => pt(i, T).join(",")).join(" ") + '" fill="none" class="tgt" style="stroke:var(--warn);stroke-dasharray:5 4"/>';
+  if (A.length){
+    const all = DKEYS.map((d, i) => pt(i, pct(agg[d].ok, agg[d].n)).join(",")).join(" ");
+    if (last) g += '<polygon points="' + DKEYS.map((d, i) => pt(i, last.dom[d] && last.dom[d].n ? pct(last.dom[d].ok, last.dom[d].n) : 0).join(",")).join(" ") + '" fill="none" stroke="var(--lav)" stroke-opacity=".7" stroke-width="1.6" stroke-dasharray="3 3"/>';
+    g += '<polygon class="rpoly" points="' + all + '" fill="var(--accent)" fill-opacity=".1" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round"/>';
+    DKEYS.forEach((d, i) => { const [px, py] = pt(i, pct(agg[d].ok, agg[d].n)); g += '<circle cx="' + px + '" cy="' + py + '" r="3.5" fill="' + DC(d) + '" stroke="var(--surface)" stroke-width="1.5"/>'; });
+  }
+  DKEYS.forEach((d, i) => {
+    const [lx, ly] = pt(i, 122), c = Math.cos(ang(i));
+    const anchor = Math.abs(c) < .2 ? "middle" : c > 0 ? "start" : "end";
+    g += '<text class="lbl" data-d="' + d + '" x="' + lx + '" y="' + (ly + 4) + '" text-anchor="' + anchor + '">' + SHORT[d] + '</text>';
+  });
+  box.innerHTML = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Accuracy by domain">' + g + '</svg>';
+  const poly = box.querySelector(".rpoly");
+  if (poly && !REDUCED) { poly.style.transformOrigin = cx + "px " + cy + "px"; poly.animate([{transform:"scale(.2)", opacity:0}, {transform:"scale(1)", opacity:1}], {duration:800, easing:"cubic-bezier(.2,.8,.2,1)"}); }
+  box.querySelectorAll(".lbl").forEach(t => {
+    t.addEventListener("pointermove", e => { const d = t.dataset.d, a = agg[d], l = last && last.dom[d]; showTip('<h4>' + DOMAINS[d] + '</h4><div class="row"><span>All-time</span><b>' + (a.n ? pct(a.ok, a.n) + "%" : "–") + '</b></div><div class="row"><span>Last attempt</span><b>' + (l && l.n ? pct(l.ok, l.n) + "%" : "–") + '</b></div><div class="row"><span>Answered</span><b>' + a.n + '</b></div>', e.clientX, e.clientY); });
+    t.addEventListener("pointerleave", hideTip);
+    t.style.cursor = "pointer"; t.addEventListener("click", () => openDomain(t.dataset.d));
+  });
+}
+
+function drawHeat(){
+  const box = $("#heat"), A = DB.attempts;
+  const map = {}; A.forEach(a => { const k = dayKey(a.t); map[k] = map[k] || {q:0, n:0}; map[k].q += a.answered; map[k].n++; });
+  const weeks = 16, today = new Date(); today.setHours(0, 0, 0, 0);
+  const start = new Date(today); start.setDate(start.getDate() - start.getDay() - (weeks - 1) * 7);
+  let cells = "";
+  for (let i = 0; i < weeks * 7; i++) {
+    const dt = new Date(start); dt.setDate(start.getDate() + i);
+    const k = dayKey(dt), v = map[k], q = v ? v.q : 0, fut = dt > today;
+    const lv = q === 0 ? 0 : q <= 10 ? 1 : q <= 25 ? 2 : q <= 50 ? 3 : 4;
+    cells += '<i class="l' + lv + '" ' + (fut ? 'style="visibility:hidden"' : "") + ' data-d="' + dt.getTime() + '" data-q="' + q + '" data-n="' + (v ? v.n : 0) + '"></i>';
+  }
+  const days = new Set(Object.keys(map)).size;
+  let streak = 0; { const d = new Date(today); if (!map[dayKey(d)]) d.setDate(d.getDate() - 1); while (map[dayKey(d)]) { streak++; d.setDate(d.getDate() - 1); } }
+  const wk = A.filter(a => a.t > Date.now() - 7 * 864e5).reduce((s, a) => s + a.answered, 0);
+  box.innerHTML = '<div class="heat-wrap"><div class="heat-days"><span></span><span>Mon</span><span></span><span>Wed</span><span></span><span>Fri</span><span></span></div><div class="heat">' + cells + '</div></div>' +
+    '<div class="heat-foot"><span>' + days + ' active ' + (days === 1 ? "day" : "days") + '</span><span class="heat-scale">Less<i style="background:var(--heat0)"></i><i style="background:var(--heat1)"></i><i style="background:var(--heat2)"></i><i style="background:var(--heat3)"></i><i style="background:var(--heat4)"></i>More</span></div>' +
+    '<div class="stat-line"><div><b class="num">' + streak + '</b><span>Day streak</span></div><div><b class="num">' + wk + '</b><span>Questions this week</span></div><div><b class="num">' + A.length + '</b><span>Total attempts</span></div></div>';
+  box.querySelectorAll(".heat i").forEach(c => {
+    c.addEventListener("pointermove", e => { const q = +c.dataset.q, n = +c.dataset.n; showTip('<h4>' + new Date(+c.dataset.d).toLocaleDateString("en-US", {weekday:"short", month:"short", day:"numeric"}) + '</h4><div class="row"><span>Questions</span><b>' + q + '</b></div><div class="row"><span>Attempts</span><b>' + n + '</b></div>', e.clientX, e.clientY); });
+    c.addEventListener("pointerleave", hideTip);
+  });
+}
+
+/* Start card */
+const MODES = {
+  full:{n:74, min:120, label:"Full exam"},
+  practice:{n:20, min:30, label:"Practice"},
+  missed:{n:20, min:30, label:"Missed review"}
+};
+let mode = "full", feedback = false, domDD;
+function domItems(){
+  const miss = missedIds();
+  return [{value:"all", label:"All domains", meta: mode === "missed" ? miss.length + " missed" : Q.length + " questions"}].concat(DKEYS.map(d => ({value:d, label:d + ". " + SHORT[d], color:DC(d), meta: mode === "missed" ? miss.filter(id => Q[id].d == d).length + " missed" : Q.filter(q => q.d == d).length + " in bank"})));
+}
+function poolFor(m, dom){
+  let p = m === "missed" ? missedIds().map(id => Q[id]) : Q;
+  if (m !== "full" && dom !== "all") p = p.filter(q => q.d == dom);
+  return p;
+}
+function renderStart(){
+  const segBtns = $$("#modeSeg button"), idx = Object.keys(MODES).indexOf(mode);
+  segBtns.forEach(b => { b.setAttribute("aria-pressed", b.dataset.mode === mode); if (b.dataset.mode === "missed") b.disabled = !missedIds().length; });
+  $("#modeSeg .pill").style.transform = "translateX(" + idx * 100 + "%)";
+  if (!domDD) domDD = Dropdown($("#domDD"), {items:domItems(), value:"all", onChange:renderStart});
+  else domDD.setItems(domItems());
+  $("#domField").classList.toggle("hidden", mode === "full");
+  $("#fbRow").classList.toggle("hidden", mode === "full");
+  $("#fbSw").setAttribute("aria-checked", feedback);
+  const pool = poolFor(mode, domDD.value);
+  const n = mode === "full" ? 74 : Math.min(MODES[mode].n, pool.length);
+  const unseen = mode === "full" ? Q.filter(q => !DB.qstats[q.id]).length : pool.filter(q => !DB.qstats[q.id]).length;
+  $("#modeInfo").innerHTML = '<div><b class="num">' + n + '</b><span>Questions</span></div><div><b class="num">' + MODES[mode].min + '</b><span>Minutes</span></div><div><b class="num">' + Math.min(unseen, n) + '</b><span>New to you</span></div>';
+  $("#startSub").textContent = mode === "full" ? "Same weighting as the real exam" : mode === "missed" ? "Only questions you got wrong" : "Focused session";
+  $("#startBtn").disabled = n === 0;
+}
+$$("#modeSeg button").forEach(b => b.onclick = () => { mode = b.dataset.mode; renderStart(); });
+$("#fbSw").onclick = () => { feedback = !feedback; $("#fbSw").setAttribute("aria-checked", feedback); };
+
+function renderFocus(){
+  const A = DB.attempts, agg = domAgg(A), T = DB.target, card = $("#focusCard");
+  const withData = DKEYS.filter(d => agg[d].n);
+  const weak = withData.slice().sort((a, b) => agg[a].ok / agg[a].n - agg[b].ok / agg[b].n)[0];
+  const rows = DKEYS.slice().sort((a, b) => (agg[a].n ? agg[a].ok / agg[a].n : 2) - (agg[b].n ? agg[b].ok / agg[b].n : 2)).map(d => {
+    const p = pct(agg[d].ok, agg[d].n);
+    return '<button class="fr" data-d="' + d + '"><span class="fr-n"><span class="ddot" style="--c:' + DC(d) + '"></span>' + SHORT[d] + '</span><div class="bar" style="--c:' + (agg[d].n && p < T ? "var(--bad)" : "var(--accent)") + '"><i style="width:' + (agg[d].n ? p : 0) + '%"></i><b style="left:' + T + '%"></b></div><span class="num fr-p">' + (agg[d].n ? p + "%" : "–") + '</span></button>';
+  }).join("");
+  card.innerHTML = '<div class="card-h"><div><h2>Focus next</h2><span class="sub">' + (weak ? "Sorted from weakest to strongest" : "Every domain is still untested") + '</span></div></div><div class="card-b"><div class="fr-list">' + rows + '</div>' +
+    (weak ? '<button class="btn block" id="focusBtn" style="margin-top:14px">' + ICON.play + 'Practice ' + SHORT[weak] + '</button>' : '<p style="font-size:12px;color:var(--faint);margin-top:12px">A full exam covers all eight domains and gives you a baseline.</p>') + '</div>';
+  card.querySelectorAll(".fr").forEach(b => b.onclick = () => openDomain(b.dataset.d));
+  if (weak) $("#focusBtn").onclick = () => quickStart("practice", weak);
+}
+function renderRecent(){
+  const A = DB.attempts.slice(-3).reverse(), box = $("#recent");
+  if (!A.length) { box.innerHTML = ""; return; }
+  box.innerHTML = '<div class="rc-t">Recent attempts</div>' + A.map(a => '<div class="rc"><span class="rc-m">' + (a.mode === "full" ? "Full exam" : a.mode === "missed" ? "Missed review" : "Practice") + '<small>' + rel(a.t) + ' · ' + fmtDur(a.dur) + '</small></span><span class="scorepill num ' + (a.score >= DB.target ? "good" : "bad") + '">' + a.score + '%</span></div>').join("");
+}
+function quickStart(m, d){ mode = m; if (domDD) { domDD.setItems(domItems()); domDD.set(d); } go("overview"); renderStart(); startExam(); }
+
+function accItem(q, head, body, i){
+  return '<li><button class="acc-h" aria-expanded="false">' + head + '<span class="acc-tag"></span>' + ICON.chev + '</button><div class="acc-b"><div><div class="in">' + body + '</div></div></div></li>';
+}
+function bindAcc(ul){ ul.querySelectorAll(".acc-h").forEach(h => h.onclick = () => { const li = h.parentElement; li.classList.toggle("open"); h.setAttribute("aria-expanded", li.classList.contains("open")); }); }
+function renderMissed(){
+  const ul = $("#missed");
+  const list = Object.entries(DB.qstats).map(([id, s]) => ({q:Q[id], n:s.n, ok:s.ok, miss:s.n - s.ok})).filter(x => x.q && x.miss > 0).sort((a, b) => b.miss - a.miss || a.ok / a.n - b.ok / b.n).slice(0, 6);
+  if (!list.length){ ul.innerHTML = '<li class="empty" style="border:0;padding:24px 22px">Questions you answer wrong will collect here so you can review them quickly.</li>'; return; }
+  ul.innerHTML = list.map(m => accItem(m.q, '<span class="miss-n num">' + m.miss + '×</span><span><span class="q">' + esc(m.q.q) + '</span><span class="meta">' + SHORT[m.q.d] + ' · right ' + m.ok + ' of ' + m.n + '</span></span>', '<div class="ans"><b>Answer:</b> ' + esc(m.q.c) + '</div><div class="exp">' + esc(m.q.e) + '</div>')).join("");
+  bindAcc(ul);
+}
+
+/* Target popover */
+const targetSlider = Slider($("#targetSlider"), {min:50, max:100, value:DB.target, label:"Target score",
+  onInput:v => { $("#targetBig").textContent = v + "%"; $("#targetVal").textContent = v + "%"; },
+  onChange:v => { if (v !== DB.target) { DB.target = v; save(); render(); toast("Target set to " + v + "%"); } }});
+$("#targetBtn").onclick = () => { const p = $("#targetPop"); p.classList.toggle("open"); $("#targetBtn").setAttribute("aria-expanded", p.classList.contains("open")); targetSlider.set(DB.target); };
+document.addEventListener("pointerdown", e => { if (!$("#targetPop").contains(e.target)) $("#targetPop").classList.remove("open"); });
+
+/* ---------- Domains ---------- */
+function spark(vals, color, w, h){
+  w = w || 110; h = h || 34;
+  if (vals.length < 2) return '<svg width="' + w + '" height="' + h + '"><line x1="0" x2="' + w + '" y1="' + (h - 2) + '" y2="' + (h - 2) + '" stroke="var(--line-2)" stroke-dasharray="3 3"/></svg>';
+  const x = i => 3 + i * (w - 6) / (vals.length - 1), y = v => h - 3 - v / 100 * (h - 6);
+  const d = vals.map((v, i) => (i ? "L" : "M") + x(i) + " " + y(v)).join("");
+  return '<svg width="' + w + '" height="' + h + '" viewBox="0 0 ' + w + ' ' + h + '"><path d="' + d + '" fill="none" stroke="' + color + '" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="' + x(vals.length - 1) + '" cy="' + y(vals[vals.length - 1]) + '" r="3" fill="' + color + '"/></svg>';
+}
+function domSeries(d, n){ return DB.attempts.filter(a => a.dom[d] && a.dom[d].n).slice(-(n || 10)).map(a => pct(a.dom[d].ok, a.dom[d].n)); }
+function renderDomains(){
+  const agg = domAgg(DB.attempts), T = DB.target;
+  $("#dgrid").innerHTML = DKEYS.map(d => {
+    const a = agg[d], p = pct(a.ok, a.n), [lv, cls] = levelOf(p, a.n);
+    const inBank = Q.filter(q => q.d == d), seen = inBank.filter(q => DB.qstats[q.id]).length;
+    return '<button class="card dcard" style="--c:' + DC(d) + '" data-d="' + d + '"><div class="top"><div><div class="no">Domain ' + d + ' · ' + WEIGHTS[d] + ' exam questions</div><h3>' + DOMAINS[d] + '</h3></div><span class="level ' + cls + '">' + lv + '</span></div>' +
+      '<div style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px"><div class="big num">' + (a.n ? p : "–") + '<small>' + (a.n ? "%" : "") + '</small></div>' + spark(domSeries(d), DC(d)) + '</div>' +
+      '<div class="bar"><i style="width:0" data-w="' + p + '"></i><b style="left:' + T + '%"></b></div>' +
+      '<div class="foot"><div><b class="num">' + a.ok + '/' + a.n + '</b>correct answers</div><div style="text-align:right"><b class="num">' + seen + '/' + inBank.length + '</b>bank explored</div></div></button>';
+  }).join("");
+  requestAnimationFrame(() => $$("#dgrid .bar i").forEach(i => i.style.width = i.dataset.w + "%"));
+  $$("#dgrid .dcard").forEach(c => c.onclick = () => openDomain(c.dataset.d));
+}
+function openDomain(d){
+  const agg = domAgg(DB.attempts)[d], p = pct(agg.ok, agg.n), [lv, cls] = levelOf(p, agg.n);
+  const inBank = Q.filter(q => q.d == d);
+  const missed = inBank.map(q => ({q, s:DB.qstats[q.id]})).filter(x => x.s && x.s.ok < x.s.n).sort((a, b) => (b.s.n - b.s.ok) - (a.s.n - a.s.ok));
+  const ser = domSeries(d, 20);
+  const panel = $("#drawerPanel");
+  panel.style.setProperty("--c", DC(d));
+  panel.innerHTML = '<div class="drawer-h"><div><div class="no">Domain ' + d + ' · ' + WEIGHTS[d] + ' of 74 exam questions</div><h2 id="drTitle">' + DOMAINS[d] + '</h2><span class="level ' + cls + '" style="margin-top:10px">' + lv + '</span></div><button class="icon-btn" data-close aria-label="Close">' + ICON.close + '</button></div>' +
+    '<div class="drawer-b">' +
+      '<div class="dstats"><div><b class="num">' + (agg.n ? p + "%" : "–") + '</b><span>All-time accuracy</span></div><div><b class="num">' + agg.n + '</b><span>Answered</span></div><div><b class="num">' + inBank.filter(q => DB.qstats[q.id]).length + '/' + inBank.length + '</b><span>Bank explored</span></div></div>' +
+      '<div class="card" style="padding:16px 18px"><div class="sec-t">Accuracy by attempt</div>' + (ser.length ? '<div class="chart">' + spark(ser, DC(d), 440, 110).replace('width="440" height="110"', 'width="100%" height="110" preserveAspectRatio="none"') + '</div>' : '<p style="color:var(--muted);font-size:13px">Answer questions from this domain to see the trend.</p>') + '</div>' +
+      '<div><div class="sec-t">Questions you miss here (' + missed.length + ')</div><div class="card" style="padding:4px 0"><ul class="acc" id="drMissed">' +
+      (missed.length ? missed.map(m => accItem(m.q, '<span class="miss-n num">' + (m.s.n - m.s.ok) + '×</span><span><span class="q">' + esc(m.q.q) + '</span><span class="meta">right ' + m.s.ok + ' of ' + m.s.n + '</span></span>', '<div class="ans"><b>Answer:</b> ' + esc(m.q.c) + '</div><div class="exp">' + esc(m.q.e) + '</div>')).join("") : '<li class="empty" style="border:0">Nothing missed in this domain yet.</li>') +
+      '</ul></div></div>' +
+    '</div>' +
+    '<div class="drawer-f"><button class="btn primary lg block" id="drPractice">' + ICON.play + 'Practice ' + SHORT[d] + ' · ' + Math.min(20, inBank.length) + ' questions</button></div>';
+  bindAcc($("#drMissed"));
+  $("#drPractice").onclick = () => { closeDrawer(); quickStart("practice", d); };
+  panel.querySelectorAll("[data-close]").forEach(b => b.onclick = closeDrawer);
+  $("#drawer").classList.add("open");
+  setTimeout(() => panel.querySelector(".icon-btn").focus(), 60);
+}
+function closeDrawer(){ $("#drawer").classList.remove("open"); }
+$("#drawer .back").onclick = closeDrawer;
+document.addEventListener("keydown", e => { if (e.key === "Escape" && $("#drawer").classList.contains("open")) closeDrawer(); });
+
+/* ---------- History ---------- */
+let hSort = {k:"t", dir:-1};
+const openRows = new Set();
+function renderHistory(){
+  const A = DB.attempts.map((a, i) => Object.assign({no:i + 1}, a));
+  $("#histSub").textContent = A.length ? A.length + (A.length === 1 ? " attempt" : " attempts") + " saved in this browser. Select a row to see the domain breakdown." : "Your attempts will be listed here.";
+  if (!A.length){ $("#histTable").innerHTML = '<div class="empty">' + ICON.chart + '<b>No attempts yet</b><span>Finish an attempt to start your history.</span></div>'; return; }
+  A.sort((a, b) => (a[hSort.k] > b[hSort.k] ? 1 : a[hSort.k] < b[hSort.k] ? -1 : 0) * hSort.dir);
+  const th = (k, l, r) => '<th class="sort ' + (r ? "r" : "") + '" data-k="' + k + '" ' + (hSort.k === k ? 'aria-sort="' + (hSort.dir > 0 ? "ascending" : "descending") + '"' : "") + '>' + l + '<span class="ar">▲</span></th>';
+  const T = DB.target;
+  $("#histTable").innerHTML = '<table class="tbl"><thead><tr>' + th("no", "#") + th("t", "Date") + th("mode", "Mode") + th("score", "Score", 1) + th("correct", "Correct", 1) + th("dur", "Duration", 1) + '<th></th></tr></thead><tbody>' +
+    A.map(a => '<tr class="row ' + (openRows.has(a.no) ? "open" : "") + '" data-no="' + a.no + '"><td class="num" style="color:var(--faint)">' + a.no + '</td><td class="num">' + fmtDate(a.t) + '<span style="color:var(--faint)"> · ' + fmtTime(a.t) + '</span></td><td>' + (a.mode === "full" ? "Full exam" : (a.mode === "missed" ? "Missed review" : "Practice") + (a.domain && a.domain !== "all" ? " · " + SHORT[a.domain] : "")) + '</td><td class="r"><span class="scorepill num ' + (a.score >= T ? "good" : "bad") + '">' + a.score + '%</span></td><td class="r num">' + a.correct + '/' + a.total + '</td><td class="r num">' + fmtDur(a.dur) + '</td><td class="r" style="color:var(--faint)">' + ICON.chev + '</td></tr>' +
+      (openRows.has(a.no) ? '<tr class="det"><td colspan="7"><div class="det-in">' + DKEYS.filter(d => a.dom[d]).map(d => { const p = pct(a.dom[d].ok, a.dom[d].n); return '<div><div class="l"><span>' + SHORT[d] + '</span><b class="num">' + p + '% · ' + a.dom[d].ok + '/' + a.dom[d].n + '</b></div><div class="bar" style="--c:' + DC(d) + '"><i style="width:' + p + '%"></i><b style="left:' + T + '%"></b></div></div>'; }).join("") + '</div></td></tr>' : "")
+    ).join("") + '</tbody></table>';
+  $$("#histTable th.sort").forEach(h => h.onclick = () => { const k = h.dataset.k; hSort = {k, dir: hSort.k === k ? -hSort.dir : (k === "mode" ? 1 : -1)}; renderHistory(); });
+  $$("#histTable tr.row").forEach(r => r.onclick = () => { const n = +r.dataset.no; openRows.has(n) ? openRows.delete(n) : openRows.add(n); renderHistory(); });
+}
+$("#clearBtn").onclick = async () => {
+  if (!DB.attempts.length) return toast("There is no data to clear yet.");
+  if (await confirmBox({title:"Clear all data?", text:"This removes every attempt, all statistics and your bank progress from this browser. It cannot be undone.", ok:"Clear data", danger:true})) {
+    DB.attempts = []; DB.qstats = {}; save(); openRows.clear(); render(); toast("All data cleared");
+  }
+};
+$("#exportBtn").onclick = () => {
+  if (!DB.attempts.length) return toast("Finish an attempt before exporting.");
+  const head = ["attempt","date","mode","domain","score","correct","total","duration_seconds"].concat(DKEYS.map(d => "domain_" + d + "_pct"));
+  const rows = DB.attempts.map((a, i) => [i + 1, new Date(a.t).toISOString(), a.mode, a.domain || "all", a.score, a.correct, a.total, Math.round(a.dur)].concat(DKEYS.map(d => a.dom[d] ? pct(a.dom[d].ok, a.dom[d].n) : "")));
+  const csv = [head].concat(rows).map(r => r.join(",")).join("\n");
+  const url = URL.createObjectURL(new Blob([csv], {type:"text/csv"}));
+  const a = document.createElement("a"); a.href = url; a.download = "isc-admin-prep-history.csv"; document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000);
+  toast("History exported");
+};
+
+/* ---------- Format ---------- */
+function renderFormat(){
+  $("#bpList").innerHTML = DKEYS.map(d => '<div class="bp-row" style="--c:' + DC(d) + '"><span class="no">' + d + '</span><span>' + DOMAINS[d] + '</span><div class="bar"><i style="width:' + (WEIGHTS[d] / 13 * 100) + '%"></i></div><span class="num">' + WEIGHTS[d] + '</span></div>').join("");
+}
+
+/* ---------- Exam engine ---------- */
+const E = {};
+function pick(pool, n){
+  const unseen = shuffle(pool.filter(q => !DB.qstats[q.id]));
+  const miss = shuffle(pool.filter(q => DB.qstats[q.id] && DB.qstats[q.id].ok < DB.qstats[q.id].n));
+  const rest = shuffle(pool.filter(q => DB.qstats[q.id] && DB.qstats[q.id].ok === DB.qstats[q.id].n));
+  return unseen.concat(miss, rest).slice(0, n);
+}
+function startExam(){
+  const dom = mode === "full" ? "all" : domDD.value;
+  let qs = [];
+  if (mode === "full") DKEYS.forEach(d => qs = qs.concat(pick(Q.filter(q => q.d == d), WEIGHTS[d])));
+  else qs = pick(poolFor(mode, dom), MODES[mode].n);
+  if (!qs.length) return toast("No questions available for this selection.", "warn");
+  Object.assign(E, {mode, dom, fb: mode !== "full" && feedback, order:shuffle(qs), qi:0, results:[], started:Date.now(), warned:{}});
+  E.total = E.order.length; E.limit = MODES[mode].min * 60000; E.deadline = E.started + E.limit;
+  $("#exMode").textContent = MODES[mode].label + (dom !== "all" ? " · " + SHORT[dom] : "") + " · " + E.total + " questions";
+  $("#exT").textContent = E.total;
+  $("#exSegs").innerHTML = "<i></i>".repeat(E.total);
+  $("#exam").classList.remove("hidden"); document.body.style.overflow = "hidden";
+  clearInterval(E.tick); E.tick = setInterval(timer, 1000); timer();
+  loadQ();
+}
+function timer(){
+  const left = Math.max(0, E.deadline - Date.now());
+  const m = Math.floor(left / 60000), s = Math.floor(left / 1000) % 60;
+  $("#exTimer span").textContent = String(m).padStart(2, "0") + ":" + String(s).padStart(2, "0");
+  const c = $("#exTimer .c"); c.style.strokeDashoffset = 65.97 * (1 - left / E.limit);
+  const low = left < 5 * 60000; $("#exTimer").classList.toggle("low", low); c.style.stroke = low ? "#FF9C9C" : "#29EC72";
+  [10, 5, 1].forEach(w => { if (left <= w * 60000 && left > 0 && !E.warned[w] && E.limit > w * 60000) { E.warned[w] = 1; toast(w + (w === 1 ? " minute" : " minutes") + " left", "warn"); } });
+  if (left === 0) finish();
+}
+function loadQ(){
+  const q = E.order[E.qi];
+  E.opts = shuffle([{t:q.c, ok:true}].concat(q.w.map(t => ({t, ok:false}))));
+  E.idx = 0; E.extra = null; E.shown = 0; E.state = "prompt";
+  $("#exN").textContent = E.qi + 1;
+  $$("#exSegs i").forEach((s, i) => s.className = i < E.qi ? "d" : i === E.qi ? "c" : "");
+  $("#exDom").innerHTML = '<span class="ddot" style="--c:' + DC(q.d) + '"></span>' + DOMAINS[q.d];
+  $("#exOptN").textContent = "";
+  $("#exQ").textContent = q.q;
+  $("#exPrev").innerHTML = ""; $("#exOpt").innerHTML = ""; $("#exFb").innerHTML = "";
+  $("#exShow").classList.remove("hidden"); $("#exYN").classList.add("hidden");
+  $(".exam").scrollTop = 0;
+  $("#showBtn").focus({preventScroll:true});
+}
+function showOpt(o){
+  E.state = "option"; E.shown++;
+  $("#exOpt").innerHTML = '<div class="ex-opt"><div class="l"><span>Is this option correct?</span><span class="num">Option ' + E.shown + '</span></div><div class="t"></div></div>';
+  $("#exOpt .t").textContent = o.t;
+  $("#exOptN").textContent = "";
+  $("#exShow").classList.add("hidden"); $("#exYN").classList.remove("hidden");
+}
+function addPrev(t, yes){
+  const li = document.createElement("li");
+  li.innerHTML = '<span></span><em>' + (yes ? "You said Yes" : "You said No") + '</em>';
+  li.querySelector("span").textContent = t; $("#exPrev").appendChild(li);
+}
+function answer(yes){
+  if (E.state !== "option") return;
+  const b = $(yes ? "#yesBtn" : "#noBtn"); b.classList.add("press"); setTimeout(() => b.classList.remove("press"), 120);
+  if (E.extra) return resolve(!yes, yes ? "You accepted the correct option, then also accepted: “" + E.extra.t + "”" : "");
+  const o = E.opts[E.idx];
+  if (o.ok){
+    if (!yes) return resolve(false, "You rejected the correct option.");
+    const rem = E.opts.slice(E.idx + 1).filter(x => !x.ok);
+    if (rem.length && Math.random() < .3){ E.extra = rem[0]; addPrev(o.t, true); return showOpt(E.extra); }
+    return resolve(true, "");
+  }
+  if (yes) return resolve(false, "You accepted a wrong option: “" + o.t + "”");
+  addPrev(o.t, false); E.idx++; showOpt(E.opts[E.idx]);
+}
+function resolve(ok, why){
+  const q = E.order[E.qi];
+  E.results.push({q, ok, why});
+  if (!E.fb) return next();
+  E.state = "feedback";
+  $("#exYN").classList.add("hidden");
+  $("#exFb").innerHTML = '<div class="ex-fb ' + (ok ? "ok" : "bad") + '"><h4><span class="status-ic ' + (ok ? "ok" : "bad") + '">' + (ok ? ICON.check : ICON.x) + '</span>' + (ok ? "Correct" : "Not quite") + '</h4>' + (why ? '<p style="color:var(--bad)"></p>' : "") + '<p><b>Answer:</b> <span class="c"></span></p><p class="e"></p><div class="act"><button class="btn primary" id="nextBtn">' + (E.qi + 1 >= E.total ? "See results" : "Next question") + ' <kbd style="background:transparent;border-color:rgba(0,42,28,.3);color:var(--accent-ink)">Enter</kbd></button></div></div>';
+  if (why) $("#exFb p").textContent = why;
+  $("#exFb .c").textContent = q.c; $("#exFb .e").textContent = q.e;
+  $("#nextBtn").onclick = next; $("#nextBtn").focus({preventScroll:true});
+}
+function next(){ E.qi++; if (E.qi >= E.total) return finish(); loadQ(); }
+function finish(){
+  if (E.done === E.started) return; E.done = E.started;
+  clearInterval(E.tick);
+  const dur = (Date.now() - E.started) / 1000;
+  const answered = E.results.length, correct = E.results.filter(r => r.ok).length;
+  const dom = {};
+  E.order.forEach(q => { dom[q.d] = dom[q.d] || {n:0, ok:0}; dom[q.d].n++; });
+  E.results.forEach(r => { if (r.ok) dom[r.q.d].ok++; const s = DB.qstats[r.q.id] || {n:0, ok:0}; s.n++; if (r.ok) s.ok++; DB.qstats[r.q.id] = s; });
+  const prevBest = DB.attempts.length ? Math.max(...DB.attempts.map(a => a.score)) : -1;
+  const a = {t:Date.now(), mode:E.mode, domain:E.dom, total:E.total, answered, correct, score:pct(correct, E.total), dur, dom, qs:E.results.map(r => [r.q.id, r.ok ? 1 : 0])};
+  DB.attempts.push(a); save();
+  E.order.slice(answered).forEach(q => E.results.push({q, ok:false, skip:true, why:"Not answered before the attempt ended."}));
+  $("#exam").classList.add("hidden"); document.body.style.overflow = "";
+  renderResult(a, prevBest);
+  go("result");
+  if (a.score > prevBest && prevBest >= 0) toast("New personal best: " + a.score + "%");
+}
+$("#showBtn").onclick = () => showOpt(E.opts[E.idx]);
+$("#yesBtn").onclick = () => answer(true);
+$("#noBtn").onclick = () => answer(false);
+$("#startBtn").onclick = startExam;
+$("#quitBtn").onclick = async () => {
+  E.paused = true;
+  const left = E.total - E.results.length;
+  if (await confirmBox({title:"End this attempt?", text:left + (left === 1 ? " question is" : " questions are") + " still unanswered and will count as incorrect. Your results will be saved.", ok:"End attempt", cancel:"Keep going"})) finish();
+};
+document.addEventListener("keydown", e => {
+  if ($("#exam").classList.contains("hidden") || $("#modal").classList.contains("open") || e.metaKey || e.ctrlKey || e.altKey) return;
+  const k = e.key.toLowerCase();
+  if (k === "enter") { e.preventDefault(); if (E.state === "prompt") showOpt(E.opts[E.idx]); else if (E.state === "feedback") next(); }
+  else if (k === "y") answer(true);
+  else if (k === "n") answer(false);
+});
+
+/* ---------- Results ---------- */
+let RES = null, revDD = null, revF = "all";
+function renderResult(a, prevBest){
+  RES = a; const T = DB.target, C = 2 * Math.PI * 76;
+  const prev = DB.attempts[DB.attempts.length - 2];
+  const good = a.score >= T;
+  $("#resHero").innerHTML = '<div class="big-ring"><svg width="180" height="180" viewBox="0 0 180 180"><circle cx="90" cy="90" r="76" fill="none" stroke="var(--surface-3)" stroke-width="12"/><circle cx="90" cy="90" r="76" fill="none" stroke="var(--warn)" stroke-width="2" stroke-dasharray="2 ' + (C - 2) + '" stroke-dashoffset="' + (-C * T / 100 + 1) + '"/><circle class="c" cx="90" cy="90" r="76" fill="none" stroke="' + (good ? "var(--accent)" : "var(--bad)") + '" stroke-width="12" stroke-linecap="round" stroke-dasharray="' + C + '" stroke-dashoffset="' + C + '"/></svg><div class="lab"><div><b class="num" id="resScore">0</b><span>score</span></div></div></div>' +
+    '<div style="position:relative;z-index:1"><span class="level ' + (good ? "good" : "bad") + '">' + (good ? "At or above target" : "Below target") + '</span><h2 style="margin-top:12px">' + (a.mode === "full" ? "Full exam" : a.mode === "missed" ? "Missed review" : "Practice") + ' complete</h2><p>' +
+    (good ? "You scored " + a.score + "%, " + (a.score - T) + " points over your " + T + "% target." : "You scored " + a.score + "%, " + (T - a.score) + " points under your " + T + "% target. The domain breakdown shows where to focus.") + '</p>' +
+    '<div class="chips"><span class="chip">' + fmtDate(a.t) + ' · ' + fmtTime(a.t) + '</span><span class="chip">Attempt #' + DB.attempts.length + '</span>' + (prev ? '<span class="chip ' + (a.score > prev.score ? "up" : a.score < prev.score ? "down" : "") + '">' + (a.score - prev.score > 0 ? "+" : "") + (a.score - prev.score) + ' pts vs previous</span>' : "") + (a.score > prevBest && prevBest >= 0 ? '<span class="chip up">Personal best</span>' : "") + '</div></div>' +
+    '<div style="position:relative;z-index:1;display:grid;gap:10px"><button class="btn primary lg" id="againBtn">' + ICON.play + 'New attempt</button><button class="btn" id="toOv">Back to overview</button></div>';
+  requestAnimationFrame(() => requestAnimationFrame(() => { const c = $("#resHero .c"); if (c) c.style.strokeDashoffset = C * (1 - a.score / 100); }));
+  countUp($("#resScore"), a.score, '<small style="font-size:24px">%</small>');
+  $("#againBtn").onclick = () => { mode = a.mode; go("overview"); if (domDD) { domDD.setItems(domItems()); domDD.set(a.domain || "all"); } renderStart(); startExam(); };
+  $("#toOv").onclick = () => go("overview");
+  const avgQ = a.answered ? a.dur / a.answered : 0;
+  const tiles = [["Correct answers", a.correct + "/" + a.total, a.total - a.answered ? (a.total - a.answered) + " unanswered" : "Every question answered"],
+    ["Time used", fmtDur(a.dur), "of " + MODES[a.mode].min + " minutes allowed"],
+    ["Pace", avgQ ? fmtDur(avgQ) : "–", "Average per question · " + (avgQ && avgQ <= MODES[a.mode].min * 60 / a.total ? "on pace" : "watch your pace")],
+    ["Best domain", (() => { const ds = Object.keys(a.dom).sort((x, y) => a.dom[y].ok / a.dom[y].n - a.dom[x].ok / a.dom[x].n); return ds.length ? pct(a.dom[ds[0]].ok, a.dom[ds[0]].n) + "%" : "–"; })(), (() => { const ds = Object.keys(a.dom).sort((x, y) => a.dom[y].ok / a.dom[y].n - a.dom[x].ok / a.dom[x].n); return ds.length ? SHORT[ds[0]] : ""; })()]];
+  $("#resStats").innerHTML = tiles.map(t => '<div class="card kpi"><div class="l">' + t[0] + '</div><div class="v num" style="font-size:34px">' + t[1] + '</div><div class="s">' + t[2] + '</div></div>').join("");
+  const agg = domAgg(DB.attempts);
+  $("#resDom").innerHTML = '<div class="cmp-row head"><span>Domain</span><span></span><span class="num" style="text-align:right">Attempt</span><span class="num" style="text-align:right">All-time</span></div>' +
+    Object.keys(a.dom).sort().map(d => { const p = pct(a.dom[d].ok, a.dom[d].n), ap = pct(agg[d].ok, agg[d].n); return '<div class="cmp-row"><span><span class="ddot" style="--c:' + DC(d) + ';display:inline-block;margin-right:8px"></span>' + DOMAINS[d] + '</span><div class="cmp-bars"><div class="bar" style="--c:' + (p >= T ? DC(d) : "var(--bad)") + '"><i style="width:0" data-w="' + p + '"></i><b style="left:' + T + '%"></b></div><div class="bar ghost"><i style="width:0" data-w="' + ap + '"></i></div></div><span class="num" style="text-align:right;font-weight:600">' + p + '% <span style="color:var(--faint);font-weight:400">' + a.dom[d].ok + '/' + a.dom[d].n + '</span></span><span class="num" style="text-align:right;color:var(--muted)">' + ap + '%</span></div>'; }).join("");
+  setTimeout(() => $$("#resDom .bar i").forEach(i => i.style.width = i.dataset.w + "%"), 80);
+  const items = [{value:"all", label:"All domains"}].concat(Object.keys(a.dom).sort().map(d => ({value:d, label:SHORT[d], color:DC(d), meta:a.dom[d].ok + "/" + a.dom[d].n})));
+  if (!revDD) revDD = Dropdown($("#revDD"), {items, value:"all", onChange:renderReview}); else { revDD.setItems(items); revDD.set("all"); }
+  revF = "all"; $$("#revTabs button").forEach(b => b.setAttribute("aria-pressed", b.dataset.f === "all"));
+  renderReview();
+}
+function renderReview(){
+  const d = revDD ? revDD.value : "all";
+  const list = E.results.filter(r => (revF === "all" || (revF === "bad" ? !r.ok : r.ok)) && (d === "all" || r.q.d == d));
+  const ul = $("#review");
+  if (!list.length){ ul.innerHTML = '<li class="empty" style="border:0">No questions match this filter.</li>'; return; }
+  ul.innerHTML = list.map(r => accItem(r.q, '<span class="status-ic ' + (r.skip ? "skip" : r.ok ? "ok" : "bad") + '">' + (r.skip ? ICON.dash : r.ok ? ICON.check : ICON.x) + '</span><span><span class="q">' + esc(r.q.q) + '</span><span class="meta">' + DOMAINS[r.q.d] + '</span></span>',
+    (r.why ? '<div class="wrong">' + esc(r.why) + '</div>' : "") + '<div class="ans"><b>Answer:</b> ' + esc(r.q.c) + '</div><div class="exp">' + esc(r.q.e) + '</div>')).join("");
+  bindAcc(ul);
+}
+$$("#revTabs button").forEach(b => b.onclick = () => { revF = b.dataset.f; $$("#revTabs button").forEach(x => x.setAttribute("aria-pressed", x === b)); renderReview(); });
+
+/* ---------- Boot ---------- */
+go("overview");
+</script>
+</body>
+</html>

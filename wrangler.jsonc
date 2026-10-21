@@ -1,0 +1,12 @@
+{
+  "name": "isc-admin-prep",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./public",
+    "not_found_handling": "single-page-application"
+  },
+  // Troque pelo subdomínio desejado dentro da zona blackbox da sua conta Cloudflare
+  "routes": [
+    { "pattern": "isc.blackbox.com.br", "custom_domain": true }
+  ]
+}
