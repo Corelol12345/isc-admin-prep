@@ -1,8 +1,18 @@
 {
   "name": "isc-admin-prep",
+  "main": "./src/index.js",
   "compatibility_date": "2026-10-01",
   "assets": {
     "directory": "./public",
-    "not_found_handling": "single-page-application"
-  }
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*"]
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "isc-prep",
+      "database_id": "1b25eb39-92db-41de-b344-9781331dcfb9"
+    }
+  ]
 }
