@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>ISC Admin Prep</title>
+<title>ISC Prep · SailPoint certification practice</title>
 <meta name="description" content="Practice exams and performance analytics for the SailPoint Identity Security Administrator certification.">
 <meta name="theme-color" content="#0A0B0B">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2309090A'/%3E%3Ctext x='16' y='21' text-anchor='middle' font-family='Arial,sans-serif' font-weight='700' font-size='12' fill='%23EDEFEE'%3EISC%3C/text%3E%3C/svg%3E">
@@ -708,6 +708,61 @@ code,.mono{font-family:var(--mono)}
   .res-stats .card.kpi{border-bottom:1px solid var(--line)}
   .toasts{bottom:calc(16px + env(safe-area-inset-bottom,0px))}
 }
+
+/* ===== v4: exam switch, launch panel, onboarding ===== */
+:root{--d9:#A7B5AD;--d10:#6EE7B7}
+:root[data-theme="light"]{--d9:#55625B;--d10:#0F7A5E}
+.exam-switch{position:relative}
+.exam-switch .dd-btn{width:auto;height:32px;padding:0 8px 0 10px;background:transparent;border-color:transparent;color:var(--muted);font-size:13px;font-weight:500;gap:6px}
+.exam-switch .dd-btn:hover{background:var(--surface-2);border-color:var(--line);color:var(--ink)}
+.exam-switch.open .dd-btn{box-shadow:none;border-color:var(--line-2);color:var(--ink);background:var(--surface-2)}
+.exam-switch .dd-list{min-width:340px;right:auto}
+.exam-switch .dd-list li{padding:11px 12px}
+.btn.sm{height:32px;padding:0 12px;font-size:13px;gap:7px}
+.launch{padding:22px 22px 20px;margin-bottom:16px;scroll-margin-top:120px}
+.launch-h h2{font-size:17px;font-weight:600;letter-spacing:-.02em}
+.launch-h p{font-size:13px;color:var(--muted);margin-top:4px;max-width:80ch}
+.modes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:18px 0}
+.mcard{text-align:left;padding:16px;border-radius:10px;border:1px solid var(--line);background:var(--surface);display:grid;gap:5px;align-content:start;transition:border-color .15s,background .15s}
+.mcard:hover{border-color:var(--line-2);background:var(--surface-2)}
+.mcard[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
+.mcard[disabled]{opacity:.45;cursor:not-allowed}
+.mcard .m-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.mcard b{font-size:14px;font-weight:600}
+.m-radio{width:16px;height:16px;border-radius:50%;border:1.5px solid var(--line-2);display:grid;place-items:center;flex:none}
+.mcard[aria-pressed="true"] .m-radio{border-color:var(--accent)}
+.mcard[aria-pressed="true"] .m-radio::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent)}
+.mcard .m-d{font-size:12px;color:var(--muted);line-height:1.45}
+.mcard .m-meta{font-size:12px;color:var(--faint);margin-top:6px;font-variant-numeric:tabular-nums}
+.launch-f{display:flex;flex-wrap:wrap;align-items:center;gap:14px 24px;padding-top:16px;border-top:1px solid var(--line)}
+.launch-f .field{margin:0;width:280px}
+.launch-f .field > span{display:none}
+.launch-f .opt-row{border:0;padding:0;margin:0;gap:14px;justify-content:flex-start}
+.launch-go{display:flex;align-items:center;gap:16px;margin-left:auto}
+.launch-sum{font-size:12px;color:var(--muted);white-space:nowrap}
+.launch-sum b{color:var(--ink);font-weight:600}
+.launch.flash{animation:flash 1.4s ease-out}
+@keyframes flash{0%,40%{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}100%{border-color:var(--line);box-shadow:0 0 0 0 transparent}}
+.onboard{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.ob{padding:20px}
+.ob .n{font-size:12px;font-weight:600;width:24px;height:24px;border-radius:7px;display:grid;place-items:center;background:var(--surface-3);margin-bottom:12px}
+.ob h3{font-size:14px;font-weight:600;margin-bottom:4px}
+.ob p{font-size:13px;color:var(--muted)}
+.info{display:inline-grid;place-items:center;width:15px;height:15px;border-radius:50%;border:1px solid var(--line-2);font-size:9px;font-weight:600;color:var(--faint);cursor:help;font-style:normal}
+.info:hover{color:var(--ink);border-color:var(--faint)}
+.res-actions{display:grid;gap:8px;position:relative;z-index:1;min-width:210px}
+.rc:first-child{border-top:0;padding-top:0}
+@media (max-width:860px){
+  .brand b,.brand .slash{display:none}
+  .exam-switch .dd-list{min-width:280px}
+  #tbStart span{display:none}
+  .modes,.onboard{grid-template-columns:1fr}
+  .launch-f .field{width:100%}
+  .launch-go{width:100%;margin-left:0;flex-direction:column;align-items:stretch;gap:10px}
+  .launch-sum{white-space:normal;text-align:center}
+  #startBtn{width:100%}
+  .res-actions{width:100%}
+}
 </style>
 </head>
 <body>
@@ -715,18 +770,19 @@ code,.mono{font-family:var(--mono)}
   <header class="topbar">
     <div class="tb-in">
       <div class="brand">
-        <b>ISC Admin Prep</b><span class="slash">/</span><span class="crumb">Identity Security Administrator</span>
+        <b>ISC Prep</b><span class="slash">/</span><div id="examDD" class="exam-switch"></div>
       </div>
       <div class="tb-right">
         <div class="cov" title="Questions you have already seen"><span class="num" id="sideCov">0<small> / 151</small></span><div class="mini-bar"><i id="sideCovBar" style="width:0"></i></div></div>
         <button class="icon-btn" id="themeSw" role="switch" aria-checked="false" aria-label="Light mode"><svg class="moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg><svg class="sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg></button>
+        <button class="btn primary sm" id="tbStart"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12.5-7.5z"/></svg><span>New attempt</span></button>
       </div>
     </div>
     <nav class="nav" aria-label="Main">
-      <button data-view="overview">Overview</button>
+      <button data-view="overview">Dashboard</button>
       <button data-view="domains">Domains</button>
       <button data-view="history">History<span class="badge" id="histBadge">0</span></button>
-      <button data-view="format">Exam format</button>
+      <button data-view="format">Exam guide</button>
       <span class="nav-ind" id="navInd"></span>
     </nav>
   </header>
@@ -735,7 +791,7 @@ code,.mono{font-family:var(--mono)}
     <!-- OVERVIEW -->
     <section class="view" id="v-overview">
       <div class="vhead">
-        <div><h1>Overview</h1><p id="ovSub"></p></div>
+        <div><h1>Dashboard</h1><p id="ovSub"></p></div>
         <div class="tools">
           <div class="pop" id="targetPop">
             <button class="target-btn" id="targetBtn" aria-expanded="false"><i></i>Target <b class="num" id="targetVal">70%</b></button>
@@ -749,45 +805,49 @@ code,.mono{font-family:var(--mono)}
           </div>
         </div>
       </div>
-      <div class="kpis" id="kpis"></div>
-      <div class="ov-grid">
-        <div class="card span2">
-          <div class="card-h"><div><h2>Score trend</h2><span class="sub">Overall score per attempt. Add domains to compare.</span></div><div class="legend"><span><i></i>Overall</span><span><i class="t"></i>Target</span></div></div>
-          <div class="card-b">
-            <div class="chips" id="trendChips" style="margin-bottom:16px"></div>
-            <div class="chart" id="trend"></div>
-          </div>
+      <div class="card launch" id="launch">
+        <div class="launch-h"><h2>Start an attempt</h2><p id="launchTip"></p></div>
+        <div class="modes" id="modeCards" role="radiogroup" aria-label="Attempt type">
+          <button class="mcard" data-mode="full" role="radio"><span class="m-top"><b>Full exam</b><span class="m-radio"></span></span><span class="m-d">Same length, timing and domain weighting as the real exam.</span><span class="m-meta"></span></button>
+          <button class="mcard" data-mode="practice" role="radio"><span class="m-top"><b>Practice</b><span class="m-radio"></span></span><span class="m-d">A short session on every domain or just one.</span><span class="m-meta"></span></button>
+          <button class="mcard" data-mode="missed" role="radio"><span class="m-top"><b>Review mistakes</b><span class="m-radio"></span></span><span class="m-d">Only the questions you answered wrong before.</span><span class="m-meta"></span></button>
         </div>
-        <div class="card start">
-          <div class="card-h"><div><h2>New attempt</h2><span class="sub" id="startSub"></span></div></div>
-          <div class="card-b">
-            <div class="seg" id="modeSeg">
-              <span class="pill"></span>
-              <button data-mode="full" aria-pressed="true">Full exam</button>
-              <button data-mode="practice" aria-pressed="false">Practice</button>
-              <button data-mode="missed" aria-pressed="false">Missed</button>
+        <div class="launch-f">
+          <div class="field" id="domField"><span>Domain</span><div id="domDD"></div></div>
+          <div class="opt-row" id="fbRow"><div>Show the answer after each question<small>Learn as you go. The real exam does not do this.</small></div><button class="switch alt" id="fbSw" role="switch" aria-checked="false" aria-label="Show the answer after each question"></button></div>
+          <div class="launch-go"><span class="launch-sum" id="launchSum"></span><button class="btn primary lg" id="startBtn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12.5-7.5z"/></svg>Start attempt</button></div>
+        </div>
+      </div>
+      <div class="onboard hidden" id="onboard"></div>
+      <div id="dashData">
+        <div class="kpis" id="kpis"></div>
+        <div class="ov-grid">
+          <div class="card span2">
+            <div class="card-h"><div><h2>Score trend</h2><span class="sub">Your score on each attempt. Select domains to compare them.</span></div><div class="legend"><span><i></i>Overall</span><span><i class="t"></i>Target</span></div></div>
+            <div class="card-b">
+              <div class="chips" id="trendChips" style="margin-bottom:16px"></div>
+              <div class="chart" id="trend"></div>
             </div>
-            <div class="mode-info" id="modeInfo"></div>
-            <div class="field" id="domField"><span>Domain</span><div id="domDD"></div></div>
-            <div class="opt-row" id="fbRow"><div>Show answer after each question<small>Explanations as you go, unlike the real exam</small></div><button class="switch alt" id="fbSw" role="switch" aria-checked="false" aria-label="Show answer after each question"></button></div>
-            <button class="btn primary lg block" id="startBtn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12.5-7.5z"/></svg>Start attempt</button>
-            <div id="recent"></div>
           </div>
-        </div>
-        <div class="card">
-          <div class="card-h"><div><h2>Domain mastery</h2><span class="sub">All-time vs last attempt</span></div></div>
-          <div class="card-b"><div class="chart radar" id="radar"></div>
-            <div class="legend" style="justify-content:center;margin-top:6px"><span><i></i>All-time</span><span><i class="l2"></i>Last attempt</span><span><i class="t"></i>Target</span></div>
+          <div class="card" id="focusCard"></div>
+          <div class="card">
+            <div class="card-h"><div><h2>Domain mastery</h2><span class="sub">All-time accuracy vs your last attempt</span></div></div>
+            <div class="card-b"><div class="chart radar" id="radar"></div>
+              <div class="legend" style="justify-content:center;margin-top:6px"><span><i></i>All-time</span><span><i class="l2"></i>Last attempt</span><span><i class="t"></i>Target</span></div>
+            </div>
           </div>
-        </div>
-        <div class="card">
-          <div class="card-h"><div><h2>Study activity</h2><span class="sub">Last 16 weeks</span></div></div>
-          <div class="card-b" id="heat"></div>
-        </div>
-        <div class="card" id="focusCard"></div>
-        <div class="card span3">
-          <div class="card-h"><div><h2>Most missed</h2><span class="sub">Select a question to reveal the answer</span></div></div>
-          <div class="card-b" style="padding:10px 0 6px"><ul class="acc" id="missed"></ul></div>
+          <div class="card">
+            <div class="card-h"><div><h2>Study activity</h2><span class="sub">Questions answered per day, last 16 weeks</span></div></div>
+            <div class="card-b" id="heat"></div>
+          </div>
+          <div class="card">
+            <div class="card-h"><div><h2>Recent attempts</h2><span class="sub">Open History for the full list</span></div></div>
+            <div class="card-b" id="recent"></div>
+          </div>
+          <div class="card span3">
+            <div class="card-h"><div><h2>Most missed questions</h2><span class="sub">Select a question to see the answer and why</span></div></div>
+            <div class="card-b" style="padding:10px 0 6px"><ul class="acc" id="missed"></ul></div>
+          </div>
         </div>
       </div>
     </section>
@@ -809,11 +869,11 @@ code,.mono{font-family:var(--mono)}
 
     <!-- FORMAT -->
     <section class="view hidden" id="v-format">
-      <div class="vhead"><div><h1>Exam format</h1><p>The SailPoint Identity Security Administrator exam uses Discrete Option Multiple Choice. This environment reproduces its rules so the real thing feels familiar.</p></div></div>
+      <div class="vhead"><div><h1>Exam guide</h1><p id="fmtSub"></p></div></div>
       <div class="facts">
-        <div class="card fact"><b class="num">74</b><span>Questions, at most</span></div>
+        <div class="card fact"><b class="num" id="fN">74</b><span>Questions, at most</span></div>
         <div class="card fact"><b class="num">120</b><span>Minutes of seat time</span></div>
-        <div class="card fact"><b class="num">8</b><span>Blueprint domains</span></div>
+        <div class="card fact"><b class="num" id="fD">8</b><span>Blueprint domains</span></div>
         <div class="card fact"><b class="num">2</b><span>Attempts included</span></div>
       </div>
       <div class="steps">
@@ -867,7 +927,7 @@ code,.mono{font-family:var(--mono)}
 <div class="exam hidden" id="exam" aria-live="polite">
   <div class="ex-top">
     <div class="in">
-      <div class="ttl"><b>ISC Admin Prep</b><span id="exMode"></span></div>
+      <div class="ttl"><b>ISC Prep</b><span id="exMode"></span></div>
       <div class="ex-count num">Question <b id="exN">1</b> of <span id="exT">74</span></div>
       <div class="ex-timer num" id="exTimer">
         <svg width="26" height="26" viewBox="0 0 26 26"><circle cx="13" cy="13" r="10.5" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="3"/><circle class="c" cx="13" cy="13" r="10.5" fill="none" stroke="#29EC72" stroke-width="3" stroke-linecap="round" stroke-dasharray="65.97" stroke-dashoffset="0"/></svg>
@@ -901,16 +961,19 @@ code,.mono{font-family:var(--mono)}
 <div class="tip" id="tip"></div>
 
 <script>
-const DOMAINS = {
-  1:"Platform", 2:"Virtual Appliances", 3:"Identity and Lifecycle Management",
-  4:"Provisioning", 5:"Access Management", 6:"Supporting Governance",
-  7:"Sources", 8:"General knowledge for Identity Security Administrators"
+const EXAMS = {
+  admin:{key:"admin", name:"Identity Security Administrator", short:"Administrator", n:74,
+    domains:{1:"Platform",2:"Virtual Appliances",3:"Identity and Lifecycle Management",4:"Provisioning",5:"Access Management",6:"Supporting Governance",7:"Sources",8:"General knowledge for Identity Security Administrators"},
+    shorts:{1:"Platform",2:"Virtual Appliances",3:"Identity & Lifecycle",4:"Provisioning",5:"Access Mgmt",6:"Governance",7:"Sources",8:"IGA Fundamentals"},
+    weights:{1:13,2:7,3:11,4:9,5:9,6:11,7:9,8:5}, official:true},
+  engineer:{key:"engineer", name:"Identity Security Engineer", short:"Engineer", n:73,
+    domains:{1:"Identity and Lifecycle Management",2:"Provisioning",3:"Access Management",4:"Virtual Appliances",5:"Sources",6:"General knowledge for Identity Security Engineer",7:"Platforms",8:"Supporting Governance",9:"Architecture",10:"Rules and Transforms"},
+    shorts:{1:"Identity & Lifecycle",2:"Provisioning",3:"Access Mgmt",4:"Virtual Appliances",5:"Sources",6:"IGA Fundamentals",7:"Platforms",8:"Governance",9:"Architecture",10:"Rules & Transforms"},
+    weights:{1:8,2:10,3:3,4:13,5:7,6:7,7:11,8:5,9:5,10:4}, official:false}
 };
-const SHORT = {1:"Platform",2:"Virtual Appliances",3:"Identity & Lifecycle",4:"Provisioning",5:"Access Mgmt",6:"Governance",7:"Sources",8:"IGA Fundamentals"};
-const WEIGHTS = {1:13,2:7,3:11,4:9,5:9,6:11,7:9,8:5};
-const DKEYS = Object.keys(DOMAINS);
+let EXAM, Q, DOMAINS, SHORT, WEIGHTS, DKEYS;
 const DC = d => "var(--d" + d + ")";
-const Q = [
+const ADMIN_Q = [
 // 1. Platform
 {d:1,q:"You want to find all identities in the Finance department using Search. Which query works?",c:"attributes.department:Finance",w:["SELECT * FROM identities WHERE department = “Finance”","identity(department) == Finance","dept=Finance&&type=identity"],e:"ISC Search uses Elasticsearch-style query string syntax; identity attributes live under attributes.*."},
 {d:1,q:"Which Search object type shows the record of provisioning operations performed on accounts (e.g., create, disable, add entitlement)?",c:"Account activities",w:["Roles","Access profiles","Transforms"],e:"Account activities record each provisioning operation and its status, and they are the starting point for monitoring and investigating provisioning."},
@@ -1080,7 +1143,113 @@ const Q = [
 {d:8,q:"What is an orphan account?",c:"An account with no valid owner identity, which is a security risk",w:["An account with many entitlements","A new account","An account in an authoritative source"],e:"Orphan accounts often belong to former employees or are unmanaged."},
 {d:8,q:"What is role-based access control (RBAC)?",c:"Granting access based on job roles instead of to each individual",w:["Granting access randomly","Granting access only by request","Granting access by password strength"],e:"RBAC simplifies access management and audits."}
 ];
-Q.forEach((q, i) => q.id = i);
+const ENG_NEW = [
+// 1. Identity and Lifecycle Management
+{d:1,q:"What is the correct order to implement an identity model for a new HR source?",c:"Connect and aggregate the HR source → create the Identity Profile → map identity attributes → preview → process the identities",w:["Create roles → connect the HR source → certify → map attributes","Map attributes → connect the HR source → delete old identities → preview","Create the Identity Profile → run a certification → aggregate the HR source"],e:"Identities come from an aggregated authoritative source. The profile and its mappings are then validated with Preview before identities are processed."},
+{d:1,q:"Employees come from Workday and contractors from a separate CSV source. How many Identity Profiles are typical?",c:"Two, one per authoritative source, with priority deciding which profile wins for people in both",w:["One profile shared by both sources","One profile per department","None, because contractors do not need identities"],e:"Each authoritative source is tied to its own Identity Profile, and priority resolves people present in more than one source."},
+{d:1,q:"Some contractors were hired as employees and now exist in both authoritative sources. What decides which profile governs them?",c:"The Identity Profile priority you configure",w:["The most recently created profile","Whichever source aggregates first that day","The profile with more mapped attributes"],e:"Priority makes the result predictable. The employee profile is usually given the higher priority."},
+{d:1,q:"Which design correctly models joiner and leaver stages?",c:"Lifecycle states such as prehire, active, terminated and post-terminated, each with its own access actions",w:["One role per stage with manual assignment","A separate certification campaign per stage","A separate tenant for each stage"],e:"Lifecycle states let you define enabling, disabling and access changes for each stage of the identity lifecycle."},
+{d:1,q:"Accounts must be disabled on termination and access fully removed 90 days later. Which design fits?",c:"A terminated state that disables accounts, then a post-terminated state driven by a date transform that removes access",w:["Delete each identity by hand after 90 days","An SoD policy that blocks terminated users","A Search subscription that emails HR"],e:"Chaining lifecycle states with date-based logic automates both steps of the leaver process."},
+{d:1,q:"How do you configure manager correlation for an HR source?",c:"Point the account attribute that holds the manager’s ID to the identity attribute it should match, such as employee ID",w:["Create a role for each manager","Assign managers in a certification campaign","Ask each user to choose a manager in the Request Center"],e:"Manager correlation links each identity to the identity of its manager using matching attribute values."},
+{d:1,q:"An identity attribute needs logic too complex for transforms. Where is a rule attached?",c:"In the Identity Profile’s attribute mapping, choosing a rule as the complex data source",w:["In the access profile settings","In the VA config.yaml file","In the Request Center configuration"],e:"Identity Attribute rules are selected in the mapping of the attribute they calculate."},
+{d:1,q:"The lifecycle state should change automatically once the termination date has passed. What drives this?",c:"A transform on cloudLifecycleState that compares the termination date to the current date, for example with dateCompare",w:["A quarterly certification","Manual edits by the help desk","An SoD policy on terminated users"],e:"Transforms recalculate cloudLifecycleState during identity processing, so date logic moves identities between states."},
+// 2. Provisioning
+{d:2,q:"An identity loses a criteria-based role, but the same entitlement is also granted by an access profile it requested and still holds. What happens to the entitlement?",c:"It stays, because another assignment still grants it",w:["It is removed anyway","The account is deleted","The original request is cancelled"],e:"ISC only removes access that is no longer granted by any assignment."},
+{d:2,q:"What is a best practice when testing provisioning?",c:"Use a sandbox or test identities, then verify the account activities and the result in the target system",w:["Test directly on executive accounts in production","Skip testing because connectors are certified","Only test aggregations, not provisioning"],e:"Controlled tests confirm both what ISC sent and what the target system actually did."},
+{d:2,q:"A Create Account policy uses an identity attribute that is empty for some users. What is the best practice?",c:"Handle missing values, for example with firstValid or a default, so account creation does not fail",w:["Ignore it and fix failures later","Delete the identities without that value","Create an SoD policy for those users"],e:"Robust provisioning policies anticipate missing data instead of failing at creation time."},
+{d:2,q:"What is needed for Attribute Sync to update an account attribute?",c:"A mapped identity attribute, a correlated account and a source configured to sync that attribute",w:["An active certification campaign","A delimited file source only","A request-response Event Trigger"],e:"Attribute Sync pushes identity attribute values to correlated accounts on sources where sync is enabled."},
+{d:2,q:"Which provisioning policies can a source have?",c:"Policies for creating, updating, enabling and disabling accounts",w:["Only a create policy","Certify and approve policies","Search and report policies"],e:"Each policy defines the attributes sent to the connector for that type of operation."},
+{d:2,q:"An approved request ends in a failed account activity. What is the first troubleshooting step?",c:"Read the error in the account activity and check the connector logs on the VA",w:["Approve the request again","Delete and recreate the source","Disable the identity"],e:"The account activity shows the connector’s error, and VA logs provide the detail behind it."},
+{d:2,q:"Users can have several accounts on the same source. What is a best practice for provisioning?",c:"Make correlation unambiguous and define clearly which account should receive the access",w:["Let every account receive all access","Disable correlation on the source","Delete the extra accounts automatically"],e:"Ambiguous account ownership leads to access landing on the wrong account."},
+{d:2,q:"Why should provisioning policies and transforms be versioned and tested before production?",c:"A mistake in them affects every account created or updated on that source",w:["Because they cannot be edited later","Because they run only once","Because they replace certifications"],e:"Provisioning configuration has broad impact, so changes should be tested in a sandbox first."},
+// 3. Access Management
+{d:3,q:"What are segments used for?",c:"Limiting which access items a group of identities can see and request",w:["Grouping Virtual Appliances","Splitting large aggregations","Encrypting data at rest"],e:"Segments scope the access catalog to identities that match defined criteria."},
+{d:3,q:"Contractors should only see a small part of the access catalog in the Request Center. What do you use?",c:"Segments",w:["Lifecycle states","Transforms","VA clusters"],e:"Segments control visibility of requestable access per audience."},
+{d:3,q:"Where do you configure reminders and escalations for access request approvals?",c:"In the access request approval settings",w:["In the VA configuration","In a transform","In the Identity Profile"],e:"Reminders and escalation keep approvals from stalling."},
+{d:3,q:"What is a good practice when testing access management configuration?",c:"Use test identities with different attributes to confirm that role criteria, segments and approvals behave as expected",w:["Test only with an Admin account","Skip testing because roles cannot fail","Test by changing production HR data"],e:"Varied test identities expose criteria and visibility mistakes before users see them."},
+// 4. Virtual Appliances
+{d:4,q:"Which operating system does the Virtual Appliance run?",c:"Flatcar Container Linux",w:["Windows Server","Ubuntu Desktop","Red Hat with a GUI"],e:"The VA is a container-based Linux appliance."},
+{d:4,q:"Which software runs on the VA?",c:"Containerized services such as the Cloud Connector Gateway (ccg) and charon",w:["A full copy of the ISC user interface","Microsoft SQL Server","Active Directory domain services"],e:"The VA runs the services that execute connector operations and manage the appliance."},
+{d:4,q:"Which command lists the service containers running on the VA?",c:"sudo docker ps",w:["ipconfig /all","Get-Service","tasklist"],e:"VA services run as containers, so container commands show their state."},
+{d:4,q:"Where are VA log files such as ccg.log stored?",c:"/home/sailpoint/log/",w:["C:\\SailPoint\\logs","/etc/ccg/","Only in the tenant’s Search"],e:"Connector logs are written locally on the VA for troubleshooting."},
+{d:4,q:"Which file on the VA holds the key passphrase used when the VA is set up with the tenant?",c:"config.yaml",w:["proxy.yaml","ccg.log","static.network"],e:"config.yaml contains the settings used to pair the VA, including the key passphrase."},
+{d:4,q:"What must be identical for all VAs in the same cluster?",c:"The key passphrase",w:["The IP address","The hostname","The VM size"],e:"VAs in a cluster share the same key material, so they need the same passphrase."},
+{d:4,q:"Where do you set a static IP address on the VA?",c:"In the static.network file",w:["In config.yaml","In the Identity Profile","In proxy.yaml"],e:"Network settings are defined at the operating system level of the VA."},
+{d:4,q:"Where should VAs typically be deployed?",c:"On the internal network close to the sources they manage, with outbound access to SailPoint",w:["In the DMZ with inbound ports open to the internet","On an administrator’s laptop","On an isolated network with no internet access"],e:"Proximity to sources and outbound connectivity are the two key placement requirements."},
+{d:4,q:"What is required of every VA in a cluster?",c:"It must be able to reach every source assigned to that cluster",w:["It must reach only one source","All VAs must run on the same physical host","Only the first VA needs network access"],e:"Any VA in the cluster may process any operation for the cluster’s sources."},
+{d:4,q:"A cluster spans two data centers for disaster recovery. What must you plan for?",c:"Each VA must still reach all of the cluster’s sources, so cross-site latency and firewall rules matter",w:["Aggregations will stop permanently","Credentials will be stored in plain text","The tenant must be duplicated"],e:"Spreading a cluster improves resilience, but connectivity requirements still apply to every VA."},
+{d:4,q:"A team wants to install an antivirus agent and extra packages on the VA. Is that valid?",c:"No, the VA is a managed appliance and installing unsupported software is not supported",w:["Yes, any software can be installed","Yes, but only on the first VA of the cluster","Yes, if it is requested in the Request Center"],e:"Changing the appliance can break updates and services, so it is not supported."},
+{d:4,q:"A source on a VA fails with “connection timed out.” What is the most likely cause?",c:"A firewall or network route blocking the VA from the target host and port",w:["The Identity Profile priority","An SoD policy","An active certification campaign"],e:"Timeouts point to network reachability rather than credentials or configuration in the tenant."},
+{d:4,q:"How can you check from the VA whether a target host and port are reachable?",c:"Run a network command such as nc or curl from the VA",w:["Use the Request Center","Launch a certification campaign","Preview a transform"],e:"Testing from the VA itself proves what the connector can actually reach."},
+{d:4,q:"What is the purpose of the charon service on the VA?",c:"Managing the appliance itself, including updates and service orchestration",w:["Running certification campaigns","Hosting the ISC user interface","Storing identities"],e:"charon keeps the VA’s services running and up to date."},
+// 5. Sources
+{d:5,q:"What is the purpose of a service desk integration?",c:"Creating tickets so service desk staff can provision access in systems ISC cannot change directly",w:["Replacing the Virtual Appliance","Aggregating identities from HR","Running transforms on accounts"],e:"Service desk integrations handle provisioning for disconnected applications."},
+{d:5,q:"Which Windows component does the Active Directory connector use for operations such as password changes and running scripts?",c:"IQService",w:["ccg on the domain controller","charon","SQL Server Agent"],e:"IQService is installed on a Windows server and performs operations that need a Windows host."},
+{d:5,q:"How does the Active Directory connector perform delta aggregation?",c:"Using Active Directory’s DirSync change tracking",w:["By comparing CSV exports","By reading the Windows event log","It cannot run delta aggregations"],e:"DirSync returns only objects that changed since the last aggregation."},
+{d:5,q:"Before connecting to an Oracle database with the JDBC connector, what must you provide?",c:"The JDBC driver JAR for that database",w:["An IQService installation","A delimited file","An SMTP server"],e:"The connector needs the vendor driver to talk to the database."},
+{d:5,q:"How does the JDBC connector know which accounts to read?",c:"From the SQL query configured on the source",w:["From an LDAP filter","From the Identity Profile","From a certification campaign"],e:"The account query defines exactly which rows become accounts."},
+{d:5,q:"Which connector fits a directory such as OpenLDAP?",c:"LDAP",w:["JDBC","Delimited File","Web Services"],e:"LDAP directories are integrated with the LDAP connector."},
+{d:5,q:"What is the typical flow of an account aggregation?",c:"Read accounts from the source → correlate them to identities → update and process the identities",w:["Process identities → read accounts → correlate","Correlate → read accounts → create the source","Certify → read accounts → correlate"],e:"Accounts must be read before they can be correlated and reflected on identities."},
+{d:5,q:"How can you keep sensitive HR attributes, such as salary, out of the cloud?",c:"Leave them out of the account schema so they are never aggregated",w:["Mark them as privileged entitlements","Hide them with a transform after aggregation","Hide them in the Request Center"],e:"Only attributes in the schema are read, so excluding them prevents them from leaving the source."},
+{d:5,q:"How can you aggregate only part of Active Directory, for example a single OU?",c:"Configure the search scope or filter on the source",w:["Use a certification campaign","Use work reassignment","Use an SoD policy"],e:"Scoping the source controls which objects are read during aggregation."},
+{d:5,q:"An aggregation fails with “invalid credentials.” What do you check?",c:"The service account username, password and its status in the target system",w:["The Identity Profile priority","The VA operating system version","The Search subscription"],e:"Authentication errors come from the account the connector uses to log in."},
+// 6. General knowledge
+{d:6,q:"What is an advantage of a microservice architecture?",c:"Services can be scaled, deployed and recovered independently",w:["All features share one deployment","A failure in one part always stops everything","It removes the need for APIs"],e:"Independent services improve scalability and fault isolation."},
+{d:6,q:"Which HTTP method is typically used to partially update a resource in ISC APIs?",c:"PATCH",w:["GET","DELETE","HEAD"],e:"PATCH changes specific fields without replacing the whole object."},
+{d:6,q:"Which format do ISC PATCH requests typically use?",c:"JSON Patch (application/json-patch+json)",w:["XML","CSV","YAML"],e:"JSON Patch describes operations such as replace, add and remove on specific paths."},
+{d:6,q:"Which HTTP method retrieves a resource without changing it?",c:"GET",w:["POST","PATCH","DELETE"],e:"GET is a read-only operation."},
+{d:6,q:"What does a 401 Unauthorized response usually mean?",c:"The request has no valid access token, or the token expired",w:["The resource was created","The rate limit was exceeded","The server is in maintenance"],e:"Obtain a new token and send it in the Authorization header."},
+{d:6,q:"What does a 403 Forbidden response usually mean?",c:"The token is valid but lacks permission for that operation",w:["The token is missing","The resource does not exist","The request body is too large"],e:"Authorization failed even though authentication succeeded."},
+// 7. Platforms
+{d:7,q:"Which OAuth 2.0 grant type does a script using a Personal Access Token use?",c:"Client credentials",w:["Implicit","Password grant with the user’s login","Device code"],e:"The PAT client ID and secret are exchanged for an access token with the client credentials grant."},
+{d:7,q:"Which OAuth 2.0 grant type lets an application act on behalf of a logged-in user?",c:"Authorization code",w:["Client credentials","A static API key","Basic authentication"],e:"The user signs in and the application receives a code it exchanges for tokens."},
+{d:7,q:"How should an API client handle an HTTP 429 response?",c:"Back off and retry later, because the rate limit was exceeded",w:["Retry immediately in a tight loop","Treat it as a success","Delete the Personal Access Token"],e:"429 means too many requests in a period of time."},
+{d:7,q:"In a non-production tenant you must not email real users. What do you configure?",c:"Email testing, redirecting all notifications to a test mailbox",w:["Disable the Virtual Appliance","Delete all email attributes","Turn off the Request Center"],e:"Redirecting notifications allows realistic testing without reaching real people."},
+{d:7,q:"What is the correct structure of a workflow?",c:"Trigger → actions and operators → end step",w:["End step → trigger → actions","Actions → end step → trigger","Operators → trigger → end step"],e:"A workflow starts with one trigger, runs its steps and finishes in an end step."},
+{d:7,q:"What is a best practice for monitoring the platform?",c:"Subscribe to events and regularly review source, VA and account activity health",w:["Check the UI only after users complain","Disable notifications to reduce noise","Rely on certifications for monitoring"],e:"Proactive monitoring catches failures before they affect users."},
+{d:7,q:"An integration only needs to read identities. What access should it get?",c:"The least privilege needed, such as a token from a user with only the required permissions",w:["Full Admin, to avoid permission errors","The tenant owner’s password","No authentication"],e:"Least privilege limits the impact of a leaked credential."},
+{d:7,q:"Where do you find activity records when troubleshooting a failed change?",c:"Search events and account activities, plus the identity’s history",w:["The VA’s static.network file","The transform list","The Request Center catalog"],e:"These records show what happened, when, and with which result."},
+{d:7,q:"What is a good practice when testing a new workflow?",c:"Test it with sample input and check its execution history before enabling it for real events",w:["Enable it directly in production","Skip testing because workflows cannot fail","Test it only by asking users"],e:"Execution history shows the input and output of each step."},
+{d:7,q:"A help desk analyst must view identities and reset passwords, but not change configuration. What should you grant?",c:"The Helpdesk user level",w:["Admin","Cert Admin","Source Sub-Admin for every source"],e:"Grant the level that matches the task, following least privilege."},
+// 8. Supporting Governance
+{d:8,q:"What is a best practice before launching certifications?",c:"Clean up data first: aggregate entitlements, add descriptions and owners, and fix identities without managers",w:["Launch immediately and fix issues during the review","Delete all roles","Disable notifications for reviewers"],e:"Good data makes reviewer decisions faster and more accurate."},
+{d:8,q:"Auditors want the owner of a critical application to review all access to it. Which campaign type fits best?",c:"Source Owner",w:["Manager","Role Composition","Search"],e:"Source Owner campaigns send each source’s access to its owner."},
+{d:8,q:"Many items in a Manager campaign have no reviewer. What data issue is likely?",c:"Identities without a correlated manager",w:["An outdated VA version","Missing transforms on the source","A disabled SoD policy"],e:"Manager campaigns depend on manager correlation."},
+{d:8,q:"When should an SoD policy be applied?",c:"When two access items together create a risk, such as creating and approving payments",w:["When a user has more than five entitlements","For every new role","Only for administrators"],e:"SoD policies target toxic combinations of access."},
+{d:8,q:"An access request should be approved by a group of subject matter experts. Which approver do you choose?",c:"A governance group",w:["The Virtual Appliance","A transform","A Search subscription"],e:"Any member of the governance group can decide."},
+{d:8,q:"Reviewers only see technical entitlement names such as CN=APP_RW_01. How do you fix this before the campaign?",c:"Add display names and descriptions to the entitlements",w:["Rename the groups in the target system","Remove the entitlements from the campaign","Change the campaign type"],e:"Readable metadata helps reviewers make informed decisions."},
+// 9. Architecture
+{d:9,q:"How is data protected in transit between users, ISC and the VA?",c:"With TLS encryption over HTTPS",w:["With plain HTTP inside a VPN only","It is not encrypted in transit","With FTP and signed files"],e:"All communication uses encrypted connections."},
+{d:9,q:"How are source credentials, such as service account passwords, protected?",c:"They are encrypted with keys tied to the VA cluster, so they can only be decrypted on the VA",w:["They are stored in plain text in the tenant","They are emailed to the source owner","They are hashed and cannot be used by connectors"],e:"This design keeps usable credentials out of reach of the cloud."},
+{d:9,q:"Which is the standard URL format of a tenant’s user interface?",c:"https://{tenant}.identitynow.com",w:["https://identitynow.com/{tenant}","https://{tenant}.sailpoint.local","https://login.sailpoint.com/{tenant}/ui"],e:"Each tenant has its own subdomain."},
+{d:9,q:"What is the base URL of the ISC REST API for the tenant “acme”?",c:"https://acme.api.identitynow.com",w:["https://api.acme.identitynow.com","https://acme.identitynow.com/rest","https://identitynow.com/api/acme"],e:"API calls go to the tenant’s api subdomain."},
+{d:9,q:"How does the VA receive work from the cloud without any inbound connections?",c:"It polls cloud message queues over outbound HTTPS",w:["The cloud opens an SSH session on the VA","It reads jobs from an email inbox","It accepts inbound connections on port 8443"],e:"Outbound polling means no inbound firewall ports are needed."},
+{d:9,q:"What does multi-tenant processing mean in ISC?",c:"Customers share the platform’s services while each tenant’s data stays logically isolated",w:["Each customer gets a dedicated physical server","All tenants share the same identities","Tenants can read each other’s configuration"],e:"Shared infrastructure with isolated data is the basis of the SaaS model."},
+{d:9,q:"Which component provides redundancy for connectivity to on-premises sources?",c:"Multiple VAs in the same cluster",w:["A second Identity Profile","A backup transform","A second Search subscription"],e:"If one VA fails, another in the cluster continues the work."},
+{d:9,q:"Why is outbound-only communication from the VA attractive to many clients?",c:"It avoids opening inbound firewall ports into the corporate network",w:["It lets aggregations run offline","It removes the need for encryption","It lets the cloud log in to sources directly"],e:"Security teams generally prefer not to expose internal networks to inbound traffic."},
+{d:9,q:"A customer has a sandbox and a production tenant. What is true?",c:"They are separate tenants with separate URLs and configuration",w:["They share identities automatically","Changes in sandbox apply to production instantly","They must share the same VA cluster"],e:"Configuration is moved between them deliberately, for example with SP-Config."},
+// 10. Rules and Transforms
+{d:10,q:"In which language are Identity Security Cloud rules written?",c:"BeanShell, which uses Java syntax",w:["Python","JavaScript (Node.js)","Go"],e:"Rules are BeanShell scripts that can use Java classes and APIs."},
+{d:10,q:"What is the main difference between cloud rules and connector rules?",c:"Cloud rules run in the ISC cloud and must be reviewed by SailPoint; connector rules run on the VA and can be managed through the API",w:["Cloud rules run on the VA; connector rules run in the cloud","Only connector rules are written in BeanShell","Any admin can upload cloud rules from the UI without review"],e:"Code that runs in the shared cloud requires review before deployment."},
+{d:10,q:"A requirement can be met with either a transform or a rule. What is the recommended choice?",c:"The transform, because it is configuration, needs no code review and is easier to maintain",w:["A cloud rule, because it always performs better","A connector rule, because it runs closer to the source","A workflow, because transforms are deprecated"],e:"Use rules only when transforms cannot express the logic."},
+{d:10,q:"Which rule modifies the provisioning plan right before it is sent to the connector?",c:"Before Provisioning rule",w:["Correlation rule","Identity Attribute rule","BuildMap rule"],e:"It can add, change or remove operations in the plan."},
+{d:10,q:"Which rule calculates an identity attribute with logic too complex for transforms?",c:"Identity Attribute rule",w:["Before Provisioning rule","JDBC Provision rule","BuildMap rule"],e:"It is selected in the Identity Profile mapping."},
+{d:10,q:"For a JDBC source, which rule implements account creation and updates in the database?",c:"JDBC Provision rule",w:["Identity Attribute rule","Correlation rule","Before Provisioning rule"],e:"The JDBC connector delegates provisioning SQL to this rule."},
+{d:10,q:"Which rule can customize each record of a delimited file during aggregation?",c:"BuildMap rule",w:["JDBC Provision rule","Before Provisioning rule","Manager Correlation rule"],e:"BuildMap builds the attribute map for each row that is read."},
+{d:10,q:"Which transform removes accents, turning “José” into “Jose”?",c:"decomposeDiacriticalMarks",w:["normalizeNames","trim","lower"],e:"It strips diacritical marks, which is useful for usernames and emails."},
+{d:10,q:"Which transform returns an attribute of another identity, such as the manager’s email?",c:"getReferenceIdentityAttribute",w:["accountAttribute","identityAttribute","reference"],e:"It reads an attribute from a referenced identity, commonly the manager."},
+{d:10,q:"Which transform reads a value from an account on a specific source?",c:"accountAttribute",w:["getReferenceIdentityAttribute","static","dateMath"],e:"It takes the source and attribute name and returns the account value."},
+{d:10,q:"Which transform supports Velocity templates to build a value like “$firstName.$lastName”?",c:"static",w:["concat","replace","substring"],e:"The static transform evaluates Velocity Template Language with the variables you define."},
+{d:10,q:"How do you reuse an existing transform inside another one?",c:"With the reference transform, pointing to the existing transform’s id",w:["By copying its JSON every time","With the accountAttribute transform","Only with a cloud rule"],e:"Referencing keeps shared logic in one place."},
+{d:10,q:"Which transform formats phone numbers into the international E.164 standard?",c:"e164phone",w:["leftPad","replaceAll","substring"],e:"It normalizes phone numbers for systems that require E.164."},
+{d:10,q:"Which transform adds or subtracts time from a date, such as termination date plus 30 days?",c:"dateMath",w:["dateFormat","dateCompare","indexOf"],e:"dateMath supports expressions to add, subtract and round dates."},
+{d:10,q:"Which transform replaces several patterns at once using a table of patterns and replacements?",c:"replaceAll",w:["split","upper","trim"],e:"replaceAll applies each pattern in its table to the input."},
+{d:10,q:"How are transforms created and managed programmatically?",c:"Through the transforms endpoints of the ISC REST API",w:["Only by editing files on the VA","Through the Request Center","By uploading a BeanShell file"],e:"Transforms are JSON objects managed with the API, and also in the UI."}
+];
+const ENG_MAP = {1:7,2:4,3:1,4:2,5:3,6:8,7:5,8:6};
+EXAMS.admin.bank = ADMIN_Q;
+EXAMS.engineer.bank = ENG_NEW.concat(ADMIN_Q.map(q => Object.assign({}, q, {d:ENG_MAP[q.d]})));
+Object.values(EXAMS).forEach(x => x.bank.forEach((q, i) => q.id = i));
 
 /* ---------- Utilities ---------- */
 const $ = s => document.querySelector(s);
@@ -1113,22 +1282,34 @@ function countUp(el, to, suffix){
 }
 
 /* ---------- Storage ---------- */
-const KEY = "asper-isc-prep-v3";
-let DB = {attempts:[], qstats:{}, target:70, theme:"dark"};
+const KEY = "asper-isc-prep-v4";
+const blankExam = () => ({attempts:[], qstats:{}, target:70});
+let STORE = {theme:"dark", current:"admin", exams:{admin:blankExam(), engineer:blankExam()}};
+let DB;
 function load(){
   try {
     const d = JSON.parse(localStorage.getItem(KEY) || "null");
-    if (d) { DB = Object.assign(DB, d); return; }
+    if (d && d.exams) { STORE = Object.assign(STORE, d); STORE.exams = Object.assign({admin:blankExam(), engineer:blankExam()}, d.exams); return; }
+    const v3 = JSON.parse(localStorage.getItem("asper-isc-prep-v3") || "null");
+    if (v3) { STORE.theme = v3.theme || "dark"; STORE.exams.admin = {attempts:v3.attempts || [], qstats:v3.qstats || {}, target:v3.target || 70}; return; }
     const old = JSON.parse(localStorage.getItem("isc-admin-prep-v2") || "null");
-    if (old) { DB.attempts = (old.attempts || []).map(a => Object.assign({qs:[]}, a)); DB.qstats = old.qstats || {}; DB.target = old.target || 70; }
+    if (old) STORE.exams.admin = {attempts:(old.attempts || []).map(a => Object.assign({qs:[]}, a)), qstats:old.qstats || {}, target:old.target || 70};
   } catch(e){}
 }
-function save(){ try { localStorage.setItem(KEY, JSON.stringify(DB)); } catch(e){} }
-load();
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(STORE)); } catch(e){} }
+function setExam(k){
+  STORE.current = EXAMS[k] ? k : "admin";
+  EXAM = EXAMS[STORE.current]; Q = EXAM.bank; DOMAINS = EXAM.domains; SHORT = EXAM.shorts; WEIGHTS = EXAM.weights; DKEYS = Object.keys(DOMAINS);
+  DB = STORE.exams[STORE.current];
+}
+load(); setExam(STORE.current);
 
 /* ---------- Theme ---------- */
-function applyTheme(){ document.documentElement.dataset.theme = DB.theme; $("#themeSw").setAttribute("aria-checked", DB.theme === "light"); }
-$("#themeSw").onclick = () => { DB.theme = DB.theme === "light" ? "dark" : "light"; save(); applyTheme(); render(); };
+function applyTheme(){ document.documentElement.dataset.theme = STORE.theme; $("#themeSw").setAttribute("aria-checked", STORE.theme === "light"); }
+$("#themeSw").onclick = () => { STORE.theme = STORE.theme === "light" ? "dark" : "light"; save(); applyTheme(); render(); };
+/* hover help */
+document.addEventListener("pointerover", e => { const t = e.target.closest && e.target.closest("[data-tip]"); if (t) showTip('<div style="color:var(--ink);line-height:1.45">' + esc(t.dataset.tip) + '</div>', e.clientX, e.clientY); });
+document.addEventListener("pointerout", e => { const t = e.target.closest && e.target.closest("[data-tip]"); if (t && !t.contains(e.relatedTarget)) hideTip(); });
 applyTheme();
 
 /* ---------- Tooltip ---------- */
@@ -1266,7 +1447,9 @@ function renderOverview(){
   const last = A[A.length - 1], prev = A[A.length - 2];
   $("#ovSub").textContent = A.length
     ? "Last attempt " + rel(last.t) + " scored " + last.score + "%. " + A.length + (A.length === 1 ? " attempt" : " attempts") + " and " + A.reduce((s, a) => s + a.answered, 0) + " questions answered so far."
-    : Q.length + " questions across the eight blueprint domains. Take a full exam first to set your baseline.";
+    : EXAM.name + " · " + Q.length + " practice questions across " + DKEYS.length + " blueprint domains.";
+  $("#onboard").classList.toggle("hidden", A.length > 0); $("#dashData").classList.toggle("hidden", !A.length);
+  if (!A.length) { renderOnboard(); renderStart(); return; }
   $("#targetVal").textContent = T + "%"; $("#targetBig").textContent = T + "%";
 
   // KPIs
@@ -1276,13 +1459,13 @@ function renderOverview(){
   const time = A.reduce((s, a) => s + a.dur, 0);
   const d = last && prev ? last.score - prev.score : null;
   const tiles = [
-    {cls:"hero", l:"Projected exam score", v:pj ? pj.v : null, suf:"%", s: pj ? (pj.full ? (pj.v >= T ? '<span class="chip up">On target</span>' : '<span class="chip down">' + (T - pj.v) + ' pts to target</span>') + "Blueprint-weighted" : '<span class="chip warn">Partial</span>Not every domain answered yet') : "Weighted by the blueprint after your first attempt"},
-    {l:"Last score", v:last ? last.score : null, suf:"%", s: d === null ? (last ? "First attempt" : "No attempts yet") : '<span class="chip ' + (d > 0 ? "up" : d < 0 ? "down" : "") + '">' + (d > 0 ? "+" : "") + d + ' pts</span>vs previous'},
-    {l:"Best score", v:best, suf:"%", s: best === null ? "No attempts yet" : best >= T ? '<span class="chip up">Target reached</span>' : (T - best) + " pts below target"},
-    {l:"Full exams", v:fulls.length, suf:"", s: fulls.length ? "Avg " + Math.round(fulls.reduce((s, a) => s + a.score, 0) / fulls.length) + "% · " + (A.length - fulls.length) + " practice" : A.length + " practice sessions"},
-    {l:"Study time", v:null, txt: A.length ? fmtDur(time) : "0m", s: A.reduce((s, a) => s + a.answered, 0) + " questions answered"}
+    {cls:"hero", tip:"Your all-time accuracy per domain, weighted by how many questions each domain has on the real exam.", l:"Projected exam score", v:pj ? pj.v : null, suf:"%", s: pj ? (pj.full ? (pj.v >= T ? '<span class="chip up">On target</span>' : '<span class="chip down">' + (T - pj.v) + ' pts to target</span>') + "Blueprint-weighted" : '<span class="chip warn">Partial</span>Not every domain answered yet') : "Weighted by the blueprint after your first attempt"},
+    {tip:"Score of your most recent attempt, compared with the one before it.", l:"Last score", v:last ? last.score : null, suf:"%", s: d === null ? (last ? "First attempt" : "No attempts yet") : '<span class="chip ' + (d > 0 ? "up" : d < 0 ? "down" : "") + '">' + (d > 0 ? "+" : "") + d + ' pts</span>vs previous'},
+    {tip:"Highest score across all attempts of this exam.", l:"Best score", v:best, suf:"%", s: best === null ? "No attempts yet" : best >= T ? '<span class="chip up">Target reached</span>' : (T - best) + " pts below target"},
+    {tip:"Number of full-length attempts. Practice sessions are counted separately.", l:"Full exams", v:fulls.length, suf:"", s: fulls.length ? "Avg " + Math.round(fulls.reduce((s, a) => s + a.score, 0) / fulls.length) + "% · " + (A.length - fulls.length) + " practice" : A.length + " practice sessions"},
+    {tip:"Total time spent in attempts for this exam.", l:"Study time", v:null, txt: A.length ? fmtDur(time) : "0m", s: A.reduce((s, a) => s + a.answered, 0) + " questions answered"}
   ];
-  $("#kpis").innerHTML = tiles.map((t, i) => '<div class="card kpi ' + (t.cls || "") + '"><div class="l">' + (t.cls ? '<span class="dot"></span>' : "") + t.l + '</div><div class="v num" data-k="' + i + '">' + (t.txt ? t.txt : t.v === null ? "–" : "0") + '</div><div class="s">' + t.s + '</div></div>').join("");
+  $("#kpis").innerHTML = tiles.map((t, i) => '<div class="card kpi ' + (t.cls || "") + '"><div class="l">' + (t.cls ? '<span class="dot"></span>' : "") + t.l + (t.tip ? ' <i class="info" data-tip="' + esc(t.tip) + '">i</i>' : '') + '</div><div class="v num" data-k="' + i + '">' + (t.txt ? t.txt : t.v === null ? "–" : "0") + '</div><div class="s">' + t.s + '</div></div>').join("");
   tiles.forEach((t, i) => { if (!t.txt && t.v !== null) countUp($('.kpi .v[data-k="' + i + '"]'), t.v, t.suf ? "<small>" + t.suf + "</small>" : ""); });
 
   // trend chips
@@ -1338,7 +1521,7 @@ function drawRadar(){
   const box = $("#radar"), A = DB.attempts, T = DB.target;
   const agg = domAgg(A), last = A[A.length - 1];
   const W = 460, H = 320, cx = W / 2, cy = 160, R = 100;
-  const ang = i => (-90 + i * 45) * Math.PI / 180;
+  const ang = i => (-90 + i * 360 / DKEYS.length) * Math.PI / 180;
   const pt = (i, v) => [cx + Math.cos(ang(i)) * R * v / 100, cy + Math.sin(ang(i)) * R * v / 100];
   let g = "";
   [25, 50, 75, 100].forEach(v => g += '<polygon points="' + DKEYS.map((d, i) => pt(i, v).join(",")).join(" ") + '" fill="none" stroke="var(--line)"/>');
@@ -1391,9 +1574,9 @@ function drawHeat(){
 
 /* Start card */
 const MODES = {
-  full:{n:74, min:120, label:"Full exam"},
+  full:{n:0, min:120, label:"Full exam"},
   practice:{n:20, min:30, label:"Practice"},
-  missed:{n:20, min:30, label:"Missed review"}
+  missed:{n:20, min:30, label:"Mistakes review"}
 };
 let mode = "full", feedback = false, domDD;
 function domItems(){
@@ -1406,22 +1589,39 @@ function poolFor(m, dom){
   return p;
 }
 function renderStart(){
-  const segBtns = $$("#modeSeg button"), idx = Object.keys(MODES).indexOf(mode);
-  segBtns.forEach(b => { b.setAttribute("aria-pressed", b.dataset.mode === mode); if (b.dataset.mode === "missed") b.disabled = !missedIds().length; });
-  $("#modeSeg .pill").style.transform = "translateX(" + idx * 100 + "%)";
+  const missN = missedIds().length;
+  if (mode === "missed" && !missN) mode = "full";
+  $$("#modeCards .mcard").forEach(b => {
+    const m = b.dataset.mode, on = m === mode;
+    b.setAttribute("aria-pressed", on); b.setAttribute("aria-checked", on);
+    b.disabled = m === "missed" && !missN;
+    b.querySelector(".m-meta").textContent = m === "full" ? EXAM.n + " questions · 120 minutes" : m === "practice" ? "20 questions · 30 minutes" : missN ? missN + " questions to review · 30 minutes" : "Nothing to review yet";
+  });
   if (!domDD) domDD = Dropdown($("#domDD"), {items:domItems(), value:"all", onChange:renderStart});
   else domDD.setItems(domItems());
   $("#domField").classList.toggle("hidden", mode === "full");
   $("#fbRow").classList.toggle("hidden", mode === "full");
   $("#fbSw").setAttribute("aria-checked", feedback);
   const pool = poolFor(mode, domDD.value);
-  const n = mode === "full" ? 74 : Math.min(MODES[mode].n, pool.length);
+  const n = mode === "full" ? EXAM.n : Math.min(MODES[mode].n, pool.length);
   const unseen = mode === "full" ? Q.filter(q => !DB.qstats[q.id]).length : pool.filter(q => !DB.qstats[q.id]).length;
-  $("#modeInfo").innerHTML = '<div><b class="num">' + n + '</b><span>Questions</span></div><div><b class="num">' + MODES[mode].min + '</b><span>Minutes</span></div><div><b class="num">' + Math.min(unseen, n) + '</b><span>New to you</span></div>';
-  $("#startSub").textContent = mode === "full" ? "Same weighting as the real exam" : mode === "missed" ? "Only questions you got wrong" : "Focused session";
+  $("#launchSum").innerHTML = '<b class="num">' + n + '</b> questions · <b class="num">' + MODES[mode].min + '</b> min · <b class="num">' + Math.min(unseen, n) + '</b> new to you';
+  const agg = domAgg(DB.attempts), withData = DKEYS.filter(d => agg[d].n);
+  const weak = withData.slice().sort((a, b) => agg[a].ok / agg[a].n - agg[b].ok / agg[b].n)[0];
+  const wp = weak ? pct(agg[weak].ok, agg[weak].n) : 0;
+  $("#launchTip").textContent = !DB.attempts.length ? "New here? Start with a full exam. It sets your baseline in every domain, then the dashboard tells you what to study."
+    : weak && wp < DB.target ? "Your weakest domain is " + DOMAINS[weak] + " at " + wp + "%. A practice session there is the fastest way to raise your projected score."
+    : "You are at or above target in every domain you have answered. A full exam is the best way to confirm you are ready.";
   $("#startBtn").disabled = n === 0;
 }
-$$("#modeSeg button").forEach(b => b.onclick = () => { mode = b.dataset.mode; renderStart(); });
+$$("#modeCards .mcard").forEach(b => b.onclick = () => { mode = b.dataset.mode; renderStart(); });
+function renderOnboard(){
+  $("#onboard").innerHTML = [
+    ["Set a baseline", "Take a full exam. Like the real one, it has " + EXAM.n + " questions, 120 minutes and one answer option at a time."],
+    ["See where you stand", "The dashboard then shows a projected score, accuracy per domain, your trend and the questions you miss."],
+    ["Close the gaps", "Practice your weakest domain, or review only the questions you got wrong, until every domain reaches your target."]
+  ].map((x, i) => '<div class="card ob"><div class="n">' + (i + 1) + '</div><h3>' + x[0] + '</h3><p>' + x[1] + '</p></div>').join("");
+}
 $("#fbSw").onclick = () => { feedback = !feedback; $("#fbSw").setAttribute("aria-checked", feedback); };
 
 function renderFocus(){
@@ -1439,8 +1639,8 @@ function renderFocus(){
 }
 function renderRecent(){
   const A = DB.attempts.slice(-3).reverse(), box = $("#recent");
-  if (!A.length) { box.innerHTML = ""; return; }
-  box.innerHTML = '<div class="rc-t">Recent attempts</div>' + A.map(a => '<div class="rc"><span class="rc-m">' + (a.mode === "full" ? "Full exam" : a.mode === "missed" ? "Missed review" : "Practice") + '<small>' + rel(a.t) + ' · ' + fmtDur(a.dur) + '</small></span><span class="scorepill num ' + (a.score >= DB.target ? "good" : "bad") + '">' + a.score + '%</span></div>').join("");
+  if (!A.length) { box.innerHTML = '<p style="color:var(--muted);font-size:13px">No attempts yet.</p>'; return; }
+  box.innerHTML = A.map(a => '<div class="rc"><span class="rc-m">' + (a.mode === "full" ? "Full exam" : a.mode === "missed" ? "Mistakes review" : "Practice" + (a.domain && a.domain !== "all" ? " · " + SHORT[a.domain] : "")) + '<small>' + rel(a.t) + ' · ' + fmtDur(a.dur) + '</small></span><span class="scorepill num ' + (a.score >= DB.target ? "good" : "bad") + '">' + a.score + '%</span></div>').join("");
 }
 function quickStart(m, d){ mode = m; if (domDD) { domDD.setItems(domItems()); domDD.set(d); } go("overview"); renderStart(); startExam(); }
 
@@ -1492,7 +1692,7 @@ function openDomain(d){
   const ser = domSeries(d, 20);
   const panel = $("#drawerPanel");
   panel.style.setProperty("--c", DC(d));
-  panel.innerHTML = '<div class="drawer-h"><div><div class="no">Domain ' + d + ' · ' + WEIGHTS[d] + ' of 74 exam questions</div><h2 id="drTitle">' + DOMAINS[d] + '</h2><span class="level ' + cls + '" style="margin-top:10px">' + lv + '</span></div><button class="icon-btn" data-close aria-label="Close">' + ICON.close + '</button></div>' +
+  panel.innerHTML = '<div class="drawer-h"><div><div class="no">Domain ' + d + ' · ' + WEIGHTS[d] + ' of ' + EXAM.n + ' exam questions</div><h2 id="drTitle">' + DOMAINS[d] + '</h2><span class="level ' + cls + '" style="margin-top:10px">' + lv + '</span></div><button class="icon-btn" data-close aria-label="Close">' + ICON.close + '</button></div>' +
     '<div class="drawer-b">' +
       '<div class="dstats"><div><b class="num">' + (agg.n ? p + "%" : "–") + '</b><span>All-time accuracy</span></div><div><b class="num">' + agg.n + '</b><span>Answered</span></div><div><b class="num">' + inBank.filter(q => DB.qstats[q.id]).length + '/' + inBank.length + '</b><span>Bank explored</span></div></div>' +
       '<div class="card" style="padding:16px 18px"><div class="sec-t">Accuracy by attempt</div>' + (ser.length ? '<div class="chart">' + spark(ser, DC(d), 440, 110).replace('width="440" height="110"', 'width="100%" height="110" preserveAspectRatio="none"') + '</div>' : '<p style="color:var(--muted);font-size:13px">Answer questions from this domain to see the trend.</p>') + '</div>' +
@@ -1546,7 +1746,10 @@ $("#exportBtn").onclick = () => {
 
 /* ---------- Format ---------- */
 function renderFormat(){
-  $("#bpList").innerHTML = DKEYS.map(d => '<div class="bp-row" style="--c:' + DC(d) + '"><span class="no">' + d + '</span><span>' + DOMAINS[d] + '</span><div class="bar"><i style="width:' + (WEIGHTS[d] / 13 * 100) + '%"></i></div><span class="num">' + WEIGHTS[d] + '</span></div>').join("");
+  const mx = Math.max(...DKEYS.map(d => WEIGHTS[d]));
+  $("#fN").textContent = EXAM.n; $("#fD").textContent = DKEYS.length;
+  $("#fmtSub").textContent = "The SailPoint " + EXAM.name + " exam uses Discrete Option Multiple Choice. This practice environment follows the same rules so exam day feels familiar." + (EXAM.official ? "" : " SailPoint does not publish questions per domain for this exam, so the weighting below follows the number of objectives in each domain.");
+  $("#bpList").innerHTML = DKEYS.map(d => '<div class="bp-row" style="--c:' + DC(d) + '"><span class="no">' + d + '</span><span>' + DOMAINS[d] + '</span><div class="bar"><i style="width:' + (WEIGHTS[d] / mx * 100) + '%"></i></div><span class="num">' + WEIGHTS[d] + '</span></div>').join("");
 }
 
 /* ---------- Exam engine ---------- */
@@ -1565,7 +1768,7 @@ function startExam(){
   if (!qs.length) return toast("No questions available for this selection.", "warn");
   Object.assign(E, {mode, dom, fb: mode !== "full" && feedback, order:shuffle(qs), qi:0, results:[], started:Date.now(), warned:{}});
   E.total = E.order.length; E.limit = MODES[mode].min * 60000; E.deadline = E.started + E.limit;
-  $("#exMode").textContent = MODES[mode].label + (dom !== "all" ? " · " + SHORT[dom] : "") + " · " + E.total + " questions";
+  $("#exMode").textContent = EXAM.short + " · " + MODES[mode].label + (dom !== "all" ? " · " + SHORT[dom] : "") + " · " + E.total + " questions";
   $("#exT").textContent = E.total;
   $("#exSegs").innerHTML = "<i></i>".repeat(E.total);
   $("#exam").classList.remove("hidden"); document.body.style.overflow = "hidden";
@@ -1677,11 +1880,14 @@ function renderResult(a, prevBest){
     '<div style="position:relative;z-index:1"><span class="level ' + (good ? "good" : "bad") + '">' + (good ? "At or above target" : "Below target") + '</span><h2 style="margin-top:12px">' + (a.mode === "full" ? "Full exam" : a.mode === "missed" ? "Missed review" : "Practice") + ' complete</h2><p>' +
     (good ? "You scored " + a.score + "%, " + (a.score - T) + " points over your " + T + "% target." : "You scored " + a.score + "%, " + (T - a.score) + " points under your " + T + "% target. The domain breakdown shows where to focus.") + '</p>' +
     '<div class="chips"><span class="chip">' + fmtDate(a.t) + ' · ' + fmtTime(a.t) + '</span><span class="chip">Attempt #' + DB.attempts.length + '</span>' + (prev ? '<span class="chip ' + (a.score > prev.score ? "up" : a.score < prev.score ? "down" : "") + '">' + (a.score - prev.score > 0 ? "+" : "") + (a.score - prev.score) + ' pts vs previous</span>' : "") + (a.score > prevBest && prevBest >= 0 ? '<span class="chip up">Personal best</span>' : "") + '</div></div>' +
-    '<div style="position:relative;z-index:1;display:grid;gap:10px"><button class="btn primary lg" id="againBtn">' + ICON.play + 'New attempt</button><button class="btn" id="toOv">Back to overview</button></div>';
+    (() => { const wrong = a.total - a.correct; const ds = Object.keys(a.dom).filter(d => a.dom[d].ok < a.dom[d].n).sort((x, y) => a.dom[x].ok / a.dom[x].n - a.dom[y].ok / a.dom[y].n); RES.weak = ds[0];
+      return '<div class="res-actions">' + (wrong ? '<button class="btn primary lg" id="revBtn">Review ' + wrong + (wrong === 1 ? ' mistake' : ' mistakes') + '</button>' : '') + (RES.weak ? '<button class="btn lg" id="weakBtn">' + ICON.play + 'Practice ' + SHORT[RES.weak] + '</button>' : '') + '<button class="btn ' + (wrong ? '' : 'primary ') + 'lg" id="againBtn">New attempt</button><button class="btn ghost" id="toOv">Back to dashboard</button></div>'; })();
   requestAnimationFrame(() => requestAnimationFrame(() => { const c = $("#resHero .c"); if (c) c.style.strokeDashoffset = C * (1 - a.score / 100); }));
   countUp($("#resScore"), a.score, '<small style="font-size:24px">%</small>');
   $("#againBtn").onclick = () => { mode = a.mode; go("overview"); if (domDD) { domDD.setItems(domItems()); domDD.set(a.domain || "all"); } renderStart(); startExam(); };
   $("#toOv").onclick = () => go("overview");
+  if ($("#revBtn")) $("#revBtn").onclick = () => { revF = "bad"; if (revDD) revDD.set("all"); $$("#revTabs button").forEach(x => x.setAttribute("aria-pressed", x.dataset.f === "bad")); renderReview(); $("#review").closest(".card").scrollIntoView({behavior:REDUCED ? "auto" : "smooth", block:"start"}); };
+  if ($("#weakBtn")) $("#weakBtn").onclick = () => quickStart("practice", RES.weak);
   const avgQ = a.answered ? a.dur / a.answered : 0;
   const tiles = [["Correct answers", a.correct + "/" + a.total, a.total - a.answered ? (a.total - a.answered) + " unanswered" : "Every question answered"],
     ["Time used", fmtDur(a.dur), "of " + MODES[a.mode].min + " minutes allowed"],
@@ -1707,6 +1913,17 @@ function renderReview(){
   bindAcc(ul);
 }
 $$("#revTabs button").forEach(b => b.onclick = () => { revF = b.dataset.f; $$("#revTabs button").forEach(x => x.setAttribute("aria-pressed", x === b)); renderReview(); });
+
+/* ---------- Exam switcher ---------- */
+const examDD = Dropdown($("#examDD"), {items:Object.values(EXAMS).map(x => ({value:x.key, label:x.name, meta:x.n + " questions"})), value:STORE.current, onChange:k => {
+  if (k === STORE.current) return;
+  setExam(k); save(); mode = "full"; trendSel.clear(); openRows.clear(); hSort = {k:"t", dir:-1};
+  if (domDD) { domDD.setItems(domItems()); domDD.set("all"); }
+  targetSlider.set(DB.target);
+  go(view === "result" ? "overview" : view); toast("Now practicing for " + EXAM.name);
+}});
+$("#examDD").classList.add("exam-switch");
+$("#tbStart").onclick = () => { if (view !== "overview") go("overview"); const l = $("#launch"); l.scrollIntoView({behavior:REDUCED ? "auto" : "smooth", block:"start"}); l.classList.remove("flash"); void l.offsetWidth; l.classList.add("flash"); };
 
 /* ---------- Boot ---------- */
 go("overview");

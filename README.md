@@ -1,6 +1,6 @@
-# ISC Admin Prep
+# ISC Prep
 
-Practice exam for the SailPoint Identity Security Administrator certification (DOMC format, 151-question bank, performance dashboard).
+Practice exams for the SailPoint Identity Security Administrator and Identity Security Engineer certifications (DOMC format, question banks per exam, performance dashboard).
 
 ## Deploy
 
