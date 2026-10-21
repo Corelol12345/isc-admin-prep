@@ -763,6 +763,23 @@ code,.mono{font-family:var(--mono)}
   #startBtn{width:100%}
   .res-actions{width:100%}
 }
+
+/* exam segmented switch */
+.exam-seg{position:relative;display:grid;grid-template-columns:1fr 1fr;padding:3px;border-radius:10px;background:var(--surface-2);border:1px solid var(--line-2)}
+.es-pill{position:absolute;top:3px;bottom:3px;left:3px;width:calc(50% - 3px);border-radius:7px;background:var(--ink);transition:transform .3s cubic-bezier(.3,1.2,.4,1)}
+.exam-seg[data-active="engineer"] .es-pill{transform:translateX(100%)}
+.exam-seg button{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:8px;height:32px;padding:0 14px;border-radius:7px;font-size:13px;font-weight:600;color:var(--muted);transition:color .2s;white-space:nowrap}
+.exam-seg button:hover{color:var(--ink)}
+.exam-seg button[aria-checked="true"]{color:var(--bg)}
+.es-n{font-size:11px;font-weight:600;padding:1px 6px;border-radius:5px;background:var(--surface-3);color:var(--muted)}
+.exam-seg button[aria-checked="true"] .es-n{background:var(--accent);color:var(--accent-ink)}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:var(--accent-text);margin-bottom:10px}
+.eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent)}
+@media (max-width:860px){
+  .tb-in{gap:10px}
+  .exam-seg button{padding:0 10px;font-size:12px}
+  .es-n{display:none}
+}
 </style>
 </head>
 <body>
@@ -770,7 +787,7 @@ code,.mono{font-family:var(--mono)}
   <header class="topbar">
     <div class="tb-in">
       <div class="brand">
-        <b>ISC Prep</b><span class="slash">/</span><div id="examDD" class="exam-switch"></div>
+        <b>ISC Prep</b><span class="slash">/</span><div class="exam-seg" id="examSeg" role="radiogroup" aria-label="Choose your exam"><span class="es-pill"></span><button data-exam="admin" role="radio"><span class="es-l">Administrator</span><span class="es-n num">74</span></button><button data-exam="engineer" role="radio"><span class="es-l">Engineer</span><span class="es-n num">73</span></button></div>
       </div>
       <div class="tb-right">
         <div class="cov" title="Questions you have already seen"><span class="num" id="sideCov">0<small> / 151</small></span><div class="mini-bar"><i id="sideCovBar" style="width:0"></i></div></div>
@@ -791,7 +808,7 @@ code,.mono{font-family:var(--mono)}
     <!-- OVERVIEW -->
     <section class="view" id="v-overview">
       <div class="vhead">
-        <div><h1>Dashboard</h1><p id="ovSub"></p></div>
+        <div><span class="eyebrow" id="ovExam"></span><h1>Dashboard</h1><p id="ovSub"></p></div>
         <div class="tools">
           <div class="pop" id="targetPop">
             <button class="target-btn" id="targetBtn" aria-expanded="false"><i></i>Target <b class="num" id="targetVal">70%</b></button>
@@ -1450,6 +1467,7 @@ function renderOverview(){
     : EXAM.name + " · " + Q.length + " practice questions across " + DKEYS.length + " blueprint domains.";
   $("#onboard").classList.toggle("hidden", A.length > 0); $("#dashData").classList.toggle("hidden", !A.length);
   if (!A.length) { renderOnboard(); renderStart(); return; }
+  $("#ovExam").textContent = EXAM.name;
   $("#targetVal").textContent = T + "%"; $("#targetBig").textContent = T + "%";
 
   // KPIs
@@ -1915,14 +1933,16 @@ function renderReview(){
 $$("#revTabs button").forEach(b => b.onclick = () => { revF = b.dataset.f; $$("#revTabs button").forEach(x => x.setAttribute("aria-pressed", x === b)); renderReview(); });
 
 /* ---------- Exam switcher ---------- */
-const examDD = Dropdown($("#examDD"), {items:Object.values(EXAMS).map(x => ({value:x.key, label:x.name, meta:x.n + " questions"})), value:STORE.current, onChange:k => {
+function paintExamSeg(){ const seg = $("#examSeg"); seg.dataset.active = STORE.current; seg.querySelectorAll("button").forEach(b => b.setAttribute("aria-checked", b.dataset.exam === STORE.current)); }
+function switchExam(k){
   if (k === STORE.current) return;
-  setExam(k); save(); mode = "full"; trendSel.clear(); openRows.clear(); hSort = {k:"t", dir:-1};
+  setExam(k); save(); paintExamSeg(); mode = "full"; trendSel.clear(); openRows.clear(); hSort = {k:"t", dir:-1};
   if (domDD) { domDD.setItems(domItems()); domDD.set("all"); }
   targetSlider.set(DB.target);
   go(view === "result" ? "overview" : view); toast("Now practicing for " + EXAM.name);
-}});
-$("#examDD").classList.add("exam-switch");
+}
+$$("#examSeg button").forEach(b => b.onclick = () => switchExam(b.dataset.exam));
+paintExamSeg();
 $("#tbStart").onclick = () => { if (view !== "overview") go("overview"); const l = $("#launch"); l.scrollIntoView({behavior:REDUCED ? "auto" : "smooth", block:"start"}); l.classList.remove("flash"); void l.offsetWidth; l.classList.add("flash"); };
 
 /* ---------- Boot ---------- */
