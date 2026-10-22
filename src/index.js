@@ -10,6 +10,7 @@ const json = (body, status = 200) =>
 
 async function handleApi(request, env, url) {
   if (url.pathname === "/api/health") return json({ ok: true });
+  if (url.pathname === "/api/team" && request.method === "GET") return handleTeam(request, env, url);
   if (url.pathname !== "/api/state") return json({ error: "not_found" }, 404);
 
   const key = (request.headers.get("x-sync-key") || "").toLowerCase();
@@ -36,6 +37,41 @@ async function handleApi(request, env, url) {
   }
 
   return json({ error: "method_not_allowed" }, 405);
+}
+
+async function handleTeam(request, env, url) {
+  const exam = url.searchParams.get("exam") === "engineer" ? "engineer" : "admin";
+  const myKey = (request.headers.get("x-sync-key") || "").toLowerCase();
+  const { results } = await env.DB.prepare("SELECT key, data FROM profiles").all();
+  const weekAgo = Date.now() - 7 * 864e5;
+  const members = [];
+  const domains = {};
+  for (const row of results || []) {
+    let d;
+    try { d = JSON.parse(row.data); } catch { continue; }
+    const team = d && d.team;
+    if (!team || !team.share || !team.name) continue;
+    const ex = (d.exams || {})[exam] || {};
+    const atts = Array.isArray(ex.attempts) ? ex.attempts : [];
+    for (const a of atts) for (const k of Object.keys(a.dom || {})) {
+      domains[k] = domains[k] || { n: 0, ok: 0 };
+      domains[k].n += a.dom[k].n || 0; domains[k].ok += a.dom[k].ok || 0;
+    }
+    const scores = atts.map(a => a.score);
+    const fulls = atts.filter(a => a.mode === "full");
+    members.push({
+      name: String(team.name).slice(0, 40),
+      me: row.key === myKey,
+      attempts: atts.length,
+      full: fulls.length,
+      avgFull: fulls.length ? Math.round(fulls.reduce((s, a) => s + a.score, 0) / fulls.length) : null,
+      best: scores.length ? Math.max(...scores) : null,
+      last: scores.length ? scores[scores.length - 1] : null,
+      week: atts.filter(a => a.t > weekAgo).reduce((s, a) => s + (a.answered || 0), 0),
+      lastActive: atts.length ? atts[atts.length - 1].t : null,
+    });
+  }
+  return json({ exam, members, domains });
 }
 
 export default {

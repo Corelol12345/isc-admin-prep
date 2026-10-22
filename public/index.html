@@ -814,6 +814,55 @@ code,.mono{font-family:var(--mono)}
 .sync-sec p{font-size:12px;margin-top:4px}
 .sync-status{display:flex;align-items:center;gap:8px;margin-top:14px;font-size:12px;color:var(--muted)}
 @media (max-width:860px){ .sync-btn span{display:none} .sync-btn{padding:0 10px} }
+
+/* ===== v5 fixes ===== */
+:root{--faint:#858C88}
+:root[data-theme="light"]{--faint:#6B726E}
+.ex-count .m{display:none}
+.resume{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:16px 20px;margin-bottom:16px;border-radius:var(--radius);border:1px solid var(--warn);background:var(--warn-soft)}
+.resume .rs-i b{display:block;font-size:14px;font-weight:600}
+.resume .rs-i span{font-size:12px;color:var(--muted)}
+.resume .rs-a{display:flex;gap:8px}
+.trace-t{font-size:12px;color:var(--muted);margin:4px 0 6px}
+.trace{list-style:none;margin:0 0 10px;padding:0;display:grid;gap:6px}
+.trace li{display:grid;grid-template-columns:44px 1fr auto;gap:10px;align-items:center;padding:8px 10px;border-radius:8px;border:1px solid var(--line);font-size:13px}
+.trace .tv{font-size:11px;font-weight:600;text-align:center;padding:2px 0;border-radius:5px;background:var(--surface-3)}
+.trace .tk{font-size:11px;white-space:nowrap}
+.trace li.ok .tk{color:var(--accent-text)} .trace li.bad .tk{color:var(--faint)}
+.doc{display:inline-block;margin-top:10px;font-size:12px;color:var(--accent-text);text-decoration:none}
+.doc:hover{text-decoration:underline}
+.det-act{padding:14px 22px 0}
+.lang-btn{display:inline-flex;height:32px;border-radius:8px;border:1px solid var(--line);overflow:hidden;font-size:11px;font-weight:600}
+.lang-btn span{display:grid;place-items:center;padding:0 9px;color:var(--faint)}
+:root[data-lang="en"] .lang-btn [data-l="en"],:root[data-lang="pt"] .lang-btn [data-l="pt"]{background:var(--surface-3);color:var(--ink)}
+.team-join{display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:20px 22px;margin-bottom:16px}
+.team-join h3{font-size:15px;font-weight:600}
+.team-join p{font-size:13px;color:var(--muted);margin-top:2px;max-width:60ch}
+.team-join .f{display:flex;gap:8px}
+.tinput{height:38px;padding:0 12px;border-radius:8px;border:1px solid var(--line-2);background:var(--surface-2);color:var(--ink);font:inherit;font-size:13px;min-width:220px}
+.tinput:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.you{display:inline-block;margin-left:8px;font-size:10px;font-weight:600;padding:1px 6px;border-radius:5px;background:var(--accent-soft);color:var(--accent-text)}
+.team-grid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(280px,1fr);gap:16px;align-items:start}
+.wk{display:grid;gap:12px}
+.wk .l{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:5px}
+.wk .l b{color:var(--ink)}
+@media (hover:none){ .ex-show > span, .ex-yn kbd, .ex-keys, #nextBtn kbd{display:none!important} }
+@media (max-width:860px){
+  .ex-top .in{grid-template-columns:1fr auto auto}
+  .ex-count{display:block!important;font-size:13px;color:var(--muted)}
+  .ex-count .w{display:none} .ex-count .m{display:inline}
+  .team-grid{grid-template-columns:1fr}
+  .lang-btn span{padding:0 7px}
+  .resume .rs-a{width:100%} .resume .rs-a .btn{flex:1}
+}
+
+.es-l .ls{display:none}
+@media (max-width:520px){
+  .es-l .lf{display:none} .es-l .ls{display:inline}
+  .exam-seg button{padding:0 9px}
+  .tb-in{padding:0 12px;gap:8px}
+  .tb-right{gap:6px}
+}
 </style>
 </head>
 <body>
@@ -821,10 +870,11 @@ code,.mono{font-family:var(--mono)}
   <header class="topbar">
     <div class="tb-in">
       <div class="brand">
-        <b>ISC Prep</b><span class="slash">/</span><div class="exam-seg" id="examSeg" role="radiogroup" aria-label="Choose your exam"><span class="es-pill"></span><button data-exam="admin" role="radio"><span class="es-l">Administrator</span><span class="es-n num">74</span></button><button data-exam="engineer" role="radio"><span class="es-l">Engineer</span><span class="es-n num">73</span></button></div>
+        <b>ISC Prep</b><span class="slash">/</span><div class="exam-seg" id="examSeg" role="radiogroup" aria-label="Choose your exam"><span class="es-pill"></span><button data-exam="admin" role="radio"><span class="es-l"><span class="lf">Administrator</span><span class="ls">Admin</span></span><span class="es-n num">74</span></button><button data-exam="engineer" role="radio"><span class="es-l"><span class="lf">Engineer</span><span class="ls">Engineer</span></span><span class="es-n num">73</span></button></div>
       </div>
       <div class="tb-right">
         <div class="cov" title="Questions you have already seen"><span class="num" id="sideCov">0<small> / 151</small></span><div class="mini-bar"><i id="sideCovBar" style="width:0"></i></div></div>
+        <button class="lang-btn" id="langBtn" aria-label="Language"><span data-l="en">EN</span><span data-l="pt">PT</span></button>
         <button class="sync-btn" id="syncBtn" aria-label="Progress sync"><i class="sd"></i><span id="syncTxt">This device</span></button>
         <button class="icon-btn" id="themeSw" role="switch" aria-checked="false" aria-label="Light mode"><svg class="moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg><svg class="sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg></button>
         <button class="btn primary sm" id="tbStart"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12.5-7.5z"/></svg><span>New attempt</span></button>
@@ -834,6 +884,7 @@ code,.mono{font-family:var(--mono)}
       <button data-view="overview">Dashboard</button>
       <button data-view="domains">Domains</button>
       <button data-view="history">History<span class="badge" id="histBadge">0</span></button>
+      <button data-view="team">Team</button>
       <button data-view="format">Exam guide</button>
       <span class="nav-ind" id="navInd"></span>
     </nav>
@@ -857,6 +908,7 @@ code,.mono{font-family:var(--mono)}
           </div>
         </div>
       </div>
+      <div class="resume hidden" id="resume"></div>
       <div class="card launch" id="launch">
         <div class="launch-h"><h2>Start an attempt</h2><p id="launchTip"></p></div>
         <div class="modes" id="modeCards" role="radiogroup" aria-label="Attempt type">
@@ -917,6 +969,12 @@ code,.mono{font-family:var(--mono)}
         <div class="tools"><button class="btn" id="exportBtn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Export CSV</button><button class="btn ghost" id="clearBtn">Clear data</button></div>
       </div>
       <div class="card"><div class="tbl-wrap" id="histTable"></div></div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="view hidden" id="v-team">
+      <div class="vhead"><div><h1>Team</h1><p>How the team is doing on this exam. Only people who join the board appear here, with the name they choose.</p></div></div>
+      <div id="teamBody"></div>
     </section>
 
     <!-- FORMAT -->
@@ -980,7 +1038,7 @@ code,.mono{font-family:var(--mono)}
   <div class="ex-top">
     <div class="in">
       <div class="ttl"><b>ISC Prep</b><span id="exMode"></span></div>
-      <div class="ex-count num">Question <b id="exN">1</b> of <span id="exT">74</span></div>
+      <div class="ex-count num"><span class="w">Question </span><b id="exN">1</b><span class="w"> of </span><span class="m">/</span><span id="exT">74</span></div>
       <div class="ex-timer num" id="exTimer">
         <svg width="26" height="26" viewBox="0 0 26 26"><circle cx="13" cy="13" r="10.5" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="3"/><circle class="c" cx="13" cy="13" r="10.5" fill="none" stroke="#29EC72" stroke-width="3" stroke-linecap="round" stroke-dasharray="65.97" stroke-dashoffset="0"/></svg>
         <span>120:00</span>
@@ -990,8 +1048,8 @@ code,.mono{font-family:var(--mono)}
   </div>
   <div class="ex-body">
     <div class="ex-meta"><span class="tag" id="exDom"></span><span id="exOptN"></span></div>
-    <p class="ex-q" id="exQ"></p>
-    <ul class="ex-prev" id="exPrev"></ul>
+    <p class="ex-q notr" id="exQ"></p>
+    <ul class="ex-prev notr" id="exPrev"></ul>
     <div id="exOpt"></div>
     <div class="ex-show" id="exShow"><button class="btn primary lg" id="showBtn">Show me an option</button><span style="font-size:12px;color:var(--faint)">or press <kbd>Enter</kbd></span></div>
     <div class="ex-yn hidden" id="exYN">
@@ -1438,9 +1496,666 @@ ENG_NEW.push(
 // 10. Rules and Transforms
 {d:10,q:"Which transform splits a string and returns one part, such as the domain of an email address?",c:"split",w:["concat","trim","upper","e164phone"],e:"split takes a delimiter and an index."},
 {d:10,q:"Which transform returns one value when a condition is true and another otherwise?",c:"conditional",w:["static","lookup","replace","indexOf"],e:"conditional evaluates an expression and picks the matching output."},
-{d:10,q:"Which transform generates a random string, for example for an initial password?",c:"randomAlphaNumeric",w:["uuid","static","base64Encode","normalizeNames"],e:"randomAlphaNumeric produces letters and numbers of a given length."}
+{d:10,q:"Which transform generates a random string, for example for an initial password?",c:"randomAlphaNumeric",w:["dateFormat","static","base64Encode","normalizeNames"],e:"randomAlphaNumeric produces letters and numbers of a given length."}
 );
+const XTRA = {};
+function X(k, w, pt){ XTRA[k] = {w, pt}; }
+X("a0",["attributes(department).equals(\"Finance\")","search identities where department is Finance"],"A Search do ISC usa a sintaxe de query string no estilo Elasticsearch; os atributos de identidade ficam em attributes.*.");
+X("a1",["Identity profile processing events","Certification campaign decisions"],"As account activities registram cada operação de provisionamento e seu status, e são o ponto de partida para monitorar e investigar o provisionamento.");
+X("a2",["Create a workflow that rebuilds the query manually each Monday","Ask the manager to log in and rerun the same query every week"],"Buscas salvas podem ter assinaturas agendadas que enviam os resultados por e-mail, funcionando como relatórios recorrentes.");
+X("a3",["With a SAML assertion issued by the tenant’s login page and replayed on each call","With a session cookie copied from an administrator’s browser after logging in"],"A API do ISC usa OAuth 2.0. Um Personal Access Token fornece client ID e secret, que são trocados por um access token no endpoint de token.");
+X("a4",["Compare the identity’s attributes with the HR source export in a spreadsheet","Open the access profile and check its list of entitlements and owners"],"O provisionamento pode ser acompanhado pelas account activities (na Search) e pelo histórico de atividades nos detalhes da identidade.");
+X("a5",["Role Admin","Cert Admin"],"O nível Admin tem acesso total. Os outros níveis concedem conjuntos limitados de capacidades administrativas.");
+X("a6",["Running a nightly aggregation of every source in a fixed order","Recalculating identity attributes when a transform is changed"],"Event Triggers enviam eventos do ISC para assinantes externos (por exemplo, webhooks ou workflows), permitindo automação e integração.");
+X("a7",["Delayed delivery","Broadcast"],"Em triggers request-response o ISC espera a resposta do assinante; em fire-and-forget ele apenas envia o evento.");
+X("a8",["A connector to the IdP configured as the authoritative source","Pass-through authentication to the IdP through the Virtual Appliance"],"O ISC suporta SSO baseado em SAML, delegando a autenticação ao IdP da empresa.");
+X("a9",["A static code printed in the user’s profile","The VA cluster passphrase"],"O ISC se integra a provedores de MFA como Duo, Okta Verify e RSA, além de métodos como e-mail e SMS.");
+X("a10",["An end step","A wait operator"],"Um workflow é composto por trigger (o que o inicia), actions (o que ele faz) e operators (lógica como comparações, loops e esperas).");
+X("a11",["A send-email action","The end step"],"Os operators controlam o fluxo lógico. Os de comparação criam ramificações verdadeiro/falso.");
+X("a12",["Search subscriptions (saved CSV)","Identity Profile Preview"],"O Configuration Hub, baseado no SP-Config, permite fazer backup, exportar, importar e restaurar objetos de configuração.");
+X("a13",["A SailPoint-hosted server that stores a replica of the tenant’s identities","A browser plugin that lets administrators manage sources from their workstation"],"O VA executa os conectores para alcançar sistemas on-premises, como AD e bancos de dados.");
+X("a14",["SailPoint connects inbound to the VA over a dedicated port opened on the firewall","The VA receives jobs through a shared folder that ISC writes to over SMB"],"O VA se comunica por conexões de saída (HTTPS/443), sem exigir portas de entrada abertas no firewall do cliente.");
+X("a15",["One VA per data center, each in its own cluster","A single VA with a scheduled restart"],"Com dois ou mais VAs no cluster, se um falhar, outro continua atendendo as fontes.");
+X("a16",["In the Identity Profile Preview, which lists the VAs used by each profile","In the Request Center, under the status of each pending access request"],"A página de Virtual Appliances mostra o status de cada cluster e appliance, ajudando a detectar problemas.");
+X("a17",["The Identity Profile processing report in the admin UI","The SMTP log of the tenant’s email notifications"],"O ccg.log registra a atividade dos conectores executados pelo VA e é a principal fonte para depurar problemas de conexão.");
+X("a18",["Run an access certification for the source","Raise the Identity Profile priority"],"O Test Connection confirma rapidamente se o VA consegue alcançar e autenticar no sistema de destino.");
+X("a19",["A lifecycle state","A governance group"],"Fontes são associadas a clusters, então qualquer VA saudável do cluster pode processar as operações.");
+X("a20",["To bundle entitlements from one source so users can request them together","To define which reviewers certify which sources and how often"],"O Identity Profile liga uma fonte autoritativa às identidades e define seus atributos e lifecycle states.");
+X("a21",["The one whose source was aggregated first","The one chosen by the identity’s manager"],"Identity Profiles têm prioridade; quando se sobrepõem, o de maior prioridade prevalece.");
+X("a22",["One per lifecycle state","As many as the number of roles it holds"],"Cada identidade é governada por um único Identity Profile.");
+X("a23",["It defines which entitlements an account receives when the identity is created","It defines which sources are aggregated and in what order each night"],"Os mapeamentos preenchem atributos de identidade a partir das fontes e podem aplicar transforms.");
+X("a24",["Editing the value directly on each identity","Adding the attribute to a role’s criteria"],"Transforms manipulam valores (lower, concat, firstValid etc.) no mapeamento.");
+X("a25",["Run a full identity refresh and compare the results afterwards","Export all identities to CSV and compare them by hand"],"O Preview mostra como os atributos ficariam para uma identidade, reduzindo o risco de erros.");
+X("a26",["Running an entitlement aggregation","Restarting the browser session"],"As alterações passam a valer nas identidades quando elas são processadas novamente.");
+X("a27",["To group sources by the stage of their deployment, such as test, pilot and live","To define the approval stages of an access request, such as manager and owner"],"Lifecycle states modelam o ciclo joiner-mover-leaver e podem disparar ações de provisionamento.");
+X("a28",["Change the VA cluster used","Schedule a certification"],"Lifecycle states podem habilitar ou desabilitar contas e conceder ou remover access profiles.");
+X("a29",["It stores the identity’s last login date and is used to disable inactive users","It records which Identity Profile created the identity and cannot be changed"],"Quando o valor muda, a identidade passa para o lifecycle state com aquele nome técnico, disparando as ações configuradas.");
+X("a30",["By the manager approving a lifecycle change request each time","By a scheduled Search subscription that edits the attribute"],"Transforms (por exemplo, lookup, condicionais, datas) sobre dados do RH costumam calcular o estado.");
+X("a31",["Removing an access profile from a lifecycle state","An identity newly matching a role’s criteria"],"O provisionamento é disparado por solicitações, roles, lifecycle states, attribute sync e revogações. Buscas são só leitura.");
+X("a32",["Entitlement owner","Identity Profile Preview"],"O Attribute Sync envia mudanças de atributos de identidade para atributos de conta nas fontes configuradas.");
+X("a33",["In the Identity Profile’s attribute mappings","In the role’s membership criteria"],"A política Create Account define cada atributo da nova conta e como ele é gerado.");
+X("a34",["concat","firstValid"],"O usernameGenerator tenta padrões em sequência até encontrar um valor único na fonte.");
+X("a35",["Through the VA, which writes a new line to the file and uploads it again","Through a cloud rule that edits the file stored inside the tenant"],"Fontes desconectadas usam canais manuais: work items ou tickets em ferramentas de ITSM.");
+X("a36",["A scheduled Search subscription sent to the ServiceNow inbox","A workflow that emails the source owner"],"A integração de ITSM cria tickets para o provisionamento manual e acompanha o fechamento.");
+X("a37",["Raise the log level of every connector in the tenant to TRACE for a week","Open the transform used by the source and add debug output to it"],"Ajustar o log só do conector afetado, por tempo limitado, traz o detalhe necessário sem sobrecarregar o VA.");
+X("a38",["DEBUG","FATAL"],"Do mais para o menos detalhado: TRACE, DEBUG, INFO, WARN, ERROR.");
+X("a39",["Entitlements filtered by source","Roles filtered by owner"],"As account activities mostram cada operação, o status e a mensagem de erro.");
+X("a40",["Cert Admin","Role Admin"],"O Source Sub-Admin tem permissões administrativas limitadas às fontes atribuídas a ele.");
+X("a41",["Report Admin","Source Sub-Admin"],"O Cert Admin gerencia campanhas de certificação sem precisar de acesso administrativo total.");
+X("a42",["A group of identities that share an approver","A type of account created by the VA"],"Entitlements são os itens de acesso mais granulares representados no ISC.");
+X("a43",["Through identity processing","Through account correlation"],"A agregação de entitlements traz a lista de entitlements e suas informações do sistema de origem.");
+X("a44",["Access profiles can group entitlements from several sources; roles hold one source only","Roles and access profiles are the same object with different names"],"A hierarquia típica é role → access profile → entitlement.");
+X("a45",["Through requests that the role owner approves one by one","Through the order in which identities were aggregated"],"Identidades que atendem aos critérios recebem o role automaticamente (birthright).");
+X("a46",["With an approval workflow","With a VA cluster"],"Roles podem usar critérios ou uma lista explícita de identidades.");
+X("a47",["Whether the role owner has approved the identity and signed off","Whether the role is part of a running certification campaign"],"A atribuição automática depende dos valores atuais dos atributos e do processamento da identidade.");
+X("a48",["It must be assigned to a role and certified","It must have a transform and a lifecycle state"],"Só itens habilitados e marcados como solicitáveis aparecem para os usuários pedirem.");
+X("a49",["Approval → provisioning → request → completion","Request → provisioning → approval → completion"],"Depois do pedido, ocorrem as aprovações configuradas e, se aprovado, o acesso é provisionado.");
+X("a50",["The source owner","The access item owner’s manager"],"As aprovações podem envolver o gestor, os owners e governance groups, mas nunca o próprio solicitante.");
+X("a51",["The request waits until the rejecting approver changes their mind","The remaining approvers vote and the majority decides"],"Todos os níveis precisam aprovar; uma rejeição encerra a solicitação.");
+X("a52",["Only the member who was added to the group first","At least half of the members, by vote"],"Governance groups distribuem os itens de trabalho; um membro pode decidir em nome do grupo.");
+X("a53",["Identity Profile priority","Approval reminders"],"O work reassignment encaminha aprovações e itens de trabalho para outra identidade por um período.");
+X("a54",["Staged → completed → active, with revocations applied before review","Active → staged → completed, with revocations applied by the next aggregation"],"A campanha é criada, ativada para revisão e concluída; as revogações geram remoção de acesso.");
+X("a55",["It is removed immediately when the reviewer clicks Revoke, before sign-off","It is flagged and only removed if the source owner approves the removal"],"As revogações geram ações de remoção de acesso após o sign-off.");
+X("a56",["Access Profile Owner","Entitlement Owner"],"A Role Composition certifica o conteúdo do role, e não quem o possui.");
+X("a57",["Manager with filters","Identity list"],"Campanhas Search usam uma consulta para definir o escopo da revisão.");
+X("a58",["To decide which approver handles each access request","To split large aggregations into smaller batches"],"SoD define acessos que não devem coexistir, como criar e aprovar pagamentos.");
+X("a59",["Lifecycle policy","Access request policy"],"Password policies controlam os requisitos de senha das fontes e dos grupos de sincronização.");
+X("a60",["Account aggregation reads only disabled accounts; entitlement aggregation reads active ones","Entitlement aggregation updates identities; account aggregation updates only roles"],"Cada tipo de agregação importa um tipo diferente de dado da fonte.");
+X("a61",["An aggregation that runs only on the authoritative source and recalculates all identities","An aggregation that reads every account again but skips the correlation step"],"A agregação delta é mais rápida, mas depende de suporte do conector.");
+X("a62",["So that the VA can create the accounts that are missing on the source","So that certifications can be launched before identities are processed"],"Com o catálogo de entitlements atualizado, o acesso das contas fica descrito corretamente.");
+X("a63",["An account that exists in two sources at once","An account whose password has expired"],"A correlação não encontrou uma identidade correspondente para essa conta.");
+X("a64",["Raise the Identity Profile priority of the source","Run an entitlement aggregation on the source"],"Ajustar os atributos de correlação costuma resolver em escala; casos isolados podem ser feitos manualmente.");
+X("a65",["The Identity Profile priority","The approval escalation timer"],"Se a agregação removeria contas acima do limite, ela é interrompida para evitar perda de dados.");
+X("a66",["SCIM 2.0","Active Directory"],"O conector Delimited File importa contas e entitlements a partir de arquivos delimitados.");
+X("a67",["In the identity’s access history only","In the role’s membership list"],"A fonte mostra o resultado de cada agregação, e os eventos ajudam a ver os detalhes.");
+X("a68",["To represent a business unit and the identities that belong to it","To represent a stage of the identity lifecycle, such as active or terminated"],"Sources representam os sistemas que o ISC lê e onde provisiona contas e acessos.");
+X("a69",["A protocol that lets applications exchange login tokens","A network control that blocks unauthorized traffic between systems"],"A IGA cobre ciclo de vida de identidades, solicitações, provisionamento, certificações e políticas.");
+X("a70",["By replacing the company’s audit team with automated reports","By blocking users from logging in outside business hours"],"Revisões documentadas e políticas como SoD são evidências comuns em auditorias.");
+X("a71",["Authentication grants permissions; authorization checks the password","Authentication happens after authorization, once access is approved"],"Primeiro a identidade é confirmada; depois, as permissões são avaliadas.");
+X("a72",["A single shared administrator account used across all applications","A process that merges duplicate identities into one record"],"A federação permite que um IdP autentique o usuário em outros sistemas sem compartilhar senhas.");
+X("a73",["A password typed twice to confirm it","A password plus a PIN"],"MFA exige categorias diferentes: conhecimento, posse e inerência (biometria).");
+X("a74",["attributes.lifecycle:inactive_state","state:identity.inactive"],"O lifecycle state fica no atributo de identidade cloudLifecycleState, consultável em attributes.*.");
+X("a75",["attributes.department:Sales + attributes.country:Brazil AND NOT","(department, country):(Sales, Brazil)"],"A Search aceita operadores booleanos como AND, OR e NOT para combinar condições.");
+X("a76",["name:john?","name STARTS john"],"O asterisco funciona como coringa nas consultas da Search.");
+X("a77",["attributes.department:Human+Resources","attributes.department:{Human Resources}"],"Colocar o valor entre aspas duplas busca a frase exata.");
+X("a78",["A request to approve the identities in the results","A copy of the query sent to the VA"],"As assinaturas executam a busca salva num agendamento e enviam os resultados por e-mail.");
+X("a79",["The source owner of the system it will call","A service account created automatically by SailPoint"],"Um PAT pertence ao usuário que o criou, então as chamadas feitas com ele ficam limitadas aos acessos desse usuário.");
+X("a80",["Rotate the VA keys and rerun every aggregation","Wait for the next certification to review the token"],"Revogar o PAT exposto impede imediatamente que alguém use a credencial vazada.");
+X("a81",["An access profile","A lifecycle state"],"Assinaturas de Event Triggers entregam eventos a destinos como endpoints HTTP ou workflows.");
+X("a82",["Access Request Submitted","Provisioning Completed"],"Access Request Pre-Approval é um trigger request-response cuja resposta pode aprovar ou negar o pedido.");
+X("a83",["An external trigger","A request-response Event Trigger"],"Workflows podem começar por eventos, agendamentos ou chamada externa/manual.");
+X("a84",["Get Identity","Manage Access"],"A action HTTP Request permite que o workflow chame APIs externas.");
+X("a85",["In Search, under account activities","In the Request Center history"],"O histórico de execução mostra cada execução, o status e a entrada e saída de cada passo.");
+X("a86",["Point the production tenant at the sandbox’s VA cluster so it reads the same configuration","Run the same Search subscription in both tenants and import its CSV results"],"O SP-Config/Configuration Hub exporta e importa objetos de configuração entre tenants.");
+X("a87",["SAML single sign-on with Active Directory as the service provider","A connector rule that copies AD passwords into the tenant"],"A pass-through authentication valida as credenciais do usuário em uma fonte conectada, como o AD.");
+X("a88",["Only on the same server as the Active Directory domain controller","Only on a physical appliance shipped by SailPoint"],"O VA é entregue como imagem de máquina virtual para plataformas suportadas, on-premises e em nuvem.");
+X("a89",["ccg","va-admin"],"Os administradores se conectam ao VA com o usuário sailpoint.");
+X("a90",["By the customer, through a monthly maintenance window","Through the Request Center, when an admin approves them"],"Os VAs recebem atualizações automaticamente, um dos motivos para precisarem de conectividade de saída confiável.");
+X("a91",["Ask SailPoint to open a VPN tunnel into the network","Configure the proxy in each Identity Profile"],"O VA pode ser configurado para usar um proxy nas conexões de saída.");
+X("a92",["The tenant automatically creates a new VA to replace it","Only delta aggregations stop; full aggregations keep running"],"Por isso é recomendado ter pelo menos dois VAs por cluster.");
+X("a93",["The Identity Profile owner","Shared equally between SailPoint and the source owner"],"O VA roda no ambiente do cliente, então a infraestrutura é responsabilidade do cliente.");
+X("a94",["The Identity Profile priorities and lifecycle states","The approval settings of the related access profiles"],"A maioria dos problemas de conectividade do VA vem de DNS, firewall ou proxy.");
+X("a95",["Active Directory","The certification system"],"Fontes autoritativas guardam a verdade sobre quem são as pessoas, normalmente o RH.");
+X("a96",["Manager","Cost center"],"Toda identidade precisa de um username (uid) único.");
+X("a97",["Add it to the source’s account schema only","Create a lifecycle state named costCenter"],"Atributos de identidade personalizados precisam existir e estar mapeados antes de serem usados em critérios.");
+X("a98",["dateFormat","lookup"],"O dateCompare compara duas datas e retorna um valor de acordo com o resultado.");
+X("a99",["replace","firstValid"],"O lookup mapeia valores de entrada para valores de saída usando uma tabela.");
+X("a100",["split","usernameGenerator"],"O concat junta vários valores em uma única string.");
+X("a101",["The role stays, but it is flagged for review in the next certification","The identity keeps the role and the manager is asked to approve its removal"],"Roles automáticos seguem os critérios, o que sustenta o processo de mover (mudança de área).");
+X("a102",["A role that creates the accounts already enabled with a temporary password","A certification campaign that approves new hire accounts on their first day"],"Lifecycle states podem conceder acesso e habilitar ou desabilitar contas em cada etapa.");
+X("a103",["Delete the identity and aggregate the HR source again","Revoke the identity’s access through a Search subscription"],"Admins podem definir o lifecycle state manualmente, o que dispara as ações daquele estado.");
+X("a104",["Accounts are aggregated again from every source and new entitlements are created","Pending access requests are approved and certifications are signed off"],"O processamento mantém as identidades em dia com mapeamentos, critérios e regras de lifecycle.");
+X("a105",["By asking each manager to claim their team members in the Request Center","By creating a governance group per department and adding the managers"],"A manager correlation liga cada identidade à identidade do seu gestor.");
+X("a106",["In the Update Account policy, which runs on every change","In the Identity Profile’s attribute mapping"],"Existem políticas de provisionamento para operações diferentes, como criar, atualizar, habilitar e desabilitar.");
+X("a107",["The access is queued until an administrator creates the account by hand","The access is granted to the identity but not provisioned to any account"],"As políticas Create Account são usadas sempre que uma nova conta é necessária.");
+X("a108",["Use a static value that is the same for every new account","Use the manager’s password as the initial password"],"Transforms geradores produzem valores como senhas aleatórias na criação das contas.");
+X("a109",["The identity’s manager","The Identity Profile owner"],"Work items manuais vão para o source owner concluir a mudança no sistema de destino.");
+X("a110",["In each identity’s profile page, one attribute at a time","Through a lifecycle state that copies attributes nightly"],"O Attribute Sync define quais atributos de identidade são enviados para quais atributos de conta.");
+X("a111",["The requester’s Identity Profile priority","The approval escalation settings"],"O conector age com a service account da fonte, que precisa ter direitos para fazer a mudança.");
+X("a112",["ISC writes the change to a file that the source picks up on its own schedule","The request is emailed to the server, which applies it through a local script"],"O VA é a ponte para as operações on-premises.");
+X("a113",["They stay on the account until the next certification revokes them","They are moved to a quarantine group on the source for 30 days"],"O ISC remove os acessos que não são mais concedidos por nenhuma atribuição.");
+X("a114",["Because high log levels change the connector’s permissions","Because the VA stops accepting new jobs while logging is raised"],"Níveis altos de log devem ser temporários.");
+X("a115",["Report Admin","Source Sub-Admin"],"O Helpdesk foi pensado para tarefas de suporte, com acesso administrativo limitado.");
+X("a116",["Cert Admin","Source Sub-Admin"],"O Role Admin permite gerenciar roles e access profiles sem acesso administrativo total.");
+X("a117",["Helpdesk","Admin"],"O Report Admin vê dados para relatórios sem gerenciar a configuração.");
+X("a118",["Add it to an SoD policy as the only item","Remove it from the account schema"],"A marcação de privilegiado ajuda revisores e aprovadores a identificar acessos de alto risco.");
+X("a119",["To change which accounts receive the entitlement","To mark it as privileged for auditors"],"Metadados amigáveis tornam as solicitações e certificações mais fáceis de decidir.");
+X("a120",["Only roles that contain a single access profile","No, only access profiles and entitlements can be requested"],"Roles podem ser solicitáveis, assim como access profiles e entitlements.");
+X("a121",["Two separate lifecycle states, one per application","A Search subscription listing both applications"],"Access profiles são de uma única fonte; roles combinam acessos de várias fontes.");
+X("a122",["A role and a lifecycle state","An approval workflow and a transform"],"Todo access profile pertence a uma fonte e tem um owner.");
+X("a123",["Ask the source owner to delete the account","Wait for the next aggregation to remove it"],"O ISC aceita pedidos para remover acessos, além de adicionar.");
+X("a124",["Adding the team member to a governance group","Giving the manager the Admin user level"],"As configurações de access request controlam quem pode pedir para outras pessoas.");
+X("a125",["An SoD policy for every access item","A certification after each request"],"Exigir comentários melhora a informação disponível para aprovadores e auditores.");
+X("a126",["Work item deletion","Campaign staging"],"Lembretes e escalonamentos mantêm o processo de aprovação andando.");
+X("a127",["In the Search, under events","In the certification campaign list"],"O solicitante acompanha o status de cada pedido no Request Center.");
+X("a128",["Approve it to avoid blocking the campaign","Leave it undecided so it is approved automatically"],"A reatribuição envia a decisão para o revisor que melhor conhece o acesso.");
+X("a129",["To run the campaign only for administrators first","To schedule the campaign to repeat every quarter"],"O staging permite conferir escopo e revisores antes de a campanha entrar no ar.");
+X("a130",["The identities themselves (self-review)","The certification administrator"],"Campanhas Source Owner enviam os acessos de cada fonte para o seu owner.");
+X("a131",["The manager of the source owner","The person who created the campaign"],"Campanhas Manager são o tipo mais comum para revisões periódicas de acesso.");
+X("a132",["Mark the items as privileged","Remove them from the Request Center"],"Os filtros de campanha incluem ou excluem identidades e acessos de uma revisão.");
+X("a133",["It automatically removes one side of every conflict without review","It blocks the identities involved from logging in until resolved"],"A SoD atua de forma preventiva (nos pedidos) e detectiva (nos acessos existentes).");
+X("a134",["Approve it, and ISC silently removes the conflicting access","Forward it to SailPoint support for a decision"],"Os aprovadores veem a violação e decidem, deixando registro para auditoria.");
+X("a135",["Wait for the source owner to approve the decisions","Export the decisions to CSV and upload them"],"O sign-off conclui a revisão e inicia a remediação das revogações.");
+X("a136",["It can only be used for entitlements, never accounts","It must be aggregated before the authoritative source"],"Só fontes autoritativas criam identidades.");
+X("a137",["By matching the account’s password hash with the identity","By the order in which accounts and identities were created"],"A configuração de correlação define quais atributos são comparados.");
+X("a138",["Turn on Attribute Sync for every attribute","Enable request reminders"],"Agregações agendadas mantêm o ISC sincronizado com o sistema de destino.");
+X("a139",["Add it to the Identity Profile mapping only","Mark it as privileged"],"Somente atributos do account schema são lidos na agregação.");
+X("a140",["Edit the accounts in the source’s account list","Ask the VA to pull it from the HR system"],"Fontes baseadas em arquivo dependem de um arquivo novo a cada agregação.");
+X("a141",["Web Services","Delimited File with SQL export"],"O conector JDBC lê e provisiona por meio de bancos SQL.");
+X("a142",["LDAP","SCIM 1.1 only"],"O conector Web Services é configurado com os endpoints da API de destino.");
+X("a143",["Immediately, through an Event Trigger sent by the target","On the next identity refresh, even without aggregation"],"Agregações completas detectam contas que não existem mais na fonte.");
+X("a144",["To own the identities aggregated from it and approve their lifecycle changes","To be the only person allowed to request access on that source"],"Cada fonte tem um owner responsável por ela.");
+X("a145",["Users get access only after their manager’s approval","Every user gets the same minimal access regardless of job"],"O menor privilégio reduz o risco de acesso excessivo.");
+X("a146",["The three stages of a certification campaign","The three log levels used by connectors"],"A IGA automatiza o acesso em cada evento de JML.");
+X("a147",["Logging in with a single factor","Using the same account for every employee"],"O SSO depende de um provedor de identidade confiável.");
+X("a148",["OIDC replaces OAuth 2.0 and removes access tokens","OAuth 2.0 authenticates users; OIDC only issues refresh tokens"],"O OIDC fornece informações de identidade (ID token) sobre o OAuth 2.0.");
+X("a149",["An account shared by a team on purpose","An account that has never logged in"],"Contas órfãs costumam ser de ex-funcionários ou não gerenciadas.");
+X("a150",["Granting access based on the user’s location only","Granting access based on how long the user has worked there"],"O RBAC simplifica a gestão de acessos e as auditorias.");
+X("a151",["attributes.department:NOT(Sales)!","department<>Sales"],"A Search aceita o operador NOT para excluir resultados.");
+X("a152",["Account activities","Identities"],"Events registram o que aconteceu, quem fez e quando.");
+X("a153",["Schedule a certification and export its report","Open each identity and copy the values"],"Os resultados da Search podem ser baixados para análise offline.");
+X("a154",["Whether the transform was created by the current user","Whether the VA cluster is healthy"],"Remover um transform referenciado quebra a configuração que o usa.");
+X("a155",["Get Identity","Manage Access"],"A action Send Email envia uma mensagem como parte do workflow.");
+X("a156",["Saved searches are the only ones that support Boolean operators","Saved searches are processed by the VA instead of the cloud"],"Buscas salvas facilitam relatórios recorrentes.");
+X("a157",["It finished all its jobs and is idle","It is applying a transform"],"O status offline indica problema de conectividade ou de saúde do VA.");
+X("a158",["Yes, the source sends each job to both clusters","Yes, if the clusters share the same name"],"A redundância vem de vários VAs dentro do mesmo cluster.");
+X("a159",["It becomes the primary and the first VA goes on standby","It must be assigned to specific sources one by one"],"VAs adicionais dividem a carga das fontes do cluster.");
+X("a160",["It must download the identity data before each request","It authenticates end users who log in to ISC"],"Sem conectividade, os trabalhos e atualizações não chegam ao VA.");
+X("a161",["The approval reminders","The campaign filters"],"Trabalhos travados costumam vir de problemas de conectividade ou do VA.");
+X("a162",["SailPoint support, through the tenant settings","The Identity Profile owner"],"O VA roda na rede do cliente.");
+X("a163",["Only identities created after the change","Only identities whose attribute already had a value"],"Os mapeamentos são recalculados para todas as identidades no processamento.");
+X("a164",["The uid attribute","The email attribute"],"A manager correlation preenche a relação com o gestor.");
+X("a165",["Enables all accounts again","Sends the identity to a certification"],"Estados de saída removem ou desabilitam acessos.");
+X("a166",["The accounts that will be created for the identity","The list of identities that changed since the last refresh"],"O Preview é uma forma segura de testar mudanças de mapeamento.");
+X("a167",["The value from the profile with more identities","The value that appears in the account schema"],"Cada identidade segue apenas o próprio profile.");
+X("a168",["The certification campaigns","The Request Center"],"Os dados do RH guiam os processos de entrada e saída.");
+X("a169",["From the account to the identity, overwriting HR data","In both directions, keeping the most recent value"],"Os atributos da identidade são a fonte da verdade para os atributos de conta sincronizados.");
+X("a170",["The identity’s manager, through the Request Center approval","The Identity Profile owner, after the next refresh"],"Tarefas manuais precisam de uma pessoa agindo no sistema de destino.");
+X("a171",["The entitlement is held until the next full aggregation","A manual work item is always created, even for connected sources"],"O acesso precisa de uma conta à qual ser vinculado.");
+X("a172",["They are removed even if a role still grants the same access","They stay until the source owner removes them by hand"],"O desprovisionamento só remove acessos que nada mais concede.");
+X("a173",["To check that the Identity Profile priority is correct","To confirm the VA was updated to the latest version"],"As account activities são o registro de cada operação de provisionamento.");
+X("a174",["A list of who may request access on a source and in which order they approve","A setting that decides how often a source is aggregated and with what filter"],"As políticas controlam criação, atualização, habilitação e desabilitação de contas.");
+X("a175",["Descriptions decide which identities receive the access automatically","Descriptions are copied to the target system as group notes"],"Boas descrições melhoram pedidos e revisões.");
+X("a176",["Its members keep it, but no one can see it in certifications","It is removed from every identity and deleted after 30 days"],"Desabilitar pausa o role sem excluí-lo.");
+X("a177",["To be the only person who can hold that access","To decide the entitlement’s technical name in the source"],"Os owners dão ao acesso uma pessoa responsável.");
+X("a178",["Only if the access profile contains a single entitlement","No, they always use the source owner as the only approver"],"As aprovações podem ser ajustadas para cada item de acesso.");
+X("a179",["The source itself, which grants every group on it","A role that includes all AD groups"],"Entitlements e access profiles são os blocos solicitáveis.");
+X("a180",["Roles are approved by SailPoint, so no internal approval is needed","Roles let users choose their own access without reviews"],"Roles reduzem trabalho manual e acessos inconsistentes.");
+X("a181",["Only the approver can cancel it, never the requester","Only by deleting the access profile being requested"],"Cancelar interrompe o pedido antes de o acesso ser concedido.");
+X("a182",["Comments are what actually trigger the removal","Comments notify the VA to skip the next aggregation"],"Os comentários reforçam a trilha de auditoria.");
+X("a183",["Only when the campaign has fewer than ten items","Only after the certification administrator approves"],"Decisões em lote aceleram revisões grandes.");
+X("a184",["Access being granted only through roles","Accounts that are never aggregated"],"Certificações periódicas são o principal controle contra isso.");
+X("a185",["The requester’s whole department","Only the tenant administrator"],"As aprovações vão para os aprovadores configurados.");
+X("a186",["The revoked items are archived without changing access","The reviewer must start a second campaign to apply them"],"O sign-off dispara a remediação.");
+X("a187",["The accounts stay in ISC and are flagged as orphaned","The accounts are moved to the authoritative source"],"Excluir uma fonte remove os dados dela do tenant.");
+X("a188",["The file uses commas instead of semicolons","The file was uploaded by a non-admin user"],"Os cabeçalhos precisam corresponder aos nomes do schema.");
+X("a189",["In the identity’s Preview","In the account schema settings"],"Cada fonte lista as contas que agregou.");
+X("a190",["The VA proxy configuration","The aggregation schedule"],"Conseguir conectar não é o mesmo que ter permissão para ler os objetos certos.");
+X("a191",["So aggregations run without any credentials","So approvals can be sent to the system automatically"],"Service accounts dedicadas são mais fáceis de proteger e auditar.");
+X("a192",["The list of entitlements on the source","The provisioning policy of the source"],"Só os atributos do schema são agregados.");
+X("a193",["Moving identities between Identity Profiles","Collecting accounts from target systems"],"O provisionamento é como as decisões de acesso são executadas.");
+X("a194",["An approval step in every access request","A report of failed logins"],"As certificações comprovam que o acesso continua adequado.");
+X("a195",["Access granted by the HR system directly","Access a user requests on their first day"],"O acesso birthright normalmente é entregue por roles.");
+X("a196",["Splitting administration between two user levels","Keeping test and production tenants apart"],"SoD é um controle central de conformidade.");
+X("a197",["It reduces the number of applications a company needs","It guarantees no one can ever be phished"],"Acesso excessivo é um dos riscos de segurança mais comuns.");
+X("e0",["Aggregate every source → create roles → create the Identity Profile → certify","Create the Identity Profile → process the identities → connect the HR source → preview"],"As identidades vêm de uma fonte autoritativa agregada. O profile e seus mapeamentos são validados com o Preview antes do processamento.");
+X("e1",["Three: employees, contractors and one for people in both","One per manager, so approvals follow the hierarchy"],"Cada fonte autoritativa fica ligada ao seu Identity Profile, e a prioridade resolve quem está em mais de uma.");
+X("e2",["The profile whose source has more accounts","The value chosen by each person’s manager"],"A prioridade torna o resultado previsível. Normalmente o profile de funcionários tem prioridade maior.");
+X("e3",["Access profiles named after each stage and requested by HR","A single active state plus manual deletions for leavers"],"Lifecycle states definem habilitação, desabilitação e mudanças de acesso em cada etapa.");
+X("e4",["A role that removes access when the termination date field is filled","A connector rule that deletes accounts on the target 90 days after creation"],"Encadear lifecycle states com lógica de datas automatiza as duas etapas da saída.");
+X("e5",["Create a governance group per manager and add their team to it","Map the manager’s display name to the identity’s uid attribute"],"A manager correlation liga cada identidade à identidade do gestor por meio de valores correspondentes.");
+X("e6",["In the source’s account schema, next to the attribute","In a lifecycle state, as an action that runs on entry"],"Identity Attribute rules são escolhidas no mapeamento do atributo que calculam.");
+X("e7",["A Search subscription that changes the state when the date passes","The source owner approving a state change for each person"],"Os transforms recalculam o cloudLifecycleState no processamento, então a lógica de datas move as identidades entre estados.");
+X("e8",["It is removed and then re-added on the next aggregation","It stays until a certification confirms it"],"O ISC só remove o acesso que não é mais concedido por nenhuma atribuição.");
+X("e9",["Test with one real user per department in production and fix issues later","Check only that the policies save without errors in the UI"],"Testes controlados confirmam o que o ISC enviou e o que o sistema de destino fez.");
+X("e10",["Mark the attribute as optional in the identity profile so the source ignores it","Let the connector fail and resubmit the request manually"],"Políticas robustas antecipam dados ausentes em vez de falhar na criação.");
+X("e11",["An access profile containing the attribute and an approved request","Only a transform on the account attribute in the source schema"],"O Attribute Sync envia valores de atributos de identidade para contas correlacionadas em fontes com sync habilitado.");
+X("e12",["Aggregate, correlate and refresh policies","Approval and escalation policies"],"Cada política define os atributos enviados ao conector naquele tipo de operação.");
+X("e13",["Raise the Identity Profile priority and resubmit","Run a certification for the identity"],"A account activity mostra o erro do conector, e os logs do VA trazem os detalhes.");
+X("e14",["Merge all accounts of each user into one in the target system automatically","Provision new access to the most recently created account every time"],"Propriedade de conta ambígua faz o acesso cair na conta errada.");
+X("e15",["They only take effect in sandbox tenants","They are applied to the VA and require a restart"],"A configuração de provisionamento tem grande impacto, então mudanças devem ser testadas em sandbox.");
+X("e16",["Splitting a tenant into regions with separate admins","Grouping identities for certification reviewers"],"Segments limitam o catálogo de acesso às identidades que atendem a critérios definidos.");
+X("e17",["Governance groups","Privileged flags"],"Segments controlam a visibilidade do acesso solicitável por público.");
+X("e18",["In the certification campaign settings","In the source’s provisioning policy"],"Lembretes e escalonamento evitam que as aprovações fiquem paradas.");
+X("e19",["Test by assigning every role to one test identity at once","Rely on users reporting problems after go-live"],"Identidades de teste variadas revelam erros de critério e visibilidade antes dos usuários.");
+X("e20",["CentOS Stream","Alpine with a desktop"],"O VA é um appliance Linux baseado em containers.");
+X("e21",["A local copy of the Request Center for offline approvals","A database that stores every identity for faster searches"],"O VA roda os serviços que executam as operações de conector e gerenciam o appliance.");
+X("e22",["systemctl list-users","ls /containers"],"Os serviços do VA rodam como containers, então comandos de container mostram o estado deles.");
+X("e23",["/var/www/ccg/","/opt/identitynow/logs/"],"Os logs dos conectores são gravados localmente no VA para troubleshooting.");
+X("e24",["charon.log","sailpoint.env"],"O config.yaml contém as configurações usadas para parear o VA, incluindo a key passphrase.");
+X("e25",["The network interface name","The proxy server"],"VAs do mesmo cluster compartilham o mesmo material de chave, então precisam da mesma passphrase.");
+X("e26",["In ccg.log","In the cluster settings in the admin UI"],"As configurações de rede são definidas no nível do sistema operacional do VA.");
+X("e27",["In SailPoint’s cloud, next to the tenant, to reduce latency","On the HR system’s server, so data is read locally"],"Proximidade das fontes e conectividade de saída são os dois requisitos principais de posicionamento.");
+X("e28",["It must have a public IP address","It must run a different connector version from the others"],"Qualquer VA do cluster pode processar qualquer operação das fontes do cluster.");
+X("e29",["Each data center needs its own tenant","VAs in the second site must be manually started during failover"],"Distribuir o cluster aumenta a resiliência, mas os requisitos de conectividade valem para todo VA.");
+X("e30",["Yes, as long as it is installed in the sailpoint home folder","Yes, after SailPoint support approves the package list"],"Alterar o appliance pode quebrar atualizações e serviços, por isso não é suportado.");
+X("e31",["The service account password is wrong","The source schema is missing attributes"],"Timeout indica problema de alcance de rede, não de credenciais ou configuração no tenant.");
+X("e32",["Check the Identity Profile Preview for the source","Look at the source in the Request Center catalog"],"Testar a partir do próprio VA mostra o que o conector realmente alcança.");
+X("e33",["Running connector aggregations and provisioning operations","Encrypting the data stored in the tenant"],"O charon mantém os serviços do VA rodando e atualizados.");
+X("e34",["Sending identity data from HR to the service desk every night","Letting the service desk approve access requests instead of managers"],"Integrações de service desk tratam o provisionamento de aplicações desconectadas.");
+X("e35",["Windows Remote Management on the VA","The Group Policy Management console"],"O IQService é instalado em um servidor Windows e executa operações que precisam de um host Windows.");
+X("e36",["By querying the whenCreated attribute only","By reading the replication logs on each domain controller"],"O DirSync retorna apenas os objetos que mudaram desde a última agregação.");
+X("e37",["A connector rule written in PowerShell","An ODBC data source configured on the VA"],"O conector precisa do driver do fabricante para falar com o banco.");
+X("e38",["From the table names listed in the account schema","From a CSV export uploaded for each aggregation"],"A query de contas define exatamente quais linhas viram contas.");
+X("e39",["Active Directory only","SCIM 2.0"],"Diretórios LDAP são integrados com o conector LDAP.");
+X("e40",["Read accounts → process identities → correlate them afterward","Create identities → read accounts → match them by display name"],"As contas precisam ser lidas antes de serem correlacionadas e refletidas nas identidades.");
+X("e41",["Encrypt them with a transform before they are mapped","Map them only to identities of administrators"],"Só os atributos do schema são lidos, então excluí-los impede que saiam da fonte.");
+X("e42",["Disable the accounts outside the OU in AD first","Create a separate Identity Profile for that OU"],"Limitar o escopo da fonte controla quais objetos são lidos na agregação.");
+X("e43",["The aggregation schedule and delta settings","The account schema attributes"],"Erros de autenticação vêm da conta que o conector usa para fazer login.");
+X("e44",["All services share one database schema and release cycle","Services must be restarted together after any change"],"Serviços independentes melhoram escalabilidade e isolamento de falhas.");
+X("e45",["PUT","POST"],"O PATCH altera campos específicos sem substituir o objeto inteiro.");
+X("e46",["Form data (application/x-www-form-urlencoded)","Plain JSON with the full object"],"O JSON Patch descreve operações como replace, add e remove em caminhos específicos.");
+X("e47",["PUT","POST with an empty body"],"O GET é uma operação só de leitura.");
+X("e48",["The token is valid but lacks permission","The request was accepted for later processing"],"Obtenha um novo token e envie no header Authorization.");
+X("e49",["The resource was moved to another URL","The request format is not JSON"],"A autorização falhou, mesmo com a autenticação bem-sucedida.");
+X("e50",["Authorization code with PKCE","Refresh token only"],"O client ID e o secret do PAT são trocados por um access token com o grant client credentials.");
+X("e51",["Refresh token only","Device code with a shared secret"],"O usuário faz login e a aplicação recebe um código que troca por tokens.");
+X("e52",["Switch to another tenant’s API and continue","Increase the page size so fewer calls are made in parallel"],"429 significa requisições demais em um período de tempo.");
+X("e53",["A transform that empties the email attribute in sandbox","An SoD policy that blocks notification emails"],"Redirecionar notificações permite testar de forma realista sem atingir pessoas reais.");
+X("e54",["Trigger → end step → actions and operators","Actions → trigger → operators → end step"],"Um workflow começa com um trigger, executa seus passos e termina em um end step.");
+X("e55",["Run a certification every week to see if anything broke","Check the VA console only during maintenance windows"],"O monitoramento proativo pega falhas antes que afetem os usuários.");
+X("e56",["A shared Admin token used by all integrations","Read access granted through the Request Center"],"O menor privilégio limita o impacto de uma credencial vazada.");
+X("e57",["The certification campaign report","The Identity Profile Preview"],"Esses registros mostram o que aconteceu, quando e com qual resultado.");
+X("e58",["Enable it for all events and disable it if errors appear","Copy it from another tenant without changes"],"O histórico de execução mostra a entrada e a saída de cada passo.");
+X("e59",["Role Admin","Report Admin"],"Conceda o nível que corresponde à tarefa, seguindo o menor privilégio.");
+X("e60",["Shorten the campaign so reviewers have less time","Assign all items to the certification administrator"],"Bons dados tornam as decisões dos revisores mais rápidas e precisas.");
+X("e61",["Manager, filtered to that application","Search, scoped to all applications"],"Campanhas Source Owner enviam o acesso de cada fonte para o seu owner.");
+X("e62",["Reviewers who disabled email notifications","Entitlements without descriptions"],"Campanhas Manager dependem da manager correlation.");
+X("e63",["Whenever access is privileged, even without a conflicting pair","When a role has more than one access profile"],"Políticas de SoD miram combinações tóxicas de acesso.");
+X("e64",["The source owner’s manager","The requester’s peer group"],"Qualquer membro do governance group pode decidir.");
+X("e65",["Mark the entitlements as privileged","Add the entitlements to roles"],"Metadados legíveis ajudam os revisores a decidir com informação.");
+X("e66",["With IPsec tunnels configured by each customer","Only inside the VA, not between the cloud and users"],"Toda a comunicação usa conexões criptografadas.");
+X("e67",["They are encrypted with a key that every tenant shares","They are stored on each identity as a hidden attribute"],"Esse desenho mantém as credenciais utilizáveis fora do alcance da nuvem.");
+X("e68",["https://{tenant}.api.identitynow.com/ui","https://app.identitynow.com/?tenant={tenant}"],"Cada tenant tem o seu próprio subdomínio.");
+X("e69",["https://acme.identitynow.com/api","https://api.identitynow.com/acme/v3"],"As chamadas de API vão para o subdomínio api do tenant.");
+X("e70",["The cloud pushes jobs over an inbound HTTPS webhook on the VA","The VA downloads a job file from a shared network folder"],"O polling de saída dispensa portas de entrada no firewall.");
+X("e71",["Each tenant runs its own copy of every service on separate hardware","Tenants are grouped so that identities can be shared between them"],"Infraestrutura compartilhada com dados isolados é a base do modelo SaaS.");
+X("e72",["A second tenant in another region","A higher Identity Profile priority"],"Se um VA falhar, outro do cluster continua o trabalho.");
+X("e73",["It allows the VA to work without a service account","It lets SailPoint skip TLS for internal traffic"],"Times de segurança preferem não expor redes internas a tráfego de entrada.");
+X("e74",["The sandbox is a read-only view of production","They share one URL with a switch in the user menu"],"A configuração é levada de um para outro de forma deliberada, por exemplo com SP-Config.");
+X("e75",["C#","PowerShell"],"Rules são scripts BeanShell que podem usar classes e APIs Java.");
+X("e76",["Cloud rules are written in Java; connector rules are written in PowerShell","Connector rules must be reviewed by SailPoint; cloud rules can be uploaded freely"],"Código que roda na nuvem compartilhada precisa de revisão antes do deploy.");
+X("e77",["A cloud rule, because it can be changed without testing","A Before Provisioning rule, because it applies to every source"],"Use rules só quando os transforms não conseguem expressar a lógica.");
+X("e78",["Manager Correlation rule","Attribute Generator rule"],"Ela pode adicionar, alterar ou remover operações no plano.");
+X("e79",["Correlation rule","Manager Correlation rule"],"Ela é selecionada no mapeamento do Identity Profile.");
+X("e80",["BuildMap rule","Manager Correlation rule"],"O conector JDBC delega o SQL de provisionamento para essa rule.");
+X("e81",["Identity Attribute rule","Correlation rule"],"A BuildMap monta o mapa de atributos para cada linha lida.");
+X("e82",["upper","replaceAll"],"Ele remove acentos, o que é útil para usernames e e-mails.");
+X("e83",["lookup","firstValid"],"Ele lê um atributo de uma identidade referenciada, geralmente o gestor.");
+X("e84",["identityAttribute","reference"],"Ele recebe a fonte e o nome do atributo e retorna o valor da conta.");
+X("e85",["lookup","firstValid"],"O transform static avalia Velocity Template Language com as variáveis que você define.");
+X("e86",["With the identityAttribute transform, passing the transform name","With a Before Provisioning rule that calls it"],"Referenciar mantém a lógica compartilhada em um só lugar.");
+X("e87",["normalizeNames","decomposeDiacriticalMarks"],"Ele normaliza telefones para sistemas que exigem E.164.");
+X("e88",["dateTime","getEndOfString"],"O dateMath aceita expressões para somar, subtrair e arredondar datas.");
+X("e89",["lookup","replace"],"O replaceAll aplica cada padrão da tabela à entrada.");
+X("e90",["Through the VA, by editing ccg configuration","Through SP-Config only, never the API"],"Transforms são objetos JSON gerenciados pela API e também pela interface.");
+X("e91",["An active state from day one, with a role that disables accounts until the start date","A Before Provisioning rule that delays creation by 7 days for every source"],"Lifecycle states combinados com lógica de datas automatizam o momento do acesso de entrada.");
+X("e92",["That the rehire waits for a manager campaign before any access is granted again","That the HR record is copied to a new authoritative source used only for rehires"],"Cenários de recontratação devem ser cobertos pela lógica de lifecycle, não tratados à mão.");
+X("e93",["In a Before Provisioning rule attached to every source","In the account schema of the HR source, as a calculated column"],"Um transform compartilhado mantém uma única definição da lógica de lifecycle.");
+X("e94",["Copy the value from the manager’s identity so the state is never empty","Leave the state empty and let the next certification decide what it should be"],"Transforms defensivos evitam que identidades caiam em um estado inesperado ou vazio.");
+X("e95",["The technical name is also the password policy name used by the source","Renaming it creates a duplicate state and moves half of the identities to it"],"O transform produz o nome técnico, então os dois precisam ficar sincronizados.");
+X("e96",["Load contractors through the Request Center so their managers create them","Give contractors guest access in AD and skip ISC governance for them"],"Terceiros também precisam de identidades governadas, vindas de um sistema de registro.");
+X("e97",["Manager correlation requires managers to be in the same Identity Profile as their reports","The manager attribute must be marked as privileged before it can be correlated"],"A correlação precisa que o valor referenciado exista na identidade do gestor.");
+X("e98",["Compare the identity with another one in the same department","Look for the attribute in the Request Center history"],"O Preview mostra o valor calculado passo a passo, sem alterar nada.");
+X("e99",["The request is converted into a manual work item for the source owner","Both entitlements are stored on the identity until someone links an account"],"A criação da conta acontece automaticamente quando o acesso exige uma conta nova.");
+X("e100",["It reads the username that the user typed in the Request Center","It copies the username from the manager’s account on the same source"],"Valores únicos evitam falhas de criação por colisão.");
+X("e101",["The account is waiting for the next scheduled entitlement aggregation","Disconnected sources batch all changes until the end of the month"],"Canais manuais dependem de uma pessoa concluir a tarefa.");
+X("e102",["Run the Identity Profile Preview and confirm the attributes look correct","Ask an approver to review the policy JSON before it is saved"],"A verificação de ponta a ponta prova o que o ISC enviou e o resultado no destino.");
+X("e103",["The email attribute is marked as privileged on those identities","Those identities belong to a lower-priority Identity Profile"],"O sync exige uma conta correlacionada e um mapeamento habilitado.");
+X("e104",["Because the target system will reject the account on the next aggregation","Because Attribute Sync cannot run on attributes with more than one value"],"Defina um único dono para cada atributo sincronizado.");
+X("e105",["Assign it through a certification so reviewers approve each identity first","Create it as an identity list instead of criteria to avoid provisioning"],"Atribuições grandes geram grande volume de provisionamento.");
+X("e106",["Disabling the account until the next certification","Changing the account’s correlation to another identity"],"Remover o entitlement mantém a conta em si.");
+X("e107",["The value is calculated once and never sent to the source","The value is copied from the previous account created"],"Valores estáticos servem para configurações fixas, como uma OU padrão ou um flag.");
+X("e108",["In the source’s account schema","In the VA charon.log"],"As account activities registram o que foi pedido e o resultado.");
+X("e109",["The role stays until the identity’s manager confirms the removal","The access is kept but flagged as an exception for auditors"],"Remover a atribuição dispara o desprovisionamento do acesso que não é mais concedido.");
+X("e110",["That it can log in interactively to every server for troubleshooting","That it uses the same password as the VA’s sailpoint user"],"O menor privilégio ainda precisa cobrir todas as operações planejadas.");
+X("e111",["Because production tenants do not keep account activity history","Because sandbox runs provisioning without contacting any target system"],"Testar em sandbox reduz o impacto de erros de configuração.");
+X("e112",["The approvals that each identity has completed","The roles that the identity already holds"],"As identidades que atendem aos critérios veem o acesso do segment.");
+X("e113",["The request is converted into a certification item","The approval is reassigned to the requester’s peers"],"O escalonamento mantém os pedidos andando quando os aprovadores não respondem.");
+X("e114",["Escalate the request to the tenant administrator","Remove the access request from the approver’s list"],"Lembretes avisam o aprovador antes de o escalonamento ser necessário.");
+X("e115",["Whether the requester’s lifecycle state allows requests on weekends","Whether the access profile has more than one approver"],"A visibilidade depende do status, de ser solicitável e dos segments.");
+X("e116",["Whether role criteria still match after the change","Whether reviewers have pending certifications"],"Perder a conectividade de saída é a causa mais comum após mudanças de rede.");
+X("e117",["network.yaml","egress.conf"],"As configurações de proxy ficam separadas da configuração de pareamento.");
+X("e118",["The list of roles and access profiles in the tenant","The approval history of the affected identities"],"Logs e horários permitem ao suporte correlacionar o problema rapidamente.");
+X("e119",["Because the VA keeps a full replica of the tenant’s identities","Because the VA renders the reports emailed by subscriptions"],"O VA faz trabalho real de processamento para cada fonte conectada.");
+X("e120",["An expired Personal Access Token on the administrator’s account","A transform that formats dates in the wrong time zone"],"A comunicação baseada em tokens depende de horário preciso.");
+X("e121",["Inbound HTTPS from SailPoint to the VA, plus outbound SSH","Only outbound DNS, since the VA talks to SailPoint through email"],"O VA só precisa de saída para a nuvem e de acesso às suas fontes.");
+X("e122",["Yes, as long as each VA is tagged with the network it belongs to","Yes, if the sources are configured with different aggregation schedules"],"Ser do mesmo cluster pressupõe alcance compartilhado.");
+X("e123",["It lets that source skip correlation and process faster","It is required for sources with more than 1,000 accounts"],"Isolar a carga melhora o desempenho de todas as fontes.");
+X("e124",["The tenant’s identity processing service","The Search indexer"],"O ccg executa o trabalho dos conectores e grava o ccg.log.");
+X("e125",["free -m","ls -disk"],"O VA é Linux, então os comandos padrão do Linux se aplicam.");
+X("e126",["cat /var/log/ccg.log | sort","watch /home/sailpoint/ccg"],"O tail -f mostra as novas linhas à medida que são gravadas.");
+X("e127",["Operations are queued in the cloud and run directly on the sources after one hour","The sources switch to a delimited file mode automatically"],"O cluster de VAs é o único caminho para as fontes on-premises.");
+X("e128",["The cluster name is used as the source’s display name","Clear names are required for the VA to join the tenant"],"Nomes claros agilizam a operação e a resposta a incidentes.");
+X("e129",["In the Active Directory source’s account schema","In the role that grants AD access"],"A política Create Account monta o DN completo do novo objeto.");
+X("e130",["It lets the connector read AD without a service account password","It compresses traffic so aggregations finish faster"],"Operações de senha precisam de um canal criptografado.");
+X("e131",["A separate Identity Profile for changed records","A delimited file with the changes uploaded each time"],"O conector precisa saber quais linhas mudaram.");
+X("e132",["Web Services only, since SCIM is not supported","Active Directory, configured in SCIM mode"],"SCIM é um protocolo padrão de provisionamento de usuários e grupos.");
+X("e133",["The organizational units, as roles","The computers in the domain, as accounts"],"Os grupos viram entitlements solicitáveis e revisáveis.");
+X("e134",["JSON","Binary ASN.1"],"SAML é um padrão baseado em XML.");
+X("e135",["LDAP over the internet","SAML"],"SCIM define uma API comum para usuários e grupos.");
+X("e136",["It uses the same rights as the administrator who configured the source","It can read everything but change nothing, regardless of what the connector does"],"Isso limita o impacto se a credencial for comprometida.");
+X("e137",["How many minutes the refresh token remains valid","How many days until the client must be re-registered"],"Os clientes devem pedir um novo token antes de ele expirar.");
+X("e138",["PATCH","DELETE with a body"],"O POST envia dados que criam um recurso.");
+X("e139",["To pick which fields are returned","To sort results alphabetically"],"A paginação mantém as respostas rápidas e previsíveis.");
+X("e140",["Authorization: Basic <client_secret>","X-Tenant: <token>"],"Tokens bearer vão no header Authorization.");
+X("e141",["v3 requires a VA; beta endpoints run without one","Beta endpoints are only for the Request Center"],"Prefira o v3 em integrações de produção quando o endpoint existir.");
+X("e142",["attributes.department:Sales OR Marketing:attributes","attributes.department:[Sales Marketing]"],"Os parênteses agrupam alternativas para o mesmo campo.");
+X("e143",["With an environment variable defined on the VA","With a static value typed in each step"],"Os passos do workflow referenciam saídas anteriores com variáveis no estilo JSONPath.");
+X("e144",["Delay Trigger","Pause Action"],"O Wait atrasa o próximo passo, por exemplo até uma data.");
+X("e145",["For Each Action","Repeat Trigger"],"O Loop percorre uma coleção de itens.");
+X("e146",["Increase aggregation frequency until failures stop","Delete and recreate failing sources each week"],"Falhas silenciosas de agregação deixam os dados desatualizados em todo lugar.");
+X("e147",["In the role’s membership list","In the access profile approval settings"],"Events registram mudanças de configuração com quem e quando.");
+X("e148",["To roll back every action the workflow already executed","To send the failure to the next workflow in line"],"Finais de falha explícitos tornam os problemas visíveis no histórico.");
+X("e149",["A request-response Event Trigger","A Wait operator"],"Triggers externos são chamados pela API.");
+X("e150",["The Identity Profile Preview","The VA console"],"A CLI encapsula chamadas de API e tarefas comuns para desenvolvedores.");
+X("e151",["Report Admin","Source Sub-Admin"],"Escolha o nível de usuário de acordo com a função, seguindo o menor privilégio.");
+X("e152",["The reviewer must also revoke the access in a second campaign","Revocations on disconnected sources apply only after the source is deleted"],"A remediação segue o mesmo canal de provisionamento da fonte.");
+X("e153",["Service accounts slow down the VA during certifications","Including them makes the campaign a Search campaign"],"Campanhas bem delimitadas geram decisões melhores.");
+X("e154",["Make the owner the requester’s manager in the HR source","Add both people to an SoD policy"],"Os níveis de aprovação rodam em sequência.");
+X("e155",["Manager, limited to Finance managers","Role Composition for the payment role"],"Campanhas Search usam uma consulta para definir o escopo com precisão.");
+X("e156",["It is a cache that answers Search queries when the cloud is slow","It is the authoritative source for identities in hybrid tenants"],"O VA faz a ponte entre a nuvem e a rede do cliente.");
+X("e157",["Because SailPoint is not allowed to contact sources after aggregation","Because the VA deletes its data after each aggregation"],"Os dados agregados sustentam os recursos de governança em escala.");
+X("e158",["On the VA for identities, and in the cloud only for certifications","On each source system, using rules deployed by ISC"],"O processamento acontece na nuvem; a conectividade, no VA.");
+X("e159",["trim","getEndOfString"],"O split recebe um delimitador e um índice.");
+X("e160",["firstValid","lower"],"O conditional avalia uma expressão e escolhe a saída correspondente.");
+X("e161",["lookup","getReferenceIdentityAttribute"],"O randomAlphaNumeric gera letras e números com um tamanho definido.");
+ADMIN_Q.forEach((q, i) => { const x = XTRA["a" + i]; if (x) { q.w = q.w.concat(x.w); q.ept = x.pt; } });
+ENG_NEW.forEach((q, i) => { const x = XTRA["e" + i]; if (x) { q.w = q.w.concat(x.w); q.ept = x.pt; } });
+const SHORTC = {}; function S(k, v){ SHORTC[k] = v; }
+S("a3","OAuth 2.0 with a client ID and secret");
+S("a6","Notifying an external system of an event");
+S("a16","The Virtual Appliances page in Connections");
+S("a20","Creating identities from an authoritative source");
+S("a23","It sets the source of an identity attribute’s value");
+S("a27","Modeling stages such as pre-hire, active, terminated");
+S("a29","Its value selects the identity’s lifecycle state");
+S("a30","With a transform over authoritative source data");
+S("a35","Through a work item or an ITSM ticket");
+S("a37","Raise that connector’s log level for a short time");
+S("a39","Account activities that failed");
+S("a42","A specific permission on a source");
+S("a44","Roles span sources; access profiles cover one source");
+S("a45","Through role criteria based on identity attributes");
+S("a47","The identity’s attribute value and its processing");
+S("a60","One reads accounts; the other reads entitlements");
+S("a64","Fix the correlation settings or correlate by hand");
+S("a65","The account deletion threshold");
+S("a67","In the source’s aggregation history and events");
+S("a69","Governing identities and their access");
+S("a70","Through certifications and audit trails");
+S("a72","Trust between an IdP and applications");
+S("a73","Factors from different categories");
+S("a78","An email with the search results");
+S("a79","The user who generated it");
+S("a88","On supported hypervisors or cloud IaaS");
+S("a92","The cluster keeps working, but without redundancy");
+S("a94","DNS, firewall rules and outbound access");
+S("a95","The HR system");
+S("a97","Create the identity attribute and map it");
+S("a101","The role and its access are removed");
+S("a102","A pre-hire lifecycle state with disabled accounts");
+S("a104","Attributes, roles and lifecycle actions are updated");
+S("a105","Through manager correlation on the HR source");
+S("a107","An account is created, then the access is added");
+S("a108","A generator transform in the Create Account policy");
+S("a110","Per source, mapping identity to account attributes");
+S("a111","The AD service account’s permissions");
+S("a113","They are removed unless granted another way");
+S("a119","To make it clear to people deciding on it");
+S("a121","A role with both access profiles");
+S("a123","Submit a removal request");
+S("a124","Requesting on behalf of others");
+S("a125","Require comments on requests");
+S("a126","Reminders and escalation");
+S("a127","In the Request Center");
+S("a129","To check the campaign before it goes live");
+S("a131","Each identity’s manager");
+S("a133","It flags violations on requests and existing access");
+S("a136","It correlates accounts but creates no identities");
+S("a137","By matching account and identity attributes");
+S("a139","Add it to the account schema and aggregate");
+S("a144","To be accountable for the source");
+S("a146","Joining, moving and leaving the company");
+S("a148","OIDC adds authentication on top of OAuth 2.0");
+S("a149","An account with no valid owner");
+S("a154","Whether anything still references it");
+S("a161","VA health, connectivity and logs");
+S("a162","The customer");
+S("a163","Every identity using that mapping");
+S("a164","The manager attribute");
+S("a165","Disables the identity’s accounts");
+S("a166","Calculated values for one identity, unsaved");
+S("a170","The assignee, who marks it complete");
+S("a172","Removed unless another assignment grants them");
+S("a173","To confirm provisioning works");
+S("a174","What a source receives for an operation");
+S("a177","To be accountable for that access");
+S("a179","The group’s entitlement or an access profile");
+S("a180","They grant job access automatically");
+S("a181","Yes, before it is completed");
+S("a182","It documents the reason");
+S("a184","Access piling up over time");
+S("a185","The configured approvers");
+S("a188","Headers that do not match the schema");
+S("a189","On the source’s accounts list");
+S("a190","The search scope and read permissions");
+S("a191","To give the connector a controlled identity");
+S("a192","The account attributes ISC reads");
+S("a193","Changing accounts and access in systems");
+S("a194","A periodic review of access");
+S("a195","Access granted automatically by role");
+S("a196","Preventing conflicting access for one person");
+S("a197","It keeps access right-sized and current");
+S("e0","Aggregate HR → profile → map → preview → process");
+S("e1","Two, one per authoritative source");
+S("e3","Lifecycle states with access actions per stage");
+S("e4","A terminated state, then a dated post-terminated state");
+S("e5","Map the manager ID to the matching identity attribute");
+S("e6","In the Identity Profile attribute mapping");
+S("e7","A date transform on cloudLifecycleState");
+S("e9","Test identities in a sandbox, then verify results");
+S("e10","Handle missing values with a fallback");
+S("e11","A mapped attribute, a correlated account, sync enabled");
+S("e12","Create, update, enable and disable");
+S("e13","Read the activity error and the VA logs");
+S("e15","Mistakes affect every account they touch");
+S("e16","Scoping what access a group can see");
+S("e19","Use varied test identities to check behavior");
+S("e21","Containerized services such as ccg and charon");
+S("e27","Internal network near its sources, outbound allowed");
+S("e29","Every VA must still reach every source");
+S("e30","No, the appliance must not be modified");
+S("e31","A firewall or route blocking the target");
+S("e33","Managing and updating the appliance");
+S("e34","Creating tickets for manual provisioning");
+S("e40","Read → correlate → process identities");
+S("e41","Keep them out of the account schema");
+S("e43","The service account’s credentials and status");
+S("e48","Missing or expired access token");
+S("e49","Valid token, missing permission");
+S("e55","Subscribe to events and review health regularly");
+S("e56","Only the permissions it needs");
+S("e57","Search events and account activities");
+S("e58","Test with sample input and check executions");
+S("e60","Clean up the data first");
+S("e63","When two items together create risk");
+S("e65","Add display names and descriptions");
+S("e67","Encrypted with keys tied to the VA cluster");
+S("e71","Shared services with isolated tenant data");
+S("e73","No inbound firewall ports are needed");
+S("e74","They are separate tenants");
+S("e75","BeanShell");
+S("e76","Cloud rules need SailPoint review; connector rules run on the VA");
+S("e77","The transform, as configuration needs no review");
+S("e90","Through the transforms API endpoints");
+S("e91","A date-driven prehire state with disabled accounts");
+S("e92","The lifecycle transform returns it to active");
+S("e93","In one shared transform referenced by each profile");
+S("e94","Fall back to a safe default state");
+S("e95","Transform output must match the technical name");
+S("e96","A delimited file source with its own profile");
+S("e97","Contractor identities lack the matching ID value");
+S("e98","Preview the identity and check its mapping");
+S("e99","An account is created, then both are added");
+S("e100","It guarantees a unique value on the source");
+S("e102","Run it with a test identity and check the target");
+S("e103","Uncorrelated accounts or sync not enabled");
+S("e104","Syncs overwrite changes made in the target");
+S("e105","Pilot the criteria and monitor activities");
+S("e106","Remove the entitlement, keep the account");
+S("e108","In the account activity details");
+S("e109","The role and its access are removed");
+S("e110","It has exactly the rights it needs");
+S("e111","Mistakes affect every account touched");
+S("e113","It moves to the escalation reviewer");
+S("e115","Its status, requestability and segments");
+S("e116","Outbound reachability to SailPoint");
+S("e118","VA logs, cluster name, time and error");
+S("e119","Undersized VAs make jobs slow or fail");
+S("e121","Outbound HTTPS plus ports to each target");
+S("e128","It shows which sources rely on which VAs");
+S("e129","In the Create Account policy’s DN");
+S("e130","It encrypts traffic, needed for passwords");
+S("e131","A way to detect changed records");
+S("e139","To page large result sets");
+S("e141","v3 is stable; beta may change");
+S("e143","With a variable such as $.trigger.identity");
+S("e146","Review results and alert on failures");
+S("e147","In Search events");
+S("e148","To end the run as failed");
+S("e152","They become manual tasks or tickets");
+S("e153","Managers cannot judge them");
+S("e154","A multi-level approval");
+S("e156","It connects the cloud to internal systems");
+S("e157","So governance features stay fast");
+S("e158","In the cloud; connectors run on the VA");
+const PT_DICT = {
+"Dashboard":"Painel","Domains":"Domínios","History":"Histórico","Team":"Equipe","Exam guide":"Guia da prova","New attempt":"Nova tentativa",
+"Synced":"Sincronizado","Saving…":"Salvando…","Sync error":"Erro ao sincronizar","This device":"Só neste aparelho","Light mode":"Modo claro","Language":"Idioma","Progress sync":"Sincronização do progresso",
+"Target":"Meta","Your target score":"Sua meta de nota","Used across charts, domain status and results.":"Usada nos gráficos, no status dos domínios e nos resultados.",
+"Start an attempt":"Começar uma tentativa","Full exam":"Prova completa","Practice":"Prática","Review mistakes":"Revisar erros","Missed review":"Revisão de erros","Mistakes review":"Revisão de erros",
+"Same length, timing and domain weighting as the real exam.":"Mesmo tamanho, tempo e peso por domínio da prova real.",
+"A short session on every domain or just one.":"Uma sessão curta com todos os domínios ou só um.",
+"Only the questions you answered wrong before.":"Só as questões que você errou antes.",
+"Nothing to review yet":"Nada para revisar ainda","Domain":"Domínio","All domains":"Todos os domínios",
+"Show the answer after each question":"Mostrar a resposta após cada questão","Learn as you go. The real exam does not do this.":"Aprenda durante a prova. A prova real não faz isso.",
+"Start attempt":"Começar tentativa","questions":"questões","min":"min","new to you":"inéditas para você",
+"New here? Start with a full exam. It sets your baseline in every domain, then the dashboard tells you what to study.":"Primeira vez? Comece por uma prova completa. Ela mede seu ponto de partida em cada domínio, e o painel mostra o que estudar.",
+"You are at or above target in every domain you have answered. A full exam is the best way to confirm you are ready.":"Você está na meta ou acima em todos os domínios que respondeu. Uma prova completa é a melhor forma de confirmar que está pronto.",
+"Set a baseline":"Defina seu ponto de partida","See where you stand":"Veja onde você está","Close the gaps":"Feche as lacunas",
+"The dashboard then shows a projected score, accuracy per domain, your trend and the questions you miss.":"Depois, o painel mostra a nota projetada, o acerto por domínio, sua evolução e as questões que você erra.",
+"Practice your weakest domain, or review only the questions you got wrong, until every domain reaches your target.":"Pratique o domínio mais fraco ou revise só as questões que errou, até todos os domínios chegarem à meta.",
+"You have an unfinished attempt":"Você tem uma tentativa não terminada","Your unfinished attempt ran out of time":"O tempo da sua tentativa não terminada acabou","Discard":"Descartar","Continue attempt":"Continuar tentativa","See results":"Ver resultados",
+"Projected exam score":"Nota projetada na prova","Last score":"Última nota","Best score":"Melhor nota","Full exams":"Provas completas","Study time":"Tempo de estudo",
+"Your all-time accuracy per domain, weighted by how many questions each domain has on the real exam.":"Seu acerto histórico por domínio, ponderado pela quantidade de questões de cada domínio na prova real.",
+"Score of your most recent attempt, compared with the one before it.":"Nota da sua tentativa mais recente, comparada com a anterior.",
+"Highest score across all attempts of this exam.":"Maior nota entre todas as tentativas desta prova.",
+"Number of full-length attempts. Practice sessions are counted separately.":"Número de provas completas. Sessões de prática são contadas à parte.",
+"Total time spent in attempts for this exam.":"Tempo total gasto em tentativas desta prova.",
+"On target":"Na meta","Target reached":"Meta atingida","Blueprint-weighted":"Ponderada pelo blueprint","Partial":"Parcial","Not every domain answered yet":"Nem todos os domínios respondidos ainda",
+"Weighted by the blueprint after your first attempt":"Ponderada pelo blueprint após sua primeira tentativa","First attempt":"Primeira tentativa","No attempts yet":"Nenhuma tentativa ainda","vs previous":"vs anterior",
+"Score trend":"Evolução da nota","Your score on each attempt. Select domains to compare them.":"Sua nota em cada tentativa. Selecione domínios para comparar.","Overall":"Geral",
+"Your score per attempt and per domain will be plotted here.":"Sua nota por tentativa e por domínio aparecerá aqui.","Correct":"Acertos",
+"Domain mastery":"Domínio por área","All-time accuracy vs your last attempt":"Acerto histórico vs sua última tentativa","All-time":"Histórico","Last attempt":"Última tentativa","Answered":"Respondidas",
+"Study activity":"Atividade de estudo","Questions answered per day, last 16 weeks":"Questões respondidas por dia, últimas 16 semanas","Less":"Menos","More":"Mais","Mon":"Seg","Wed":"Qua","Fri":"Sex",
+"Day streak":"Dias seguidos","Questions this week":"Questões nesta semana","Total attempts":"Total de tentativas","Attempts":"Tentativas","Questions":"Questões",
+"Recent attempts":"Tentativas recentes","Open History for the full list":"Abra o Histórico para ver a lista completa","No attempts yet.":"Nenhuma tentativa ainda.",
+"Focus next":"Próximo foco","Sorted from weakest to strongest":"Do mais fraco para o mais forte","Every domain is still untested":"Nenhum domínio foi testado ainda",
+"A full exam covers all eight domains and gives you a baseline.":"Uma prova completa cobre todos os domínios e mostra seu ponto de partida.",
+"Most missed questions":"Questões mais erradas","Select a question to see the answer and why":"Selecione uma questão para ver a resposta e o porquê",
+"Questions you answer wrong will collect here so you can review them quickly.":"As questões que você errar aparecem aqui para revisão rápida.","Answer:":"Resposta:",
+"The eight areas of the official blueprint. Open a domain to see its trend, the questions you miss and to practice it on its own.":"As áreas do blueprint oficial. Abra um domínio para ver a evolução, as questões que você erra e praticá-lo separadamente.",
+"Not started":"Não iniciado","Mastered":"Dominado","On target ":"Na meta","Below target":"Abaixo da meta","correct answers":"respostas certas","bank explored":"do banco explorado",
+"All-time accuracy":"Acerto histórico","Accuracy by attempt":"Acerto por tentativa","Answer questions from this domain to see the trend.":"Responda questões deste domínio para ver a evolução.","Nothing missed in this domain yet.":"Nada errado neste domínio ainda.","Close":"Fechar",
+"Export CSV":"Exportar CSV","Clear data":"Limpar dados","Your attempts will be listed here.":"Suas tentativas aparecerão aqui.","Finish an attempt to start your history.":"Termine uma tentativa para começar seu histórico.",
+"Date":"Data","Mode":"Modo","Score":"Nota","Duration":"Duração","Review this attempt’s questions":"Revisar as questões desta tentativa",
+"How the team is doing on this exam. Only people who join the board appear here, with the name they choose.":"Como a equipe está indo nesta prova. Só aparece quem entra no quadro, com o nome que escolher.",
+"Join the team board":"Entrar no quadro da equipe","Share your scores with the team under a display name. Nothing is shared until you join, and you can leave whenever you want.":"Compartilhe suas notas com a equipe usando um nome de exibição. Nada é compartilhado até você entrar, e dá para sair quando quiser.",
+"Your name":"Seu nome","Join":"Entrar","Rename":"Renomear","Leave":"Sair","You appear as":"Você aparece como","Display name":"Nome de exibição",
+"Your scores on both exams are visible to the team. You can rename yourself or leave at any time.":"Suas notas nas duas provas ficam visíveis para a equipe. Você pode trocar o nome ou sair quando quiser.",
+"Loading the team board…":"Carregando o quadro da equipe…","Could not load the team board. Try again in a moment.":"Não foi possível carregar o quadro. Tente de novo em instantes.",
+"No one has joined yet":"Ninguém entrou ainda","Join the board above, then share the site with the team.":"Entre no quadro acima e compartilhe o site com a equipe.",
+"The team board lives on the team site":"O quadro da equipe fica no site da equipe","Open admin.blackbox.net.br to see the team and share your scores.":"Abra admin.blackbox.net.br para ver a equipe e compartilhar suas notas.",
+"Members on the board":"Pessoas no quadro","Team average":"Média da equipe","Average of full exam scores":"Média das notas em provas completas","At or above target":"Na meta ou acima","Answered by the team in 7 days":"Respondidas pela equipe em 7 dias",
+"Leaderboard":"Classificação","Ranked by average full exam score":"Ordenado pela média em provas completas","Name":"Nome","Average":"Média","Best":"Melhor","Last":"Última","This week":"Nesta semana","Last active":"Última atividade","You":"Você",
+"Team weak spots":"Pontos fracos da equipe","Accuracy by domain, weakest first":"Acerto por domínio, do mais fraco ao mais forte","No answers yet.":"Nenhuma resposta ainda.",
+"You joined the team board":"Você entrou no quadro da equipe","Name updated":"Nome atualizado","You left the team board":"Você saiu do quadro da equipe","Type the name you want to show":"Digite o nome que quer mostrar",
+"Leave the team board?":"Sair do quadro da equipe?","Your name and scores will no longer be visible to the team. Your own progress is kept.":"Seu nome e suas notas deixam de aparecer para a equipe. Seu progresso continua salvo.",
+"Questions, at most":"Questões, no máximo","Minutes of seat time":"Minutos de prova","Blueprint domains":"Domínios do blueprint","Attempts included":"Tentativas incluídas",
+"Read the prompt":"Leia o enunciado","Only the question is visible at first. Take your time before asking for an option.":"No início só a pergunta aparece. Pense com calma antes de pedir uma opção.",
+"Judge one option at a time":"Julgue uma opção por vez","Each option appears alone. Decide if it is correct with Yes or No. There is no going back.":"Cada opção aparece sozinha. Decida se está correta com Yes ou No. Não dá para voltar.",
+"Expect a follow-up":"Espere uma confirmação","After a correct Yes, another option may appear to confirm you are not accepting everything.":"Depois de um Yes correto, outra opção pode aparecer para confirmar que você não aceita tudo.",
+"Blueprint weighting":"Peso do blueprint","Questions per full exam":"Questões por prova completa","Rules on exam day":"Regras no dia da prova",
+"Online and proctored, completed in one sitting.":"Online e supervisionada, feita de uma vez só.","No flagging, no reviewing and no changing answers.":"Sem marcar, revisar ou mudar respostas.",
+"The exam can end early once a pass or fail threshold is reached.":"A prova pode terminar antes, ao atingir o limite de aprovação ou reprovação.","The score report shows your percentage per domain.":"O relatório mostra seu percentual por domínio.",
+"The certification is valid for two years.":"A certificação vale por dois anos.",
+"Practice questions are original and written from the public blueprint. They are not SailPoint exam content, and this site is not affiliated with SailPoint.":"As questões são originais e escritas a partir do blueprint público. Não são conteúdo da prova da SailPoint, e este site não tem vínculo com a SailPoint.",
+"Score by domain":"Nota por domínio","This attempt":"Esta tentativa","Attempt":"Tentativa","Question review":"Revisão das questões","All":"Todas","Incorrect":"Erradas",
+"score":"nota","At or above target ":"Na meta ou acima","Back to dashboard":"Voltar ao painel","Correct answers":"Respostas certas","Time used":"Tempo usado","Pace":"Ritmo","Best domain":"Melhor domínio",
+"Every question answered":"Todas as questões respondidas","Personal best":"Recorde pessoal","How you answered":"Como você respondeu","Correct option":"Opção correta","Wrong option":"Opção errada",
+"Search this topic in the SailPoint community ↗":"Pesquisar este tema na comunidade SailPoint ↗","No questions match this filter.":"Nenhuma questão corresponde a este filtro.",
+"Every question in this attempt was answered correctly.":"Todas as questões desta tentativa foram respondidas corretamente.",
+"Is this option correct?":"Esta opção está correta?","Show me an option":"Mostrar uma opção","or press":"ou pressione","show option":"mostrar opção","yes":"sim","no":"não","End attempt":"Encerrar tentativa",
+"Not quite":"Não foi dessa vez","Next question":"Próxima questão","Question":"Questão","of":"de",
+"End this attempt?":"Encerrar esta tentativa?","Keep going":"Continuar","Cancel":"Cancelar",
+"Discard this attempt?":"Descartar esta tentativa?","The unfinished attempt and its answers will be deleted. It will not count in your statistics.":"A tentativa não terminada e suas respostas serão apagadas. Ela não conta nas estatísticas.",
+"Unfinished attempt discarded":"Tentativa não terminada descartada",
+"Clear all data?":"Limpar todos os dados?","This removes every attempt, all statistics and your bank progress from this browser. It cannot be undone.":"Isso remove todas as tentativas, estatísticas e progresso no banco. Não dá para desfazer.",
+"All data cleared":"Todos os dados foram apagados","There is no data to clear yet.":"Ainda não há dados para limpar.","Finish an attempt before exporting.":"Termine uma tentativa antes de exportar.","History exported":"Histórico exportado",
+"No questions available for this selection.":"Não há questões para esta seleção.",
+"Your progress":"Seu progresso","Copy link":"Copiar link","Use":"Usar","Paste link or key":"Cole o link ou a chave","Progress link copied":"Link de progresso copiado",
+"Your attempts and statistics are saved in the cloud automatically. Keep this private link to continue on another device or browser, now or next week.":"Suas tentativas e estatísticas são salvas na nuvem automaticamente. Guarde este link privado para continuar em outro aparelho ou navegador, hoje ou na semana que vem.",
+"All changes are saved.":"Todas as alterações estão salvas.","The last save failed. It will retry with your next change.":"O último salvamento falhou. Ele tenta de novo na próxima alteração.",
+"Continue from another link":"Continuar de outro link","Paste a progress link or key from another device. Its data is merged with what is on this device.":"Cole um link ou chave de progresso de outro aparelho. Os dados são juntados com os deste aparelho.",
+"Cloud saving is available on the team site. Here your progress is saved in this browser only, and it stays as long as the browser keeps its site data.":"O salvamento na nuvem funciona no site da equipe. Aqui, o progresso fica só neste navegador, enquanto ele guardar os dados do site.",
+"Progress link opened on this device":"Link de progresso aberto neste aparelho","Progress loaded and merged":"Progresso carregado e juntado","Could not load that progress":"Não foi possível carregar esse progresso","That does not look like a progress link or key":"Isso não parece um link ou chave de progresso",
+"Private progress link":"Link privado de progresso","Progress link or key":"Link ou chave de progresso",
+"just now":"agora","questions ·":"questões ·","min ·":"min ·","yesterday":"ontem","Choose your exam":"Escolha sua prova","Attempt type":"Tipo de tentativa","Main":"Principal",
+"Explanations as you go, not like the real exam":"Explicações durante a prova, diferente da prova real"
+};
+const PT_RX = [
+[/^Last attempt (.+) scored (\d+)%\. (\d+) attempts? and (\d+) questions answered so far\.$/, (m,a,b,c,d) => "Última tentativa " + relPT(a) + " com nota " + b + "%. " + c + (c === "1" ? " tentativa" : " tentativas") + " e " + d + " questões respondidas até agora."],
+[/^(.+) · (\d+) practice questions across (\d+) blueprint domains\.$/, (m,a,b,c) => a + " · " + b + " questões de prática em " + c + " domínios do blueprint."],
+[/^Your weakest domain is (.+) at (\d+)%\. A practice session there is the fastest way to raise your projected score\.$/, (m,a,b) => "Seu domínio mais fraco é " + a + ", com " + b + "%. Uma sessão de prática nele é o jeito mais rápido de subir sua nota projetada."],
+[/^Take a full exam\. Like the real one, it has (\d+) questions, 120 minutes and one answer option at a time\.$/, (m,a) => "Faça uma prova completa. Como a real, ela tem " + a + " questões, 120 minutos e uma opção de resposta por vez."],
+[/^(\d+) questions · (\d+) minutes$/, "$1 questões · $2 minutos"],
+[/^(\d+) questions to review · (\d+) minutes$/, "$1 questões para revisar · $2 minutos"],
+[/^(\d+) questions$/, "$1 questões"],[/^(\d+) questions answered$/, "$1 questões respondidas"],[/^(\d+) unanswered$/, "$1 sem resposta"],
+[/^(\d+) pts below target$/, "$1 pts abaixo da meta"],[/^(\d+) pts to target$/, "faltam $1 pts para a meta"],[/^([+-]?\d+) pts vs previous$/, "$1 pts vs anterior"],
+[/^Target (\d+)%$/, "Meta $1%"],[/^Target set to (\d+)%$/, "Meta definida em $1%"],[/^Best score of (\d+)% or more$/, "Melhor nota de $1% ou mais"],
+[/^Avg (\d+)% · (\d+) practice$/, "Média $1% · $2 práticas"],[/^(\d+) practice sessions$/, "$1 sessões de prática"],
+[/^(\d+) active days?$/, (m,a) => a + (a === "1" ? " dia ativo" : " dias ativos")],
+[/^Domain (\d+) · (\d+) exam questions$/, "Domínio $1 · $2 questões na prova"],[/^Domain (\d+) · (\d+) of (\d+) exam questions$/, "Domínio $1 · $2 de $3 questões da prova"],
+[/^(.+) · right (\d+) of (\d+)$/, "$1 · acertou $2 de $3"],[/^right (\d+) of (\d+)$/, "acertou $1 de $2"],
+[/^(\d+) min ago$/, "há $1 min"],[/^(\d+) h ago$/, "há $1 h"],[/^(\d+) days ago$/, "há $1 dias"],
+[/^(just now|\d+ min ago|\d+ h ago|yesterday|\d+ days ago) · (.+)$/, (m,a,b) => relPT(a) + " · " + b],
+[/^(\d+) attempts? saved\. Select a row to see the domain breakdown and review its questions\.$/, (m,a) => a + (a === "1" ? " tentativa salva" : " tentativas salvas") + ". Selecione uma linha para ver os domínios e revisar as questões."],
+[/^(\d+) questions? (?:is|are) still unanswered and will count as incorrect\. Your results will be saved\.$/, (m,a) => a + (a === "1" ? " questão ainda está sem resposta e vai contar como errada." : " questões ainda estão sem resposta e vão contar como erradas.") + " Seus resultados serão salvos."],
+[/^Practice (.+) · (\d+) questions$/, "Praticar $1 · $2 questões"],
+[/^Questions you miss here \((\d+)\)$/, "Questões que você erra aqui ($1)"],
+[/^Review (\d+) mistakes?$/, (m,a) => "Revisar " + a + (a === "1" ? " erro" : " erros")],
+[/^Practice (Platform|Virtual Appliances|Identity & Lifecycle|Provisioning|Access Mgmt|Governance|Sources|IGA Fundamentals|Platforms|Architecture|Rules & Transforms)$/, "Praticar $1"],
+[/^(Administrator|Engineer) exam$/, "Prova $1"],
+[/^(Full exam|Practice|Mistakes review|Missed review) complete$/, (m,a) => ({"Full exam":"Prova completa concluída","Practice":"Prática concluída","Mistakes review":"Revisão de erros concluída","Missed review":"Revisão de erros concluída"})[a]],
+[/^Attempt #(\d+)$/, "Tentativa nº $1"],[/^Option (\d+)$/, "Opção $1"],
+[/^of (\d+) minutes allowed$/, "de $1 minutos permitidos"],
+[/^Average per question · (on pace|watch your pace)$/, (m,a) => "Média por questão · " + (a === "on pace" ? "no ritmo" : "atenção ao ritmo")],
+[/^You scored (\d+)%, (\d+) points over your (\d+)% target\.$/, "Você fez $1%, $2 pontos acima da sua meta de $3%."],
+[/^You scored (\d+)%, (\d+) points under your (\d+)% target\. The domain breakdown shows where to focus\.$/, "Você fez $1%, $2 pontos abaixo da sua meta de $3%. A divisão por domínio mostra onde focar."],
+[/^New personal best: (\d+)%$/, "Novo recorde pessoal: $1%"],[/^(\d+) minutes? left$/, (m,a) => a + (a === "1" ? " minuto restante" : " minutos restantes")],
+[/^Now practicing for (.+)$/, "Agora praticando para $1"],
+[/^(Administrator|Engineer) · (Full exam|Practice|Mistakes review)(.*) · (\d+) questions$/, (m,a,b,c,d) => a + " · " + ({"Full exam":"Prova completa","Practice":"Prática","Mistakes review":"Revisão de erros"})[b] + c + " · " + d + " questões"],
+[/^(Full exam|Practice|Mistakes review)(.*) · (\d+) of (\d+) answered(?: · (.+) left)?$/, (m,a,b,c,d,e) => ({"Full exam":"Prova completa","Practice":"Prática","Mistakes review":"Revisão de erros"})[a] + b + " · " + c + " de " + d + " respondidas" + (e ? " · faltam " + e : "")],
+[/^(Practice|Missed review|Mistakes review) · (.+)$/, (m,a,b) => (a === "Practice" ? "Prática" : "Revisão de erros") + " · " + b],
+[/^The SailPoint (.+) exam uses Discrete Option Multiple Choice\. This practice environment follows the same rules so exam day feels familiar\.( SailPoint does not publish questions per domain for this exam, so the weighting below follows the number of objectives in each domain\.)?$/, (m,a,b) => "A prova SailPoint " + a + " usa Discrete Option Multiple Choice. Este simulado segue as mesmas regras para o dia da prova parecer familiar." + (b ? " A SailPoint não publica quantas questões caem por domínio nesta prova, então o peso abaixo segue a quantidade de objetivos de cada domínio." : "")],
+[/^(\d+) of (\d+) answered$/, "$1 de $2 respondidas"],
+[/^Practice (.+)$/, "Praticar $1"]
+];
+function relPT(s){ if (s === "just now") return "agora"; if (s === "yesterday") return "ontem"; let m; if ((m = s.match(/^(\d+) min ago$/))) return "há " + m[1] + " min"; if ((m = s.match(/^(\d+) h ago$/))) return "há " + m[1] + " h"; if ((m = s.match(/^(\d+) days ago$/))) return "há " + m[1] + " dias"; return s; }
 const ENG_MAP = {1:7,2:4,3:1,4:2,5:3,6:8,7:5,8:6};
+ADMIN_Q.forEach((q, i) => { if (SHORTC["a" + i]) q.cs = SHORTC["a" + i]; });
+ENG_NEW.forEach((q, i) => { if (SHORTC["e" + i]) q.cs = SHORTC["e" + i]; });
 EXAMS.admin.bank = ADMIN_Q;
 EXAMS.engineer.bank = ENG_NEW;
 Object.values(EXAMS).forEach(x => x.bank.forEach((q, i) => q.id = i));
@@ -1453,8 +2168,9 @@ const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { c
 const pct = (a, b) => b ? Math.round(a / b * 100) : 0;
 const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const fmtDur = s => { s = Math.round(s); const h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), ss = s % 60; return h ? h + "h " + m + "m" : m ? m + "m " + String(ss).padStart(2, "0") + "s" : ss + "s"; };
-const fmtDate = t => new Date(t).toLocaleDateString("en-US", {month:"short", day:"numeric", year:"numeric"});
-const fmtTime = t => new Date(t).toLocaleTimeString("en-US", {hour:"numeric", minute:"2-digit"});
+const LOC = () => (typeof STORE !== "undefined" && STORE.lang === "pt") ? "pt-BR" : "en-US";
+const fmtDate = t => new Date(t).toLocaleDateString(LOC(), {month:"short", day:"numeric", year:"numeric"});
+const fmtTime = t => new Date(t).toLocaleTimeString(LOC(), {hour:"numeric", minute:"2-digit"});
 function rel(t){ const s = (Date.now() - t) / 1000; if (s < 60) return "just now"; if (s < 3600) return Math.floor(s / 60) + " min ago"; if (s < 86400) return Math.floor(s / 3600) + " h ago"; const d = Math.floor(s / 86400); return d === 1 ? "yesterday" : d + " days ago"; }
 const dayKey = t => { const d = new Date(t); return d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate(); };
 const ICON = {
@@ -1617,15 +2333,25 @@ function levelOf(p, n){ const T = DB.target; if (!n) return ["Not started", ""];
 
 /* ---------- Router ---------- */
 let view = "overview";
-function go(v){
+const SLUG = {overview:"dashboard", domains:"domains", history:"history", team:"team", format:"guide", result:"results"};
+function viewFromHash(){ const h = (location.hash || "").slice(1); const v = Object.keys(SLUG).find(k => SLUG[k] === h); return v && v !== "result" ? v : "overview"; }
+function go(v, opt){
+  opt = opt || {};
+  if (opt.push !== false) { const h = "#" + SLUG[v]; if (opt.replace) history.replaceState({v}, "", h); else if (location.hash !== h) history.pushState({v}, "", h); }
   view = v;
-  ["overview","domains","history","format","result"].forEach(x => $("#v-" + x).classList.toggle("hidden", x !== v));
+  ["overview","domains","history","team","format","result"].forEach(x => $("#v-" + x).classList.toggle("hidden", x !== v));
   $$(".nav button").forEach(b => b.dataset.view === v ? b.setAttribute("aria-current", "page") : b.removeAttribute("aria-current"));
   moveInd();
   const sec = $("#v-" + v); sec.style.animation = "none"; sec.offsetHeight; sec.style.animation = "";
   render(); window.scrollTo(0, 0);
 }
 $$(".nav button").forEach(b => b.onclick = () => go(b.dataset.view));
+addEventListener("popstate", () => {
+  if (!$("#exam").classList.contains("hidden")) { history.pushState({v:"exam"}, "", "#exam"); if (!$("#modal").classList.contains("open")) $("#quitBtn").click(); return; }
+  const h = (location.hash || "").slice(1);
+  if (h === "results" && RES) return go("result", {push:false});
+  go(viewFromHash(), {push:false});
+});
 function moveInd(){ const b = $('.nav button[aria-current="page"]'), ind = $("#navInd"); if (!b) { ind.style.width = 0; return; } ind.style.width = (b.offsetWidth - 20) + "px"; ind.style.transform = "translateX(" + (b.offsetLeft + 10) + "px)"; }
 addEventListener("resize", moveInd); document.fonts && document.fonts.ready.then(moveInd);
 function render(){
@@ -1634,6 +2360,7 @@ function render(){
   if (view === "domains") renderDomains();
   if (view === "history") renderHistory();
   if (view === "format") renderFormat();
+  if (view === "team") renderTeam();
 }
 function renderSide(){
   const s = seenIds().length;
@@ -1651,8 +2378,9 @@ function renderOverview(){
     ? "Last attempt " + rel(last.t) + " scored " + last.score + "%. " + A.length + (A.length === 1 ? " attempt" : " attempts") + " and " + A.reduce((s, a) => s + a.answered, 0) + " questions answered so far."
     : EXAM.name + " · " + Q.length + " practice questions across " + DKEYS.length + " blueprint domains.";
   $("#onboard").classList.toggle("hidden", A.length > 0); $("#dashData").classList.toggle("hidden", !A.length);
-  if (!A.length) { renderOnboard(); renderStart(); return; }
   $("#ovExam").textContent = EXAM.name;
+  renderResume();
+  if (!A.length) { renderOnboard(); renderStart(); return; }
   $("#targetVal").textContent = T + "%"; $("#targetBig").textContent = T + "%";
 
   // KPIs
@@ -1770,7 +2498,7 @@ function drawHeat(){
     '<div class="heat-foot"><span>' + days + ' active ' + (days === 1 ? "day" : "days") + '</span><span class="heat-scale">Less<i style="background:var(--heat0)"></i><i style="background:var(--heat1)"></i><i style="background:var(--heat2)"></i><i style="background:var(--heat3)"></i><i style="background:var(--heat4)"></i>More</span></div>' +
     '<div class="stat-line"><div><b class="num">' + streak + '</b><span>Day streak</span></div><div><b class="num">' + wk + '</b><span>Questions this week</span></div><div><b class="num">' + A.length + '</b><span>Total attempts</span></div></div>';
   box.querySelectorAll(".heat i").forEach(c => {
-    c.addEventListener("pointermove", e => { const q = +c.dataset.q, n = +c.dataset.n; showTip('<h4>' + new Date(+c.dataset.d).toLocaleDateString("en-US", {weekday:"short", month:"short", day:"numeric"}) + '</h4><div class="row"><span>Questions</span><b>' + q + '</b></div><div class="row"><span>Attempts</span><b>' + n + '</b></div>', e.clientX, e.clientY); });
+    c.addEventListener("pointermove", e => { const q = +c.dataset.q, n = +c.dataset.n; showTip('<h4>' + new Date(+c.dataset.d).toLocaleDateString(LOC(), {weekday:"short", month:"short", day:"numeric"}) + '</h4><div class="row"><span>Questions</span><b>' + q + '</b></div><div class="row"><span>Attempts</span><b>' + n + '</b></div>', e.clientX, e.clientY); });
     c.addEventListener("pointerleave", hideTip);
   });
 }
@@ -1855,7 +2583,7 @@ function renderMissed(){
   const ul = $("#missed");
   const list = Object.entries(DB.qstats).map(([id, s]) => ({q:Q[id], n:s.n, ok:s.ok, miss:s.n - s.ok})).filter(x => x.q && x.miss > 0).sort((a, b) => b.miss - a.miss || a.ok / a.n - b.ok / b.n).slice(0, 6);
   if (!list.length){ ul.innerHTML = '<li class="empty" style="border:0;padding:24px 22px">Questions you answer wrong will collect here so you can review them quickly.</li>'; return; }
-  ul.innerHTML = list.map(m => accItem(m.q, '<span class="miss-n num">' + m.miss + '×</span><span><span class="q">' + esc(m.q.q) + '</span><span class="meta">' + SHORT[m.q.d] + ' · right ' + m.ok + ' of ' + m.n + '</span></span>', '<div class="ans"><b>Answer:</b> ' + esc(m.q.c) + '</div><div class="exp">' + esc(m.q.e) + '</div>')).join("");
+  ul.innerHTML = list.map(m => accItem(m.q, '<span class="miss-n num">' + m.miss + '×</span><span><span class="q notr">' + esc(m.q.q) + '</span><span class="meta">' + SHORT[m.q.d] + ' · right ' + m.ok + ' of ' + m.n + '</span></span>', '<div class="ans"><b>Answer:</b> <span class="notr">' + esc(m.q.c) + '</span></div><div class="exp">' + esc(expl(m.q)) + '</div>')).join("");
   bindAcc(ul);
 }
 
@@ -1900,7 +2628,7 @@ function openDomain(d){
       '<div class="dstats"><div><b class="num">' + (agg.n ? p + "%" : "–") + '</b><span>All-time accuracy</span></div><div><b class="num">' + agg.n + '</b><span>Answered</span></div><div><b class="num">' + inBank.filter(q => DB.qstats[q.id]).length + '/' + inBank.length + '</b><span>Bank explored</span></div></div>' +
       '<div class="card" style="padding:16px 18px"><div class="sec-t">Accuracy by attempt</div>' + (ser.length ? '<div class="chart">' + spark(ser, DC(d), 440, 110).replace('width="440" height="110"', 'width="100%" height="110" preserveAspectRatio="none"') + '</div>' : '<p style="color:var(--muted);font-size:13px">Answer questions from this domain to see the trend.</p>') + '</div>' +
       '<div><div class="sec-t">Questions you miss here (' + missed.length + ')</div><div class="card" style="padding:4px 0"><ul class="acc" id="drMissed">' +
-      (missed.length ? missed.map(m => accItem(m.q, '<span class="miss-n num">' + (m.s.n - m.s.ok) + '×</span><span><span class="q">' + esc(m.q.q) + '</span><span class="meta">right ' + m.s.ok + ' of ' + m.s.n + '</span></span>', '<div class="ans"><b>Answer:</b> ' + esc(m.q.c) + '</div><div class="exp">' + esc(m.q.e) + '</div>')).join("") : '<li class="empty" style="border:0">Nothing missed in this domain yet.</li>') +
+      (missed.length ? missed.map(m => accItem(m.q, '<span class="miss-n num">' + (m.s.n - m.s.ok) + '×</span><span><span class="q notr">' + esc(m.q.q) + '</span><span class="meta">right ' + m.s.ok + ' of ' + m.s.n + '</span></span>', '<div class="ans"><b>Answer:</b> <span class="notr">' + esc(m.q.c) + '</span></div><div class="exp">' + esc(expl(m.q)) + '</div>')).join("") : '<li class="empty" style="border:0">Nothing missed in this domain yet.</li>') +
       '</ul></div></div>' +
     '</div>' +
     '<div class="drawer-f"><button class="btn primary lg block" id="drPractice">' + ICON.play + 'Practice ' + SHORT[d] + ' · ' + Math.min(20, inBank.length) + ' questions</button></div>';
@@ -1919,17 +2647,18 @@ let hSort = {k:"t", dir:-1};
 const openRows = new Set();
 function renderHistory(){
   const A = DB.attempts.map((a, i) => Object.assign({no:i + 1}, a));
-  $("#histSub").textContent = A.length ? A.length + (A.length === 1 ? " attempt" : " attempts") + " saved in this browser. Select a row to see the domain breakdown." : "Your attempts will be listed here.";
+  $("#histSub").textContent = A.length ? A.length + (A.length === 1 ? " attempt" : " attempts") + " saved. Select a row to see the domain breakdown and review its questions." : "Your attempts will be listed here.";
   if (!A.length){ $("#histTable").innerHTML = '<div class="empty">' + ICON.chart + '<b>No attempts yet</b><span>Finish an attempt to start your history.</span></div>'; return; }
   A.sort((a, b) => (a[hSort.k] > b[hSort.k] ? 1 : a[hSort.k] < b[hSort.k] ? -1 : 0) * hSort.dir);
   const th = (k, l, r) => '<th class="sort ' + (r ? "r" : "") + '" data-k="' + k + '" ' + (hSort.k === k ? 'aria-sort="' + (hSort.dir > 0 ? "ascending" : "descending") + '"' : "") + '>' + l + '<span class="ar">▲</span></th>';
   const T = DB.target;
   $("#histTable").innerHTML = '<table class="tbl"><thead><tr>' + th("no", "#") + th("t", "Date") + th("mode", "Mode") + th("score", "Score", 1) + th("correct", "Correct", 1) + th("dur", "Duration", 1) + '<th></th></tr></thead><tbody>' +
     A.map(a => '<tr class="row ' + (openRows.has(a.no) ? "open" : "") + '" data-no="' + a.no + '"><td class="num" style="color:var(--faint)">' + a.no + '</td><td class="num">' + fmtDate(a.t) + '<span style="color:var(--faint)"> · ' + fmtTime(a.t) + '</span></td><td>' + (a.mode === "full" ? "Full exam" : (a.mode === "missed" ? "Missed review" : "Practice") + (a.domain && a.domain !== "all" ? " · " + SHORT[a.domain] : "")) + '</td><td class="r"><span class="scorepill num ' + (a.score >= T ? "good" : "bad") + '">' + a.score + '%</span></td><td class="r num">' + a.correct + '/' + a.total + '</td><td class="r num">' + fmtDur(a.dur) + '</td><td class="r" style="color:var(--faint)">' + ICON.chev + '</td></tr>' +
-      (openRows.has(a.no) ? '<tr class="det"><td colspan="7"><div class="det-in">' + DKEYS.filter(d => a.dom[d]).map(d => { const p = pct(a.dom[d].ok, a.dom[d].n); return '<div><div class="l"><span>' + SHORT[d] + '</span><b class="num">' + p + '% · ' + a.dom[d].ok + '/' + a.dom[d].n + '</b></div><div class="bar" style="--c:' + DC(d) + '"><i style="width:' + p + '%"></i><b style="left:' + T + '%"></b></div></div>'; }).join("") + '</div></td></tr>' : "")
+      (openRows.has(a.no) ? '<tr class="det"><td colspan="7"><div class="det-act"><button class="btn sm" data-review="' + a.no + '">Review this attempt’s questions</button></div><div class="det-in">' + DKEYS.filter(d => a.dom[d]).map(d => { const p = pct(a.dom[d].ok, a.dom[d].n); return '<div><div class="l"><span>' + SHORT[d] + '</span><b class="num">' + p + '% · ' + a.dom[d].ok + '/' + a.dom[d].n + '</b></div><div class="bar" style="--c:' + DC(d) + '"><i style="width:' + p + '%"></i><b style="left:' + T + '%"></b></div></div>'; }).join("") + '</div></td></tr>' : "")
     ).join("") + '</tbody></table>';
   $$("#histTable th.sort").forEach(h => h.onclick = () => { const k = h.dataset.k; hSort = {k, dir: hSort.k === k ? -hSort.dir : (k === "mode" ? 1 : -1)}; renderHistory(); });
   $$("#histTable tr.row").forEach(r => r.onclick = () => { const n = +r.dataset.no; openRows.has(n) ? openRows.delete(n) : openRows.add(n); renderHistory(); });
+  $$("#histTable [data-review]").forEach(b => b.onclick = e => { e.stopPropagation(); openAttemptReview(DB.attempts[+b.dataset.review - 1]); });
 }
 $("#clearBtn").onclick = async () => {
   if (!DB.attempts.length) return toast("There is no data to clear yet.");
@@ -1976,14 +2705,42 @@ function startExam(){
   if (mode === "full") DKEYS.forEach(d => qs = qs.concat(pick(Q.filter(q => q.d == d), WEIGHTS[d])));
   else qs = pick(poolFor(mode, dom), MODES[mode].n);
   if (!qs.length) return toast("No questions available for this selection.", "warn");
-  Object.assign(E, {mode, dom, fb: mode !== "full" && feedback, order:shuffle(qs), qi:0, results:[], started:Date.now(), warned:{}});
+  Object.assign(E, {mode, dom, fb: mode !== "full" && feedback, order:shuffle(qs), qi:0, results:[], started:Date.now(), warned:{}, done:null});
   E.total = E.order.length; E.limit = MODES[mode].min * 60000; E.deadline = E.started + E.limit;
-  $("#exMode").textContent = EXAM.short + " · " + MODES[mode].label + (dom !== "all" ? " · " + SHORT[dom] : "") + " · " + E.total + " questions";
+  openExamUI(); saveProgress(); loadQ();
+}
+function openExamUI(){
+  $("#exMode").textContent = EXAM.short + " · " + MODES[E.mode].label + (E.dom !== "all" ? " · " + SHORT[E.dom] : "") + " · " + E.total + " questions";
   $("#exT").textContent = E.total;
   $("#exSegs").innerHTML = "<i></i>".repeat(E.total);
   $("#exam").classList.remove("hidden"); document.body.style.overflow = "hidden";
+  if (!history.state || history.state.v !== "exam") history.pushState({v:"exam"}, "", "#exam");
   clearInterval(E.tick); E.tick = setInterval(timer, 1000); timer();
+}
+function saveProgress(){
+  DB.inprogress = {mode:E.mode, dom:E.dom, fb:E.fb, ids:E.order.map(q => q.id), res:E.results.map(r => ({id:r.q.id, ok:r.ok, why:r.why || "", tr:r.tr || []})), started:E.started, deadline:E.deadline, limit:E.limit};
+  save();
+}
+function resumeExam(){
+  const p = DB.inprogress; if (!p) return;
+  const order = p.ids.map(id => Q[id]).filter(Boolean);
+  Object.assign(E, {mode:p.mode, dom:p.dom, fb:p.fb, order, results:p.res.filter(r => Q[r.id]).map(r => ({q:Q[r.id], ok:r.ok, why:r.why, tr:r.tr})), started:p.started, deadline:p.deadline, limit:p.limit, warned:{}, done:null});
+  E.qi = Math.min(E.results.length, order.length); E.total = order.length; mode = p.mode;
+  openExamUI();
+  if (E.qi >= E.total || Date.now() >= E.deadline) return finish();
   loadQ();
+}
+async function discardProgress(){
+  if (!DB.inprogress) return;
+  if (await confirmBox({title:"Discard this attempt?", text:"The unfinished attempt and its answers will be deleted. It will not count in your statistics.", ok:"Discard", danger:true})) { delete DB.inprogress; save(); render(); toast("Unfinished attempt discarded"); }
+}
+function renderResume(){
+  const box = $("#resume"), p = DB.inprogress;
+  if (!p) { box.innerHTML = ""; box.classList.add("hidden"); return; }
+  const left = p.deadline - Date.now(), done = p.res.length, total = p.ids.length;
+  box.classList.remove("hidden");
+  box.innerHTML = '<div class="rs-i"><b>' + (left > 0 ? "You have an unfinished attempt" : "Your unfinished attempt ran out of time") + '</b><span>' + MODES[p.mode].label + (p.dom !== "all" ? " · " + SHORT[p.dom] : "") + ' · ' + done + ' of ' + total + ' answered' + (left > 0 ? ' · ' + fmtDur(left / 1000) + ' left' : '') + '</span></div><div class="rs-a"><button class="btn ghost" id="rsDiscard">Discard</button><button class="btn primary" id="rsGo">' + (left > 0 ? "Continue attempt" : "See results") + '</button></div>';
+  $("#rsGo").onclick = resumeExam; $("#rsDiscard").onclick = discardProgress;
 }
 function timer(){
   const left = Math.max(0, E.deadline - Date.now());
@@ -1994,11 +2751,18 @@ function timer(){
   [10, 5, 1].forEach(w => { if (left <= w * 60000 && left > 0 && !E.warned[w] && E.limit > w * 60000) { E.warned[w] = 1; toast(w + (w === 1 ? " minute" : " minutes") + " left", "warn"); } });
   if (left === 0) finish();
 }
+function buildOptions(q){
+  const w = shuffle(q.w).slice(0, 3);
+  const avg = w.reduce((s, x) => s + x.length, 0) / w.length, mx = Math.max(...w.map(x => x.length));
+  const variants = [q.c].concat(q.cs ? [q.cs] : []);
+  const fit = variants.filter(v => v.length <= mx * 1.1);
+  const right = (fit.length ? fit : variants).sort((a, b) => Math.abs(a.length - avg) - Math.abs(b.length - avg))[0];
+  return shuffle([{t:right, ok:true}].concat(w.map(t => ({t, ok:false}))));
+}
 function loadQ(){
   const q = E.order[E.qi];
-  const rights = [q.c].concat(q.ca || []);
-  E.opts = shuffle([{t:rights[Math.floor(Math.random() * rights.length)], ok:true}].concat(shuffle(q.w).slice(0, 3).map(t => ({t, ok:false}))));
-  E.idx = 0; E.extra = null; E.shown = 0; E.state = "prompt";
+  E.opts = buildOptions(q);
+  E.idx = 0; E.extra = null; E.shown = 0; E.state = "prompt"; E.trace = [];
   $("#exN").textContent = E.qi + 1;
   $$("#exSegs i").forEach((s, i) => s.className = i < E.qi ? "d" : i === E.qi ? "c" : "");
   $("#exDom").innerHTML = '<span class="ddot" style="--c:' + DC(q.d) + '"></span>' + DOMAINS[q.d];
@@ -2011,7 +2775,7 @@ function loadQ(){
 }
 function showOpt(o){
   E.state = "option"; E.shown++;
-  $("#exOpt").innerHTML = '<div class="ex-opt"><div class="l"><span>Is this option correct?</span><span class="num">Option ' + E.shown + '</span></div><div class="t"></div></div>';
+  $("#exOpt").innerHTML = '<div class="ex-opt"><div class="l"><span>Is this option correct?</span><span class="num">Option ' + E.shown + '</span></div><div class="t notr"></div></div>';
   $("#exOpt .t").textContent = o.t;
   $("#exOptN").textContent = "";
   $("#exShow").classList.add("hidden"); $("#exYN").classList.remove("hidden");
@@ -2023,6 +2787,7 @@ function addPrev(t, yes){
 }
 function answer(yes){
   if (E.state !== "option") return;
+  const cur = E.extra || E.opts[E.idx]; E.trace.push([cur.t, yes ? 1 : 0, cur.ok ? 1 : 0]);
   const b = $(yes ? "#yesBtn" : "#noBtn"); b.classList.add("press"); setTimeout(() => b.classList.remove("press"), 120);
   if (E.extra) return resolve(!yes, yes ? "You accepted the correct option, then also accepted: “" + E.extra.t + "”" : "");
   const o = E.opts[E.idx];
@@ -2037,13 +2802,14 @@ function answer(yes){
 }
 function resolve(ok, why){
   const q = E.order[E.qi];
-  E.results.push({q, ok, why});
+  E.results.push({q, ok, why, tr:E.trace.slice()});
+  saveProgress();
   if (!E.fb) return next();
   E.state = "feedback";
   $("#exYN").classList.add("hidden");
-  $("#exFb").innerHTML = '<div class="ex-fb ' + (ok ? "ok" : "bad") + '"><h4><span class="status-ic ' + (ok ? "ok" : "bad") + '">' + (ok ? ICON.check : ICON.x) + '</span>' + (ok ? "Correct" : "Not quite") + '</h4>' + (why ? '<p style="color:var(--bad)"></p>' : "") + '<p><b>Answer:</b> <span class="c"></span></p><p class="e"></p><div class="act"><button class="btn primary" id="nextBtn">' + (E.qi + 1 >= E.total ? "See results" : "Next question") + ' <kbd style="background:transparent;border-color:rgba(0,42,28,.3);color:var(--accent-ink)">Enter</kbd></button></div></div>';
+  $("#exFb").innerHTML = '<div class="ex-fb ' + (ok ? "ok" : "bad") + '"><h4><span class="status-ic ' + (ok ? "ok" : "bad") + '">' + (ok ? ICON.check : ICON.x) + '</span>' + (ok ? "Correct" : "Not quite") + '</h4>' + (why ? '<p class="notr" style="color:var(--bad)"></p>' : "") + '<p><b>Answer:</b> <span class="c notr"></span></p><p class="e"></p><div class="act"><button class="btn primary" id="nextBtn">' + (E.qi + 1 >= E.total ? "See results" : "Next question") + ' <kbd style="background:transparent;border-color:rgba(0,42,28,.3);color:var(--accent-ink)">Enter</kbd></button></div></div>';
   if (why) $("#exFb p").textContent = why;
-  $("#exFb .c").textContent = q.c; $("#exFb .e").textContent = q.e;
+  $("#exFb .c").textContent = q.c; $("#exFb .e").textContent = expl(q);
   $("#nextBtn").onclick = next; $("#nextBtn").focus({preventScroll:true});
 }
 function next(){ E.qi++; if (E.qi >= E.total) return finish(); loadQ(); }
@@ -2057,9 +2823,12 @@ function finish(){
   E.results.forEach(r => { if (r.ok) dom[r.q.d].ok++; const s = DB.qstats[r.q.id] || {n:0, ok:0}; s.n++; if (r.ok) s.ok++; DB.qstats[r.q.id] = s; });
   const prevBest = DB.attempts.length ? Math.max(...DB.attempts.map(a => a.score)) : -1;
   const a = {t:Date.now(), mode:E.mode, domain:E.dom, total:E.total, answered, correct, score:pct(correct, E.total), dur, dom, qs:E.results.map(r => [r.q.id, r.ok ? 1 : 0])};
-  DB.attempts.push(a); save();
-  E.order.slice(answered).forEach(q => E.results.push({q, ok:false, skip:true, why:"Not answered before the attempt ended."}));
+  E.order.slice(answered).forEach(q => E.results.push({q, ok:false, skip:true, why:"Not answered before the attempt ended.", tr:[]}));
+  a.rv = E.results.map(r => [r.q.id, r.ok ? 1 : 0, r.skip ? 1 : 0, r.why || "", r.tr || []]);
+  DB.attempts.push(a); delete DB.inprogress; save();
+  RVL = E.results;
   $("#exam").classList.add("hidden"); document.body.style.overflow = "";
+  if (history.state && history.state.v === "exam") history.replaceState({v:"overview"}, "", "#dashboard");
   renderResult(a, prevBest);
   go("result");
   if (a.score > prevBest && prevBest >= 0) toast("New personal best: " + a.score + "%");
@@ -2082,15 +2851,15 @@ document.addEventListener("keydown", e => {
 });
 
 /* ---------- Results ---------- */
-let RES = null, revDD = null, revF = "all";
+let RES = null, revDD = null, revF = "all", RVL = [];
 function renderResult(a, prevBest){
   RES = a; const T = DB.target, C = 2 * Math.PI * 76;
-  const prev = DB.attempts[DB.attempts.length - 2];
+  const aIdx = DB.attempts.indexOf(a), prev = aIdx > 0 ? DB.attempts[aIdx - 1] : null;
   const good = a.score >= T;
   $("#resHero").innerHTML = '<div class="big-ring"><svg width="180" height="180" viewBox="0 0 180 180"><circle cx="90" cy="90" r="76" fill="none" stroke="var(--surface-3)" stroke-width="12"/><circle cx="90" cy="90" r="76" fill="none" stroke="var(--warn)" stroke-width="2" stroke-dasharray="2 ' + (C - 2) + '" stroke-dashoffset="' + (-C * T / 100 + 1) + '"/><circle class="c" cx="90" cy="90" r="76" fill="none" stroke="' + (good ? "var(--accent)" : "var(--bad)") + '" stroke-width="12" stroke-linecap="round" stroke-dasharray="' + C + '" stroke-dashoffset="' + C + '"/></svg><div class="lab"><div><b class="num" id="resScore">0</b><span>score</span></div></div></div>' +
     '<div style="position:relative;z-index:1"><span class="level ' + (good ? "good" : "bad") + '">' + (good ? "At or above target" : "Below target") + '</span><h2 style="margin-top:12px">' + (a.mode === "full" ? "Full exam" : a.mode === "missed" ? "Missed review" : "Practice") + ' complete</h2><p>' +
     (good ? "You scored " + a.score + "%, " + (a.score - T) + " points over your " + T + "% target." : "You scored " + a.score + "%, " + (T - a.score) + " points under your " + T + "% target. The domain breakdown shows where to focus.") + '</p>' +
-    '<div class="chips"><span class="chip">' + fmtDate(a.t) + ' · ' + fmtTime(a.t) + '</span><span class="chip">Attempt #' + DB.attempts.length + '</span>' + (prev ? '<span class="chip ' + (a.score > prev.score ? "up" : a.score < prev.score ? "down" : "") + '">' + (a.score - prev.score > 0 ? "+" : "") + (a.score - prev.score) + ' pts vs previous</span>' : "") + (a.score > prevBest && prevBest >= 0 ? '<span class="chip up">Personal best</span>' : "") + '</div></div>' +
+    '<div class="chips"><span class="chip">' + fmtDate(a.t) + ' · ' + fmtTime(a.t) + '</span><span class="chip">Attempt #' + (aIdx + 1) + '</span>' + (prev ? '<span class="chip ' + (a.score > prev.score ? "up" : a.score < prev.score ? "down" : "") + '">' + (a.score - prev.score > 0 ? "+" : "") + (a.score - prev.score) + ' pts vs previous</span>' : "") + (a.score > prevBest && prevBest >= 0 ? '<span class="chip up">Personal best</span>' : "") + '</div></div>' +
     (() => { const wrong = a.total - a.correct; const ds = Object.keys(a.dom).filter(d => a.dom[d].ok < a.dom[d].n).sort((x, y) => a.dom[x].ok / a.dom[x].n - a.dom[y].ok / a.dom[y].n); RES.weak = ds[0];
       return '<div class="res-actions">' + (wrong ? '<button class="btn primary lg" id="revBtn">Review ' + wrong + (wrong === 1 ? ' mistake' : ' mistakes') + '</button>' : '') + (RES.weak ? '<button class="btn lg" id="weakBtn">' + ICON.play + 'Practice ' + SHORT[RES.weak] + '</button>' : '') + '<button class="btn ' + (wrong ? '' : 'primary ') + 'lg" id="againBtn">New attempt</button><button class="btn ghost" id="toOv">Back to dashboard</button></div>'; })();
   requestAnimationFrame(() => requestAnimationFrame(() => { const c = $("#resHero .c"); if (c) c.style.strokeDashoffset = C * (1 - a.score / 100); }));
@@ -2114,14 +2883,24 @@ function renderResult(a, prevBest){
   revF = "all"; $$("#revTabs button").forEach(b => b.setAttribute("aria-pressed", b.dataset.f === "all"));
   renderReview();
 }
+function expl(q){ return STORE.lang === "pt" && q.ept ? q.ept : q.e; }
+function docLink(q){ const t = (q.cs || q.c).replace(/[“”"→;,()]/g, " ").split(/\s+/).filter(Boolean).slice(0, 7).join(" "); return "https://developer.sailpoint.com/discuss/search?q=" + encodeURIComponent(t); }
 function renderReview(){
   const d = revDD ? revDD.value : "all";
-  const list = E.results.filter(r => (revF === "all" || (revF === "bad" ? !r.ok : r.ok)) && (d === "all" || r.q.d == d));
+  const list = RVL.filter(r => (revF === "all" || (revF === "bad" ? !r.ok : r.ok)) && (d === "all" || r.q.d == d));
   const ul = $("#review");
   if (!list.length){ ul.innerHTML = '<li class="empty" style="border:0">No questions match this filter.</li>'; return; }
-  ul.innerHTML = list.map(r => accItem(r.q, '<span class="status-ic ' + (r.skip ? "skip" : r.ok ? "ok" : "bad") + '">' + (r.skip ? ICON.dash : r.ok ? ICON.check : ICON.x) + '</span><span><span class="q">' + esc(r.q.q) + '</span><span class="meta">' + DOMAINS[r.q.d] + '</span></span>',
-    (r.why ? '<div class="wrong">' + esc(r.why) + '</div>' : "") + '<div class="ans"><b>Answer:</b> ' + esc(r.q.c) + '</div><div class="exp">' + esc(r.q.e) + '</div>')).join("");
+  ul.innerHTML = list.map(r => accItem(r.q, '<span class="status-ic ' + (r.skip ? "skip" : r.ok ? "ok" : "bad") + '">' + (r.skip ? ICON.dash : r.ok ? ICON.check : ICON.x) + '</span><span><span class="q notr">' + esc(r.q.q) + '</span><span class="meta">' + DOMAINS[r.q.d] + '</span></span>',
+    (r.why ? '<div class="wrong notr">' + esc(r.why) + '</div>' : "") +
+    (r.tr && r.tr.length ? '<div class="trace-t">How you answered</div><ul class="trace">' + r.tr.map(t => '<li class="' + (t[2] ? "ok" : "bad") + '"><span class="tv">' + (t[1] ? "Yes" : "No") + '</span><span class="tt notr">' + esc(t[0]) + '</span><span class="tk">' + (t[2] ? "Correct option" : "Wrong option") + '</span></li>').join("") + '</ul>' : "") +
+    '<div class="ans"><b>Answer:</b> <span class="notr">' + esc(r.q.c) + '</span></div><div class="exp">' + esc(expl(r.q)) + '</div><a class="doc" href="' + docLink(r.q) + '" target="_blank" rel="noopener">Search this topic in the SailPoint community ↗</a>')).join("");
   bindAcc(ul);
+}
+function openAttemptReview(a){
+  RVL = (a.rv || a.qs.map(x => [x[0], x[1], 0, "", []])).filter(x => Q[x[0]]).map(x => ({q:Q[x[0]], ok:!!x[1], skip:!!x[2], why:x[3] || "", tr:x[4] || []}));
+  const before = DB.attempts.slice(0, DB.attempts.indexOf(a));
+  renderResult(a, before.length ? Math.max(...before.map(x => x.score)) : -1);
+  go("result");
 }
 $$("#revTabs button").forEach(b => b.onclick = () => { revF = b.dataset.f; $$("#revTabs button").forEach(x => x.setAttribute("aria-pressed", x === b)); renderReview(); });
 
@@ -2168,17 +2947,16 @@ async function syncPull(){
   if (j.data && j.data.exams) {
     const key = STORE.syncKey;
     STORE = mergeStores(STORE, j.data); STORE.syncKey = key;
-    persistLocal(); setExam(STORE.current); applyTheme(); paintExamSeg(); targetSlider.set(DB.target);
+    persistLocal(); setExam(STORE.current); applyTheme(); paintExamSeg(); targetSlider.set(DB.target); applyLang();
     if (domDD) domDD.setItems(domItems());
     if (view !== "result") render();
   }
   await syncPush();
 }
-async function initSync(){
+async function initSync(m){
   SYNC = {available:false, timer:null, state:"local"};
   if (!STORE.syncKey) { STORE.syncKey = newSyncKey(); persistLocal(); }
-  const m = (location.hash || "").match(/^#sync-([a-z0-9]{20,64})$/i);
-  if (m) { STORE.syncKey = m[1].toLowerCase(); persistLocal(); history.replaceState(null, "", location.pathname + location.search); toast("Progress link opened on this device"); }
+  if (m) { STORE.syncKey = m[1].toLowerCase(); persistLocal(); toast("Progress link opened on this device"); }
   setSync("local");
   try { await syncPull(); } catch(e){ SYNC.available = false; setSync("local"); }
 }
@@ -2216,6 +2994,60 @@ function openSyncPanel(){
 }
 $("#syncBtn").onclick = openSyncPanel;
 
+
+/* ---------- Team board ---------- */
+const TEAM = {data:null, exam:null, loading:false, failed:false};
+async function loadTeam(){
+  if (!SYNC || !SYNC.available || TEAM.loading) return;
+  TEAM.loading = true; TEAM.failed = false;
+  try {
+    const r = await fetch("/api/team?exam=" + STORE.current, {headers:{"x-sync-key":STORE.syncKey}, cache:"no-store"});
+    if (!r.ok) throw new Error(r.status);
+    TEAM.data = await r.json(); TEAM.exam = STORE.current;
+  } catch(e){ TEAM.failed = true; }
+  TEAM.loading = false;
+  if (view === "team") renderTeam(true);
+}
+async function setTeam(t){
+  STORE.team = t; save();
+  if (SYNC) { clearTimeout(SYNC.timer); await syncPush(); }
+  TEAM.data = null; TEAM.exam = null; loadTeam(); renderTeam(true);
+}
+function renderTeam(fromLoad){
+  const box = $("#teamBody");
+  if (!SYNC || !SYNC.available) { box.innerHTML = '<div class="card"><div class="empty">' + ICON.chart + '<b>The team board lives on the team site</b><span>Open admin.blackbox.net.br to see the team and share your scores.</span></div></div>'; return; }
+  if (!fromLoad && (!TEAM.data || TEAM.exam !== STORE.current)) loadTeam();
+  const me = STORE.team || {};
+  const join = '<div class="card team-join">' + (me.share
+    ? '<div><h3>You appear as <span class="notr">' + esc(me.name) + '</span></h3><p>Your scores on both exams are visible to the team. You can rename yourself or leave at any time.</p></div><div class="f"><input class="tinput" id="tmName" value="' + esc(me.name) + '" maxlength="40" aria-label="Display name"><button class="btn" id="tmSave">Rename</button><button class="btn ghost" id="tmLeave">Leave</button></div>'
+    : '<div><h3>Join the team board</h3><p>Share your scores with the team under a display name. Nothing is shared until you join, and you can leave whenever you want.</p></div><div class="f"><input class="tinput" id="tmName" placeholder="Your name" maxlength="40" aria-label="Display name"><button class="btn primary" id="tmJoin">Join</button></div>') + '</div>';
+  const d = TEAM.data && TEAM.exam === STORE.current ? TEAM.data : null;
+  let body;
+  if (!d) body = '<div class="card"><div class="empty">' + (TEAM.failed ? "Could not load the team board. Try again in a moment." : "Loading the team board…") + '</div></div>';
+  else if (!d.members.length) body = '<div class="card"><div class="empty">' + ICON.chart + '<b>No one has joined yet</b><span>Join the board above, then share the site with the team.</span></div></div>';
+  else {
+    const M = d.members.slice(), T = DB.target;
+    const withFull = M.filter(m => m.avgFull !== null);
+    const avg = withFull.length ? Math.round(withFull.reduce((s, m) => s + m.avgFull, 0) / withFull.length) : null;
+    const ready = M.filter(m => m.best !== null && m.best >= T).length;
+    const week = M.reduce((s, m) => s + m.week, 0);
+    const kpi = (l, v, sub) => '<div class="card kpi"><div class="l">' + l + '</div><div class="v num">' + v + '</div><div class="s">' + sub + '</div></div>';
+    M.sort((a, b) => (b.avgFull ?? -1) - (a.avgFull ?? -1) || (b.best ?? -1) - (a.best ?? -1));
+    const rows = M.map((m, i) => '<tr><td class="num" style="color:var(--faint)">' + (i + 1) + '</td><td><span class="notr">' + esc(m.name) + '</span>' + (m.me ? '<span class="you">You</span>' : '') + '</td><td class="r num">' + m.full + '</td><td class="r">' + (m.avgFull === null ? '–' : '<span class="scorepill num ' + (m.avgFull >= T ? "good" : "bad") + '">' + m.avgFull + '%</span>') + '</td><td class="r num">' + (m.best === null ? '–' : m.best + '%') + '</td><td class="r num">' + (m.last === null ? '–' : m.last + '%') + '</td><td class="r num">' + m.week + '</td><td style="color:var(--muted)">' + (m.lastActive ? rel(m.lastActive) : '–') + '</td></tr>').join("");
+    const dk = DKEYS.filter(k => d.domains[k] && d.domains[k].n).sort((a, b) => d.domains[a].ok / d.domains[a].n - d.domains[b].ok / d.domains[b].n);
+    const weak = dk.length ? dk.map(k => { const p = pct(d.domains[k].ok, d.domains[k].n); return '<div><div class="l"><span>' + DOMAINS[k] + '</span><b class="num">' + p + '%</b></div><div class="bar" style="--c:' + (p >= T ? "var(--accent)" : "var(--bad)") + '"><i style="width:' + p + '%"></i><b style="left:' + T + '%"></b></div></div>'; }).join("") : '<p style="color:var(--muted);font-size:13px">No answers yet.</p>';
+    body = '<div class="kpis" style="grid-template-columns:repeat(4,minmax(0,1fr))">' + kpi("Members on the board", M.length, EXAM.short + " exam") + kpi("Team average", avg === null ? "–" : avg + "%", "Average of full exam scores") + kpi("At or above target", ready + "/" + M.length, "Best score of " + T + "% or more") + kpi("Questions this week", week, "Answered by the team in 7 days") + '</div>' +
+      '<div class="team-grid"><div class="card"><div class="card-h"><div><h2>Leaderboard</h2><span class="sub">Ranked by average full exam score</span></div></div><div class="tbl-wrap" style="margin-top:8px"><table class="tbl"><thead><tr><th>#</th><th>Name</th><th class="r">Full exams</th><th class="r">Average</th><th class="r">Best</th><th class="r">Last</th><th class="r">This week</th><th>Last active</th></tr></thead><tbody>' + rows + '</tbody></table></div></div>' +
+      '<div class="card"><div class="card-h"><div><h2>Team weak spots</h2><span class="sub">Accuracy by domain, weakest first</span></div></div><div class="card-b wk">' + weak + '</div></div></div>';
+  }
+  box.innerHTML = join + body;
+  const nameVal = () => ($("#tmName").value || "").trim().slice(0, 40);
+  if ($("#tmJoin")) $("#tmJoin").onclick = () => { const n = nameVal(); if (!n) return toast("Type the name you want to show", "warn"); setTeam({name:n, share:true}); toast("You joined the team board"); };
+  if ($("#tmSave")) $("#tmSave").onclick = () => { const n = nameVal(); if (!n) return toast("Type the name you want to show", "warn"); setTeam({name:n, share:true}); toast("Name updated"); };
+  if ($("#tmLeave")) $("#tmLeave").onclick = async () => { if (await confirmBox({title:"Leave the team board?", text:"Your name and scores will no longer be visible to the team. Your own progress is kept.", ok:"Leave"})) { setTeam({name:me.name, share:false}); toast("You left the team board"); } };
+  $$("#teamBody .tinput").forEach(i => i.addEventListener("keydown", e => { if (e.key === "Enter") ($("#tmJoin") || $("#tmSave")).click(); }));
+}
+
 /* ---------- Exam switcher ---------- */
 function paintExamSeg(){ const seg = $("#examSeg"); seg.dataset.active = STORE.current; seg.querySelectorAll("button").forEach(b => b.setAttribute("aria-checked", b.dataset.exam === STORE.current)); }
 function switchExam(k){
@@ -2229,9 +3061,55 @@ $$("#examSeg button").forEach(b => b.onclick = () => switchExam(b.dataset.exam))
 paintExamSeg();
 $("#tbStart").onclick = () => { if (view !== "overview") go("overview"); const l = $("#launch"); l.scrollIntoView({behavior:REDUCED ? "auto" : "smooth", block:"start"}); l.classList.remove("flash"); void l.offsetWidth; l.classList.add("flash"); };
 
+
+/* ---------- Language (UI only; questions stay in English, as on the real exam) ---------- */
+const PTX = (typeof PT_DICT !== "undefined") ? PT_DICT : {};
+const PTRX = (typeof PT_RX !== "undefined") ? PT_RX : [];
+function trText(str){
+  const m = str.match(/^(\s*)([\s\S]*?)(\s*)$/), core = m[2];
+  if (!core) return null;
+  if (PTX[core] !== undefined) return m[1] + PTX[core] + m[3];
+  for (const [rx, fn] of PTRX) { const r = core.match(rx); if (r) return m[1] + (typeof fn === "function" ? fn(...r) : core.replace(rx, fn)) + m[3]; }
+  return null;
+}
+function trNode(n){
+  const p = n.parentElement; if (!p || p.closest(".notr, script, style")) return;
+  if (n.nodeValue !== n.__t) n.__o = n.nodeValue;
+  if (STORE.lang === "pt") { const t = trText(n.__o); if (t !== null && t !== n.nodeValue) { n.__t = t; n.nodeValue = t; } else if (t === null) n.__t = undefined; }
+  else if (n.__t !== undefined && n.nodeValue === n.__t) { n.nodeValue = n.__o; n.__t = undefined; }
+}
+function trAttr(el, a){
+  if (el.closest(".notr")) return;
+  const k = "__o_" + a, cur = el.getAttribute(a);
+  if (cur !== el["__t_" + a]) el[k] = cur;
+  if (STORE.lang === "pt") { const t = trText(el[k] || ""); if (t !== null) { el["__t_" + a] = t; el.setAttribute(a, t); } }
+  else if (el["__t_" + a] !== undefined && cur === el["__t_" + a]) { el.setAttribute(a, el[k]); el["__t_" + a] = undefined; }
+}
+function trTree(root){
+  if (root.nodeType === 3) return trNode(root);
+  if (root.nodeType !== 1) return;
+  const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT); let n; while ((n = w.nextNode())) trNode(n);
+  [root, ...root.querySelectorAll("[placeholder],[data-tip],[aria-label]")].forEach(el => { if (!el.getAttribute) return; ["placeholder", "data-tip", "aria-label"].forEach(a => { if (el.hasAttribute(a)) trAttr(el, a); }); });
+}
+let trBusy = false;
+const trObs = new MutationObserver(list => {
+  if (trBusy) return; trBusy = true;
+  try { list.forEach(m => { if (m.type === "characterData") trNode(m.target); else m.addedNodes.forEach(trTree); }); }
+  finally { trBusy = false; }
+});
+function applyLang(){
+  STORE.lang = STORE.lang === "pt" ? "pt" : "en";
+  document.documentElement.dataset.lang = STORE.lang; document.documentElement.lang = STORE.lang === "pt" ? "pt-BR" : "en";
+  trBusy = true; trTree(document.body); trBusy = false;
+  trObs.disconnect(); trObs.observe(document.body, {childList:true, subtree:true, characterData:true});
+}
+$("#langBtn").onclick = () => { STORE.lang = STORE.lang === "pt" ? "en" : "pt"; save(); applyLang(); if (view === "result") renderReview(); else render(); };
+
 /* ---------- Boot ---------- */
-go("overview");
-initSync();
+const SYNC_HASH = (location.hash || "").match(/^#sync-([a-z0-9]{20,64})$/i);
+go(SYNC_HASH ? "overview" : viewFromHash(), {replace:true});
+applyLang();
+initSync(SYNC_HASH);
 </script>
 </body>
 </html>
