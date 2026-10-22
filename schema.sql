@@ -4,3 +4,15 @@ CREATE TABLE IF NOT EXISTS profiles (
   updated_at INTEGER NOT NULL,
   created_at INTEGER NOT NULL
 );
+
+CREATE TABLE IF NOT EXISTS reports (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  exam TEXT NOT NULL,
+  qid INTEGER NOT NULL,
+  question TEXT NOT NULL,
+  reason TEXT NOT NULL,
+  comment TEXT,
+  shown TEXT,
+  lang TEXT,
+  created_at INTEGER NOT NULL
+);

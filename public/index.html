@@ -5,20 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>ISC Prep · SailPoint certification practice</title>
 <meta name="description" content="Practice exams and progress tracking for the SailPoint Identity Security Administrator and Identity Security Engineer certifications, in the real DOMC format.">
-<link rel="canonical" href="https://admin.blackbox.net.br/">
+<link rel="canonical" href="https://certifications.blackbox.net.br/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="ISC Prep">
-<meta property="og:url" content="https://admin.blackbox.net.br/">
+<meta property="og:url" content="https://certifications.blackbox.net.br/">
 <meta property="og:title" content="ISC Prep · SailPoint certification practice">
 <meta property="og:description" content="Administrator and Engineer practice exams in the real DOMC format, with a 360-question bank and progress by domain.">
-<meta property="og:image" content="https://admin.blackbox.net.br/og.png">
+<meta property="og:image" content="https://certifications.blackbox.net.br/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="ISC Prep: practice for the SailPoint Identity Security exams">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="ISC Prep · SailPoint certification practice">
 <meta name="twitter:description" content="Administrator and Engineer practice exams in the real DOMC format, with a 360-question bank and progress by domain.">
-<meta name="twitter:image" content="https://admin.blackbox.net.br/og.png">
+<meta name="twitter:image" content="https://certifications.blackbox.net.br/og.png">
 <meta name="theme-color" content="#0A0B0B">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
@@ -958,6 +958,32 @@ body[data-view="overview"] #tbStart,body[data-view="result"] #tbStart{display:no
   .toasts{top:auto;bottom:calc(76px + env(safe-area-inset-bottom,0px));left:16px;right:16px;transform:none}
   .exam .ex-foot{position:sticky;bottom:0}
 }
+
+/* v7: team boards, reports */
+.mono{font-family:var(--mono)}
+.team-start{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.team-opt{padding:22px;display:grid;gap:14px;align-content:start}
+.team-opt h3{font-size:16px;font-weight:600}
+.team-opt p{font-size:13px;color:var(--muted);margin-top:-8px}
+.team-opt .btn{justify-self:start}
+.f2{display:grid;gap:6px}
+.f2 > span{font-size:12px;color:var(--muted);font-weight:500}
+.f2 .tinput{width:100%;min-width:0}
+.tarea{height:96px;padding:10px 12px;resize:vertical;line-height:1.45}
+.team-head{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding:20px 22px;margin-bottom:16px}
+.team-head p{font-size:13px;color:var(--muted);margin-top:6px}
+.tcode{font-size:28px;font-weight:500;letter-spacing:.06em}
+.th-act{display:flex;gap:8px;flex-wrap:wrap}
+.team-kpis{grid-template-columns:repeat(4,minmax(0,1fr));margin:16px 0}
+.rv-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:10px}
+.rv-foot .doc{margin:0}
+.rep-btn{font-size:12px;color:var(--muted);display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:8px;border:1px solid var(--line)}
+.rep-btn:hover{color:var(--ink);border-color:var(--line-2)}
+.rep-r{display:grid;gap:8px;margin-top:16px}
+.rep-o{text-align:left;padding:10px 14px;border-radius:8px;border:1px solid var(--line-2);font-size:13px}
+.rep-o:hover{background:var(--surface-2)}
+.rep-o[aria-checked="true"]{border-color:var(--accent);background:var(--accent-soft)}
+@media (max-width:860px){ .team-start{grid-template-columns:1fr} .team-kpis{grid-template-columns:repeat(2,minmax(0,1fr))} .th-act{width:100%} .th-act .btn{flex:1} }
 </style>
 </head>
 <body>
@@ -1076,7 +1102,7 @@ body[data-view="overview"] #tbStart,body[data-view="result"] #tbStart{display:no
 
     <!-- TEAM -->
     <section class="view hidden" id="v-team">
-      <div class="vhead"><div><h1>Team</h1><p>How the team is doing on this exam. Only people who join the board appear here, with the name they choose.</p></div></div>
+      <div class="vhead"><div><h1>Team</h1><p>A private board for your team. Create one or join with an invite code to compare progress.</p></div></div>
       <div id="teamBody"></div>
     </section>
 
@@ -2134,7 +2160,20 @@ S("e156","It connects the cloud to internal systems");
 S("e157","So governance features stay fast");
 S("e158","In the cloud; connectors run on the VA");
 const PT_DICT = {
-"Settings":"Configurações","Theme":"Tema","Dark":"Escuro","Light":"Claro","Progress":"Progresso","Manage":"Gerenciar","Saved to cloud":"Salvo na nuvem","Saved on this device":"Salvo neste aparelho",
+"Join a team":"Entrar em uma equipe","Paste the invite code or link a teammate shared with you.":"Cole o código ou o link de convite que alguém da equipe compartilhou.","Invite code":"Código de convite","Your name on the board":"Seu nome no quadro","Join team":"Entrar na equipe",
+"Create a team":"Criar uma equipe","Start a private board and invite people with a code. Only people with the code can see it.":"Crie um quadro privado e convide pessoas com um código. Só quem tem o código consegue ver.","Create team":"Criar equipe",
+"Boards are private to each team. Nothing is shared until you join or create one, and you can leave at any time.":"Cada quadro é privado da sua equipe. Nada é compartilhado até você entrar ou criar um, e dá para sair a qualquer momento.",
+"Team code":"Código da equipe","Share the invite link so teammates join this board.":"Compartilhe o link de convite para a equipe entrar neste quadro.","Copy invite link":"Copiar link de convite","Leave team":"Sair da equipe","Members":"Membros",
+"You are the only one here so far":"Por enquanto só você está aqui","Copy the invite link above and send it to your team.":"Copie o link de convite acima e envie para a equipe.",
+"Team boards work on the main site":"Os quadros de equipe funcionam no site principal","Open certifications.blackbox.net.br to create or join a team board.":"Abra certifications.blackbox.net.br para criar ou entrar em um quadro.",
+"A private board for your team. Create one or join with an invite code to compare progress.":"Um quadro privado da sua equipe. Crie um ou entre com um código de convite para comparar o progresso.",
+"Enter a valid invite code, like ABCD-1234":"Digite um código válido, como ABCD-1234","Team created. Share the invite link with your team":"Equipe criada. Compartilhe o link de convite com a equipe","Invite link copied":"Link de convite copiado",
+"Rename yourself":"Trocar seu nome","This is the name your team sees on the board.":"É o nome que a equipe vê no quadro.","Save":"Salvar","Leave this team?":"Sair desta equipe?",
+"Your name and scores will no longer be visible to this team. Your own progress is kept.":"Seu nome e suas notas deixam de aparecer para esta equipe. Seu progresso continua salvo.",
+"Report an issue":"Reportar um problema","The marked answer is wrong":"A resposta marcada está errada","The question is unclear":"A pergunta não está clara","The content is outdated":"O conteúdo está desatualizado","Typo or wording":"Erro de digitação ou redação","Something else":"Outra coisa",
+"Details (optional)":"Detalhes (opcional)","What should it say instead? A link to the docs helps.":"O que deveria dizer? Um link para a documentação ajuda.","Send report":"Enviar","Thanks. Your report was sent":"Obrigado. Seu reporte foi enviado",
+"Could not send the report. Reports work on the main site":"Não foi possível enviar. Os reportes funcionam no site principal","Your progress was loaded on this device":"Seu progresso foi carregado neste aparelho","What is wrong?":"O que está errado?",
+"Settings":"Configurações","Loading…":"Carregando…","Theme":"Tema","Dark":"Escuro","Light":"Claro","Progress":"Progresso","Manage":"Gerenciar","Saved to cloud":"Salvo na nuvem","Saved on this device":"Salvo neste aparelho",
 "Show more insights":"Mostrar mais análises","Show fewer insights":"Mostrar menos análises","Bars":"Barras","Radar":"Radar","Activity":"Atividade","Best so far":"Melhor até agora",
 "You rejected the correct option.":"Você rejeitou a opção correta.","Not answered before the attempt ended.":"Não respondida antes do fim da tentativa.",
 "Dashboard":"Painel","Domains":"Domínios","History":"Histórico","Team":"Equipe","Exam guide":"Guia da prova","New attempt":"Nova tentativa",
@@ -2940,7 +2979,7 @@ function resolve(ok, why){
   if (!E.fb) return next();
   E.state = "feedback";
   $("#exYN").classList.add("hidden");
-  $("#exFb").innerHTML = '<div class="ex-fb ' + (ok ? "ok" : "bad") + '"><h4><span class="status-ic ' + (ok ? "ok" : "bad") + '">' + (ok ? ICON.check : ICON.x) + '</span>' + (ok ? "Correct" : "Not quite") + '</h4>' + (why ? '<p style="color:var(--bad)"></p>' : "") + '<p><b>Answer:</b> <span class="c notr"></span></p><p class="e"></p><div class="act"><button class="btn primary" id="nextBtn">' + (E.qi + 1 >= E.total ? "See results" : "Next question") + ' <kbd style="background:transparent;border-color:rgba(0,42,28,.3);color:var(--accent-ink)">Enter</kbd></button></div></div>';
+  $("#exFb").innerHTML = '<div class="ex-fb ' + (ok ? "ok" : "bad") + '"><h4><span class="status-ic ' + (ok ? "ok" : "bad") + '">' + (ok ? ICON.check : ICON.x) + '</span>' + (ok ? "Correct" : "Not quite") + '</h4>' + (why ? '<p style="color:var(--bad)"></p>' : "") + '<p><b>Answer:</b> <span class="c notr"></span></p><p class="e"></p><div class="act"><button class="rep-btn" data-rep="' + q.id + '" style="margin-right:auto">Report an issue</button><button class="btn primary" id="nextBtn">' + (E.qi + 1 >= E.total ? "See results" : "Next question") + ' <kbd style="background:transparent;border-color:rgba(0,42,28,.3);color:var(--accent-ink)">Enter</kbd></button></div></div>';
   if (why) $("#exFb p").textContent = why;
   $("#exFb .c").textContent = q.c; $("#exFb .e").textContent = expl(q);
   $("#nextBtn").onclick = next; $("#nextBtn").focus({preventScroll:true});
@@ -3026,7 +3065,7 @@ function renderReview(){
   ul.innerHTML = list.map(r => accItem(r.q, '<span class="status-ic ' + (r.skip ? "skip" : r.ok ? "ok" : "bad") + '">' + (r.skip ? ICON.dash : r.ok ? ICON.check : ICON.x) + '</span><span><span class="q notr">' + esc(r.q.q) + '</span><span class="meta">' + DOMAINS[r.q.d] + '</span></span>',
     (r.why ? '<div class="wrong">' + esc(r.why) + '</div>' : "") +
     (r.tr && r.tr.length ? '<div class="trace-t">How you answered</div><ul class="trace">' + r.tr.map(t => '<li class="' + (t[2] ? "ok" : "bad") + '"><span class="tv">' + (t[1] ? "Yes" : "No") + '</span><span class="tt notr">' + esc(t[0]) + '</span><span class="tk">' + (t[2] ? "Correct option" : "Wrong option") + '</span></li>').join("") + '</ul>' : "") +
-    '<div class="ans"><b>Answer:</b> <span class="notr">' + esc(r.q.c) + '</span></div><div class="exp">' + esc(expl(r.q)) + '</div><a class="doc" href="' + docLink(r.q) + '" target="_blank" rel="noopener">Search this topic in the SailPoint community ↗</a>')).join("");
+    '<div class="ans"><b>Answer:</b> <span class="notr">' + esc(r.q.c) + '</span></div><div class="exp">' + esc(expl(r.q)) + '</div><div class="rv-foot"><a class="doc" href="' + docLink(r.q) + '" target="_blank" rel="noopener">Search this topic in the SailPoint community ↗</a><button class="rep-btn" data-rep="' + r.q.id + '">Report an issue</button></div>')).join("");
   bindAcc(ul);
 }
 function openAttemptReview(a){
@@ -3089,9 +3128,10 @@ async function syncPull(){
 async function initSync(m){
   SYNC = {available:false, timer:null, state:"local"};
   if (!STORE.syncKey) { STORE.syncKey = newSyncKey(); persistLocal(); }
-  if (m) { STORE.syncKey = m[1].toLowerCase(); persistLocal(); toast("Progress link opened on this device"); }
+  if (m) { STORE.syncKey = m[1].toLowerCase(); persistLocal(); toast("Your progress was loaded on this device"); }
   setSync("local");
   try { await syncPull(); } catch(e){ SYNC.available = false; setSync("local"); }
+  if (view === "team") renderTeam();
 }
 function syncLink(){ return location.origin + location.pathname + "#sync-" + STORE.syncKey; }
 function openSyncPanel(){
@@ -3128,15 +3168,20 @@ function openSyncPanel(){
 $("#syncBtn").onclick = () => { $("#setPop").classList.remove("open"); openSyncPanel(); };
 
 
-/* ---------- Team board ---------- */
-const TEAM = {data:null, exam:null, loading:false, failed:false};
+/* ---------- Team board (private boards by invite code) ---------- */
+const TEAM = {data:null, key:null, loading:false, failed:false, invite:null};
+const CODE_RX = /^[A-Z0-9]{4}-[A-Z0-9]{4}$/;
+function newTeamCode(){ const al = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"; const a = new Uint8Array(8); crypto.getRandomValues(a); const c = Array.from(a, x => al[x % al.length]).join(""); return c.slice(0, 4) + "-" + c.slice(4); }
+function myTeam(){ const t = STORE.team || {}; return t.share && t.code && CODE_RX.test(t.code) ? t : null; }
+function teamLink(code){ return location.origin + location.pathname + "#team-" + code; }
 async function loadTeam(){
-  if (!SYNC || !SYNC.available || TEAM.loading) return;
+  const t = myTeam();
+  if (!SYNC || !SYNC.available || !t || TEAM.loading) return;
   TEAM.loading = true; TEAM.failed = false;
   try {
-    const r = await fetch("/api/team?exam=" + STORE.current, {headers:{"x-sync-key":STORE.syncKey}, cache:"no-store"});
+    const r = await fetch("/api/team?exam=" + STORE.current + "&code=" + encodeURIComponent(t.code), {headers:{"x-sync-key":STORE.syncKey}, cache:"no-store"});
     if (!r.ok) throw new Error(r.status);
-    TEAM.data = await r.json(); TEAM.exam = STORE.current;
+    TEAM.data = await r.json(); TEAM.key = STORE.current + "|" + t.code;
   } catch(e){ TEAM.failed = true; }
   TEAM.loading = false;
   if (view === "team") renderTeam(true);
@@ -3144,20 +3189,30 @@ async function loadTeam(){
 async function setTeam(t){
   STORE.team = t; save();
   if (SYNC) { clearTimeout(SYNC.timer); await syncPush(); }
-  TEAM.data = null; TEAM.exam = null; loadTeam(); renderTeam(true);
+  TEAM.data = null; TEAM.key = null; loadTeam(); renderTeam(true);
 }
 function renderTeam(fromLoad){
   const box = $("#teamBody");
-  if (!SYNC || !SYNC.available) { box.innerHTML = '<div class="card"><div class="empty">' + ICON.chart + '<b>The team board lives on the team site</b><span>Open admin.blackbox.net.br to see the team and share your scores.</span></div></div>'; return; }
-  if (!fromLoad && (!TEAM.data || TEAM.exam !== STORE.current)) loadTeam();
-  const me = STORE.team || {};
-  const join = '<div class="card team-join">' + (me.share
-    ? '<div><h3>You appear as <span class="notr">' + esc(me.name) + '</span></h3><p>Your scores on both exams are visible to the team. You can rename yourself or leave at any time.</p></div><div class="f"><input class="tinput" id="tmName" value="' + esc(me.name) + '" maxlength="40" aria-label="Display name"><button class="btn" id="tmSave">Rename</button><button class="btn ghost" id="tmLeave">Leave</button></div>'
-    : '<div><h3>Join the team board</h3><p>Share your scores with the team under a display name. Nothing is shared until you join, and you can leave whenever you want.</p></div><div class="f"><input class="tinput" id="tmName" placeholder="Your name" maxlength="40" aria-label="Display name"><button class="btn primary" id="tmJoin">Join</button></div>') + '</div>';
-  const d = TEAM.data && TEAM.exam === STORE.current ? TEAM.data : null;
+  if (!SYNC) { box.innerHTML = '<div class="card"><div class="empty">Loading…</div></div>'; return; }
+  if (!SYNC.available) { box.innerHTML = '<div class="card"><div class="empty">' + ICON.chart + '<b>Team boards work on the main site</b><span>Open certifications.blackbox.net.br to create or join a team board.</span></div></div>'; return; }
+  const t = myTeam();
+  if (!t) {
+    const inv = TEAM.invite || "";
+    box.innerHTML = '<div class="team-start">' +
+      '<div class="card team-opt"><h3>Join a team</h3><p>Paste the invite code or link a teammate shared with you.</p><label class="f2"><span>Invite code</span><input class="tinput mono" id="tmCode" placeholder="ABCD-1234" maxlength="80" value="' + esc(inv) + '" autocomplete="off"></label><label class="f2"><span>Your name on the board</span><input class="tinput" id="tmNameJ" maxlength="40" placeholder="Your name"></label><button class="btn primary" id="tmJoin">Join team</button></div>' +
+      '<div class="card team-opt"><h3>Create a team</h3><p>Start a private board and invite people with a code. Only people with the code can see it.</p><label class="f2"><span>Your name on the board</span><input class="tinput" id="tmNameC" maxlength="40" placeholder="Your name"></label><button class="btn" id="tmCreate">Create team</button></div>' +
+      '</div><p class="note">Boards are private to each team. Nothing is shared until you join or create one, and you can leave at any time.</p>';
+    const nm = id => ($(id).value || "").trim().slice(0, 40);
+    $("#tmJoin").onclick = () => { const m = ($("#tmCode").value || "").toUpperCase().match(/([A-Z0-9]{4}-[A-Z0-9]{4})/); if (!m) return toast("Enter a valid invite code, like ABCD-1234", "warn"); const n = nm("#tmNameJ"); if (!n) return toast("Type the name you want to show", "warn"); TEAM.invite = null; setTeam({name:n, share:true, code:m[1]}); toast("You joined the team board"); };
+    $("#tmCreate").onclick = () => { const n = nm("#tmNameC"); if (!n) return toast("Type the name you want to show", "warn"); setTeam({name:n, share:true, code:newTeamCode(), owner:true}); toast("Team created. Share the invite link with your team"); };
+    if (inv) setTimeout(() => $("#tmNameJ").focus(), 50);
+    return;
+  }
+  if (!fromLoad && TEAM.key !== STORE.current + "|" + t.code) loadTeam();
+  const head = '<div class="card team-head"><div><span class="eyebrow" style="margin:0 0 6px">Team code</span><div class="tcode mono notr">' + t.code + '</div><p>You appear as <b class="notr">' + esc(t.name) + '</b>. Share the invite link so teammates join this board.</p></div><div class="th-act"><button class="btn primary" id="tmCopy">Copy invite link</button><button class="btn" id="tmRename">Rename</button><button class="btn ghost" id="tmLeave">Leave team</button></div></div>';
+  const d = TEAM.key === STORE.current + "|" + t.code ? TEAM.data : null;
   let body;
   if (!d) body = '<div class="card"><div class="empty">' + (TEAM.failed ? "Could not load the team board. Try again in a moment." : "Loading the team board…") + '</div></div>';
-  else if (!d.members.length) body = '<div class="card"><div class="empty">' + ICON.chart + '<b>No one has joined yet</b><span>Join the board above, then share the site with the team.</span></div></div>';
   else {
     const M = d.members.slice(), T = DB.target;
     const withFull = M.filter(m => m.avgFull !== null);
@@ -3169,17 +3224,66 @@ function renderTeam(fromLoad){
     const rows = M.map((m, i) => '<tr><td class="num" style="color:var(--faint)">' + (i + 1) + '</td><td><span class="notr">' + esc(m.name) + '</span>' + (m.me ? '<span class="you">You</span>' : '') + '</td><td class="r num">' + m.full + '</td><td class="r">' + (m.avgFull === null ? '–' : '<span class="scorepill num ' + (m.avgFull >= T ? "good" : "bad") + '">' + m.avgFull + '%</span>') + '</td><td class="r num">' + (m.best === null ? '–' : m.best + '%') + '</td><td class="r num">' + (m.last === null ? '–' : m.last + '%') + '</td><td class="r num">' + m.week + '</td><td style="color:var(--muted)">' + (m.lastActive ? rel(m.lastActive) : '–') + '</td></tr>').join("");
     const dk = DKEYS.filter(k => d.domains[k] && d.domains[k].n).sort((a, b) => d.domains[a].ok / d.domains[a].n - d.domains[b].ok / d.domains[b].n);
     const weak = dk.length ? dk.map(k => { const p = pct(d.domains[k].ok, d.domains[k].n); return '<div><div class="l"><span>' + DOMAINS[k] + '</span><b class="num">' + p + '%</b></div><div class="bar" style="--c:' + (p >= T ? "var(--accent)" : "var(--bad)") + '"><i style="width:' + p + '%"></i><b style="left:' + T + '%"></b></div></div>'; }).join("") : '<p style="color:var(--muted);font-size:13px">No answers yet.</p>';
-    body = '<div class="kpis" style="grid-template-columns:repeat(4,minmax(0,1fr))">' + kpi("Members on the board", M.length, EXAM.short + " exam") + kpi("Team average", avg === null ? "–" : avg + "%", "Average of full exam scores") + kpi("At or above target", ready + "/" + M.length, "Best score of " + T + "% or more") + kpi("Questions this week", week, "Answered by the team in 7 days") + '</div>' +
+    body = (M.length < 2 ? '<div class="card"><div class="empty">' + ICON.chart + '<b>You are the only one here so far</b><span>Copy the invite link above and send it to your team.</span></div></div>' : '') +
+      '<div class="kpis team-kpis">' + kpi("Members", M.length, EXAM.short + " exam") + kpi("Team average", avg === null ? "–" : avg + "%", "Average of full exam scores") + kpi("At or above target", ready + "/" + M.length, "Best score of " + T + "% or more") + kpi("Questions this week", week, "Answered by the team in 7 days") + '</div>' +
       '<div class="team-grid"><div class="card"><div class="card-h"><div><h2>Leaderboard</h2><span class="sub">Ranked by average full exam score</span></div></div><div class="tbl-wrap" style="margin-top:8px"><table class="tbl"><thead><tr><th>#</th><th>Name</th><th class="r">Full exams</th><th class="r">Average</th><th class="r">Best</th><th class="r">Last</th><th class="r">This week</th><th>Last active</th></tr></thead><tbody>' + rows + '</tbody></table></div></div>' +
       '<div class="card"><div class="card-h"><div><h2>Team weak spots</h2><span class="sub">Accuracy by domain, weakest first</span></div></div><div class="card-b wk">' + weak + '</div></div></div>';
   }
-  box.innerHTML = join + body;
-  const nameVal = () => ($("#tmName").value || "").trim().slice(0, 40);
-  if ($("#tmJoin")) $("#tmJoin").onclick = () => { const n = nameVal(); if (!n) return toast("Type the name you want to show", "warn"); setTeam({name:n, share:true}); toast("You joined the team board"); };
-  if ($("#tmSave")) $("#tmSave").onclick = () => { const n = nameVal(); if (!n) return toast("Type the name you want to show", "warn"); setTeam({name:n, share:true}); toast("Name updated"); };
-  if ($("#tmLeave")) $("#tmLeave").onclick = async () => { if (await confirmBox({title:"Leave the team board?", text:"Your name and scores will no longer be visible to the team. Your own progress is kept.", ok:"Leave"})) { setTeam({name:me.name, share:false}); toast("You left the team board"); } };
-  $$("#teamBody .tinput").forEach(i => i.addEventListener("keydown", e => { if (e.key === "Enter") ($("#tmJoin") || $("#tmSave")).click(); }));
+  box.innerHTML = head + body;
+  $("#tmCopy").onclick = async () => { try { await navigator.clipboard.writeText(teamLink(t.code)); toast("Invite link copied"); } catch(e){ toast(teamLink(t.code)); } };
+  $("#tmRename").onclick = async () => {
+    const n = await promptBox({title:"Rename yourself", text:"This is the name your team sees on the board.", value:t.name, ok:"Save"});
+    if (n && n.trim()) { setTeam(Object.assign({}, t, {name:n.trim().slice(0, 40)})); toast("Name updated"); }
+  };
+  $("#tmLeave").onclick = async () => { if (await confirmBox({title:"Leave this team?", text:"Your name and scores will no longer be visible to this team. Your own progress is kept.", ok:"Leave team"})) { setTeam({name:t.name, share:false}); toast("You left the team board"); } };
 }
+function promptBox(o){
+  return new Promise(res => {
+    const root = $("#modal"), card = $("#modalCard");
+    card.innerHTML = '<h3 id="mTitle"></h3><p></p><input class="tinput" id="pbIn" maxlength="40" style="width:100%;margin-top:16px"><div class="act"><button class="btn ghost" data-a="0">Cancel</button><button class="btn primary" data-a="1"></button></div>';
+    card.querySelector("h3").textContent = o.title; card.querySelector("p").textContent = o.text; card.querySelector('[data-a="1"]').textContent = o.ok; $("#pbIn").value = o.value || "";
+    root.classList.add("open"); setTimeout(() => $("#pbIn").focus(), 50);
+    const done = v => { root.classList.remove("open"); document.removeEventListener("keydown", key, true); res(v); };
+    function key(e){ if (e.key === "Escape") { e.stopPropagation(); done(null); } if (e.key === "Enter") { e.preventDefault(); done($("#pbIn").value); } }
+    document.addEventListener("keydown", key, true);
+    card.querySelectorAll("button").forEach(b => b.onclick = () => done(b.dataset.a === "1" ? $("#pbIn").value : null));
+    root.querySelector(".back").onclick = () => done(null);
+  });
+}
+
+/* ---------- Report an issue ---------- */
+const REASONS = [["wrong_answer","The marked answer is wrong"],["unclear","The question is unclear"],["outdated","The content is outdated"],["typo","Typo or wording"],["other","Something else"]];
+function reportContext(qid){
+  const pool = (RVL || []).concat(E.results || []);
+  const r = pool.find(x => x.q && x.q.id === qid);
+  return r && r.tr ? r.tr.map(t => (t[2] ? "[correct] " : "[wrong] ") + t[0]).join(" | ") : "";
+}
+function openReport(qid){
+  const q = Q[qid]; if (!q) return;
+  const root = $("#modal"), card = $("#modalCard");
+  let reason = null;
+  card.classList.add("wide");
+  card.innerHTML = '<h3 id="mTitle">Report an issue</h3><p class="notr" style="color:var(--ink);font-weight:500">' + esc(q.q) + '</p>' +
+    '<div class="rep-r" role="radiogroup" aria-label="What is wrong?">' + REASONS.map(r => '<button class="rep-o" role="radio" aria-checked="false" data-r="' + r[0] + '">' + r[1] + '</button>').join("") + '</div>' +
+    '<label class="f2" style="margin-top:14px"><span>Details (optional)</span><textarea class="tinput tarea" id="repTxt" maxlength="1000" placeholder="What should it say instead? A link to the docs helps."></textarea></label>' +
+    '<div class="act"><button class="btn ghost" id="repCancel">Cancel</button><button class="btn primary" id="repSend" disabled>Send report</button></div>';
+  root.classList.add("open");
+  const close = () => { root.classList.remove("open"); card.classList.remove("wide"); document.removeEventListener("keydown", key, true); };
+  function key(e){ if (e.key === "Escape") { e.stopPropagation(); close(); } }
+  document.addEventListener("keydown", key, true);
+  root.querySelector(".back").onclick = close; $("#repCancel").onclick = close;
+  card.querySelectorAll(".rep-o").forEach(b => b.onclick = () => { reason = b.dataset.r; card.querySelectorAll(".rep-o").forEach(x => x.setAttribute("aria-checked", x === b)); $("#repSend").disabled = false; });
+  setTimeout(() => card.querySelector(".rep-o").focus(), 50);
+  $("#repSend").onclick = async () => {
+    $("#repSend").disabled = true;
+    try {
+      const r = await fetch("/api/report", {method:"POST", headers:{"content-type":"application/json"}, body:JSON.stringify({exam:STORE.current, qid, question:q.q, reason, comment:$("#repTxt").value.trim(), shown:reportContext(qid), lang:STORE.lang})});
+      if (!r.ok) throw new Error(r.status);
+      close(); toast("Thanks. Your report was sent");
+    } catch(e){ $("#repSend").disabled = false; toast("Could not send the report. Reports work on the main site", "warn"); }
+  };
+}
+document.addEventListener("click", e => { const b = e.target.closest && e.target.closest("[data-rep]"); if (b) { e.stopPropagation(); openReport(+b.dataset.rep); } });
 
 /* ---------- Exam switcher ---------- */
 function paintExamSeg(){ const seg = $("#examSeg"); seg.dataset.active = STORE.current; seg.querySelectorAll("button").forEach(b => b.setAttribute("aria-checked", b.dataset.exam === STORE.current)); }
@@ -3239,8 +3343,18 @@ function applyLang(){
 $$("#langSeg button").forEach(b => b.onclick = () => { STORE.lang = b.dataset.lang; save(); applyLang(); if (view === "result") renderReview(); else render(); });
 
 /* ---------- Boot ---------- */
+const OLD_HOST = "admin.blackbox.net.br", NEW_ORIGIN = "https://certifications.blackbox.net.br";
+if (location.hostname === OLD_HOST) {
+  (async () => {
+    const has = Object.values(STORE.exams).some(x => x.attempts.length || x.inprogress);
+    if (has) { if (!STORE.syncKey) STORE.syncKey = newSyncKey(); persistLocal(); try { await fetch("/api/state", {method:"PUT", headers:{"content-type":"application/json", "x-sync-key":STORE.syncKey}, body:JSON.stringify({data:STORE})}); } catch(e){} }
+    location.replace(NEW_ORIGIN + "/" + (has ? "#sync-" + STORE.syncKey : ""));
+  })();
+}
+const TEAM_HASH = (location.hash || "").match(/^#team-([A-Za-z0-9]{4}-[A-Za-z0-9]{4})$/);
+if (TEAM_HASH) TEAM.invite = TEAM_HASH[1].toUpperCase();
 const SYNC_HASH = (location.hash || "").match(/^#sync-([a-z0-9]{20,64})$/i);
-go(SYNC_HASH ? "overview" : viewFromHash(), {replace:true});
+go(TEAM_HASH ? "team" : SYNC_HASH ? "overview" : viewFromHash(), {replace:true});
 applyLang();
 initSync(SYNC_HASH);
 </script>

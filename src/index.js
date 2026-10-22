@@ -1,6 +1,7 @@
 // ISC Prep: static site + small progress-sync API backed by D1.
 const KEY_RE = /^[a-z0-9]{20,64}$/;
 const MAX_BYTES = 2_000_000;
+const CODE_RE = /^[A-Z0-9]{4}-[A-Z0-9]{4}$/;
 
 const json = (body, status = 200) =>
   new Response(JSON.stringify(body), {
@@ -11,6 +12,7 @@ const json = (body, status = 200) =>
 async function handleApi(request, env, url) {
   if (url.pathname === "/api/health") return json({ ok: true });
   if (url.pathname === "/api/team" && request.method === "GET") return handleTeam(request, env, url);
+  if (url.pathname === "/api/report" && request.method === "POST") return handleReport(request, env);
   if (url.pathname !== "/api/state") return json({ error: "not_found" }, 404);
 
   const key = (request.headers.get("x-sync-key") || "").toLowerCase();
@@ -41,6 +43,8 @@ async function handleApi(request, env, url) {
 
 async function handleTeam(request, env, url) {
   const exam = url.searchParams.get("exam") === "engineer" ? "engineer" : "admin";
+  const code = (url.searchParams.get("code") || "").toUpperCase();
+  if (!CODE_RE.test(code)) return json({ error: "invalid_code" }, 400);
   const myKey = (request.headers.get("x-sync-key") || "").toLowerCase();
   const { results } = await env.DB.prepare("SELECT key, data FROM profiles").all();
   const weekAgo = Date.now() - 7 * 864e5;
@@ -50,7 +54,7 @@ async function handleTeam(request, env, url) {
     let d;
     try { d = JSON.parse(row.data); } catch { continue; }
     const team = d && d.team;
-    if (!team || !team.share || !team.name) continue;
+    if (!team || !team.share || !team.name || String(team.code || "").toUpperCase() !== code) continue;
     const ex = (d.exams || {})[exam] || {};
     const atts = Array.isArray(ex.attempts) ? ex.attempts : [];
     for (const a of atts) for (const k of Object.keys(a.dom || {})) {
@@ -71,7 +75,22 @@ async function handleTeam(request, env, url) {
       lastActive: atts.length ? atts[atts.length - 1].t : null,
     });
   }
-  return json({ exam, members, domains });
+  return json({ exam, code, members, domains });
+}
+
+const REASONS = new Set(["wrong_answer", "unclear", "typo", "outdated", "other"]);
+async function handleReport(request, env) {
+  const text = await request.text();
+  if (text.length > 8000) return json({ error: "too_large" }, 413);
+  let b;
+  try { b = JSON.parse(text); } catch { return json({ error: "bad_json" }, 400); }
+  const exam = b.exam === "engineer" ? "engineer" : b.exam === "admin" ? "admin" : null;
+  const qid = Number.isInteger(b.qid) ? b.qid : -1;
+  if (!exam || qid < 0 || !REASONS.has(b.reason) || typeof b.question !== "string") return json({ error: "bad_body" }, 400);
+  const clip = (v, n) => (typeof v === "string" ? v.slice(0, n) : null);
+  await env.DB.prepare("INSERT INTO reports (exam, qid, question, reason, comment, shown, lang, created_at) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8)")
+    .bind(exam, qid, clip(b.question, 600), b.reason, clip(b.comment, 1000), clip(b.shown, 2000), clip(b.lang, 5), Date.now()).run();
+  return json({ ok: true });
 }
 
 export default {
